@@ -118,29 +118,3 @@ koFunction.hasReturnType() // false
 ```
 
 Unlike the previous class example, Konsist has no way to determine the actual function return type.
-
-###
-
-
-
-
-
-connstructor
-
-
-
-
-
-
-
-{% hint style="warning" %}
-
-
-
-
-*
-  * descripe n declaration with type = no type in code no type, no package no package (it exists withing the package, btu code does nto contain package declaration)
-{% endhint %}
-
-
-
