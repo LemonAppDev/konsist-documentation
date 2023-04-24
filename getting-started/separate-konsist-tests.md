@@ -2,7 +2,7 @@
 description: Aim for better test separation.
 ---
 
-# Create Konsist Test Directory
+# Isolate Konsist Tests
 
 This configuration is optional. The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [gettingstarted.md](gettingstarted.md "mention")).
 

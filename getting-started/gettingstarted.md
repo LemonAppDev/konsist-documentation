@@ -57,7 +57,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtab %}
 {% endtabs %}
 
-> Note: To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [isolate-konsist-tests.md](isolate-konsist-tests.md "mention").
+> Note: To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [separate-konsist-tests.md](separate-konsist-tests.md "mention").
 
 ## Usage
 
@@ -154,4 +154,8 @@ Should be shared between tests. See [#scope-reuse](../features/koscope.md#scope-
 {% endhint %}
 
 For more tests check the samples in the [Broken link](broken-reference "mention") section.
+
+## Pull Request Check
+
+Konsist is intended to run as a PR-level check, similar to other tests and linters.&#x20;
 
