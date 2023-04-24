@@ -76,7 +76,7 @@ Konsist provides a set of `with...` extensions to simplify the syntax. The below
 ```kotlin
 koScope
     .classes()
-    .withParentClass<BaseUseCase>()
+    ..withAnnotationOf<UseCase>()
     .assert { // .. }
 ```
 
@@ -85,27 +85,27 @@ Multiple conditions can be applied to perform more specific filtering. The below
 ```kotlin
 koScope
     .classes()
-    .withParentClass<BaseUseCase>()
+    ..withAnnotationOf<UseCase>()
     .resideInPackage("..usecase")
     .assert { // .. }
 ```
 
 ## Declaration Queuing And Filtering
 
-Queuing and filtering stages can be mixed together to perform more specific checks. The below snippet filters classes reside in the `controller` package, retrieves all properties and filter properties with `Inject` annotation:
+Queuing and filtering stages can be mixed together to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
 
 ```kotlin
 koScope
     .classes() // query all classes
     .resideInPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
-    .withAnnotation<Inject>() // filter classes in 'controller' package
+    .withAnnotationOf<Inject>() // filter classes in 'controller' package
     .assert { // .. }
 ```
 
 ## Print Declarations
 
-To help with debugging Konsist provides `printDeclarations` method that prints all declarations. This method helps to make sure that verification is performed on the correct list of declarations.
+To help with debugging Konsist provides a `printDeclarations` method that prints all declarations. This method helps to make sure that verification is performed on the correct list of declarations.
 
 ```kotlin
 scope
