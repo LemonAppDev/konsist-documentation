@@ -6,7 +6,7 @@ description: Query and filter declarations using custom criteria
 
 ## Declaration Querying
 
-Declaration querying is performed to retrieve declarations of a given type. It is the middle step of Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by verification ([assert.md](assert.md "mention")) step.
+Declaration querying allows to retrieve declarations of a given type. It is the middle step of Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by verification ([assert.md](assert.md "mention")) step.
 
 ```mermaid
 flowchart TB
@@ -15,6 +15,8 @@ flowchart TB
     Step3["3. Assert"]
     style Step2 fill:#bbf,stroke:#666,stroke-width:2px,color:#fff
 ```
+
+Typically verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
 
 Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of methods to access Kotlin declarations. Each method returns a list representing a declaration subset:
 
@@ -109,5 +111,5 @@ To help with debugging Konsist provides `printDeclarations` method that prints a
 scope
     .classes()
     .flatMap { it.properties() }
-    .printDeclarations(
+    .printDeclarations()
 ```

@@ -4,13 +4,9 @@ description: What is declaration?
 
 # Declaration
 
-The declaration represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFile`) (usually) contains multiple declarations. The declaration can be a package (`KoPackage`), property (`KoProperty`), annotation (`KoAnnotation`), class (`KoClass`), etc.
+The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFile`) (usually) contains multiple declarations. The declaration can be a package (`KoPackage`), property (`KoProperty`), annotation (`KoAnnotation`), class (`KoClass`), etc.
 
-{% hint style="info" %}
-
-{% endhint %}
-
-Consider this Kotlin code snippet from \~/`project/User.kt` file:
+Consider this Kotlin code snippet file:
 
 ```kotlin
 private const val logLevel = "debug"
@@ -23,15 +19,47 @@ open class Logger(val level: String) {
 }
 ```
 
-Declarations contained by the scope ([koscope.md](koscope.md "mention")) are mimicking the Kotlin file structure. The above snippet contains two top-level declarations - property declaration (`KoProperty`) and class declaration (`KoClass`). The `Logger` the class declaration contains a single function (`KoFunction` ) declaration.
+The above snippet is represented by `KoFile`. It contains two top-level declarations - property declaration (`KoProperty`) and class declaration (`KoClass`). The `Logger` class declaration contains a single function (`KoFunction` ) declaration:
 
-Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc.
+```mermaid
+---
+title: Kotlin code base representation
+---
 
-## Additional properties
+flowchart TD
+    KoFile
+    KoFile---KoProperty
+    KoFile---KoClass
+    KoClass---KoFunction
+```
 
-Every declaration has a few additional properties:
+Declarations are mimicking the Kotlin file structure. Konsts API provides a way to retrieve every element. To get all functions in all classes inside the file use `.classes().functions()` :
+
+```kotlin
+koFile // Sequence<KoFile>
+    .classes()  // Sequence<KoClass>
+    .functions() // Sequence<KoFunction>
+```
+
+Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc. Here is how the name of the function cna be retrieved.
+
+```kotlin
+val name = koFile // Sequence<KoFile>
+    .classes()  // Sequence<KoClass>
+    .functions() // Sequence<KoFunction>
+    .first() // KoFunction
+    .name // String
+    
+println(name) // prints: log
+```
+
+Although it is possible to retrieve a property of a single declaration usually verification is performed on a collection of declarations matching certain criteria eg. methods annotated with specific annotations or classes residing within a single package. See the [declaration-quering-and-filtering.md](declaration-quering-and-filtering.md "mention") page.
+
+## Additional Declaration Properties
+
+Every declaration has a few additional properties to help to debug and make sure that the correct declarations are accessed:
 
 * `text` - provides declaration text eg. `val property role = "Developer"`
-* `location` - provides file path with file name, line, and column e.g. `~\Dev\IdeaProject\Konsist\lib\src\kotlin\com\konsist\core\KoScope:10:5`
-* `textWithLocation` - provides `location` together with declaration `text`
+* `location` - provides file path with file name, line, and column e.g. `~\Dev\IdeaProject\SampleApp\src\kotlin\com\sample\Logger:10:5`
+* `locationWithText` - provides `location` together with the declaration `text`
 
