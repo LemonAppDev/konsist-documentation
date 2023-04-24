@@ -5,7 +5,6 @@ The project is in the early stage. It has been used in production, however, ther
 Konsist roadmap:
 
 ```mermaid
-%%{init: { 'theme': 'forest' }}%%
 timeline
     title Konsist Roadmap
     Q1 2023 (Canary): Design APIs
