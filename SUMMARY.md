@@ -4,7 +4,7 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/gettingstarted.md)
-* [Create Konsist Test Directory](getting-started/create-konsist-test-directory.md)
+* [Separate Konsist Tests](getting-started/separate-konsist-tests.md)
 * [PR Check](getting-started/pr-check.md)
 * [Project Status](getting-started/project-status.md)
 * [Under The Hood](getting-started/under-the-hood.md)

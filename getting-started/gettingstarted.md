@@ -4,8 +4,6 @@ description: Quickly configure Konsist and run the first test.
 
 # Getting Started
 
-Add Dependency
-
 ### Add Repository
 
 Add `mavenCentral` repository:
