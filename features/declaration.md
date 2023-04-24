@@ -67,7 +67,7 @@ Each declaration exposes a few additional properties to help with debugging:
 
 ## Explicit Declarations
 
-The primary focus of Konsist API is to reflect the state of the Kotlin source code (that will be verified), not the state of the running program. In some cases, Konsist provides additional API to get more information, but it will have less understanding than Kotlin compiler. Let's take a look at a few examples.
+The primary focus of Konsist API is to reflect the state of the Kotlin source code (that will be verified), not the state of the running program. In some cases, Konsist provides additional API to get more information. Keep in mind that the Kotlin compiler has a deeper understanding of teh code base than Konsist. Let's take a look at a few examples.
 
 ### Class Example
 
@@ -83,7 +83,7 @@ Is `Logger` class `public`? Yes obviously it is `public`, however, the `hasPubli
 koClass.hasPublicModifier() // false
 ```
 
-Why is that? The `public` visibility modifier is the default visibility modifier in Kotlin. Meaning that class will be `public` even if it does not have the explicit `public` modifier. Since the class has no `public` modifier the `hasPublicModifier` method returns false. To distinguish between class being `public` and class heaving explicit`public` modifier Konsist API provides another method to verify visibility:
+Why is that? The `public` visibility modifier is the default visibility modifier in Kotlin. Meaning that class will be `public` even if it does not have the explicit `public` modifier. Since the class has no `public` modifier the `hasPublicModifier` method returns false. To distinguish between class being `public` and class heaving explicit`public` modifier Konsist API provides another method to retrieve declaration visibility:
 
 ```
 koClass.isPublicOrDefault() // true
@@ -97,7 +97,7 @@ Let's look at the primary constructor for the same class:
 class Logger
 ```
 
-The `Logger` the class has a primary constructor because the Kotlin compiler will generate a parameterless constrictor under the hood. However, the Konsist API will return `null` a value  because the primary constructor is not present in the code:
+The `Logger` the class has a primary constructor because the Kotlin compiler will generate a parameterless constrictor under the hood. However, the Konsist API will return a `null` value  because the primary constructor is not present in the Kotlin source code:
 
 ```
 koClass.primaryConstructor // null
@@ -111,10 +111,10 @@ Consider this function:
 fun getName() = "Konsist"
 ```
 
-Kotlin will infer `String` as `getName` function return type. Since the code does not contain the explicit return type Konsist can't determine the exact type.  In this scenario, `hasReturnType` will return the `false` value:
+Kotlin will infer `String` as the return type of the `getName` function. Since the source code does not contain this explicit return type Konsist lacks information about the return type.  In this scenario, `hasReturnType` the method will return the `false` value:
 
 ```kotlin
 koFunction.hasReturnType() // false
 ```
 
-Unlike the previous class example, Konsist has no way to determine the actual function return type.
+Unlike the previous example, Konsist has no way to determine the actual function return type.
