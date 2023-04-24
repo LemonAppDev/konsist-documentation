@@ -1,5 +1,7 @@
 # What is Konsist?
 
+![](.gitbook/assets/konsist-logo.png)
+
 Konsist is a library that helps to guard [Kotlin](https://kotlinlang.org/) codebase consistency. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project architecture.&#x20;
 
 Konsist tests are written in Kotlin. Here is a simple test that verifies if every use case class resides in `usecase` package:
