@@ -1,0 +1,1 @@
+# konsist-documentation
