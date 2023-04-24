@@ -1,7 +1,3 @@
----
-description: https://docs.konsist.lemonappdev.com/
----
-
 # What is Konsist?
 
 Konsist is a library that helps to guard [Kotlin](https://kotlinlang.org/) codebase consistency. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project architecture.&#x20;
