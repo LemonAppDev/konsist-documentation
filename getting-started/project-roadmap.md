@@ -5,10 +5,10 @@ The project is in the early stage. It has been used in production, however, ther
 Konsist roadmap:
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'forest' }}%%
+%%{init: { 'theme': 'forest' }}%%
 timeline
     title Konsist Roadmap
-    Q1 2023 (Canary): Design base APIs
+    Q1 2023 (Canary): Design APIs
     : Core Library development
     Q2 2023 Alpha: Implement features
             : Stabilise APIs
