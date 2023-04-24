@@ -57,7 +57,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtab %}
 {% endtabs %}
 
-> Note: To achieve better test separation Konsist can be configured using dedicated `konsistTest` source set. See [Broken link](broken-reference "mention").
+> Note: To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [isolate-konsist-tests.md](isolate-konsist-tests.md "mention").
 
 ## Usage
 
