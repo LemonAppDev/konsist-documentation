@@ -71,21 +71,21 @@ koScope
     .assert { // .. }
 ```
 
-Konsist provides a set of `with...` extensions to simplify the syntax. The below snippet is an improved version of the above snippet:
+Konsist provides a set of `with...` extensions to simplify the filtering syntax. The above snippet can be improved:
 
 ```kotlin
 koScope
     .classes()
-    ..withAnnotationOf<UseCase>()
+    .withAnnotationOf<UseCase>()
     .assert { // .. }
 ```
 
-Multiple conditions can be applied to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that reside in the `usecase` package:&#x20;
+Multiple conditions can be applied to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:&#x20;
 
 ```kotlin
 koScope
     .classes()
-    ..withAnnotationOf<UseCase>()
+    .withAnnotationOf<UseCase>()
     .resideInPackage("..usecase")
     .assert { // .. }
 ```
