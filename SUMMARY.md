@@ -5,14 +5,10 @@
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/gettingstarted.md)
 * [Isolate Konsist Tests](getting-started/separate-konsist-tests.md)
-* [Project Status](getting-started/project-status.md)
 * [Under The Hood](getting-started/under-the-hood.md)
 * [Changelog](getting-started/changelog.md)
+* [Project Roadmap](getting-started/project-roadmap.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
-
-## WRITING TESTS
-
-* [Introduction](writing-tests/introduction.md)
 
 ## 📗 FEATURES
 
@@ -35,5 +31,4 @@
 * [Sending us Feedback](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
-* [Repositories](help/repositories.md)
 * [Open Source Licenses](help/open-source-licenses.md)

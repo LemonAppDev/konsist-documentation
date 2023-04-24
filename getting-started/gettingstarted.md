@@ -4,6 +4,8 @@ description: Quickly configure Konsist and run the first test.
 
 # Getting Started
 
+The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features.
+
 ### Add Repository
 
 Add `mavenCentral` repository:
