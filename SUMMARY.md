@@ -7,7 +7,7 @@
 * [Isolate Konsist Tests](getting-started/separate-konsist-tests.md)
 * [Under The Hood](getting-started/under-the-hood.md)
 * [Changelog](getting-started/changelog.md)
-* [Project Roadmap](getting-started/project-roadmap.md)
+* [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
 
 ## 📗 FEATURES
