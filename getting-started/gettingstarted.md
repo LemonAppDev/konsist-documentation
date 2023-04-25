@@ -7,7 +7,7 @@ description: Quickly configure Konsist and run the first test.
 The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features.
 
 {% hint style="info" %}
-Konsist is compatible with Spring, Android, and pure Kotlin projects. The `Java 8` is a minimum Java version required to run Konsist.
+Konsist is compatible with [Spring](https://spring.io/), and [Android](https://www.android.com/). The `Java 8` is a minimum Java version required to run Konsist.
 {% endhint %}
 
 ### Add Repository
