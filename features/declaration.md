@@ -38,6 +38,10 @@ koFile // Sequence<KoFile>
     .functions() // Sequence<KoFunction>
 ```
 
+{% hint style="info" %}
+To print declaration content use `koDeclaration.print()` method.
+{% endhint %}
+
 ## Declaration Properties
 
 Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc. Here is how the `name` of the function can be retrieved.

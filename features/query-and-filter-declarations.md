@@ -6,7 +6,7 @@ description: Query and filter declarations using Konsist API
 
 ## Declaration Querying
 
-Declaration querying allows to retrieve declarations of a given type. It is the middle step of Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by verification ([assert.md](assert.md "mention")) step.
+Declaration querying allows to retrieval of declarations of a given type. It is the middle step of the Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by the verification ([assert.md](assert.md "mention")) step.
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -53,7 +53,7 @@ Here is an example of querying all properties defined inside classes:
         .assert { // .. }
 ```
 
-## Declaration Filtering
+## Filter Declarations
 
 More granular filtering can be applied to additionally filter classes annotated with certain attributes like classes annotated with `RestController` annotation:
 
@@ -91,7 +91,7 @@ koScope
     .assert { // .. }
 ```
 
-## Declaration Queuing And Filtering
+## Query And Filter Declaration
 
 Queuing and filtering stages can be mixed together to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
 
@@ -106,11 +106,11 @@ koScope
 
 ## Print Declarations
 
-To help with debugging Konsist provides a `printDeclarations` method that prints all declarations. This method helps to make sure that verification is performed on the correct list of declarations.
+To print all declarations within use the `print()` method:
 
 ```kotlin
 koScope
     .classes()
-    .flatMap { it.properties() }
-    .printDeclarations()
+    .properties()
+    .print()
 ```

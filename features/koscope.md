@@ -37,7 +37,7 @@ Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/ko
 The scope can be created for an entire project, module, package, and a single Kotlin file.&#x20;
 
 {% hint style="info" %}
-To display a list of files within use `koScope.print()`
+To print a list of files within `koScope` use the `koScope.print()` method.
 {% endhint %}
 
 The scope is created using Kotlin files present in the project, so the scope will contain more files as the project grows e.g. if the scope represents a single module then every file added to the module will be part of the scope.
@@ -305,6 +305,14 @@ val allKoScope = productionScope + testScope
 
 // subtract scopes
 val outerLayersScope = allLayersScope - domainLayerScope
+```
+
+## Print Scope
+
+To print all files within the scope use the `print()` method:
+
+```kotlin
+koScope.print()
 ```
 
 ## Access Specific Declarations
