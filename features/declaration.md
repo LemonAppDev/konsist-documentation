@@ -19,13 +19,10 @@ open class Logger(val level: String) {
 }
 ```
 
-The above snippet is represented by `KoFile`. It contains two top-level declarations - property declaration (`KoProperty`) and class declaration (`KoClass`). The `Logger` class declaration contains a single function (`KoFunction` ) declaration:
+The above snippet is represented by the `KoFile`class. It contains two declarations - property declaration (`KoProperty`) and class declaration (`KoClass`). The `Logger` class declaration contains a single function declaration (`KoFunction` ):
 
 ```mermaid
----
-title: Kotlin code base representation
----
-
+%%{init: {'theme':'forest'}}%%
 flowchart TD
     KoFile
     KoFile---KoProperty

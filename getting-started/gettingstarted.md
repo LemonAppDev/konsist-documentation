@@ -72,19 +72,7 @@ To achieve better test separation Konsist can be configured inside `konsistTest`
 At a high-level Konsist check is a Unit test that works as follows few steps:
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#BB2528',
-      'primaryTextColor': '#fff',
-      'primaryBorderColor': '#7C0000',
-      'lineColor': '#F8B229',
-      'secondaryColor': '#006100',
-      'tertiaryColor': '#fff'
-    }
-  }
-}%%
+%%{init: {'theme':'forest'}}%%
 flowchart TB
     Step1["1. Retrieve The Scope"]-->Step2
     Step2["2. Query and Filter The Declarations"]-->Step3
