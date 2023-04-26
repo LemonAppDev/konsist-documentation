@@ -2,9 +2,11 @@
 
 ## Konsist
 
-Konsist project is licensed under the [Apache License, Version 2.0](https://github.com/LemonAppDev/konsist/blob/main/LICENSE).
+The Konsist project is licensed under [Apache License-2.0](https://github.com/LemonAppDev/konsist/blob/main/LICENSE).
 
 ## Dependencies
+
+These are the third-party libraries that Konsist depends on.
 
 | Name                      | Licence                        | Page                                                                                                         |
 | ------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -16,4 +18,5 @@ Konsist project is licensed under the [Apache License, Version 2.0](https://gith
 | Gradle Test Logger Plugin | Apache-2.0                     | [https://github.com/radarsh/gradle-test-logger-plugin](https://github.com/radarsh/gradle-test-logger-plugin) |
 | JUnit                     | Eclipse Public License - v 2.0 | [https://junit.org/junit5/](https://junit.org/junit5/)                                                       |
 | Gradle                    | Apache-2.0                     | [https://gradle.org/](https://gradle.org/)                                                                   |
+| Mavek                     | Apache-2.0                     | [https://maven.apache.org/](https://maven.apache.org/)                                                       |
 
