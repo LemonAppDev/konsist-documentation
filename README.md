@@ -10,7 +10,7 @@ Konsist tests are written in Kotlin. Here is a simple test that verifies if ever
 @Test
 fun `every use case reside in use case package`() {
     KoScope
-        .fromProject() // Define scope using all Kotlin files present in the project
+        .fromProjectCodebase() // Define scope using all Kotlin files present in the project
         .classes() // Map to list of classes
         .withNameSuffix("UseCase") // Filter classes heaving name ending with 'UseCase'
         .assert { it.resideInPackages("..usecase..") } // Assert use case

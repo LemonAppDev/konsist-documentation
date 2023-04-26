@@ -86,7 +86,7 @@ Let's write a simple test to verify that classes annotated with the `RestControl
 The first step is to get a list of Kotlin files to be verified. The `fromProject` the method can be used to obtain the instance of the scope containing all Kotlin project files:
 
 ```kotlin
-KoScope.fromProject()
+KoScope.fromProjectCodebase()
 ```
 
 {% hint style="info" %}
@@ -98,7 +98,7 @@ To define more granular scopes see the [koscope.md](../features/koscope.md "ment
 The next step is to access all of the classes present in the scope:
 
 ```kotlin
-KoScope.fromProject()
+KoScope.fromProjectCodebase()
     .classes()
 
 ```
@@ -106,7 +106,7 @@ KoScope.fromProject()
 Perform additional filtering to get classes annotated with `RestController` annotation:
 
 ```kotlin
-KoScope.fromProject()
+KoScope.fromProjectCodebase()
     .classes()
     .withAnnotation<RestController>
 ```
@@ -120,7 +120,7 @@ To perform more advanced querying and filtering see the [query-and-filter-declar
 The final step is to perform code base verification - use `assert` combined with  `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controlelr` package:
 
 ```kotlin
-KoScope.fromProject()
+KoScope.fromProjectCodebase()
     .classes()
     .withAnnotation<RestController>
     .assert { it.resideInPackage("..controller") }
@@ -139,7 +139,7 @@ The double dot syntax (`..)` means zero or more packages - controller package pr
 The above code describes project consistency logic. To guard this logic (and ideally, check it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it must be executed as a unit test:
 
 ```kotlin
-val koScope = KoScope.fromProject() // Should be shared between tests
+val koScope = KoScope.fromProjectCodebase() // Should be shared between tests
 
 class ControllerClassKonsistTest {
     @Test

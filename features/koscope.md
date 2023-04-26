@@ -38,39 +38,105 @@ The scope can be created for an entire project, module, package, and a single Ko
 
 ## Scope Creation
 
+### Entire Project Scope
+
 The widest scope is the scope containing all Kotlin files present inside the project:
 
 ```kotlin
-KoScope.fromProjectFiles() // All Kotlin files present in the project
+KoScope.fromProjectCodebase() // All Kotlin files present in the project
 ```
 
-The `module` and `sourceSet` arguments allow the creation of more granular scopes:
+### Module Scope
+
+The `module` argument allows the creation of more granular scopes based on the module name e.g. create a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
-KoScope.fromProjectFiles(module = "app") // All Kotlin files present in the "app" module
-KoScope.fromProjectFiles(sourceSet = "test") // All Kotlin files present in the "test" source sets
+KoScope.fromProjectCodebase(module = "app")
+
+
+project/ 
+├─ app/   <--- scope contains all files from the 'app' module
+│  ├─ main/
+│  │  ├─ App.kt
+│  ├─ test/
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/
+│  │  ├─ Core.kt
+│  ├─ test/
+│  │  ├─ CoreTest.kt
 ```
 
-### More Granular Scopes
+### Source Set Scope
 
-More granular scopes such as module scope or package scope can be defined to store different subsets of project files e.g.
-
-* scope representing production code
-* scope representing for test code
-* scope representing specific application layer
-* ...
-
-Here is an example of creating scopes for production code and test code:
+The `sourceSet` argument allows the creation of more granular scopes base on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
 
 ```kotlin
-KoScope.fromProjectTestFiles() // All Kotlin files present test source sets
-KoScope.fromProjectProductionFiles() // All Kotlin files present production source sets
+KoScope.fromProjectCodebase(sourceSet = "test")
+
+project/ 
+├─ app/
+│  ├─ main/
+│  │  ├─ App.kt
+│  ├─ test/   <--- scope contains all files the 'test' directory
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/
+│  │  ├─ Core.kt
+│  ├─ test/   <--- scope contains all files the 'test' directory
+│  │  ├─ CoreTest.kt
 ```
+
+### Production Codebase
+
+The `fromProjectCodebase` method allows the creation of a scope containing only a production code:
+
+```kotlin
+KoScope.fromProductionCodebase()
+
+project/ 
+├─ app/
+│  ├─ main/   <--- scope contains all production code files
+│  │  ├─ App.kt
+│  ├─ test/
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/   <--- scope contains all production code files
+│  │  ├─ Core.kt
+│  ├─ test/
+│  │  ├─ CoreTest.kt
+```
+
+### Test Codebase
+
+The `fromTestCodebase` method allows the creation of a scope containing only a test code:
+
+```kotlin
+KoScope.fromTestCodebase()
+
+project/ 
+├─ app/
+│  ├─ main/
+│  │  ├─ App.kt
+│  ├─ test/   <--- scope contains all test code files
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/
+│  │  ├─ Core.kt
+│  ├─ test/   <--- scope contains all test code files
+│  │  ├─ CoreTest.kt
+```
+
+## Package Scope
+
+###
+
+
 
 Here is an example of creating scope for all files stored in `usecase` package:
 
 ```kotlin
-val myScope = KoScope.fromPackage("..usecase..")
+val myScope = KoScope.fromPackageCodebase("..usecase..")
 ```
 
 {% hint style="info" %}
@@ -80,7 +146,7 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 Here is an example of creating scope for all files stored in `domain` folder\`:
 
 ```kotlin
-val myScope = KoScope.fromPath("/domain")
+val myScope = KoScope.fromPathCodebase("/domain")
 ```
 
 It is also possible to create scope from a single file:
@@ -117,28 +183,38 @@ class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         KoScope
-            .fromProject() // Create a new KoScope
+            .fromProjectCodebase() // Create a new KoScope
             .classes()
             .assert { // .. } 
     }
 
     fun `test 2`() {
         KoScope
-            .fromProject() // Create a new KoScope
+            .fromProjectCodebase() // Create a new KoScope
             .classes()
             .assert { // .. } 
     }
 }
 </code></pre>
 
-To facilitate testing maintenance scopes should be reused across tests. It is possible by creating a public property and access it from multiple tests:
+To facilitate testing maintenance scopes should be reused across tests. It is possible by creating a public property and accessing it from multiple tests:
 
 ```kotlin
 // Scope.kt
-val projectScope = KoScope.fromProject() // Create a new KoScope
+val projectScope = KoScope.fromProjectCodebase() // Create a new KoScope
+
+// AppTest.kt
+class AppKonsistTest {    
+    @Test
+    fun `test 1`() {
+        projectScope
+            .objects()
+            .assert { // .. } 
+    }
+}
 
 // DataTest.kt
-class DataKonsistTest {    
+class CoreKonsistTest {    
     @Test
     fun `test 1`() {
         projectScope
@@ -152,27 +228,19 @@ class DataKonsistTest {
             .assert { // .. } 
     }
 }
-
-// AppTest.kt
-class AppKonsistTest {    
-    @Test
-    fun `test 1`() {
-        projectScope
-            .objects()
-            .assert { // .. } 
-    }
-}
 ```
 
 Here is the file structure representing the above snippet:
 
 ```
-tests/
-├─ data/
-│  ├─ DataKonsistTest.kt
+project/ 
 ├─ app/
-│  ├─ AppKonsistTest.kt
-├─ Scope.kt   <--- Instance of the KoScope used in both DataTest and AppTest classes.
+│  ├─ test/
+│  │  ├─ app
+│  │     ├─ AppKonsistTest.kt
+│  │  ├─ core
+│  │     ├─ CoreKonsistTest.kt
+│  │  ├─ Scope.kt   <--- Instance of the KoScope used in both DataTest and AppTest classes.
 ```
 
 ## Scope Composition
@@ -189,4 +257,4 @@ val outerLayersScope = allLayersScope - domainLayerScope
 
 ## Access Specific Declarations
 
-To access specific declaration types such as interfaces, classes, constructors, functions etc. utilize the [query-and-filter-declarations.md](query-and-filter-declarations.md "mention").
+To access specific declaration types such as interfaces, classes, constructors, functions, etc. utilize the [query-and-filter-declarations.md](query-and-filter-declarations.md "mention").

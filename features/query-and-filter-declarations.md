@@ -109,7 +109,7 @@ koScope
 To help with debugging Konsist provides a `printDeclarations` method that prints all declarations. This method helps to make sure that verification is performed on the correct list of declarations.
 
 ```kotlin
-scope
+koScope
     .classes()
     .flatMap { it.properties() }
     .printDeclarations()

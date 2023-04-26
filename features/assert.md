@@ -20,7 +20,7 @@ flowchart TB
 In the below snippet, the assertion (performed on the list of interfaces) verifies if every interface has a `public` visibility modifier.
 
 ```kotlin
-scope
+koScope
     .interfaces()
     .assert { it.hasPublicModifier() }
 ```
@@ -32,7 +32,7 @@ The `it` parameter inside the `assert` the method represents a single declaratio
 The `assertNot` is a negation of the `assert` method. In the below snippet, the assertion (performed on the list of properties) verifies if none of the properties has the `Inject` annotation:
 
 ```kotlin
-scope
+koScope
     .classes()
     .flatMap { it.properties() }
     .assertNot { it.hasAnnotation<Inject>() }
