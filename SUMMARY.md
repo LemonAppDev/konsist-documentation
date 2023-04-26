@@ -16,6 +16,7 @@
 * [Assert](features/assert.md)
 * [Declaration](features/declaration.md)
 * [Package Selector](features/packageselector.md)
+* [Debug](features/debug.md)
 
 ## 🔍 INSPIRATION
 
