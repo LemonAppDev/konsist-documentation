@@ -81,7 +81,7 @@ flowchart TB
 
 Let's write a simple test to verify that classes annotated with the `RestController` annotation resides in `controller` package.
 
-### 1. Get The Scope
+### 1. Retrieve The Scope
 
 The first step is to get a list of Kotlin files to be verified. The `fromProject` the method can be used to obtain the instance of the scope containing all Kotlin project files:
 
@@ -112,7 +112,7 @@ KoScope.fromProject()
 ```
 
 {% hint style="info" %}
-To perform more advanced quering and filtering see the [declaration-quering-and-filtering.md](../features/declaration-quering-and-filtering.md "mention")page.
+To perform more advanced querying and filtering see the [declaration-quering-and-filtering.md](../features/declaration-quering-and-filtering.md "mention")page.
 {% endhint %}
 
 ### 3. Assert
@@ -131,12 +131,12 @@ To learn more about assertions see [assert.md](../features/assert.md "mention") 
 {% endhint %}
 
 {% hint style="info" %}
-The `..` means "controller package preceded by any number of packages" (see[packageselector.md](../features/packageselector.md "mention") syntax).
+The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../features/packageselector.md "mention") syntax).
 {% endhint %}
 
 ### Wrap Konsist Code In Test
 
-The above code captures logic that should be guarded in the project. To verify this logic (and ideally run it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it must be executed as a unit test:
+The above code describes project consistency logic. To guard this logic (and ideally, check it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it must be executed as a unit test:
 
 ```kotlin
 val koScope = KoScope.fromProject() // Should be shared between tests
@@ -152,7 +152,7 @@ class ControllerClassKonsistTest {
 }
 ```
 
-The above snippet presents a complete example of a test verifying that all classes annotated with `RestController` annotation resides in the `controler` package.
+The above snippet presents a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controler` package. The test will verify existing nad new classes.
 
 {% hint style="info" %}
 This test is written using [JUnit](https://junit.org/) testing framework, however, Konsist is a test framework agonistic, so any test framework can be used.

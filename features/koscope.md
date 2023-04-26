@@ -15,15 +15,10 @@ flowchart TB
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
-Every scope consists set of declarations ([declaration.md](declaration.md "mention")). The scope can be created for a single Kotlin file, folder, package, module, or entire project.
-
-Consider this scope:
+Every scope contains a set of declarations ([declaration.md](declaration.md "mention")):
 
 ```mermaid
----
-title: Kotlin code base representation
----
-
+%%{init: {'theme':'forest'}}%%
 flowchart TD
     KoScope
     KoScope---KoFile
@@ -35,17 +30,22 @@ flowchart TD
     KoClass---KoFunction
 ```
 
+The scope can be created for a single Kotlin file, folder, package, module, or entire project. The scope is created before running the test, so it always contains up-to-date project files.
+
 ## Scope Creation
 
 The `KoScope` class allows creating scope containing all Kotlin files present in the project:
 
 ```kotlin
 KoScope.fromProjectFiles() // All Kotlin files present in the project
+```
+
+The `module` and `sourceSet` arguments allow to the creation of more granular scopes:
+
+```kotlin
 KoScope.fromProjectFiles(module = "app") // All Kotlin files present in the "app" module
 KoScope.fromProjectFiles(sourceSet = "test") // All Kotlin files present in the "test" source sets
 ```
-
-The `module` and `sourceSet` arguments allow to create of more granular scopes.
 
 ### More Granular Scopes
 
