@@ -3,14 +3,7 @@
 Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code declarations (`KoDeclaration`). Konsist  [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'forest',
-    'themeVariables': {
-      'primaryColor': '#52B523',
-    }
-  }
-}%%
+%%{init: {'theme':'forest'}}%%
 flowchart TD
     KoScope
     KoScope---KoFile
