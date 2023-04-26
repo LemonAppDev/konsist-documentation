@@ -5,14 +5,9 @@ Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/ko
 ```mermaid
 %%{
   init: {
-    'theme': 'base',
+    'theme': 'forest',
     'themeVariables': {
       'primaryColor': '#52B523',
-      'primaryTextColor': '#fff',
-      'primaryBorderColor': '#999999',
-      'lineColor': '#66666',
-      'secondaryColor': '#006100',
-      'tertiaryColor': '#fff'
     }
   }
 }%%
