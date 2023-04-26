@@ -3,7 +3,7 @@
 ## 🚀 GETTING STARTED
 
 * [What is Konsist?](README.md)
-* [Getting Started](getting-started/gettingstarted.md)
+* [Quick Start](getting-started/gettingstarted.md)
 * [Isolate Konsist Tests](getting-started/separate-konsist-tests.md)
 * [Under The Hood](getting-started/under-the-hood.md)
 * [Changelog](getting-started/changelog.md)
