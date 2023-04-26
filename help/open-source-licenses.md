@@ -18,5 +18,5 @@ These are the third-party libraries that Konsist depends on.
 | Gradle Test Logger Plugin | Apache-2.0                     | [https://github.com/radarsh/gradle-test-logger-plugin](https://github.com/radarsh/gradle-test-logger-plugin) |
 | JUnit                     | Eclipse Public License - v 2.0 | [https://junit.org/junit5/](https://junit.org/junit5/)                                                       |
 | Gradle                    | Apache-2.0                     | [https://gradle.org/](https://gradle.org/)                                                                   |
-| Mavek                     | Apache-2.0                     | [https://maven.apache.org/](https://maven.apache.org/)                                                       |
+| Maven                     | Apache-2.0                     | [https://maven.apache.org/](https://maven.apache.org/)                                                       |
 
