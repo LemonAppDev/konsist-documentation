@@ -2,7 +2,7 @@
 description: Quickly configure Konsist and run the first test.
 ---
 
-# Getting Started
+# Quick Start
 
 The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features.
 
@@ -72,6 +72,19 @@ To achieve better test separation Konsist can be configured inside `konsistTest`
 At a high-level Konsist check is a Unit test that works as follows few steps:
 
 ```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#BB2528',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#F8B229',
+      'secondaryColor': '#006100',
+      'tertiaryColor': '#fff'
+    }
+  }
+}%%
 flowchart TB
     Step1["1. Retrieve The Scope"]-->Step2
     Step2["2. Query and Filter The Declarations"]-->Step3
