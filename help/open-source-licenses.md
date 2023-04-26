@@ -1,5 +1,11 @@
 # Open Source Licenses
 
+## Konsist
+
+Konsist project is licensed under the [Apache License, Version 2.0](https://github.com/LemonAppDev/konsist/blob/main/LICENSE).
+
+## Dependencies
+
 | Name                      | Licence                        | Page                                                                                                         |
 | ------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | Kotlin                    | Apache-2.0                     | [https://github.com/JetBrains/kotlin](https://github.com/JetBrains/kotlin)                                   |
