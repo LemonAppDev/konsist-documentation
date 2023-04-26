@@ -5,17 +5,16 @@
 * [What is Konsist?](README.md)
 * [Quick Start](getting-started/gettingstarted.md)
 * [Isolate Konsist Tests](getting-started/separate-konsist-tests.md)
-* [Under The Hood](getting-started/under-the-hood.md)
 * [Changelog](getting-started/changelog.md)
 * [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
 
 ## 📗 FEATURES
 
-* [Declaration](features/declaration.md)
-* [Scope](features/koscope.md)
-* [Declaration Quering And Filtering](features/declaration-quering-and-filtering.md)
+* [Retrieve The Scope](features/koscope.md)
+* [Query and Filter Declarations](features/query-and-filter-declarations.md)
 * [Assert](features/assert.md)
+* [Declaration](features/declaration.md)
 * [Package Selector](features/packageselector.md)
 
 ## 🔍 INSPIRATION

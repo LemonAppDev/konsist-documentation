@@ -112,7 +112,7 @@ KoScope.fromProject()
 ```
 
 {% hint style="info" %}
-To perform more advanced querying and filtering see the [declaration-quering-and-filtering.md](../features/declaration-quering-and-filtering.md "mention")page.
+To perform more advanced querying and filtering see the [query-and-filter-declarations.md](../features/query-and-filter-declarations.md "mention")page.
 {% endhint %}
 
 ### 3. Assert

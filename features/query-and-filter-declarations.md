@@ -1,19 +1,20 @@
 ---
-description: Query and filter declarations using custom criteria
+description: Query and filter declarations using Konsist API
 ---
 
-# Declaration Quering And Filtering
+# Query and Filter Declarations
 
 ## Declaration Querying
 
 Declaration querying allows to retrieve declarations of a given type. It is the middle step of Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by verification ([assert.md](assert.md "mention")) step.
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 flowchart TB
     Step1["1. Retrieve The Scope"]-->Step2
     Step2["2. Query and Filter The Declarations"]-->Step3
     Step3["3. Assert"]
-    style Step2 fill:#bbf,stroke:#666,stroke-width:2px,color:#fff
+    style Step2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
 Typically verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.

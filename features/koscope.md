@@ -1,10 +1,10 @@
 ---
-description: Access the Kotlin files
+description: Access the Kotlin files using Konsist API
 ---
 
-# Scope
+# Retrieve The Scope
 
-The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the first step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([declaration-quering-and-filtering.md](declaration-quering-and-filtering.md "mention")) and verified ([assert.md](assert.md "mention")).
+The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the first step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([query-and-filter-declarations.md](query-and-filter-declarations.md "mention")), and verified ([assert.md](assert.md "mention")).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -30,17 +30,21 @@ flowchart TD
     KoClass---KoFunction
 ```
 
-The scope can be created for a single Kotlin file, folder, package, module, or entire project. The scope is created before running the test, so it always contains up-to-date project files.
+{% hint style="info" %}
+Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist  [declaration.md](declaration.md "mention") tree mimics the Kotlin code structure:
+{% endhint %}
+
+The scope can be created for an entire project, module, package, and a single Kotlin file. The scope is created using Kotlin files present in the project, so the scope will contain more files as the project grows e.g. if the scope represents a single module then every file added to the module will be part of the scope.
 
 ## Scope Creation
 
-The `KoScope` class allows creating scope containing all Kotlin files present in the project:
+The widest scope is the scope containing all Kotlin files present inside the project:
 
 ```kotlin
 KoScope.fromProjectFiles() // All Kotlin files present in the project
 ```
 
-The `module` and `sourceSet` arguments allow to the creation of more granular scopes:
+The `module` and `sourceSet` arguments allow the creation of more granular scopes:
 
 ```kotlin
 KoScope.fromProjectFiles(module = "app") // All Kotlin files present in the "app" module
@@ -69,7 +73,9 @@ Here is an example of creating scope for all files stored in `usecase` package:
 val myScope = KoScope.fromPackage("..usecase..")
 ```
 
-> You can read more about package selector in [PackageSelector.md](packageselector.md).
+{% hint style="info" %}
+The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](packageselector.md "mention") page.
+{% endhint %}
 
 Here is an example of creating scope for all files stored in `domain` folder\`:
 
@@ -183,4 +189,4 @@ val outerLayersScope = allLayersScope - domainLayerScope
 
 ## Access Specific Declarations
 
-To access specific declaration types such as interfaces, classes, constructors, functions etc. utilize the [declaration-quering-and-filtering.md](declaration-quering-and-filtering.md "mention").
+To access specific declaration types such as interfaces, classes, constructors, functions etc. utilize the [query-and-filter-declarations.md](query-and-filter-declarations.md "mention").
