@@ -34,7 +34,13 @@ flowchart TD
 Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist  [declaration.md](declaration.md "mention") tree mimics the Kotlin code structure:
 {% endhint %}
 
-The scope can be created for an entire project, module, package, and a single Kotlin file. The scope is created using Kotlin files present in the project, so the scope will contain more files as the project grows e.g. if the scope represents a single module then every file added to the module will be part of the scope.
+The scope can be created for an entire project, module, package, and a single Kotlin file.&#x20;
+
+{% hint style="info" %}
+To display a list of files within use `koScope.print()`
+{% endhint %}
+
+The scope is created using Kotlin files present in the project, so the scope will contain more files as the project grows e.g. if the scope represents a single module then every file added to the module will be part of the scope.
 
 ## Scope Creation
 
@@ -52,8 +58,11 @@ The `module` argument allows the creation of more granular scopes based on the m
 
 ```kotlin
 KoScope.fromProjectCodebase(module = "app")
+```
 
+Selection:
 
+```
 project/ 
 ├─ app/   <--- scope contains all files from the 'app' module
 │  ├─ main/
@@ -73,7 +82,11 @@ The `sourceSet` argument allows the creation of more granular scopes base on the
 
 ```kotlin
 KoScope.fromProjectCodebase(sourceSet = "test")
+```
 
+Selection:
+
+```
 project/ 
 ├─ app/
 │  ├─ main/
@@ -93,7 +106,11 @@ The `fromProjectCodebase` method allows the creation of a scope containing only 
 
 ```kotlin
 KoScope.fromProductionCodebase()
+```
 
+Selection:
+
+```
 project/ 
 ├─ app/
 │  ├─ main/   <--- scope contains all production code files
@@ -113,7 +130,11 @@ The `fromTestCodebase` method allows the creation of a scope containing only a t
 
 ```kotlin
 KoScope.fromTestCodebase()
+```
 
+Selection:
+
+```
 project/ 
 ├─ app/
 │  ├─ main/
@@ -127,33 +148,68 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
-## Package Scope
+### Package Scope
 
-###
-
-
-
-Here is an example of creating scope for all files stored in `usecase` package:
+The `fromPackageCodebase` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
 
 ```kotlin
-val myScope = KoScope.fromPackageCodebase("..usecase..")
+KoScope.fromPackageCodebase("com.usecase..")
+```
+
+Selection:
+
+```
+project/ 
+├─ app/
+│  ├─ main/
+│  │  ├─ com/
+│  │  │  ├─ usecase/
+│  │  │  │  ├─ UseCase.kt <--- scope contains files present from 'com.usecase' package kon
+│  ├─ test/
+│  │  ├─ com/
+│  │  │  ├─ usecase/
+│  │  │  │  ├─ UseCaseTest.kt <--- scope contains files present from 'com.usecase' package
 ```
 
 {% hint style="info" %}
 The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](packageselector.md "mention") page.
 {% endhint %}
 
-Here is an example of creating scope for all files stored in `domain` folder\`:
+### Path Scope ko
+
+The `fromProjectPathCodebase` method allows the creation of a scope containing code present in a given project folder e.g. `domain` folder:
 
 ```kotlin
-val myScope = KoScope.fromPathCodebase("/domain")
+val myScope = KoScope.fromProjectPathCodebase("app/domain/")
 ```
+
+Selection:
+
+```
+project/ 
+├─ app/
+│  ├─ main/
+│  │  ├─ com/
+│  │  │  ├─ domain/  <--- scope contains files present in 'domain' folder
+```
+
+{% hint style="info" %}
+The `fromPathCodebase` method allows the creation of a scope containing code present in any path including a folder located outside of the project folder.
+{% endhint %}
+
+## File Scope
 
 It is also possible to create scope from a single file:
 
 ```kotlin
-val myScope = KoScope.fromFile("/domain/UseCase.kt")
+val myScope = KoScope.fromProjectFile("app/main/domain/UseCase.kt")
 ```
+
+{% hint style="info" %}
+The `fromFile` method allows the creation of a scope containing a single file code present in any path including a file located outside of the project folder.
+{% endhint %}
+
+## Scope Slice
 
 For even more granular control you can use the `KoScope.slice` method to retrieve a scope containing a subset of files from the scope:
 
@@ -169,10 +225,6 @@ koScope.slice { it.hasImport("usecase..") }
 ```
 
 The `KoScope` can be printed to display a list of all files present in the scope. Here is an example:
-
-```kotlin
-println(koScope)
-```
 
 ## Scope Reuse
 
