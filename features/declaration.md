@@ -4,7 +4,7 @@ description: What is declaration?
 
 # Declaration
 
-The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFile`) (usually) contains multiple declarations. The declaration can be a package (`KoPackage`), property (`KoProperty`), annotation (`KoAnnotation`), class (`KoClass`), etc.
+The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFileDeclaration`) (usually) contains multiple declarations. The declaration can be a package (`KoPackageDeclaration`), property (`KoPropertyDeclaration`), annotation (`KoAnnotationDeclaration`), class (`KoClassDeclaration`), etc.
 
 Consider this Kotlin code snippet file:
 
@@ -19,7 +19,7 @@ open class Logger(val level: String) {
 }
 ```
 
-The above snippet is represented by the `KoFile`class. It contains two declarations - property declaration (`KoProperty`) and class declaration (`KoClass`). The `Logger` class declaration contains a single function declaration (`KoFunction` ):
+The above snippet is represented by the `KoFileDeclaration`class. It contains two declarations - property declaration (`KoPropertyDeclaration`) and class declaration (`KoClassDeclaration`). The `Logger` class declaration contains a single function declaration (`KoFunctionDeclaration` ):
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -34,8 +34,8 @@ Declarations mimic the Kotlin file structure. Konsts API provides a way to retri
 
 ```kotlin
 koFile // Sequence<KoFile>
-    .classes()  // Sequence<KoClass>
-    .functions() // Sequence<KoFunction>
+    .classes()  // Sequence<KoClassDeclaration>
+    .functions() // Sequence<KoFunctionDeclaration>
 ```
 
 {% hint style="info" %}
@@ -47,10 +47,10 @@ To print declaration content use `koDeclaration.print()` method.
 Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc. Here is how the `name` of the function can be retrieved.
 
 ```kotlin
-val name = koFile // Sequence<KoFile>
-    .classes()  // Sequence<KoClass>
-    .functions() // Sequence<KoFunction>
-    .first() // KoFunction
+val name = koFile // Sequence<KoFileDeclaration>
+    .classes()  // Sequence<KoClassDeclaration>
+    .functions() // Sequence<KoFunctionDeclaration>
+    .first() // KoFunctionDeclaration
     .name // String
     
 println(name) // prints: log

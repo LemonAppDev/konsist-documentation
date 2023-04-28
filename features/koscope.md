@@ -49,7 +49,7 @@ The scope is created using Kotlin files present in the project, so the scope wil
 The widest scope is the scope containing all Kotlin files present inside the project:
 
 ```kotlin
-KoScope.fromProjectCodebase() // All Kotlin files present in the project
+KoScope.fromProject() // All Kotlin files present in the project
 ```
 
 ### Module Scope
@@ -57,7 +57,7 @@ KoScope.fromProjectCodebase() // All Kotlin files present in the project
 The `module` argument allows the creation of more granular scopes based on the module name e.g. create a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
-KoScope.fromProjectCodebase(module = "app")
+KoScope.fromProject(module = "app")
 ```
 
 Selection:
@@ -81,7 +81,7 @@ project/
 The `sourceSet` argument allows the creation of more granular scopes base on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
 
 ```kotlin
-KoScope.fromProjectCodebase(sourceSet = "test")
+KoScope.fromProject(sourceSet = "test")
 ```
 
 Selection:
@@ -105,7 +105,7 @@ project/
 The `fromProjectCodebase` method allows the creation of a scope containing only a production code:
 
 ```kotlin
-KoScope.fromProductionCodebase()
+KoScope.fromProject()
 ```
 
 Selection:
@@ -129,7 +129,7 @@ project/
 The `fromTestCodebase` method allows the creation of a scope containing only a test code:
 
 ```kotlin
-KoScope.fromTestCodebase()
+KoScope.fromTest()
 ```
 
 Selection:
@@ -153,7 +153,7 @@ project/
 The `fromPackageCodebase` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
 
 ```kotlin
-KoScope.fromPackageCodebase("com.usecase..")
+KoScope.fromPackage("com.usecase..")
 ```
 
 Selection:
@@ -180,7 +180,7 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 The `fromProjectPathCodebase` method allows the creation of a scope containing code present in a given project folder e.g. `domain` folder:
 
 ```kotlin
-val myScope = KoScope.fromProjectPathCodebase("app/domain/")
+val myScope = KoScope.fromProjectPath("app/domain/")
 ```
 
 Selection:
@@ -235,14 +235,14 @@ class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         KoScope
-            .fromProjectCodebase() // Create a new KoScope
+            .fromProject() // Create a new KoScope
             .classes()
             .assert { // .. } 
     }
 
     fun `test 2`() {
         KoScope
-            .fromProjectCodebase() // Create a new KoScope
+            .fromProject() // Create a new KoScope
             .classes()
             .assert { // .. } 
     }
@@ -253,7 +253,7 @@ To facilitate testing maintenance scopes should be reused across tests. It is po
 
 ```kotlin
 // Scope.kt
-val projectScope = KoScope.fromProjectCodebase() // Create a new KoScope
+val projectScope = KoScope.fromProject() // Create a new KoScope
 
 // AppTest.kt
 class AppKonsistTest {    
