@@ -228,7 +228,7 @@ The `KoScope` can be printed to display a list of all files present in the scope
 
 ## Scope Reuse
 
-Avoid creating scope for every individual test:
+Creating scope for every individual test may lead to maintenance penalties:
 
 <pre class="language-kotlin"><code class="lang-kotlin">// Test.kt
 class DataTest {
@@ -249,7 +249,37 @@ class DataTest {
 }
 </code></pre>
 
-To facilitate testing maintenance scopes should be reused across tests. It is possible by creating a public property and accessing it from multiple tests:
+Instead of creating a scope for every individual test define a scope per test class or per entire test source set.
+
+### Scope Per Test Class
+
+To reuse scope across the test class define the scope in the companion object and access it from multiple tests:
+
+<pre class="language-kotlin"><code class="lang-kotlin">// Test.kt
+class DataTest {
+<strong>    @Test
+</strong>    fun `test 1`() {
+        projectScope
+            .classes()
+            .assert { // .. } 
+    }
+
+    fun `test 2`() {
+        projectScope
+            .classes()
+            .assert { // .. } 
+    }
+    
+    companion object {
+        // Create a new KoScope once for all tests
+        private val projectScope = Konsist.scopeFromProject()
+    }
+}
+</code></pre>
+
+### Global Per Test Source Set
+
+To reuse scope across the multiple test classes define the scope in the file and and access it from multiple tests classes:
 
 ```kotlin
 // Scope.kt
