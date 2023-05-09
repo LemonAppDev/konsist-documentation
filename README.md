@@ -17,8 +17,4 @@ fun `every use case reside in use case package`() {
 }
 ```
 
-{% hint style="info" %}
-The `..` represents [packageselector.md](features/packageselector.md "mention") syntax.
-{% endhint %}
-
-Take a look at the [gettingstarted.md](getting-started/gettingstarted.md "mention") page to learn how to set up Konsist or go straight to the [Broken link](broken-reference "mention") section to review the examples.&#x20;
+Take a look at the [gettingstarted.md](getting-started/gettingstarted.md "mention") page to learn how to set up Konsist or go straight to the [Broken link](broken-reference "mention") section to review examples of Konsist tests.&#x20;
