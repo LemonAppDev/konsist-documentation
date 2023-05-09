@@ -49,7 +49,7 @@ The scope is created using Kotlin files present in the project, so the scope wil
 The widest scope is the scope containing all Kotlin files present inside the project:
 
 ```kotlin
-KoScope.fromProject() // All Kotlin files present in the project
+Konsist.scopeFromProject() // All Kotlin files present in the project
 ```
 
 ### Module Scope
@@ -57,7 +57,7 @@ KoScope.fromProject() // All Kotlin files present in the project
 The `module` argument allows the creation of more granular scopes based on the module name e.g. create a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
-KoScope.fromProject(module = "app")
+Konsist.scopeFromModule("app")
 ```
 
 Selection:
@@ -78,10 +78,10 @@ project/
 
 ### Source Set Scope
 
-The `sourceSet` argument allows the creation of more granular scopes base on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
+The `sourceSet` argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
 
 ```kotlin
-KoScope.fromProject(sourceSet = "test")
+Konsist.scopeFromSourceSet("test")
 ```
 
 Selection:
@@ -100,12 +100,20 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+### Module and Source Set Scope
+
+To retrieve scope by using both module and source set use the `scopeFromProject` method with `moduleName` and `sourceSetName` arguments:
+
+```
+Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test)
+```
+
 ### Production Codebase
 
-The `fromProjectCodebase` method allows the creation of a scope containing only a production code:
+The `scopeFromProduction` method allows the creation of a scope containing only a production code:
 
 ```kotlin
-KoScope.fromProject()
+Konsist.scopeFromProduction()
 ```
 
 Selection:
@@ -126,10 +134,10 @@ project/
 
 ### Test Codebase
 
-The `fromTestCodebase` method allows the creation of a scope containing only a test code:
+The `scopeFromTest` method allows the creation of a scope containing only a test code:
 
 ```kotlin
-KoScope.fromTest()
+Konsist.scopeFromTest()
 ```
 
 Selection:
@@ -150,10 +158,10 @@ project/
 
 ### Package Scope
 
-The `fromPackageCodebase` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
+The `sourceFromPackage` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
 
 ```kotlin
-KoScope.fromPackage("com.usecase..")
+Konsist.sourceFromPackage("com.usecase..")
 ```
 
 Selection:
@@ -175,12 +183,12 @@ project/
 The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](packageselector.md "mention") page.
 {% endhint %}
 
-### Path Scope ko
+### Directory Scope
 
-The `fromProjectPathCodebase` method allows the creation of a scope containing code present in a given project folder e.g. `domain` folder:
+The `scopeFromProjectDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
 
 ```kotlin
-val myScope = KoScope.fromProjectPath("app/domain/")
+val myScope = Konsist.scopeFromProjectDirectory("app/domain")
 ```
 
 Selection:
@@ -194,7 +202,7 @@ project/
 ```
 
 {% hint style="info" %}
-The `fromPathCodebase` method allows the creation of a scope containing code present in any path including a folder located outside of the project folder.
+To create a scope containing code located outside of the project use the `scopeFromDirectory` method.
 {% endhint %}
 
 ## File Scope
@@ -202,11 +210,11 @@ The `fromPathCodebase` method allows the creation of a scope containing code pre
 It is also possible to create scope from a single file:
 
 ```kotlin
-val myScope = KoScope.fromProjectFile("app/main/domain/UseCase.kt")
+val myScope = Konsist.scopeFromProjectFile("app/main/domain/UseCase.kt")
 ```
 
 {% hint style="info" %}
-The `fromFile` method allows the creation of a scope containing a single file code present in any path including a file located outside of the project folder.
+To create a scope containing code located outside of the project use the `scopeFromFile` method.
 {% endhint %}
 
 ## Scope Slice
@@ -228,7 +236,7 @@ The `KoScope` can be printed to display a list of all files present in the scope
 
 ## Scope Reuse
 
-Creating scope for every individual test may lead to maintenance penalties:
+Creation of the scope for every individual test may lead to maintenance penalties:
 
 <pre class="language-kotlin"><code class="lang-kotlin">// Test.kt
 class DataTest {
@@ -279,11 +287,11 @@ class DataTest {
 
 ### Global Per Test Source Set
 
-To reuse scope across the multiple test classes define the scope in the file and and access it from multiple tests classes:
+To reuse scope across the multiple test classes define the scope in the file and access it from multiple tests classes:
 
 ```kotlin
 // Scope.kt
-val projectScope = KoScope.fromProject() // Create a new KoScope
+val projectScope = Konsist.scopeFromProject() // Create a new KoScope
 
 // AppTest.kt
 class AppKonsistTest {    

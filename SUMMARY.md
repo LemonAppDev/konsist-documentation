@@ -4,8 +4,7 @@
 
 * [What is Konsist?](README.md)
 * [Quick Start](getting-started/gettingstarted.md)
-* [Isolate Konsist Tests](getting-started/separate-konsist-tests.md)
-* [Changelog](getting-started/changelog.md)
+* [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
 
@@ -15,7 +14,7 @@
 * [Query and Filter Declarations](features/query-and-filter-declarations.md)
 * [Assert](features/assert.md)
 * [Declaration](features/declaration.md)
-* [Package Selector](features/packageselector.md)
+* [Package Wildcard](features/packageselector.md)
 * [Debug](features/debug.md)
 
 ## 🔍 INSPIRATION
@@ -26,8 +25,13 @@
   * [Android](inspiration/sample-tests/android.md)
   * [Spring](inspiration/sample-tests/spring.md)
 
+## 🎓 ADVANCED
+
+* [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
+
 ## ❓ HELP
 
+* [Changelog](help/changelog.md)
 * [Sending us Feedback](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)

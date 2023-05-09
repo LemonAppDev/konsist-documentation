@@ -35,7 +35,7 @@ The `assertNot` is a negation of the `assert` method. In the below snippet, the 
 koScope
     .classes()
     .flatMap { it.properties() }
-    .assertNot { it.hasAnnotation<Inject>() }
+    .assertNot { it.hasAnnotationOf<Inject>() }
 ```
 
 ## Exceptions Thrown

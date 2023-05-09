@@ -68,7 +68,7 @@ Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org
 ```kotlin
 koScope
     .classes()
-    .filter { it.hasAnnotation<UseCase>() }
+    .filter { it.hasAnnotationOf<UseCase>() }
     .assert { // .. }
 ```
 

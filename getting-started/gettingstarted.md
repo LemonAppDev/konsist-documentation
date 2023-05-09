@@ -4,11 +4,7 @@ description: Quickly configure Konsist and run the first test.
 
 # Quick Start
 
-The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features.
-
-{% hint style="info" %}
-Konsist is compatible with [Spring](https://spring.io/), and [Android](https://www.android.com/). The `Java 8` is a minimum Java version required to run Konsist.
-{% endhint %}
+The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features and [compatibility.md](compatibility.md "mention").
 
 ### Add Repository
 
@@ -64,17 +60,17 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtabs %}
 
 {% hint style="info" %}
-To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [separate-konsist-tests.md](separate-konsist-tests.md "mention").
+To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [isolate-konsist-tests.md](../advanced/isolate-konsist-tests.md "mention").
 {% endhint %}
 
 ## Usage
 
-At a high-level Konsist check is a Unit test that works as follows few steps:
+At a high-level Konsist check is a Unit test that follows 3 steps:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Retrieve The Scope"]-->Step2
+    Step1["1. Create The Scope"]-->Step2
     Step2["2. Query and Filter The Declarations"]-->Step3
     Step3["3. Assert"]
 ```
@@ -83,10 +79,10 @@ Let's write a simple test to verify that classes annotated with the `RestControl
 
 ### 1. Retrieve The Scope
 
-The first step is to get a list of Kotlin files to be verified. The `fromProject` the method can be used to obtain the instance of the scope containing all Kotlin project files:
+The first step is to get a list of Kotlin files to be verified. The `Konsist` object is an entry point to the Konsist framework. The `scopeFromProject` method allows to obtain the instance of the scope containing all Kotlin project files:
 
 ```kotlin
-KoScope.fromProject()
+Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
@@ -98,7 +94,7 @@ To define more granular scopes see the [koscope.md](../features/koscope.md "ment
 The next step is to access all of the classes present in the scope:
 
 ```kotlin
-KoScope.fromProject()
+Konsist.scopeFromProject()
     .classes()
 
 ```
@@ -106,7 +102,7 @@ KoScope.fromProject()
 Perform additional filtering to get classes annotated with `RestController` annotation:
 
 ```kotlin
-KoScope.fromProject()
+Konsist.scopeFromProject()
     .classes()
     .withAnnotation<RestController>
 ```
@@ -120,9 +116,9 @@ To perform more advanced querying and filtering see the [query-and-filter-declar
 The final step is to perform code base verification - use `assert` combined with  `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controlelr` package:
 
 ```kotlin
-KoScope.fromProject()
+Konsist.scopeFromProject()
     .classes()
-    .withAnnotation<RestController>
+    .withAnnotationsOf<RestController>
     .assert { it.resideInPackage("..controller") }
 ```
 
@@ -139,14 +135,14 @@ The double dot syntax (`..)` means zero or more packages - controller package pr
 The above code describes project consistency logic. To guard this logic (and ideally, check it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it must be executed as a unit test:
 
 ```kotlin
-val koScope = KoScope.fromProject() // Should be shared between tests
+val koScope = Konsist.scopeFromProject() // Should be shared between tests
 
 class ControllerClassKonsistTest {
     @Test
     fun `classes annotated with 'RestController' annotation reside in 'controller' package`() {
         koScope // 1. Create a scope representing the whole project (all Kotlin files in project)
             .classes() // 2. Get all classes in the project
-            .withAnnotation<RestController> // 2. Filter classes annotated with 'RestController'
+            .withAnnotationsOf<RestController> // 2. Filter classes annotated with 'RestController'
             .assert { it.resideInPackage("..controller..") } // 3. Define the assertion
     }
 }
