@@ -2,18 +2,29 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency. It facilitates architecture-level checks in the form of unit tests.&#x20;
+Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency e.g.:
 
-Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
+* Every child class extending `ViewModel` must have `ViewModel` suffix
+* Classes with the `@Repository` annotation should reside in `..repository..` package
+* Every class has a test
+* Every class constructor has alphabetically ordered parameters
+* Every constructor parameter has a name derived from the class name
+* Field injection is forbidden
+* Fields with a given type are forbidden
+* No field should have `m` prefix
+* Every public member in `api` package must be documented with kDoc
+* and more...
+
+Konsis allows writing architecture-level checks in the form of unit tests. Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
 
 ```kotlin
 @Test
 fun `every use case reside in use case package`() {
     Konsist
-        .scopeFromProject() // Define scope using all Kotlin files present in the project
-        .classes() // Get all classes
+        .scopeFromProject() // Define scope containing all Kotlin files present in the project
+        .classes() // Get all class declarations
         .withNameSuffix("UseCase") // Filter classes heaving name ending with 'UseCase'
-        .assert { it.resideInPackages("com.app.domain.usecase") } // Assert that each class resides in com.app.domain.usecase package
+        .assert { it.resideInPackages("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
 }
 ```
 
