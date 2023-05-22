@@ -10,7 +10,7 @@
 
 ## 📗 FEATURES
 
-* [Retrieve The Scope](features/koscope.md)
+* [Create The Scope](features/koscope.md)
 * [Query and Filter Declarations](features/query-and-filter-declarations.md)
 * [Assert](features/assert.md)
 * [Declaration](features/declaration.md)
