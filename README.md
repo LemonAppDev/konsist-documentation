@@ -13,7 +13,7 @@ fun `every use case reside in use case package`() {
         .scopeFromProject() // Define scope using all Kotlin files present in the project
         .classes() // Get all classes
         .withNameSuffix("UseCase") // Filter classes heaving name ending with 'UseCase'
-        .assert { it.resideInPackages("com.app.domain.usecase") } // Assert class has com.app.domain.usecase package
+        .assert { it.resideInPackages("com.app.domain.usecase") } // Assert that each class resides in com.app.domain.usecase package
 }
 ```
 
