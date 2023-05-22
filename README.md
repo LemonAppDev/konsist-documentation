@@ -2,11 +2,9 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency.&#x20;
+Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency. It facilitates architecture-level checks in the form of unit tests.&#x20;
 
-Konsist checks are defined in the form of unit tests.&#x20;
-
-Here is a simple test that verifies if every use case class resides in `domain.usecase` package:
+Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
 
 ```kotlin
 @Test

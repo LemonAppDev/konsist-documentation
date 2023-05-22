@@ -1,6 +1,6 @@
 # Project Status
 
-Konsist library has been field-tested on multiple Spring and Android projects with both Gradle and Maven build systems. On top of that Konists has a solid foundation if form of unit and integration tests.
+Konsist library has been field-tested on multiple Spring and Android projects with both Gradle and Maven build systems. On top of that Konists has a solid foundation in the form of unit and integration tests.
 
 There is still some work to do, however, the library is safe to use, because the Konsist code is only used to verify the code base - Konsist will is not a part of the application production code.
 
