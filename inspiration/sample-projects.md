@@ -1,6 +1,6 @@
 # Sample Projects
 
-Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [konsist-sample-projects](https://github.com/LemonAppDev/konsist-sample-projects/) repository.
+Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [samples](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) directory.
 
 
 
