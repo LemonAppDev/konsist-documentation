@@ -21,7 +21,7 @@
 
 ## 🔍 INSPIRATION
 
-* [Sample Projects](inspiration/sample-projects.md)
+* [Starter Projects](inspiration/starter-projects.md)
 * [Sample Tests](inspiration/sample-tests/README.md)
   * [General](inspiration/sample-tests/general.md)
   * [Android](inspiration/sample-tests/android.md)

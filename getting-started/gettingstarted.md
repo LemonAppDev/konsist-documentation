@@ -6,6 +6,10 @@ description: Quickly configure Konsist and run the first test.
 
 The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features and [compatibility.md](compatibility.md "mention").
 
+{% hint style="info" %}
+The starter projects are available in the [project repository](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects).
+{% endhint %}
+
 ### Add Repository
 
 Add `mavenCentral` repository:

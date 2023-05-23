@@ -10,7 +10,7 @@ The `konsist` library can be added to the project by adding the dependency on th
 
 As the project grows it may be desirable to isolate tests further e.g. separate `unit tests` from `Konsist tests`. &#x20;
 
-To organize tests add a new test directory, module, or project. See preconfigured [sample-projects.md](../inspiration/sample-projects.md "mention").
+To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
 {% hint style="info" %}
 
