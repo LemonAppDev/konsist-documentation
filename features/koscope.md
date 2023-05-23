@@ -2,14 +2,14 @@
 description: Access the Kotlin files using Konsist API
 ---
 
-# Retrieve The Scope
+# Create The Scope
 
 The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the first step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([query-and-filter-declarations.md](query-and-filter-declarations.md "mention")), and verified ([assert.md](assert.md "mention")).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Retrieve The Scope"]-->Step2
+    Step1["1. Create The Scope"]-->Step2
     Step2["2. Query and Filter The Declarations"]-->Step3
     Step3["3. Assert"]
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
