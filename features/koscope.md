@@ -185,7 +185,7 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 
 ### Directory Scope
 
-The `scopeFromProjectDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
+The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
 
 ```kotlin
 val myScope = Konsist.scopeFromProjectDirectory("app/domain")
@@ -202,7 +202,7 @@ project/
 ```
 
 {% hint style="info" %}
-To create a scope containing code located outside of the project use the `scopeFromDirectory` method.
+To create a scope containing code located outside of the project pass `true` value to the `absolutePath`argument together with an absolute path to a directory.
 {% endhint %}
 
 ## File Scope
@@ -210,11 +210,11 @@ To create a scope containing code located outside of the project use the `scopeF
 It is also possible to create scope from a single file:
 
 ```kotlin
-val myScope = Konsist.scopeFromProjectFile("app/main/domain/UseCase.kt")
+val myScope = Konsist.scopeFromFile("app/main/domain/UseCase.kt")
 ```
 
 {% hint style="info" %}
-To create a scope containing code located outside of the project use the `scopeFromFile` method.
+To create a scope containing code located outside of the project pass `true` value to the `absolutePath`argument together with an absolute path to a file.
 {% endhint %}
 
 ## Scope Slice
