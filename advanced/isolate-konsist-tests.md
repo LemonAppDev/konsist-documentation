@@ -205,27 +205,7 @@ Kosist tests can be defined in the `test` source directory inside `konsistTest`.
 {% endtab %}
 {% endtabs %}
 
-## Dedica
-
-
-
-
-
-
-
-
-
-The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [gettingstarted.md](../getting-started/gettingstarted.md "mention")).
-
-![test sorce directory](../.gitbook/assets/TestSourceSet.png)
-
-As the project grows it may be desirable to isolate tests further e.g. separate `unit tests` from `Konsist tests`. &#x20;
-
-To organize tests a new supplemental test source directory `konsistTest` can be defined.&#x20;
-
-![konsistTest sorce directory](../.gitbook/assets/KonsistTestSourceSet.png)
-
-## Dedicated Project
+## Dedicated&#x20;
 
 In rare cases where Konsist dependency can't be added to the project, it is possible to create a [koscope.md](../features/koscope.md "mention") containing all Kotlin files from a given path e.g. from another project:
 
