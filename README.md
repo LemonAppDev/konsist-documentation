@@ -2,7 +2,7 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. It facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency e.g.:
+Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. Konsist facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency e.g.:
 
 * Every child class extending `ViewModel` must have `ViewModel` suffix
 * Classes with the `@Repository` annotation should reside in `..repository..` package
@@ -27,5 +27,9 @@ fun `every use case reside in use case package`() {
         .assert { it.resideInPackages("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
 }
 ```
+
+Konsist is intended to run as a PR-level check, similar to other tests and linters.&#x20;
+
+
 
 Look at the [gettingstarted.md](getting-started/gettingstarted.md "mention") page to learn how to set up Konsist or go straight to the [Broken link](broken-reference "mention") section to review examples of Konsist tests.&#x20;
