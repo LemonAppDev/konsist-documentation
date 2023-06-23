@@ -30,6 +30,8 @@ fun `every use case reside in use case package`() {
 
 Konsist is intended to run as a PR-level check, similar to other tests and linters.&#x20;
 
-
+{% hint style="info" %}
+Konsist is still in the early stage of development. See [project-status.md](getting-started/project-status.md "mention").
+{% endhint %}
 
 Look at the [gettingstarted.md](getting-started/gettingstarted.md "mention") page to learn how to set up Konsist or go straight to the [Broken link](broken-reference "mention") section to review examples of Konsist tests.&#x20;
