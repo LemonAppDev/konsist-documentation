@@ -207,7 +207,7 @@ Kosist tests can be defined in the `test` source directory inside `konsistTest`.
 
 ## Dedicated&#x20;
 
-In rare cases where Konsist dependency can't be added to the project, it is possible to create a [koscope.md](../features/koscope.md "mention") containing all Kotlin files from a given path e.g. from another project:
+In rare cases where Konsist dependency can't be added to the project, it is possible to create a [koscope.md](../writing-tests/koscope.md "mention") containing all Kotlin files from a given path e.g. from another project:
 
 ```kotlin
 val myScope = KoScope.fromPath("/path/to/project/root")

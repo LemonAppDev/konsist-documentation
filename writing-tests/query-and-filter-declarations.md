@@ -19,7 +19,7 @@ flowchart TB
 
 Typically verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
 
-Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of methods to access Kotlin declarations. Each method returns a list representing a declaration subset:
+Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of methods to access Kotlin declarations. Each method returns a list representing a declaration subset:
 
 |                      |                                                    |
 | -------------------- | -------------------------------------------------- |

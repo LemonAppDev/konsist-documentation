@@ -8,11 +8,14 @@
 * [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
 
+## ✅ WRITING TESTS
+
+* [Create The Scope](writing-tests/koscope.md)
+* [Query and Filter Declarations](writing-tests/query-and-filter-declarations.md)
+* [Assert](writing-tests/assert.md)
+
 ## 📗 FEATURES
 
-* [Create The Scope](features/koscope.md)
-* [Query and Filter Declarations](features/query-and-filter-declarations.md)
-* [Assert](features/assert.md)
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
 * [Compiler Inference](features/compiler-inference.md)

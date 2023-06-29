@@ -15,7 +15,7 @@ flowchart TB
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
-Every scope contains a set of declarations ([declaration.md](declaration.md "mention")):
+Every scope contains a set of declarations ([declaration.md](../features/declaration.md "mention")):
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -31,7 +31,7 @@ flowchart TD
 ```
 
 {% hint style="info" %}
-Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist  [declaration.md](declaration.md "mention") tree mimics the Kotlin code structure:
+Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist  [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
 {% endhint %}
 
 The scope can be created for an entire project, module, package, and a single Kotlin file.&#x20;
@@ -180,7 +180,7 @@ project/
 ```
 
 {% hint style="info" %}
-The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](packageselector.md "mention") page.
+The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](../features/packageselector.md "mention") page.
 {% endhint %}
 
 ### Directory Scope

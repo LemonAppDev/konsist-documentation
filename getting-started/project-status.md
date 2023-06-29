@@ -11,7 +11,7 @@ Over the next few months, we will fix bugs, improve existing APIs and implement 
 * Q1 2023
   * Core Library development
   * Internal closed testing&#x20;
-* Q2 2023
+* Q2 2023 Alpha
   * Stabilise APIs
   * Implement new features
   * External closed testing&#x20;

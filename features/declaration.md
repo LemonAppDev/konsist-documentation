@@ -56,7 +56,7 @@ val name = koFile // Sequence<KoFileDeclaration>
 println(name) // prints: log
 ```
 
-Although it is possible to retrieve a property of a single declaration usually verification is performed on a collection of declarations matching certain criteria eg. methods annotated with specific annotations or classes residing within a single package. See the [query-and-filter-declarations.md](query-and-filter-declarations.md "mention") page.
+Although it is possible to retrieve a property of a single declaration usually verification is performed on a collection of declarations matching certain criteria eg. methods annotated with specific annotations or classes residing within a single package. See the [query-and-filter-declarations.md](../writing-tests/query-and-filter-declarations.md "mention") page.
 
 ## Debugging Declaration Properties
 

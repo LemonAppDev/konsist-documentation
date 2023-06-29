@@ -90,7 +90,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To define more granular scopes see the [koscope.md](../features/koscope.md "mention") page.
+To define more granular scopes see the [koscope.md](../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
 ### 2. Query and Filter Declarations
@@ -112,7 +112,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To perform more advanced querying and filtering see the [query-and-filter-declarations.md](../features/query-and-filter-declarations.md "mention")page.
+To perform more advanced querying and filtering see the [query-and-filter-declarations.md](../writing-tests/query-and-filter-declarations.md "mention")page.
 {% endhint %}
 
 ### 3. Assert
@@ -127,7 +127,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To learn more about assertions see [assert.md](../features/assert.md "mention") page.
+To learn more about assertions see [assert.md](../writing-tests/assert.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
@@ -159,7 +159,7 @@ This test is written using [JUnit](https://junit.org/) testing framework, howeve
 {% endhint %}
 
 {% hint style="info" %}
-Should be shared between tests. See [#scope-reuse](../features/koscope.md#scope-reuse "mention").
+Should be shared between tests. See [#scope-reuse](../writing-tests/koscope.md#scope-reuse "mention").
 {% endhint %}
 
 For more tests check the samples in the [Broken link](broken-reference "mention") section.
