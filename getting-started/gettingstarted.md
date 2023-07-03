@@ -7,7 +7,7 @@ description: Quickly configure Konsist and run the first test.
 The following example provides a glimpse at the minimum requirements for writing a test in Konsist. The subsequent pages of this section will provide further details on all available features and [compatibility.md](compatibility.md "mention").
 
 {% hint style="info" %}
-The starter projects are available in the [project repository](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects).
+Starter (preconfigured) projects containing Konsist tests are available in the [project repository](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects).
 {% endhint %}
 
 ### Add Repository
@@ -104,7 +104,7 @@ Konsist.scopeFromProject()
 To define more granular scopes see the [koscope.md](../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
-The following sections will present how to follow up by writing declaration checks (2a) and architecture checks (2b).
+The following sections will present how to follow up by writing declaration checks and architecture checks.
 
 ## Declaration Check
 
