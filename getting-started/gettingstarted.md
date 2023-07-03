@@ -164,9 +164,13 @@ Should be shared between tests. See [#scope-reuse](../writing-tests/koscope.md#s
 
 For more tests check the samples in the [Broken link](broken-reference "mention") section.
 
-## Additional Setup
+## Additional JUnit5 Setup
 
-By default, JUnit Jupiter tests are run sequentially in a single thread. To speed up tests [JUnit arallel execution](https://junit.org/junit5/docs/5.3.0-M1/user-guide/index.html#writing-tests-parallel-execution) can be enabled. Create `junit-platform.properties` a file containing:&#x20;
+By default, JUnit tests are run sequentially in a single thread. To speed up tests parallel execution can be enabled.&#x20;
+
+
+
+Create `junit-platform.properties` a file containing:&#x20;
 
 ```properties
 junit.jupiter.execution.parallel.enabled=true
@@ -184,3 +188,8 @@ or
 
 src/konsistTest/resource/junit-platform.properties
 ```
+
+Read more in the official [JUnit5 documentation](https://junit.org/junit5/docs/5.3.0-M1/user-guide/index.html#writing-tests-parallel-execution).
+
+
+
