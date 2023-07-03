@@ -4,7 +4,7 @@
 
 Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to run as a PR-level check.
 
-Konsist provides two types of checks to comprehensively assess the codebase - declaration check and architecture check.
+Konsist provides two types of checks to comprehensively assess the codebase - declaration-level check and architecture-level check.
 
 {% hint style="info" %}
 Konsist is still in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
@@ -37,9 +37,7 @@ fun `every use case reside in use case package`() {
 
 ## Architecture Checks
 
-In a layered software architecture, communication between layers usually follows specific rules and principles, intended to maintain separation of concerns and improve maintainability and flexibility.&#x20;
-
-The second type of check revolves around evaluating the application's layering, modularity, coupling, and compliance with architectural patterns eg:
+The second type of Konsit check revolves around communication between layers, intended to maintain the separation of concerns and improve maintainability and flexibility. eg:
 
 * The `domain` layer is independent
 * The `data` layer depends on `domain` layer
