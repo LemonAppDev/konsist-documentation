@@ -37,7 +37,9 @@ fun `every use case reside in use case package`() {
 
 ## Architecture Checks
 
-The second type of check revolves around evaluating the application's layering, modularity, coupling, and compliance with architectural patterns. This allows for verifying dependencies between layers eg:
+In a layered software architecture, communication between layers usually follows specific rules and principles, intended to maintain separation of concerns and improve maintainability and flexibility.&#x20;
+
+The second type of check revolves around evaluating the application's layering, modularity, coupling, and compliance with architectural patterns eg:
 
 * The `domain` layer is independent
 * The `data` layer depends on `domain` layer
