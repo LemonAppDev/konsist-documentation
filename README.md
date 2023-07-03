@@ -2,7 +2,7 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. Konsist facilitates the standardization of the Kotlin codebase by enforcing coding conventions and guarding project consistency. Here are few ideas for the checks e.g.:
+Konsist is a static code analyzer for [Kotlin](https://kotlinlang.org/) language. Konsist facilitates the Kotlin codebase standardization by enforcing coding conventions and guarding project consistency. Here are a few ideas for the checks e.g.:
 
 * Every child class extending `ViewModel` must have `ViewModel` suffix
 * Classes with the `@Repository` annotation should reside in `..repository..` package
