@@ -43,7 +43,7 @@ The second type of Konsit check revolves around communication between layers, in
 * The `data` layer depends on `domain` layer
 * etc.
 
-Here is a sample test that verifies if [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) dependencies are correct:
+Here is a sample test that verifies if [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) dependency requirements are valid:
 
 ```kotlin
 @Test
