@@ -67,9 +67,11 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 To achieve better test separation Konsist can be configured inside `konsistTest` source set or dedicated module. See [isolate-konsist-tests.md](../advanced/isolate-konsist-tests.md "mention").
 {% endhint %}
 
-## Usage
+## High-Level Picture
 
-At a high-level Konsist check is a Unit test that follows 3 steps:
+At a high-level Konsist check is a Unit test following multiple implicit steps.&#x20;
+
+3 steps are required for a _declaration check_:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -79,11 +81,20 @@ flowchart TB
     Step3["3. Assert"]
 ```
 
-Let's write a simple test to verify that classes annotated with the `RestController` annotation resides in `controller` package.
+2 steps are required for an _architecture check_:
 
-### 1. Retrieve The Scope
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart TB
+    Step1["1. Create The Scope"]-->Step2
+    Step2["2. Assert Architecture"]
+```
 
-The first step is to get a list of Kotlin files to be verified. The `Konsist` object is an entry point to the Konsist framework. The `scopeFromProject` method allows to obtain the instance of the scope containing all Kotlin project files:
+### Create The Scope
+
+The first step is to get a list of Kotlin files to be verified. This step is common for declaration checks and architecture checks.&#x20;
+
+The `Konsist` object is an entry point to the Konsist framework. The `scopeFromProject` method allows to obtain the instance of the scope containing all Kotlin project files:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -93,9 +104,15 @@ Konsist.scopeFromProject()
 To define more granular scopes see the [koscope.md](../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
-### 2. Query and Filter Declarations
+The following sections will present how to follow up by writing declaration checks (2a) and architecture checks (2b).
 
-The next step is to access all of the classes present in the scope:
+## Declaration Check
+
+Let's write a simple test to verify that classes (class declarations) annotated with the `RestController` annotation resides in `controller` package.
+
+### Query and Filter Declarations
+
+To write this declaration check query all present in the scope:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -115,9 +132,9 @@ Konsist.scopeFromProject()
 To perform more advanced querying and filtering see the [query-and-filter-declarations.md](../writing-tests/query-and-filter-declarations.md "mention")page.
 {% endhint %}
 
-### 3. Assert
+### Assert
 
-The final step is to perform code base verification - use `assert` combined with  `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controlelr` package:
+Assert is the final step to perform declaration verification - use `assert` combined with  `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controller` package:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -131,20 +148,18 @@ To learn more about assertions see [assert.md](../writing-tests/assert.md "menti
 {% endhint %}
 
 {% hint style="info" %}
-The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../features/packageselector.md "mention") syntax).
+The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of kages (see[packageselector.md](../features/packageselector.md "mention") syntax).
 {% endhint %}
 
-### Wrap Konsist Code In Test
+### Wrap Konsist Code In JUnit Test
 
-The above code describes project consistency logic. To guard this logic (and ideally, check it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it must be executed as a unit test:
+The above code describes declaration consistency logic. To guard this logic (and ideally, check it with every [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)) it will be executed in form of a unit test:
 
 ```kotlin
-val koScope = Konsist.scopeFromProject() // Should be shared between tests
-
 class ControllerClassKonsistTest {
     @Test
     fun `classes annotated with 'RestController' annotation reside in 'controller' package`() {
-        koScope // 1. Create a scope representing the whole project (all Kotlin files in project)
+        Konsist.scopeFromProject() // 1. Create a scope representing the whole project (all Kotlin files in project)
             .classes() // 2. Get all classes in the project
             .withAnnotationsOf<RestController> // 2. Filter classes annotated with 'RestController'
             .assert { it.resideInPackage("..controller..") } // 3. Define the assertion
@@ -155,12 +170,63 @@ class ControllerClassKonsistTest {
 The above snippet presents a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controler` package. The test will verify existing nad new classes.
 
 {% hint style="info" %}
-This test is written using [JUnit](https://junit.org/) testing framework, however, Konsist is a test framework agonistic, so any test framework can be used.
+This test is written using [JUnit](https://junit.org/) testing framework.
 {% endhint %}
 
-{% hint style="info" %}
-Should be shared between tests. See [#scope-reuse](../writing-tests/koscope.md#scope-reuse "mention").
-{% endhint %}
+## Architecture Check
+
+Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business`  layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies.
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart LR
+    Presentation["Presentation Layer"]-->Business
+    Business["Business Layer"]-->Data
+    Data["Data Layer"]
+```
+
+### Assert Architecture
+
+Assert architecture is the final step for architecture verification - use `assertArchiteture` combined with architecture definition to make sure that all classes meet architectural criteria:
+
+```kotlin
+Konsist
+    .scopeFromProject() // Define the scope containing all Kotlin files present i
+    .assertArchitecture { // Assert architecture
+        // Define layers
+        private val presentation = Layer("Presentation", "com.myapp.presentation..")
+        private val business = Layer("Business", "com.myapp.business..")
+        private val data = Layer("Data", "com.myapp.data..")
+
+        // Define architecture assertions
+        presentation.dependsOn(business)
+        business.dependsOn(data)
+        data.dependsOnNothing()
+    }
+```
+
+### Wrap Konsist Code In JUnit Test
+
+The above code describes architecture consistency logic. Same as with declaration check this logic should be executed as a unit test:
+
+```kotlin
+@Test
+fun `architecture layers have dependencies correct`() {
+    Konsist
+        .scopeFromProject() // Define the scope containing all Kotlin files present i
+        .assertArchitecture { // Assert architecture
+            // Define layers
+            private val presentation = Layer("Presentation", "com.myapp.presentation..")
+            private val business = Layer("Business", "com.myapp.business..")
+            private val data = Layer("Data", "com.myapp.data..")
+
+            // Define architecture assertions
+            presentation.dependsOn(business)
+            business.dependsOn(data)
+            data.dependsOnNothing()
+        }
+}
+```
 
 For more tests check the samples in the [Broken link](broken-reference "mention") section.
 

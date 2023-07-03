@@ -47,7 +47,7 @@ Here is a sample test that verifies if [Clean Architecture](https://blog.cleanco
 
 ```kotlin
 @Test
-fun `clean architecture dependencies are correct`() {
+fun `clean architecture layers have correct dependencies`() {
     Konsist
         .scopeFromProject() // Define the scope containing all Kotlin files present i
         .assertArchitecture { // Assert architecture
