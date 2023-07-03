@@ -69,25 +69,19 @@ To achieve better test separation Konsist can be configured inside `konsistTest`
 
 ## High-Level Picture
 
-At a high-level Konsist check is a Unit test following multiple implicit steps.&#x20;
+At a high-level Konsist check is a Unit test following multiple implicit steps.
 
-3 steps are required for a _declaration check_:
-
-```mermaid
-%%{init: {'theme':'forest'}}%%
-flowchart TB
-    Step1["1. Create The Scope"]-->Step2
-    Step2["2. Query and Filter The Declarations"]-->Step3
-    Step3["3. Assert"]
-```
-
-2 steps are required for an _architecture check_:
+3 steps are required for a _declaration check_ and 2 steps are required for an _architecture check_:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Create The Scope"]-->Step2
-    Step2["2. Assert Architecture"]
+    Step1["1. Create The Scope"]-->StepD2
+    Step1["1. Create The Scope"]-->StepA2
+    StepD2["2. Query and Filter The Declarations"]-->StepD3
+    StepD3["3. Assert"]
+    StepA2["2. Assert Architecture"]
+    style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
 ### Create The Scope
@@ -129,7 +123,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To perform more advanced querying and filtering see the [query-and-filter-declarations.md](../writing-tests/query-and-filter-declarations.md "mention")page.
+To perform more advanced querying and filtering see the [declaration-query-and-filter.md](../writing-tests/declaration-query-and-filter.md "mention")page.
 {% endhint %}
 
 ### Assert
@@ -144,7 +138,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To learn more about assertions see [assert.md](../writing-tests/assert.md "mention") page.
+To learn more about assertions see [declaration-assert.md](../writing-tests/declaration-assert.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
