@@ -29,8 +29,8 @@ The `assertArchitecture` block defines architecture layer rules and verifies tha
 
 ```kotlin
 koScope.assertArchitecture {
-        private val presentation = Layer("Presentation", "com.myapp.presentation..")
-        private val data = Layer("Data", "com.myapp.data..")
+        val presentation = Layer("Presentation", "com.myapp.presentation..")
+        val data = Layer("Data", "com.myapp.data..")
 
         presentation.dependsOn(data)
         data.dependsOnNothing()
@@ -42,8 +42,8 @@ Architecture configuration can be defined beforehand and stored in a variable to
 ```kotlin
 // Define architecture
 val architecture = architecture {
-        private val presentation = Layer("Presentation", "com.myapp.presentation..")
-        private val data = Layer("Data", "com.myapp.data..")
+        val presentation = Layer("Presentation", "com.myapp.presentation..")
+        val data = Layer("Data", "com.myapp.data..")
 
         presentation.dependsOn(data)
         data.dependsOnNothing()
@@ -59,8 +59,8 @@ This approach may be helpful when refactoring existing applications. To facilita
 ```kotlin
 class ArchitectureTest {
     private val architecture = architecture {
-        private val presentation = Layer("Presentation", "com.myapp.presentation..")
-        private val data = Layer("Data", "com.myapp.data..")
+        val presentation = Layer("Presentation", "com.myapp.presentation..")
+        val data = Layer("Data", "com.myapp.data..")
 
         presentation.dependsOn(data)
         data.dependsOnNothing()

@@ -31,6 +31,7 @@ flowchart TD
     KoFile---Other["..."]
     KoClass---KoProperty
     KoClass---KoFunction
+    KoClass---Other2["..."]
 ```
 
 {% hint style="info" %}

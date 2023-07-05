@@ -52,9 +52,9 @@ fun `clean architecture layers have correct dependencies`() {
         .scopeFromProject() // Define the scope containing all Kotlin files present i
         .assertArchitecture { // Assert architecture
             // Define layers
-            private val domain = Layer("Domain", "com.myapp.domain..")
-            private val presentation = Layer("Presentation", "com.myapp.presentation..")
-            private val data = Layer("Data", "com.myapp.data..")
+            val domain = Layer("Domain", "com.myapp.domain..")
+            val presentation = Layer("Presentation", "com.myapp.presentation..")
+            val data = Layer("Data", "com.myapp.data..")
 
             // Define architecture assertions
             domain.dependsOnNothing()
