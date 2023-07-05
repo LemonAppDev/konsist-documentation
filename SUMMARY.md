@@ -31,7 +31,7 @@
   * [Android Snippets](inspiration/snippets/android-snippets.md)
   * [Spring Snippets](inspiration/snippets/spring-snippets.md)
   * [Test Snippets](inspiration/snippets/test-snippets.md)
-  * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
+  * [General Architecture Snippets](inspiration/snippets/general-architecture-snippets.md)
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
 

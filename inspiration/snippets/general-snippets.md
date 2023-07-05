@@ -155,16 +155,6 @@ fun `every value class has parameter named 'value'`() {
 ## Snippet 12
 
 ```kotlin
-fun `every class in the 'feature' module reside in package 'feature'`() {
-    Konsist.scopeFromModule("feature")
-        .classes(includeNested = true)
-        .assert { it.resideInPackage("..feature..") }
-}
-```
-
-## Snippet 13
-
-```kotlin
 fun `forbid the usage of 'forbiddenString' in file`() {
     Konsist.scopeFromProject()
         .files()
