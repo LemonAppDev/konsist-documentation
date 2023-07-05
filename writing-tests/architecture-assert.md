@@ -49,7 +49,7 @@ val architecture = architecture {
         data.dependsOnNothing()
 }
 
-// Assert Architecture from two modules
+// Assert Architecture of two modules using common architecture rules
 moduleFeature1Scope.assertArchitecture(architecture)
 moduleFeature2Scope.assertArchitecture(architecture)
 ```

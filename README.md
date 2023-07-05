@@ -49,7 +49,7 @@ Here is a sample test that verifies if [Clean Architecture](https://blog.cleanco
 @Test
 fun `clean architecture layers have correct dependencies`() {
     Konsist
-        .scopeFromProject() // Define the scope containing all Kotlin files present i
+        .scopeFromProject() // Define the scope containing all Kotlin files present in project
         .assertArchitecture { // Assert architecture
             // Define layers
             val domain = Layer("Domain", "com.myapp.domain..")
