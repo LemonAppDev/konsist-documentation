@@ -30,7 +30,7 @@ Add the following dependency to the `module\build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    testImplementation("com.lemonappdev:konsist:0.7.9")
+    testImplementation("com.lemonappdev:konsist:0.8.0")
 }
 ```
 {% endtab %}
