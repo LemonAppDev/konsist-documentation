@@ -8,12 +8,19 @@ So you want to help? That's great!
 
 Here are a few things to know to get you started.
 
-## Clone The Project
+Feel free to open an issue before actually implementing the code to discuss features/fixes and implementation details.&#x20;
 
-Konsist is spread across multiple repositories:
+Konsist is spread across multiple repositories.
 
-* [Konsist](https://github.com/LemonAppDev/konsist)
-* [Konsist Documentation](https://github.com/LemonAppDev/konsist-documentation)
+## Konsist Project
 
-Create a fork of the desired repository, make changes, and submit a pull request. Feel free to open an issue before actually implementing the code to discuss features/fixes and implementation details.&#x20;
+The [Konsist repository](https://github.com/LemonAppDev/konsist) contains Konsit source code files. Create a fork of the repository, open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/), make changes, and open the Pull Request.
+
+## Documentation Project
+
+The [Konsist Documentation repository](https://github.com/LemonAppDev/konsist-documentation) contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request.
+
+
+
+
 
