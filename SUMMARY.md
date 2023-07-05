@@ -26,10 +26,10 @@
 ## 🔍 INSPIRATION
 
 * [Starter Projects](inspiration/starter-projects.md)
-* [Sample Tests](inspiration/sample-tests/README.md)
-  * [General](inspiration/sample-tests/general.md)
-  * [Android](inspiration/sample-tests/android.md)
-  * [Spring](inspiration/sample-tests/spring.md)
+* [Snippets](inspiration/snippets/README.md)
+  * [General](inspiration/snippets/general.md)
+  * [Android](inspiration/snippets/android.md)
+  * [Spring](inspiration/snippets/spring.md)
 
 ## 🎓 ADVANCED
 
