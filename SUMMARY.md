@@ -27,9 +27,13 @@
 
 * [Starter Projects](inspiration/starter-projects.md)
 * [Snippets](inspiration/snippets/README.md)
-  * [General](inspiration/snippets/general.md)
-  * [Android](inspiration/snippets/android.md)
-  * [Spring](inspiration/snippets/spring.md)
+  * [General Snippets](inspiration/snippets/general-snippets.md)
+  * [Android Snippets](inspiration/snippets/android-snippets.md)
+  * [Spring Snippets](inspiration/snippets/spring-snippets.md)
+  * [Test Snippets](inspiration/snippets/test-snippets.md)
+  * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
+  * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
+  * [Library Snippets](inspiration/snippets/library-snippets.md)
 
 ## 🎓 ADVANCED
 
