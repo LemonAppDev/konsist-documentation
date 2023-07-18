@@ -45,10 +45,10 @@ fun `classes with 'UseCase' suffix should have single method named 'invoke'`() {
 ## Snippet 4
 
 ```kotlin
-fun `classes with 'Repository' annotation should reside in 'data' package`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .withAnnotationOf<Repository>()
-        .assert { it.resideInPackage("..data..") }
+fun `interfaces with 'Repository' annotation should reside in 'data' package`() {
+        Konsist.scopeFromProject()
+            .interfaces()
+            .withAnnotationOf<Repository>()
+            .assert { it.resideInPackage("..data..") }
 }
 ```

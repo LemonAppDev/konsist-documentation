@@ -14,12 +14,13 @@ fun `no empty files allowed`() {
 
 ```kotlin
 fun `no field should have 'm' prefix`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .assert {
-            val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
-            it.name.startsWith('m') && secondCharacterIsUppercase
-        }
+        Konsist.scopeFromProject()
+            .classes()
+            .properties()
+            .assertNot {
+                val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
+                it.name.startsWith('m') && secondCharacterIsUppercase
+            }
 }
 ```
 
@@ -39,7 +40,7 @@ fun `no class should use field injection`() {
 fun `no class should use Java util logging`() {
     Konsist.scopeFromProject()
         .files()
-        .assert { it.hasImports("java.util.logging..") }
+        .assertNot { it.hasImports("java.util.logging..") }
 }
 ```
 
@@ -103,7 +104,7 @@ fun `properties are declared before functions`() {
                 .declarations()
                 .indexOfFirstInstance<KoFunctionDeclaration>()
 
-            lastKoPropertyDeclarationIndex < firstKoFunctionDeclarationIndex
+            lastKoPropertyDeclarationIndex <= firstKoFunctionDeclarationIndex
         }
 }
 ```
@@ -112,21 +113,19 @@ fun `properties are declared before functions`() {
 
 ```kotlin
 fun `companion object is the last declaration in the class`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .assert {
-            val companionObjectIndex = it
-                .declarations()
-                .indexOfLast { declaration ->
-                    declaration is KoObjectDeclaration && declaration.hasModifiers(KoModifier.COMPANION)
-                }
+        Konsist.scopeFromProject()
+            .classes()
+            .assert {
+                val companionObjectIndex = it
+                    .declarations()
+                    .indexOfLast { declaration ->
+                        declaration is KoObjectDeclaration && declaration.hasModifiers(KoModifier.COMPANION)
+                    }
 
-            val lastIndex = it
-                .declarations()
-                .indexOfLastInstance<KoNamedDeclaration>()
+                val lastIndex = it.numDeclarations() - 1
 
-            companionObjectIndex == lastIndex
-        }
+                companionObjectIndex == lastIndex || companionObjectIndex == -1
+            }
 }
 ```
 

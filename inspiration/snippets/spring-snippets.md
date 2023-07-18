@@ -5,10 +5,10 @@ Konsist can be used to guard the consistency of the [Spring](https://spring.io/)
 ## Snippet 1
 
 ```kotlin
-fun `classes with 'Repository' annotation should have 'Repository' suffix`() {
+fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() {
     Konsist
         .scopeFromProject()
-        .classes()
+        .interfaces()
         .withAnnotationOf<Repository>()
         .assert { it.hasNameEndingWith("Repository") }
 }

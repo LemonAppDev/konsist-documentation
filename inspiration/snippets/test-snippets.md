@@ -33,7 +33,7 @@ fun `test classes should have test subject named sut`() {
                 .properties()
                 .firstOrNull { property -> property.name == "sut" }
 
-            sut != null && sut.type?.name == type
+            sut != null && (sut.explicitType?.name == type || sut.text.contains("$type("))
         }
 }
 ```
