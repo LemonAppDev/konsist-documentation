@@ -43,6 +43,10 @@ The second type of Konsit check revolves around communication between layers, in
 * The `data` layer depends on `domain` layer
 * etc.
 
+{% hint style="info" %}
+These type of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced.
+{% endhint %}
+
 Here is a sample test that verifies if [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) dependency requirements are valid:
 
 ```kotlin
