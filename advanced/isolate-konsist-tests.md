@@ -12,10 +12,6 @@ As the project grows it may be desirable to isolate tests further e.g. separate 
 
 To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
-{% hint style="info" %}
-
-{% endhint %}
-
 ## Dedicated Source Set (Spring and Kotlin Project)
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly usefull for Spring and Kotlin projects.
@@ -156,51 +152,59 @@ mvn test
 This section demonstrates how to add the `konsistTest` module to the project. This configuration is mostly useful for Android projects, however, it will work with Spring and Kotlin projects.
 
 {% hint style="info" %}
-The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow to add of new source sets. To fully isolate tests a new module is required.
+The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
 {% endhint %}
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
-Add `':konsistTest'` to `include` item inside `settings.gradle` file:
+Add `':konsist_test'` to `include` item inside `settings.gradle` file:
 
 ```kotlin
-// settings.gradle
-include("app", ":konsistTest").kts
+// settings.gradle.kts
+include("app", ":konsist_test").kts
 ```
 
-Create `konsistTest/scr/test/java` folder in the project root:
+Create `konsist_test/scr/test/kotlin` folder in the project root:
 
 <img src="../.gitbook/assets/image.png" alt="" data-size="original">
 
-Refresh/Sync the Gradle Project.
+For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle.kts` file.
+
+Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
-Add `':konsistTest'` to `include` item inside `settings.gradle` file:
+Add `':konsist_test'` to `include` item inside `settings.gradle` file:
 
 ```kotlin
 // settings.gradle
-include ':app', ':konsistTest'
+include ':app', ':konsist_test'
 ```
 
-Create `konsistTest/scr/test/java` folder in the project root:
+Create `konsist_test/scr/test/kotlin` folder in the project root:
 
 <img src="../.gitbook/assets/image.png" alt="" data-size="original">
 
-Refresh/Sync the Gradle Project.
+For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle` file.
+
+Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 {% endtabs %}
 
-Kosist tests can be defined in the `test` source directory inside `konsistTest`. To execute tests tun :
+{% hint style="info" %}
+
+{% endhint %}
+
+Kosist tests will be defined in the `test` source directory inside `konsistTest`. To execute tests run:
 
 {% tabs %}
 {% tab title="Gradle" %}
 ```
-./gradlew konsistTest:test
+./gradlew konsist_test:test
 ```
 {% endtab %}
 {% endtabs %}
