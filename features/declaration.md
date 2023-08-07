@@ -4,7 +4,7 @@ description: What is declaration?
 
 # Declaration
 
-The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFileDeclaration`) (usually) contains multiple declarations. The declaration can be a package (`KoPackageDeclaration`), property (`KoPropertyDeclaration`), annotation (`KoAnnotationDeclaration`), class (`KoClassDeclaration`), etc.
+The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFileDeclaration`) contains one or more declarations. The declaration can be a package (`KoPackageDeclaration`), property (`KoPropertyDeclaration`), annotation (`KoAnnotationDeclaration`), class (`KoClassDeclaration`), etc.
 
 Consider this Kotlin code snippet file:
 

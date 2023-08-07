@@ -84,6 +84,10 @@ flowchart TB
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
+{% hint style="info" %}
+The declaration represents Kotlin declaration eg. Kotlin class is represented by `KoClassDeclaration` allowing to access class name (`koClassDeclaration.name`), methods (`koClassDeclaration.functions()`), etc. See [declaration.md](../features/declaration.md "mention").&#x20;
+{% endhint %}
+
 ### Create The Scope
 
 The first step is to get a list of Kotlin files to be verified. This step is common for declaration checks and architecture checks.&#x20;
