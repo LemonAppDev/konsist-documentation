@@ -226,13 +226,13 @@ fun `architecture layers have dependencies correct`() {
 }
 ```
 
-For more tests check the samples in the [Broken link](broken-reference "mention") section.
+For more konsist tests check the samples see the [Broken link](broken-reference "mention") section.&#x20;
+
+To debug konsist tests see [debug-konsist-test.md](../features/debug-konsist-test.md "mention") page.
 
 ## Additional JUnit5 Setup
 
 By default, JUnit tests are run sequentially in a single thread. To speed up tests parallel execution can be enabled.&#x20;
-
-
 
 Create `junit-platform.properties` a file containing:&#x20;
 
