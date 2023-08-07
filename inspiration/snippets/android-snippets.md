@@ -8,7 +8,7 @@ Konsist can be used to guard the consistency of the [Android](https://www.androi
 fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist.scopeFromProject()
         .classes()
-        .withParentClassOf<ViewModel>()
+        .withParentClassOf(ViewModel::class)
         .assert { it.resideInPackage("..controller..") }
 }
 ```
