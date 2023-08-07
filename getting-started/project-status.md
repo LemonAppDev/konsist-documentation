@@ -12,20 +12,19 @@ There is still some work to do, however, the library is safe to use, because the
 
 Over the next few months, we will fix bugs, improve existing APIs and implement missing features (in this order).
 
-* Q1 2023
+* Q1-Q2-Q3 2023
   * Core Library development
   * Internal closed testing&#x20;
-* Q2 2023 Alpha
-  * Closed Alpha testing
-  * Stabilise APIs
-  * Implement new features
-* Q3 2023 Beta
+* Q4 2023 Alpha
   * Open Alpha testing (community-driven testing)
+  * Make APIs work (things may change)
+  * Implement new features
+* Q1 2024 Beta
   * Bug fixes
     * Polish documentation
-    * API tinkering (minimal changes)
-* Q4 2023
+    * Stabilise APIs (minimal changes)
+* Q2 2024
   * Release 1.0
   * Community test drive
-* 2024
+* H2 2024
   * Further maintenance and improvements
