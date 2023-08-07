@@ -12,14 +12,14 @@ Over the next few months, we will fix bugs, improve existing APIs and implement 
   * Core Library development
   * Internal closed testing&#x20;
 * Q2 2023 Alpha
+  * Closed Alpha testing
   * Stabilise APIs
   * Implement new features
-  * External closed testing&#x20;
 * Q3 2023 Beta
-  * Public, community-driven testing
+  * Open Alpha testing (community-driven testing)
   * Bug fixes
-  * Polish documentation
-  * API tinkering (minimal changes)
+    * Polish documentation
+    * API tinkering (minimal changes)
 * Q4 2023
   * Release 1.0
   * Community test drive
