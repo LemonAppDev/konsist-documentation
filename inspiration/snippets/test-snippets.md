@@ -61,7 +61,7 @@ fun `test classes should have all members private besides tests`() {
 ## Snippet 5
 
 ```kotlin
-fun `junit 4 'Test' annotation is not allowed for functions`() {
+fun `don't use JUnit4 Test annotation`() {
     Konsist.scopeFromTest()
         .functions(includeNested = true)
         .assertNot { it.hasAnnotations("org.junit.Test") }
