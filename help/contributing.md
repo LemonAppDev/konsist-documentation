@@ -8,7 +8,9 @@ So you want to help? That's great!
 
 Here are a few things to know to get you started.
 
-Feel free to open an issue before actually implementing the code to discuss features/fixes and implementation details.&#x20;
+{% hint style="info" %}
+Feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) before actually implementing the code to discuss features/fixes, and implementation details.&#x20;
+{% endhint %}
 
 Konsist is spread across multiple repositories.
 
