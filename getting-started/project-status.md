@@ -20,13 +20,15 @@ Over the next few months, we will fix bugs, improve existing APIs and implement 
   * ✅ Create Documentation
   * ✅ Internal closed testing&#x20;
 * Q4 2023 Alpha
-  * 🚀 Open Alpha testing (community-driven testing)
-  * 🕝 Improve existing APIs
-  * 🕝 Implement new features
-* Q1 2024 Beta
-  * 🕝 Bug fixes
+  * 🚀 Community-driven Alpha testing
+  * 🕝 Fix Bugs
+  * 🕝 Improve existing APIs&#x20;
   * 🕝 Polish documentation
+  * 🕝 Implement new features?&#x20;
+* Q1 2024 Beta
+  * 🕝 Fix Bugs
   * 🕝 Stabilise APIs (minimal changes)
+  * 🕝 Polish documentation
 * Q2 2024
   * 🕝 Release 1.0
   * 🕝 Community test drive
