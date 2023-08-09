@@ -17,8 +17,10 @@ Now let's consider the actual structure of the use case class:&#x20;
 * should this method have a `suspended` modifier?
 * …
 
-Every single one of the above questions can be answered differently in different projects. That is why Konsist favors a more flexible approach - it allows filtering members and defining custom code base assertions (tests). On top of that Konsist is utilizing Kotlin collection processing API to provide more control over filtering and asserting declarations ([declaration.md](../features/declaration.md "mention")).
+Answers will vary from project to project. That is why Konsist favors a more flexible approach - it allows filtering members and defining custom code base assertions (tests). On top of that Konsist is utilizing Kotlin collection processing API to provide more control over filtering and asserting declarations ([declaration.md](../features/declaration.md "mention")).
 
-{% hint style="info" %}
-Some things can be standardized across different projects e.g. constructor parameter names being derived from the property name, or alphabetic the order of the parameter. At some point, Konsist may be extended to provide a small set of predefined rules out of the box.&#x20;
+
+
+{% hint style="success" %}
+Some things can be standardized across different projects e.g. constructor parameter names being derived from the property name, or alphabetic order of the parameter. Custom tests will be a core part of Konsist, however, we are considering the addition of a small set of predefined rules.&#x20;
 {% endhint %}
