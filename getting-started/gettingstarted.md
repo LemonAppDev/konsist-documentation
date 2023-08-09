@@ -81,8 +81,8 @@ flowchart TB
     StepD2["2. Query and Filter The Declarations"]-->StepD3
     StepD3["3. Assert"]
     StepA2["2. Assert Architecture"]-->StepA3
-    StepA3["3. Define Layers"]-->StepA4
-    StepA4["4. Define Architecture Assertions"]
+    StepA3["2a. Define Layers"]-->StepA4
+    StepA4["2b. Define Architecture Assertions"]
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 

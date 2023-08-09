@@ -9,12 +9,15 @@ Architecture assertions are used to perform architecture verification. It is the
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Create The Scope"]-->Step2
-    Step2["2. Assert Architecture"]
-    style Step2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
+    StepA2["2. Assert Architecture"]-->StepA3
+    StepA3["2a. Define Layers"]-->StepA4
+    StepA4["2b. Define Architecture Assertions"]
+    style StepA2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
+    style StepA3 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
+    style StepA4 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
-## Assert
+## Assert Architecture
 
 As an example this simple 2 layer architecture will be used:
 
@@ -25,7 +28,35 @@ flowchart LR
     Data["Data Layer"]
 ```
 
-The `assertArchitecture` block defines architecture layer rules and verifies that the above layer requirements are met:
+The `assertArchitecture` block defines architecture layer rules and verifies that the layer requirements are met.
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .assertArchitecture { // Assert architecture
+
+    }
+```
+
+## Define Layers
+
+Create layers instances to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define layers.
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .assertArchitecture {
+        // Define layers
+        val presentation = Layer("Presentation", "com.myapp.presentation..")
+        val data = Layer("Data", "com.myapp.data..")
+    }
+```
+
+The `com.myapp.presentation..` syntax means every class inside `com.myapp.presentation` and all sub-packages are treated as part of the given layer.
+
+## Define Architecture Assertions
+
+The final step is to define the relations between each layer:
 
 ```kotlin
 koScope.assertArchitecture {
@@ -36,6 +67,8 @@ koScope.assertArchitecture {
         data.dependsOnNothing()
     }
 ```
+
+## Additional Variable
 
 Architecture configuration can be defined beforehand and stored in a variable to facilitate checks for multiple scopes:&#x20;
 

@@ -5,7 +5,7 @@
 ```kotlin
 fun `clean architecture layers have correct dependencies`() {
     Konsist
-        .scopeFromProject()
+        .scopeFromProduction()
         .assertArchitecture {
             // Define layers
             val domain = Layer("Domain", "com.myapp.domain..")
@@ -34,11 +34,14 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
 ## Snippet 3
 
 ```kotlin
-fun `classes with 'UseCase' suffix should have single method named 'invoke'`() {
+fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
     Konsist.scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
-        .assert { it.declarations().toList().size == 1 && it.containsFunction("invoke") && it.isPublicOrDefault() }
+        .assert {
+            val function = it.functions().first()
+            it.numDeclarations() == 1 && function.name == "invoke" && function.isPublicOrDefault
+        }
 }
 ```
 
@@ -46,9 +49,20 @@ fun `classes with 'UseCase' suffix should have single method named 'invoke'`() {
 
 ```kotlin
 fun `interfaces with 'Repository' annotation should reside in 'data' package`() {
-        Konsist.scopeFromProject()
-            .interfaces()
-            .withAnnotationOf<Repository>()
-            .assert { it.resideInPackage("..data..") }
+    Konsist.scopeFromProject()
+        .interfaces()
+        .withAllAnnotationsOf(Repository::class)
+        .assert { it.resideInPackage("..data..") }
+}
+```
+
+## Snippet 5
+
+```kotlin
+fun `every UseCase class has test`() {
+    Konsist.scopeFromProduction()
+        .classes()
+        .withParentClass("UseCase")
+        .assert { it.hasTest() }
 }
 ```

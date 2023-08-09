@@ -5,7 +5,7 @@
 ```kotlin
 fun `no empty files allowed`() {
     Konsist.scopeFromProject()
-        .files()
+        .files
         .assertNot { it.text.isEmpty() }
 }
 ```
@@ -14,13 +14,13 @@ fun `no empty files allowed`() {
 
 ```kotlin
 fun `no field should have 'm' prefix`() {
-        Konsist.scopeFromProject()
-            .classes()
-            .properties()
-            .assertNot {
-                val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
-                it.name.startsWith('m') && secondCharacterIsUppercase
-            }
+    Konsist.scopeFromProject()
+        .classes()
+        .properties()
+        .assertNot {
+            val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
+            it.name.startsWith('m') && secondCharacterIsUppercase
+        }
 }
 ```
 
@@ -39,7 +39,7 @@ fun `no class should use field injection`() {
 ```kotlin
 fun `no class should use Java util logging`() {
     Konsist.scopeFromProject()
-        .files()
+        .files
         .assertNot { it.hasImports("java.util.logging..") }
 }
 ```
@@ -65,7 +65,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 fun `every class constructor has alphabetically ordered parameters`() {
     Konsist.scopeFromProject()
         .classes()
-        .flatMap { it.allConstructors }
+        .flatMap { it.constructors }
         .assert {
             val names = it.parameters.map { parameter -> parameter.name }
             val sortedNames = names.sorted()
@@ -79,13 +79,8 @@ fun `every class constructor has alphabetically ordered parameters`() {
 ```kotlin
 fun `package name must match file path`() {
     Konsist.scopeFromProject()
-        .packages()
-        .assert {
-            it
-                .filePath
-                .replace("/", ".")
-                .endsWith(it.qualifiedName)
-        }
+        .packages
+        .assert { it.hasMatchingPath }
 }
 ```
 
@@ -113,19 +108,19 @@ fun `properties are declared before functions`() {
 
 ```kotlin
 fun `companion object is the last declaration in the class`() {
-        Konsist.scopeFromProject()
-            .classes()
-            .assert {
-                val companionObjectIndex = it
-                    .declarations()
-                    .indexOfLast { declaration ->
-                        declaration is KoObjectDeclaration && declaration.hasModifiers(KoModifier.COMPANION)
-                    }
+    Konsist.scopeFromProject()
+        .classes()
+        .assert {
+            val companionObjectIndex = it
+                .declarations()
+                .indexOfLast { declaration ->
+                    declaration is KoObjectDeclaration && declaration.hasModifiers(KoModifier.COMPANION)
+                }
 
-                val lastIndex = it.numDeclarations() - 1
+            val lastIndex = it.numDeclarations() - 1
 
-                companionObjectIndex == lastIndex || companionObjectIndex == -1
-            }
+            companionObjectIndex == lastIndex || companionObjectIndex == -1
+        }
 }
 ```
 
@@ -134,7 +129,7 @@ fun `companion object is the last declaration in the class`() {
 ```kotlin
 fun `no wildcard imports allowed`() {
     Konsist.scopeFromProject()
-        .imports()
+        .imports
         .assertNot { it.isWildcard }
 }
 ```
@@ -156,7 +151,7 @@ fun `every value class has parameter named 'value'`() {
 ```kotlin
 fun `forbid the usage of 'forbiddenString' in file`() {
     Konsist.scopeFromProject()
-        .files()
+        .files
         .assertNot { it.text.contains("forbiddenString") }
 }
 ```

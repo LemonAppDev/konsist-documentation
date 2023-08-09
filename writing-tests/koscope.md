@@ -4,7 +4,7 @@ description: Access the Kotlin files using Konsist API
 
 # Create The Scope
 
-The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the first step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
+The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the initial step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -13,12 +13,14 @@ flowchart TB
     Step1["1. Create The Scope"]-->StepA2
     StepD2["2. Query and Filter The Declarations"]-->StepD3
     StepD3["3. Assert"]
-    StepA2["2. Assert Architecture"]
+    StepA2["2. Assert Architecture"]-->StepA3
+    StepA3["2a. Define Layers"]-->StepA4
+    StepA4["2b. Define Architecture Assertions"]
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 
 ```
 
-Every scope contains a set of declarations ([declaration.md](../features/declaration.md "mention")):
+Every scope contains a set of `KoFile` instances. Every `KoFile` instance contains the declarations (see [declaration.md](../features/declaration.md "mention")) representing code entities present in the file e.g.:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -44,11 +46,17 @@ The scope can be created for an entire project, module, package, and a single Ko
 To print a list of files within `koScope` use the `koScope.print()` method.
 {% endhint %}
 
-The scope is created using Kotlin files present in the project, so the scope will contain more files as the project grows e.g. if the scope represents a single module then every file added to the module will be part of the scope.
+The scope is dynamically constructed from the Kotlin files within the project, allowing it to naturally expand as the project grows. For example, if the scope is defined to represent a single module, then any new file added to that module will be automatically included within the scope, ensuring that the scope's coverage remains comprehensive and up-to-date.
 
 ## Scope Creation
 
-### Entire Project Scope
+Various methods can be used to obtain instances of the scope. This allows the definition of more granular Kotlist tests e.g. for certain modules, source sets, and packages of folders.
+
+{% hint style="info" %}
+When refactoring application scope can be created for a single module to guard specific rules of the improved code base and then further extended to cover already refactored modules.
+{% endhint %}
+
+### Project Scope
 
 The widest scope is the scope containing all Kotlin files present inside the project:
 
@@ -58,7 +66,7 @@ Konsist.scopeFromProject() // All Kotlin files present in the project
 
 ### Module Scope
 
-The `module` argument allows the creation of more granular scopes based on the module name e.g. create a scope containing all Kotlin files present in the `app` module:
+The `scopeFromModule` method allows the creation of more granular scopes based on the module name e.g. creating a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
 Konsist.scopeFromModule("app")
@@ -82,7 +90,7 @@ project/
 
 ### Source Set Scope
 
-The `sourceSet` argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
+The `scopeFromSourceSet` method argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
 
 ```kotlin
 Konsist.scopeFromSourceSet("test")
@@ -110,6 +118,23 @@ To retrieve scope by using both module and source set use the `scopeFromProject`
 
 ```
 Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test)
+```
+
+### Selection:
+
+```
+
+project/ 
+├─ app/
+│  ├─ main/
+│  │  ├─ App.kt
+│  ├─ test/   <--- scope contains all files the 'test' directory
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/
+│  │  ├─ Core.kt
+│  ├─ test/
+│  │  ├─ CoreTest.kt
 ```
 
 ### Production Codebase
@@ -192,7 +217,7 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
 
 ```kotlin
-val myScope = Konsist.scopeFromProjectDirectory("app/domain")
+val myScope = Konsist.scopeFromDirectory("app/domain")
 ```
 
 Selection:
@@ -205,10 +230,6 @@ project/
 │  │  │  ├─ domain/  <--- scope contains files present in 'domain' folder
 ```
 
-{% hint style="info" %}
-To create a scope containing code located outside of the project pass `true` value to the `absolutePath`argument together with an absolute path to a directory.
-{% endhint %}
-
 ## File Scope
 
 It is also possible to create scope from a single file:
@@ -217,13 +238,9 @@ It is also possible to create scope from a single file:
 val myScope = Konsist.scopeFromFile("app/main/domain/UseCase.kt")
 ```
 
-{% hint style="info" %}
-To create a scope containing code located outside of the project pass `true` value to the `absolutePath`argument together with an absolute path to a file.
-{% endhint %}
-
 ## Scope Slice
 
-For even more granular control you can use the `KoScope.slice` method to retrieve a scope containing a subset of files from the scope:
+For even more granular control you can use the `KoScope.slice` method to retrieve a scope containing a subset of files from the given scope:
 
 ```kotlin
 // scope containing all files in the 'test' folder
@@ -239,29 +256,6 @@ koScope.slice { it.hasImport("usecase..") }
 The `KoScope` can be printed to display a list of all files present in the scope. Here is an example:
 
 ## Scope Reuse
-
-Creation of the scope for every individual test may lead to maintenance penalties:
-
-<pre class="language-kotlin"><code class="lang-kotlin">// Test.kt
-class DataTest {
-<strong>    @Test
-</strong>    fun `test 1`() {
-        KoScope
-            .fromProject() // Create a new KoScope
-            .classes()
-            .assert { // .. } 
-    }
-
-    fun `test 2`() {
-        KoScope
-            .fromProject() // Create a new KoScope
-            .classes()
-            .assert { // .. } 
-    }
-}
-</code></pre>
-
-Instead of creating a scope for every individual test define a scope per test class or per entire test source set.
 
 ### Scope Per Test Class
 

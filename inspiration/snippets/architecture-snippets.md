@@ -1,4 +1,4 @@
-# General Architecture Snippets
+# Architecture Snippets
 
 ## Snippet 1
 
@@ -19,9 +19,9 @@ fun `2 layer architecture has correct dependencies`() {
 ## Snippet 2
 
 ```kotlin
-fun `every class in the 'feature' module reside in package 'feature'`() {
-    Konsist.scopeFromModule("feature")
-        .classes(includeNested = true)
-        .assert { it.resideInPackage("..feature..") }
+fun `every file in module reside in module specific package`() {
+    Konsist.scopeFromProject()
+        .files
+        .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
 }
 ```

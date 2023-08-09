@@ -4,21 +4,21 @@
 
 ```kotlin
 fun `every class has test`() {
-        Konsist.scopeFromProduction()
-            .classes()
-            .assert { it.hasTest() }
-    }
+    Konsist.scopeFromProduction()
+        .classes()
+        .assert { it.hasTest() }
+}
 ```
 
 ## Snippet 2
 
 ```kotlin
 fun `every class - except data and value class - has test`() {
-        Konsist.scopeFromProduction()
-            .classes()
-            .withoutModifiers(KoModifier.DATA, KoModifier.VALUE)
-            .assert { it.hasTest() }
-    }
+    Konsist.scopeFromProduction()
+        .classes()
+        .withoutSomeModifiers(KoModifier.DATA, KoModifier.VALUE)
+        .assert { it.hasTest() }
+}
 ```
 
 ## Snippet 3
@@ -44,8 +44,8 @@ fun `test classes should have test subject named sut`() {
 fun `test classes should have all members private besides tests`() {
     Konsist.scopeFromTest()
         .classes()
-        .flatMap { it.declarations() }
-        .filterIsInstance<KoDeclaration>()
+        .declarations()
+        .filterIsInstance<KoAnnotationProvider>()
         .filterNot {
             it.annotations.any { annotation ->
                 annotation
@@ -54,7 +54,8 @@ fun `test classes should have all members private besides tests`() {
                     .contains("test")
             }
         }
-        .assert { it.hasPrivateModifier() }
+        .filterIsInstance<KoVisibilityModifierProvider>()
+        .assert { it.hasPrivateModifier }
 }
 ```
 
@@ -62,9 +63,9 @@ fun `test classes should have all members private besides tests`() {
 
 ```kotlin
 fun `don't use JUnit4 Test annotation`() {
-    Konsist.scopeFromTest()
-        .functions(includeNested = true)
-        .assertNot { it.hasAnnotations("org.junit.Test") }
+    Konsist.scopeFromProject()
+        .classes()
+        .functions()
+        .assertNot { it.hasAnnotations("org.junit.Test") } // should be only org.junit.jupiter.api.Test
 }
-
 ```

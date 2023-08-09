@@ -55,15 +55,9 @@ Here is an example of querying all properties defined inside classes:
 
 ## Filter Declarations
 
-More granular filtering can be applied to additionally filter classes annotated with certain attributes like classes annotated with `RestController` annotation:
+More granular filtering can be applied to additionally filter classes annotated with certain attributes like classes annotated with `UseCase` annotation.
 
-```kotlin
-koScope
-    .classes()
-    .withAnnotation<RestController>
-```
-
-Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` the method can be used to additionally filter the content of the `Sequence<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
+Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` the method can be used to additionally filter the content of the `List<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
 
 ```kotlin
 koScope
@@ -77,7 +71,7 @@ Konsist provides a set of `with...` extensions to simplify the filtering syntax.
 ```kotlin
 koScope
     .classes()
-    .withAnnotationOf<UseCase>()
+    .withAllAnnotationsOf(UseCase::class)
     .assert { // .. }
 ```
 
@@ -86,7 +80,7 @@ Multiple conditions can be applied to perform more specific filtering. The below
 ```kotlin
 koScope
     .classes()
-    .withAnnotationOf<UseCase>()
+    .withAllAnnotationsOf(UseCase::class)
     .resideInPackage("..usecase")
     .assert { // .. }
 ```
