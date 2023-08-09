@@ -2,17 +2,17 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to run as a PR-level check.
+Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to be executed at the pull request (PR) level as a verification check.
+
+{% hint style="info" %}
+Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
+{% endhint %}
 
 Konsist provides two types of checks to comprehensively assess the codebase - declaration-level check and architecture-level check.
 
-{% hint style="info" %}
-Konsist is still in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
-{% endhint %}
-
 ## Declaration Checks
 
-The first type involves declaration checks, where custom tests are created to identify common issues and violations at the declaration level (class, functions, properties, etc.). These cover various aspects such as class naming, package structure, annotations, naming, etc. Here are a few ideas for the checks:
+The first type involves declaration checks, where custom tests are created to identify common issues and violations at the declaration level (classes, functions, properties, etc.). These cover various aspects such as class naming, package structure, visibility modifiers, presence of annotations, etc. Here are a few ideas of things to check:
 
 * Every child class extending `ViewModel` must have `ViewModel` suffix
 * Classes with the `@Repository` annotation should reside in `..repository..` package
@@ -30,10 +30,14 @@ fun `every use case reside in use case package`() {
     Konsist
         .scopeFromProject() // Define the scope containing all Kotlin files present in the project
         .classes() // Get all class declarations
-        .withNameSuffix("UseCase") // Filter classes heaving name ending with 'UseCase'
-        .assert { it.resideInPackages("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
+        .withNameEndingWith("UseCase") // Filter classes heaving name ending with 'UseCase'
+        .assert { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
 }
 ```
+
+{% hint style="info" %}
+For more KOnsist test samples see the [Broken link](broken-reference "mention") section.
+{% endhint %}
 
 ## Architecture Checks
 
@@ -41,10 +45,11 @@ The second type of Konsit check revolves around communication between layers, in
 
 * The `domain` layer is independent
 * The `data` layer depends on `domain` layer
+* The `presentation` layer depends on `domain` layer
 * etc.
 
 {% hint style="info" %}
-These type of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced.
+These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.
 {% endhint %}
 
 Here is a sample test that verifies if [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) dependency requirements are valid:
@@ -65,9 +70,5 @@ fun `clean architecture layers have correct dependencies`() {
             presentation.dependsOn(domain)
             data.dependsOn(domain)
         }
-}
+} 
 ```
-
-## Whats Next?
-
-Look at the [gettingstarted.md](getting-started/gettingstarted.md "mention") page to learn how to set up Konsist or go straight to the [Broken link](broken-reference "mention") section to review more examples of Konsist tests.&#x20;
