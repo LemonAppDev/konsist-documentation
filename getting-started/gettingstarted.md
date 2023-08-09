@@ -175,7 +175,7 @@ This test is written using [JUnit](https://junit.org/) testing framework.
 
 ## Architecture Check
 
-Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business`  layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies.
+Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business`  layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -199,7 +199,7 @@ Konsist
 
 ### Define Layers
 
-Within this method create layers instances to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define layers.
+Create layers instances to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define layers.
 
 ```kotlin
 Konsist
@@ -216,13 +216,7 @@ The `com.myapp.business..` syntax means every class inside `com.myapp.business` 
 
 ### Define Architecture Assertions
 
-The final step is to  the relations between each layer can be defined:
-
-* `presentation` depends on `business`
-* `business` depends on `data`
-* `data` depends on nothing
-
-
+The final step is to define the relations between each layer:
 
 ```kotlin
 Konsist
@@ -241,7 +235,7 @@ Konsist
 
 ### Wrap Konsist Code In JUnit Test
 
-The above code describes architecture consistency logic. Same as with declaration check this logic should be executed as a unit test:
+The above code describes architecture consistency logic. Same as with the declaration check this logic should be executed as a unit test:
 
 ```kotlin
 @Test
@@ -262,9 +256,13 @@ fun `architecture layers have dependencies correct`() {
 }
 ```
 
-For more konsist tests check the samples see the [Broken link](broken-reference "mention") section.&#x20;
+{% hint style="info" %}
+For more Konsist tests check the samples see the [Broken link](broken-reference "mention") section.&#x20;
+{% endhint %}
 
+{% hint style="info" %}
 To debug konsist tests see [debug-konsist-test.md](../features/debug-konsist-test.md "mention") page.
+{% endhint %}
 
 ## Additional JUnit5 Setup
 
