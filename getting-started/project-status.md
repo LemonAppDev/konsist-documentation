@@ -12,25 +12,26 @@ There is still some work to do, however, it is safe to use, because Konsist will
 
 Over the next few months, we will fix bugs, improve existing APIs and implement missing features (in this order).
 
-* ✅ Q1-Q2-Q3 2023
+* ✅ Milestone 1 (Q1-Q2-Q3 2023)
   * ✅ Setup Githgub project
   * ✅ Setup CI pipeline
   * ✅ Core Library development
   * ✅ Publish artifact to Maven Central
-  * ✅ Create Documentation
-  * ✅ Internal closed testing&#x20;
-* Q4 2023 Alpha
-  * 🚀 Community-driven Alpha testing
-  * 🕝 Fix Bugs
+  * ✅ Create documentation
+  * ✅ Internal closed testing Android
+  * ✅ Internal closed testing Spring
+* Milestone 2 (Q4 2023 Alpha)
+  * 🚀 Community-driven alpha testing
   * 🕝 Improve existing APIs&#x20;
+  * 🕝 Fix Bugs
   * 🕝 Polish documentation
   * 🕝 Implement new features?&#x20;
-* Q1 2024 Beta
+* Milestone 3 (Q1 2024 Beta)
   * 🕝 Fix Bugs
   * 🕝 Stabilise APIs (minimal changes)
   * 🕝 Polish documentation
-* Q2 2024
+* Milestone 4 (Q2 2024)
   * 🕝 Release 1.0
-  * 🕝 Community test drive
-* H2 2024
+  * 🕝 Bug fixes, improvements, new features
+* Milestone 5 (H2 2024)
   * 🕝 Further maintenance and improvements
