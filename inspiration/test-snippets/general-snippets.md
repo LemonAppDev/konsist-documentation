@@ -30,6 +30,7 @@ fun `no field should have 'm' prefix`() {
 fun `no class should use field injection`() {
     Konsist.scopeFromProject()
         .classes()
+        .properties()
         .assert { it.hasAnnotationOf<Inject>() }
 }
 ```

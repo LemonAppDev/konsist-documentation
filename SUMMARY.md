@@ -26,14 +26,14 @@
 ## 🔍 INSPIRATION
 
 * [Starter Projects](inspiration/starter-projects.md)
-* [Snippets](inspiration/snippets/README.md)
-  * [General Snippets](inspiration/snippets/general-snippets.md)
-  * [Android Snippets](inspiration/snippets/android-snippets.md)
-  * [Spring Snippets](inspiration/snippets/spring-snippets.md)
-  * [Test Snippets](inspiration/snippets/test-snippets.md)
-  * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
-  * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
-  * [Library Snippets](inspiration/snippets/library-snippets.md)
+* [Test Snippets](inspiration/test-snippets/README.md)
+  * [General Snippets](inspiration/test-snippets/general-snippets.md)
+  * [Android Snippets](inspiration/test-snippets/android-snippets.md)
+  * [Spring Snippets](inspiration/test-snippets/spring-snippets.md)
+  * [Test Snippets](inspiration/test-snippets/test-snippets.md)
+  * [Architecture Snippets](inspiration/test-snippets/architecture-snippets.md)
+  * [Clean Architecture Snippets](inspiration/test-snippets/clean-architecture-snippets.md)
+  * [Library Snippets](inspiration/test-snippets/library-snippets.md)
 
 ## 🎓 ADVANCED
 
