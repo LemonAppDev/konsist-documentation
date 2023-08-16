@@ -40,7 +40,7 @@ fun `classes with 'UseCase' suffix should have single public method named 'invok
         .withNameEndingWith("UseCase")
         .assert {
             val function = it.functions().first()
-            it.numDeclarations() == 1 && function.name == "invoke" && function.isPublicOrDefault
+            it.numFunctions() == 1 && function.name == "invoke" && function.isPublicOrDefault
         }
 }
 ```
