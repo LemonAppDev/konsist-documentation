@@ -21,7 +21,7 @@ Over the next few months, we will fix bugs, improve existing APIs and implement 
   * ✅ Internal closed testing Android
   * ✅ Internal closed testing Spring
 * Milestone 2 (Q4 2023 Alpha)
-  * 🚀 Community-driven alpha testing
+  * 🚀 Community-driven testing
   * 🕝 Improve existing APIs&#x20;
   * 🕝 Fix Bugs
   * 🕝 Polish documentation
