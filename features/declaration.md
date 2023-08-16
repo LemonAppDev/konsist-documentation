@@ -33,9 +33,9 @@ flowchart TD
 Declarations mimic the Kotlin file structure. Konsts API provides a way to retrieve every element. To get all functions in all classes inside the file using `.classes().functions()` :
 
 ```kotlin
-koFile // Sequence<KoFile>
-    .classes()  // Sequence<KoClassDeclaration>
-    .functions() // Sequence<KoFunctionDeclaration>
+koFile // List<KoFile>
+    .classes()  // List<KoClassDeclaration>
+    .functions() // List<KoFunctionDeclaration>
 ```
 
 {% hint style="info" %}
@@ -47,9 +47,9 @@ To print declaration content use `koDeclaration.print()` method.
 Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc. Here is how the `name` of the function can be retrieved.
 
 ```kotlin
-val name = koFile // Sequence<KoFileDeclaration>
-    .classes()  // Sequence<KoClassDeclaration>
-    .functions() // Sequence<KoFunctionDeclaration>
+val name = koFile // List<KoFileDeclaration>
+    .classes()  // List<KoClassDeclaration>
+    .functions() // List<KoFunctionDeclaration>
     .first() // KoFunctionDeclaration
     .name // String
     

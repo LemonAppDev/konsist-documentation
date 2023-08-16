@@ -21,7 +21,7 @@ koScope
 ..or using the `annotations` method directly:
 
 ```kotlin
-koScope.annotations() // Sequence<KoAnnotationDeclaration>
+koScope.annotations() // List<KoAnnotationDeclaration>
 ```
 
 Such declaration can be used to check if annotations declared in a given package have the correct name suffix:

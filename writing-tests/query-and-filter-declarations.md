@@ -63,7 +63,7 @@ koScope
     .withAnnotation<RestController>
 ```
 
-Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` the method can be used to additionally filter the content of the `Sequence<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
+Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` the method can be used to additionally filter the content of the `List<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
 
 ```kotlin
 koScope
