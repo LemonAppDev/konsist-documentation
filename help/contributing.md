@@ -6,7 +6,13 @@ description: Let's Improve Konsist Together
 
 So you want to help? That's great!
 
+The Konsist project is now at a critical stage where community input is essential to polish it.&#x20;
+
+{% hint style="info" %}
 Contributing guide is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
+{% endhint %}
+
+You may albo contribute and show your support by starring it on [GitHub](https://github.com/LemonAppDev/konsist), tweeting about it, or writing a blog post. This will help to raise awareness of the project and attract more contributors.
 
 ## Repositories
 
