@@ -35,14 +35,19 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
 
 ```kotlin
 fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .withNameEndingWith("UseCase")
-        .assert {
-            val function = it.functions().first()
-            it.numFunctions() == 1 && function.name == "invoke" && function.isPublicOrDefault
-        }
-}
+        Konsist.scopeFromProject()
+            .classes()
+            .withNameEndingWith("UseCase")
+            .assert {
+                val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
+                    function.name == "invoke" && function.isPublicOrDefault && function.hasOperatorModifier
+                }
+
+                val hasSinglePublicDeclaration = it.numPublic() == 1
+
+                hasSingleInvokeOperatorMethod && hasSinglePublicDeclaration
+            }
+    }
 ```
 
 ## Snippet 4
