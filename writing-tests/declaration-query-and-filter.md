@@ -85,9 +85,18 @@ koScope
     .assert { // .. }
 ```
 
+It is also possible to filter declarations by using certain aspects e.g. visibility modifiers. This allows verifying the visibility of different declaration types such as classes, functions, properties, etc.:
+
+```kotlin
+koScope
+    .declarations()
+    .declarations<KoVisibilityModifierProvider>()
+    .assert { it.hasInternalModifier }
+```
+
 ## Query And Filter Declaration
 
-Queuing and filtering stages can be mixed together to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
+Queuing and filtering stages can be mixed to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
 
 ```kotlin
 koScope
