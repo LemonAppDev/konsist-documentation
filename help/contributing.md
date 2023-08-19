@@ -6,13 +6,13 @@ description: Let's Improve Konsist Together
 
 So you want to help? That's great!
 
-The Konsist project is now at a critical stage where community input is essential to polish it.&#x20;
+The Konsist project is now at a critical stage where community input is essential to polish and mature it.&#x20;
 
 {% hint style="info" %}
-Contributing guide is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
+The contributing guide itself is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
 {% endhint %}
 
-You may albo contribute and show your support by starring it on [GitHub](https://github.com/LemonAppDev/konsist), tweeting about it, or writing a blog post. This will help to raise awareness of the project and attract more contributors.
+You may contribute by submitting PR or show your support by starring it on [Konsist GitHub repository](https://github.com/LemonAppDev/konsist), tweeting about it, or writing a blog post. This will help to raise awareness of the project across the developer community and attract more contributors.
 
 ## Repositories
 
@@ -25,11 +25,11 @@ Konsist project is spread across multiple repositories:
 
 This is a high-level view of project contribution:
 
-1. Create a fork of the [konsist](https://github.com/LemonAppDev/konsist) repository
-2. Open the fork using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+1. Create a fork of the [Konsist](https://github.com/LemonAppDev/konsist) repository
+2. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 3. Make changes
-4. Add Tests
-5. Open the Pull Request.
+4. Add Tests if needed
+5. Open the Pull Request
 
 {% hint style="info" %}
 See the [developer readme](https://github.com/LemonAppDev/konsist/blob/main/DeveloperReadme.md) containing more information about the project.
