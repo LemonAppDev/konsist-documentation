@@ -9,10 +9,18 @@ So you want to help? That's great!
 The Konsist project is now at a critical stage where community input is essential to polish and mature it.&#x20;
 
 {% hint style="info" %}
-The contributing guide itself is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
+This contributing guide is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
 {% endhint %}
 
-You may contribute by submitting PR or show your support by starring it on [Konsist GitHub repository](https://github.com/LemonAppDev/konsist), tweeting about it, or writing a blog post. This will help to raise awareness of the project across the developer community and attract more contributors.
+There are a variety of ways to contribute to the Konsit project:
+
+* **Coding:** This is the most common way to contribute. You can fix bugs or add new features.
+* **Testing:** You can help to improve the quality by testing the code and reporting bugs. This is a great way to get involved and help out maturing the project.
+* **Documentation:** You can help to improve the documentation by writing or editing documentation. This is a great way to help people understand how to use Konsist.&#x20;
+* **Community:** You can answer questions or participate in discussions. This is a great way to connect with other programmers.&#x20;
+* **Spread the word:** You can help to spread the word about the Konsist by talking about it with fellow developers. You can also write a short post or a full-fledged article.
+
+No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.&#x20;
 
 ## Repositories
 
