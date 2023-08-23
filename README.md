@@ -8,6 +8,10 @@ Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) lang
 Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
 {% endhint %}
 
+{% hint style="info" %}
+A the moment [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) support is a a gray area. Dedicated keywords such as  `actual` and `expected` are supported. The Konsist underlying implementation should be compatible with multiplatform projects, however, it has not been field-tested yet.
+{% endhint %}
+
 Konsist provides two types of checks to comprehensively assess the codebase - declaration-level check and architecture-level check.
 
 ## Declaration Checks
