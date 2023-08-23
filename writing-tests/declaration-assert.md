@@ -25,7 +25,7 @@ koScope
     .assert { it.hasPublicModifier() }
 ```
 
-The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case), however, the assertion itself will be performed on every available interface.&#x20;
+The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case), however, the assertion itself will be performed on every available interface. The last line in the `assert` block will be evaluated as `true` or `false` providing the result for a given assert.
 
 ## Assert Not
 
