@@ -1,25 +1,39 @@
-## Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
+## Interfaces With 'Repository' Annotation Should Have 'Repository' Suffix
 
 ```kotlin
 @Test
-fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
+fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() {
     Konsist
         .scopeFromProject()
-        .classes()
-        .withParentClassOf(ViewModel::class)
-        .assert { it.name.endsWith("ViewModel") }
+        .interfaces()
+        .withAllAnnotationsOf(Repository::class)
+        .assert { it.hasNameEndingWith("Repository") }
 }
 ```
 
-## No Class Should Use Android Util Logging
+## Classes With 'RestController' Annotation Should Have 'Controller' Suffix
 
 ```kotlin
 @Test
-fun `no class should use Android util logging`() {
+fun `classes with 'RestController' annotation should have 'Controller' suffix`() {
     Konsist
         .scopeFromProject()
-        .files
-        .assertNot { it.hasImports("android.util.Log") }
+        .classes()
+        .withAllAnnotationsOf(RestController::class)
+        .assert { it.hasNameEndingWith("Controller") }
+}
+```
+
+## Classes With 'RestController' Annotation Should Reside In 'controller' Package
+
+```kotlin
+@Test
+fun `classes with 'RestController' annotation should reside in 'controller' package`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withAllAnnotationsOf(RestController::class)
+        .assert { it.resideInPackage("..controller..") }
 }
 ```
 

@@ -1,25 +1,36 @@
-## Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
+## Every Api Declaration Has KDoc
 
 ```kotlin
 @Test
-fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
+fun `every api declaration has KDoc`() {
     Konsist
-        .scopeFromProject()
-        .classes()
-        .withParentClassOf(ViewModel::class)
-        .assert { it.name.endsWith("ViewModel") }
+        .scopeFromPackage("..api..")
+        .declarationsOf<KoKDocProvider>(includeNested = true)
+        .assert { it.hasKDoc }
 }
 ```
 
-## No Class Should Use Android Util Logging
+## Every Public Function In Api Package Must Have Explicit Return Type
 
 ```kotlin
 @Test
-fun `no class should use Android util logging`() {
+fun `every public function in api package must have explicit return type`() {
     Konsist
-        .scopeFromProject()
-        .files
-        .assertNot { it.hasImports("android.util.Log") }
+        .scopeFromPackage("..api..")
+        .functions(includeNested = true)
+        .assert { it.hasReturnType }
+}
+```
+
+## Every Public Property In Api Package Must Have Specify Type Explicitly
+
+```kotlin
+@Test
+fun `every public property in api package must have specify type explicitly`() {
+    Konsist
+        .scopeFromPackage("..api..")
+        .properties(includeNested = true)
+        .assert { it.hasType() }
 }
 ```
 
