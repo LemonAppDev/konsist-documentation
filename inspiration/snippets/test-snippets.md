@@ -1,5 +1,5 @@
 # Test Snippets
-## Snippet 4: Every Class Has Test
+## Snippet : Every Class Has Test
 
 ```kotlin
 @Test
@@ -11,7 +11,7 @@ fun `every class has test`() {
 }
 ```
 
-## Snippet 4: Every Class - Except Data And Value Class - Has Test
+## Snippet : Every Class - Except Data And Value Class - Has Test
 
 ```kotlin
 @Test
@@ -24,7 +24,7 @@ fun `every class - except data and value class - has test`() {
 }
 ```
 
-## Snippet 4: Test Classes Should Have Test Subject Named Sut
+## Snippet : Test Classes Should Have Test Subject Named Sut
 
 ```kotlin
 @Test
@@ -43,7 +43,7 @@ fun `test classes should have test subject named sut`() {
 }
 ```
 
-## Snippet 4: Test Classes Should Have All Members Private Besides Tests
+## Snippet : Test Classes Should Have All Members Private Besides Tests
 
 ```kotlin
 @Test
@@ -66,7 +66,7 @@ fun `test classes should have all members private besides tests`() {
 }
 ```
 
-## Snippet 4: Don't Use JUnit4 Test Annotation
+## Snippet : Don't Use JUnit4 Test Annotation
 
 ```kotlin
 @Test
