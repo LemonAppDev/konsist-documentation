@@ -1,30 +1,28 @@
 # Architecture Snippets
-## 2 Layer Architecture Has Correct Dependencies
+package com.lemonappdev.konsist
 
-```kotlin
-@Test
-fun `2 layer architecture has correct dependencies`() {
-    Konsist
-        .scopeFromProject()
-        .assertArchitecture {
-            val presentation = Layer("Presentation", "com.myapp.presentation..")
-            val data = Layer("Data", "com.myapp.data..")
+import com.lemonappdev.konsist.api.Konsist
+import com.lemonappdev.konsist.api.architecture.KoArchitectureCreator.assertArchitecture
+import com.lemonappdev.konsist.api.architecture.Layer
+import com.lemonappdev.konsist.api.verify.assert
 
-            presentation.dependsOn(data)
-            data.dependsOnNothing()
-        }
+class ArchitectureSnippets {
+    fun `2 layer architecture has correct dependencies`() {
+        Konsist
+            .scopeFromProject()
+            .assertArchitecture {
+                val presentation = Layer("Presentation", "com.myapp.presentation..")
+                val data = Layer("Data", "com.myapp.data..")
+
+                presentation.dependsOn(data)
+                data.dependsOnNothing()
+            }
+    }
+
+    fun `every file in module reside in module specific package`() {
+        Konsist
+            .scopeFromProject()
+            .files
+            .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
+    }
 }
-```
-
-## Every File In Module Reside In Module Specific Package
-
-```kotlin
-@Test
-fun `every file in module reside in module specific package`() {
-    Konsist
-        .scopeFromProject()
-        .files
-        .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
-}
-```
-

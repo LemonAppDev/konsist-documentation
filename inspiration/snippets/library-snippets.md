@@ -1,37 +1,30 @@
 # Library Snippets
-## Every Api Declaration Has KDoc
+package com.lemonappdev.konsist
 
-```kotlin
-@Test
-fun `every api declaration has KDoc`() {
-    Konsist
-        .scopeFromPackage("..api..")
-        .declarationsOf<KoKDocProvider>(includeNested = true)
-        .assert { it.hasKDoc }
+import com.lemonappdev.konsist.api.Konsist
+import com.lemonappdev.konsist.api.ext.koscope.declarationsOf
+import com.lemonappdev.konsist.api.provider.KoKDocProvider
+import com.lemonappdev.konsist.api.verify.assert
+
+class LibrarySnippets {
+    fun `every api declaration has KDoc`() {
+        Konsist
+            .scopeFromPackage("..api..")
+            .declarationsOf<KoKDocProvider>(includeNested = true)
+            .assert { it.hasKDoc }
+    }
+
+    fun `every public function in api package must have explicit return type`() {
+        Konsist
+            .scopeFromPackage("..api..")
+            .functions(includeNested = true)
+            .assert { it.hasReturnType }
+    }
+
+    fun `every public property in api package must have specify type explicitly`() {
+        Konsist
+            .scopeFromPackage("..api..")
+            .properties(includeNested = true)
+            .assert { it.hasType() }
+    }
 }
-```
-
-## Every Public Function In Api Package Must Have Explicit Return Type
-
-```kotlin
-@Test
-fun `every public function in api package must have explicit return type`() {
-    Konsist
-        .scopeFromPackage("..api..")
-        .functions(includeNested = true)
-        .assert { it.hasReturnType }
-}
-```
-
-## Every Public Property In Api Package Must Have Specify Type Explicitly
-
-```kotlin
-@Test
-fun `every public property in api package must have specify type explicitly`() {
-    Konsist
-        .scopeFromPackage("..api..")
-        .properties(includeNested = true)
-        .assert { it.hasType() }
-}
-```
-
