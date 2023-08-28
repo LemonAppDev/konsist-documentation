@@ -3,7 +3,7 @@
 ## 🚀 GETTING STARTED
 
 * [What is Konsist?](README.md)
-* [Quick Start](getting-started/gettingstarted.md)
+* [Getting Startted](getting-started/gettingstarted.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
