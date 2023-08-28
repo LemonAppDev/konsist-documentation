@@ -1,4 +1,5 @@
 # Test Snippets
+
 ## Snippet 1: Every Class Has Test
 
 ```kotlin

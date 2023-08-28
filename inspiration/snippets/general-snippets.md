@@ -1,4 +1,5 @@
 # General Snippets
+
 ## Snippet 1: No Empty Files Allowed
 
 ```kotlin
