@@ -1,5 +1,6 @@
 # General Snippets
-## No Empty Files Allowed
+
+Some Test## No Empty Files Allowed
 
 ```kotlin
 @Test
