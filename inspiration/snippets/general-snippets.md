@@ -1,5 +1,5 @@
 # General Snippets
-## Snippet 5: No Empty Files Allowed
+## Snippet 4: No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -11,7 +11,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## Snippet 5: No Field Should Have 'm' Prefix
+## Snippet 4: No Field Should Have 'm' Prefix
 
 ```kotlin
 @Test
@@ -27,7 +27,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## Snippet 5: No Class Should Use Field Injection
+## Snippet 4: No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -40,7 +40,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## Snippet 5: No Class Should Use Java Util Logging
+## Snippet 4: No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -52,7 +52,7 @@ fun `no class should use Java util logging`() {
 }
 ```
 
-## Snippet 5: Every Constructor Parameter Has Name Derived From Parameter Type
+## Snippet 4: Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
 @Test
@@ -69,7 +69,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## Snippet 5: Every Class Constructor Has Alphabetically Ordered Parameters
+## Snippet 4: Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
 @Test
@@ -86,7 +86,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## Snippet 5: Package Name Must Match File Path
+## Snippet 4: Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -98,7 +98,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## Snippet 5: Properties Are Declared Before Functions
+## Snippet 4: Properties Are Declared Before Functions
 
 ```kotlin
 @Test
@@ -120,7 +120,7 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## Snippet 5: Companion Object Is The Last Declaration In The Class
+## Snippet 4: Companion Object Is The Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -142,7 +142,7 @@ fun `companion object is the last declaration in the class`() {
 }
 ```
 
-## Snippet 5: No Wildcard Imports Allowed
+## Snippet 4: No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -154,7 +154,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## Snippet 5: Every Value Class Has Parameter Named 'value'
+## Snippet 4: Every Value Class Has Parameter Named 'value'
 
 ```kotlin
 @Test
@@ -168,7 +168,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## Snippet 5: Forbid The Usage Of 'forbiddenString' In File
+## Snippet 4: Forbid The Usage Of 'forbiddenString' In File
 
 ```kotlin
 @Test

@@ -1,5 +1,5 @@
 # Architecture Snippets
-## Snippet 5: 2 Layer Architecture Has Correct Dependencies
+## Snippet 4: 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin
 @Test
@@ -16,7 +16,7 @@ fun `2 layer architecture has correct dependencies`() {
 }
 ```
 
-## Snippet 5: Every File In Module Reside In Module Specific Package
+## Snippet 4: Every File In Module Reside In Module Specific Package
 
 ```kotlin
 @Test
