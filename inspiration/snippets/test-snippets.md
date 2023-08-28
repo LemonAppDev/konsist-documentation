@@ -66,7 +66,7 @@ fun `test classes should have all members private besides tests`() {
 }
 ```
 
-## Snippet 5: Don't Use JUnit4 Test Annotation
+## Snippet 5: Don`t Use JUnit4 Test Annotation
 
 ```kotlin
 @Test

@@ -11,7 +11,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## Snippet 2: No Field Should Have 'm' Prefix
+## Snippet 2: No Field Should Have `m` Prefix
 
 ```kotlin
 @Test
@@ -154,7 +154,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## Snippet 11: Every Value Class Has Parameter Named 'value'
+## Snippet 11: Every Value Class Has Parameter Named `value`
 
 ```kotlin
 @Test
@@ -168,7 +168,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## Snippet 12: Forbid The Usage Of 'forbiddenString' In File
+## Snippet 12: Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
 @Test
