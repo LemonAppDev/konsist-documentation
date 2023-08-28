@@ -1,31 +1,25 @@
-# Architecture Snippets
-
-## 2 Layer Architecture Has Correct Dependencies
+## Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
 
 ```kotlin
 @Test
-fun `2 layer architecture has correct dependencies`() {
+fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
-        .assertArchitecture {
-            val presentation = Layer("Presentation", "com.myapp.presentation..")
-            val data = Layer("Data", "com.myapp.data..")
-
-            presentation.dependsOn(data)
-            data.dependsOnNothing()
-        }
+        .classes()
+        .withParentClassOf(ViewModel::class)
+        .assert { it.name.endsWith("ViewModel") }
 }
 ```
 
-## Every File In Module Reside In Module Specific Package
+## No Class Should Use Android Util Logging
 
 ```kotlin
 @Test
-fun `every file in module reside in module specific package`() {
+fun `no class should use Android util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
+        .assertNot { it.hasImports("android.util.Log") }
 }
 ```
 

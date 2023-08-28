@@ -1,83 +1,25 @@
-# Clean Architecture Snippets
-
-## Clean Architecture Layers Have Correct Dependencies
+## Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
 
 ```kotlin
 @Test
-fun `clean architecture layers have correct dependencies`() {
-    Konsist
-        .scopeFromProduction()
-        .assertArchitecture {
-            // Define layers
-            val domain = Layer("Domain", "com.myapp.domain..")
-            val presentation = Layer("Presentation", "com.myapp.presentation..")
-            val data = Layer("Data", "com.myapp.data..")
-
-            // Define architecture assertions
-            domain.dependsOnNothing()
-            presentation.dependsOn(domain)
-            data.dependsOn(domain)
-        }
-}
-```
-
-## Classes With 'UseCase' Suffix Should Reside In 'domain' And 'usecase' Packages
-
-```kotlin
-@Test
-fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packages`() {
+fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withNameEndingWith("UseCase")
-        .assert { it.resideInPackage("..domain..usecase..") }
+        .withParentClassOf(ViewModel::class)
+        .assert { it.name.endsWith("ViewModel") }
 }
 ```
 
-## Classes With 'UseCase' Suffix Should Have Single Public Method Named 'invoke'
+## No Class Should Use Android Util Logging
 
 ```kotlin
 @Test
-fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
+fun `no class should use Android util logging`() {
     Konsist
         .scopeFromProject()
-        .classes()
-        .withNameEndingWith("UseCase")
-        .assert {
-            val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
-                function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
-            }
-
-            val hasSinglePublicDeclaration = it.numPublicOrDefaultDeclarations() == 1
-
-            hasSingleInvokeOperatorMethod && hasSinglePublicDeclaration
-        }
-}
-```
-
-## Interfaces With 'Repository' Annotation Should Reside In 'data' Package
-
-```kotlin
-@Test
-fun `interfaces with 'Repository' annotation should reside in 'data' package`() {
-    Konsist
-        .scopeFromProject()
-        .interfaces()
-        .withAllAnnotationsOf(Repository::class)
-        .assert { it.resideInPackage("..data..") }
-}
-```
-
-## Every UseCase Class Has Test
-
-```kotlin
-@Test
-fun `every UseCase class has test`() {
-    Konsist
-        .scopeFromProduction()
-        .classes()
-        .withParentClass("UseCase")
-        .assert { it.hasTest() }
+        .files
+        .assertNot { it.hasImports("android.util.Log") }
 }
 ```
 

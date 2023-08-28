@@ -1,5 +1,3 @@
-# Android Snippets
-
 ## Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
 
 ```kotlin
