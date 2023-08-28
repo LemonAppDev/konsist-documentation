@@ -5,7 +5,7 @@ Konsist can be used to guard the consistency of the [Android](https://www.androi
 {% hint style="info" %}
 The [android-showcase](https://github.com/igorwojda/android-showcase) project contains set of kotnsist tests.
 {% endhint %}
-## Snippet 4: Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
+## Snippet 0: Classes Extending 'ViewModel' Should Have 'ViewModel' Suffix
 
 ```kotlin
 @Test
@@ -18,7 +18,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
 }
 ```
 
-## Snippet 4: No Class Should Use Android Util Logging
+## Snippet 1: No Class Should Use Android Util Logging
 
 ```kotlin
 @Test

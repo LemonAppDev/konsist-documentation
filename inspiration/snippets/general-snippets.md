@@ -1,5 +1,5 @@
 # General Snippets
-## Snippet 4: No Empty Files Allowed
+## Snippet 0: No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -11,7 +11,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## Snippet 4: No Field Should Have 'm' Prefix
+## Snippet 1: No Field Should Have 'm' Prefix
 
 ```kotlin
 @Test
@@ -27,7 +27,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## Snippet 4: No Class Should Use Field Injection
+## Snippet 2: No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -40,7 +40,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## Snippet 4: No Class Should Use Java Util Logging
+## Snippet 3: No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -69,7 +69,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## Snippet 4: Every Class Constructor Has Alphabetically Ordered Parameters
+## Snippet 5: Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
 @Test
@@ -86,7 +86,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## Snippet 4: Package Name Must Match File Path
+## Snippet 6: Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -98,7 +98,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## Snippet 4: Properties Are Declared Before Functions
+## Snippet 7: Properties Are Declared Before Functions
 
 ```kotlin
 @Test
@@ -120,7 +120,7 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## Snippet 4: Companion Object Is The Last Declaration In The Class
+## Snippet 8: Companion Object Is The Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -142,7 +142,7 @@ fun `companion object is the last declaration in the class`() {
 }
 ```
 
-## Snippet 4: No Wildcard Imports Allowed
+## Snippet 9: No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -154,7 +154,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## Snippet 4: Every Value Class Has Parameter Named 'value'
+## Snippet 10: Every Value Class Has Parameter Named 'value'
 
 ```kotlin
 @Test
@@ -168,7 +168,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## Snippet 4: Forbid The Usage Of 'forbiddenString' In File
+## Snippet 11: Forbid The Usage Of 'forbiddenString' In File
 
 ```kotlin
 @Test
