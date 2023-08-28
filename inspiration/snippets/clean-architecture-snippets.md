@@ -26,7 +26,8 @@ fun `clean architecture layers have correct dependencies`() {
 ```kotlin
 @Test
 fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packages`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
         .assert { it.resideInPackage("..domain..usecase..") }
@@ -38,7 +39,8 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
 ```kotlin
 @Test
 fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
         .assert {
@@ -46,7 +48,7 @@ fun `classes with 'UseCase' suffix should have single public method named 'invok
                 function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
             }
 
-            val hasSinglePublicDeclaration = it.numPublicDeclarations() == 1
+            val hasSinglePublicDeclaration = it.numPublicOrDefaultDeclarations() == 1
 
             hasSingleInvokeOperatorMethod && hasSinglePublicDeclaration
         }
@@ -58,7 +60,8 @@ fun `classes with 'UseCase' suffix should have single public method named 'invok
 ```kotlin
 @Test
 fun `interfaces with 'Repository' annotation should reside in 'data' package`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .interfaces()
         .withAllAnnotationsOf(Repository::class)
         .assert { it.resideInPackage("..data..") }
@@ -70,7 +73,8 @@ fun `interfaces with 'Repository' annotation should reside in 'data' package`() 
 ```kotlin
 @Test
 fun `every UseCase class has test`() {
-    Konsist.scopeFromProduction()
+    Konsist
+        .scopeFromProduction()
         .classes()
         .withParentClass("UseCase")
         .assert { it.hasTest() }

@@ -22,7 +22,8 @@ fun `2 layer architecture has correct dependencies`() {
 ```kotlin
 @Test
 fun `every file in module reside in module specific package`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
 }

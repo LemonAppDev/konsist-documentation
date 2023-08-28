@@ -5,7 +5,8 @@
 ```kotlin
 @Test
 fun `no empty files allowed`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.text.isEmpty() }
 }
@@ -16,7 +17,8 @@ fun `no empty files allowed`() {
 ```kotlin
 @Test
 fun `no field should have 'm' prefix`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .properties()
         .assertNot {
@@ -31,7 +33,8 @@ fun `no field should have 'm' prefix`() {
 ```kotlin
 @Test
 fun `no class should use field injection`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .properties()
         .assertNot { it.hasAnnotationOf<Inject>() }
@@ -43,7 +46,8 @@ fun `no class should use field injection`() {
 ```kotlin
 @Test
 fun `no class should use Java util logging`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.hasImports("java.util.logging..") }
 }
@@ -54,7 +58,8 @@ fun `no class should use Java util logging`() {
 ```kotlin
 @Test
 fun `every constructor parameter has name derived from parameter type`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .flatMap { it.constructors }
         .flatMap { it.parameters }
@@ -70,7 +75,8 @@ fun `every constructor parameter has name derived from parameter type`() {
 ```kotlin
 @Test
 fun `every class constructor has alphabetically ordered parameters`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .flatMap { it.constructors }
         .assert {
@@ -86,7 +92,8 @@ fun `every class constructor has alphabetically ordered parameters`() {
 ```kotlin
 @Test
 fun `package name must match file path`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .packages
         .assert { it.hasMatchingPath }
 }
@@ -97,7 +104,8 @@ fun `package name must match file path`() {
 ```kotlin
 @Test
 fun `properties are declared before functions`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
             val lastKoPropertyDeclarationIndex = it
@@ -118,7 +126,8 @@ fun `properties are declared before functions`() {
 ```kotlin
 @Test
 fun `companion object is the last declaration in the class`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
             val companionObjectIndex = it
@@ -139,7 +148,8 @@ fun `companion object is the last declaration in the class`() {
 ```kotlin
 @Test
 fun `no wildcard imports allowed`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .imports
         .assertNot { it.isWildcard }
 }
@@ -150,7 +160,8 @@ fun `no wildcard imports allowed`() {
 ```kotlin
 @Test
 fun `every value class has parameter named 'value'`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .withValueModifier()
         .mapNotNull { it.primaryConstructor }
@@ -163,7 +174,8 @@ fun `every value class has parameter named 'value'`() {
 ```kotlin
 @Test
 fun `forbid the usage of 'forbiddenString' in file`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.text.contains("forbiddenString") }
 }
