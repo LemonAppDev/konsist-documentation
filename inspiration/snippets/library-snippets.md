@@ -1,5 +1,5 @@
 # Library Snippets
-## Snippet Every Api Declaration Has KDoc
+## Snippet 4Every Api Declaration Has KDoc
 
 ```kotlin
 @Test
@@ -11,7 +11,7 @@ fun `every api declaration has KDoc`() {
 }
 ```
 
-## Snippet Every Public Function In Api Package Must Have Explicit Return Type
+## Snippet 4Every Public Function In Api Package Must Have Explicit Return Type
 
 ```kotlin
 @Test
@@ -23,7 +23,7 @@ fun `every public function in api package must have explicit return type`() {
 }
 ```
 
-## Snippet Every Public Property In Api Package Must Have Specify Type Explicitly
+## Snippet 4Every Public Property In Api Package Must Have Specify Type Explicitly
 
 ```kotlin
 @Test
