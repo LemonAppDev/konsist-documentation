@@ -1,7 +1,7 @@
 # Spring Snippets
 
 Konsist can be used to guard the consistency of the [Spring](https://spring.io/) project.
-## Snippet 4Interfaces With 'Repository' Annotation Should Have 'Repository' Suffix
+## Snippet 4: Interfaces With 'Repository' Annotation Should Have 'Repository' Suffix
 
 ```kotlin
 @Test
@@ -14,7 +14,7 @@ fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() 
 }
 ```
 
-## Snippet 4Classes With 'RestController' Annotation Should Have 'Controller' Suffix
+## Snippet 4: Classes With 'RestController' Annotation Should Have 'Controller' Suffix
 
 ```kotlin
 @Test
@@ -27,7 +27,7 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
 }
 ```
 
-## Snippet 4Classes With 'RestController' Annotation Should Reside In 'controller' Package
+## Snippet 4: Classes With 'RestController' Annotation Should Reside In 'controller' Package
 
 ```kotlin
 @Test
