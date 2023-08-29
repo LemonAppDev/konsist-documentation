@@ -1,20 +1,24 @@
 # General Snippets
 
-## Snippet 1
+## Snippet 1: No Empty Files Allowed
 
 ```kotlin
+@Test
 fun `no empty files allowed`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.text.isEmpty() }
 }
 ```
 
-## Snippet 2
+## Snippet 2: No Field Should Have `m` Prefix
 
 ```kotlin
+@Test
 fun `no field should have 'm' prefix`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .properties()
         .assertNot {
@@ -24,32 +28,38 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## Snippet 3
+## Snippet 3: No Class Should Use Field Injection
 
 ```kotlin
+@Test
 fun `no class should use field injection`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .properties()
-        .assert { it.hasAnnotationOf<Inject>() }
+        .assertNot { it.hasAnnotationOf<Inject>() }
 }
 ```
 
-## Snippet 4
+## Snippet 4: No Class Should Use Java Util Logging
 
 ```kotlin
+@Test
 fun `no class should use Java util logging`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.hasImports("java.util.logging..") }
 }
 ```
 
-## Snippet 5
+## Snippet 5: Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
+@Test
 fun `every constructor parameter has name derived from parameter type`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .flatMap { it.constructors }
         .flatMap { it.parameters }
@@ -60,11 +70,13 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## Snippet 6
+## Snippet 6: Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
+@Test
 fun `every class constructor has alphabetically ordered parameters`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .flatMap { it.constructors }
         .assert {
@@ -75,21 +87,25 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## Snippet 7
+## Snippet 7: Package Name Must Match File Path
 
 ```kotlin
+@Test
 fun `package name must match file path`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .packages
         .assert { it.hasMatchingPath }
 }
 ```
 
-## Snippet 8
+## Snippet 8: Properties Are Declared Before Functions
 
 ```kotlin
+@Test
 fun `properties are declared before functions`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
             val lastKoPropertyDeclarationIndex = it
@@ -105,11 +121,13 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## Snippet 9
+## Snippet 9: Companion Object Is The Last Declaration In The Class
 
 ```kotlin
+@Test
 fun `companion object is the last declaration in the class`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
             val companionObjectIndex = it
@@ -125,21 +143,25 @@ fun `companion object is the last declaration in the class`() {
 }
 ```
 
-## Snippet 10
+## Snippet 10: No Wildcard Imports Allowed
 
 ```kotlin
+@Test
 fun `no wildcard imports allowed`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .imports
         .assertNot { it.isWildcard }
 }
 ```
 
-## Snippet 11
+## Snippet 11: Every Value Class Has Parameter Named `value`
 
 ```kotlin
+@Test
 fun `every value class has parameter named 'value'`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .withValueModifier()
         .mapNotNull { it.primaryConstructor }
@@ -147,12 +169,15 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## Snippet 12
+## Snippet 12: Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
+@Test
 fun `forbid the usage of 'forbiddenString' in file`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.text.contains("forbiddenString") }
 }
 ```
+
