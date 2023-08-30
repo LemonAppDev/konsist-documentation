@@ -25,14 +25,14 @@ koScope
     .classes()
     .withNameEndingWith("UseCase")
     .first()
-    .hasTest()
+    .name
 ```
 
 This is just a starting point that helps to review data exposed by the Konsist.
 
 ## Print To Console
 
-If console logs are preferred then Konsist provides an API to display desired data as console logs.
+Konsist provides an API to print the desired data as console logs.
 
 Print a list of files from `KoScope` :
 
@@ -41,7 +41,7 @@ koScope // KoScope
     .print()
 ```
 
-Print declarations:
+Print list of declarations:
 
 ```kotlin
 koScope
@@ -58,7 +58,7 @@ koScope
     .print()
 ```
 
-Print multiple declarations:
+Print list of queried declarations multiple times:
 
 ```kotlin
 koScope
