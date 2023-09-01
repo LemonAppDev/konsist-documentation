@@ -1,9 +1,9 @@
 # Android Snippets
 
-Konsist can be used to guard the consistency of the [Android](https://www.android.com/) project.&#x20;
+Konsist can be used to guard the consistency of the [Android](https://www.android.com/) project.
 
 {% hint style="info" %}
-The [android-showcase](https://github.com/igorwojda/android-showcase) project contains set of kotnsist tests.
+The [android-showcase](https://github.com/igorwojda/android-showcase) project contains set of Konsist tests.
 {% endhint %}
 
 ## Snippet 1: Classes Extending `ViewModel` Should Have `ViewModel` Suffix
@@ -14,7 +14,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withParentClassOf(ViewModel::class)
+        .withAllParentsOf(ViewModel::class)
         .assert { it.name.endsWith("ViewModel") }
 }
 ```

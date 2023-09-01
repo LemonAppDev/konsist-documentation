@@ -8,7 +8,7 @@ fun `every class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .assert { it.hasTest() }
+        .assert { it.hasTestClass() }
 }
 ```
 
@@ -21,7 +21,7 @@ fun `every class - except data and value class - has test`() {
         .scopeFromProduction()
         .classes()
         .withoutSomeModifiers(KoModifier.DATA, KoModifier.VALUE)
-        .assert { it.hasTest() }
+        .assert { it.hasTestClass() }
 }
 ```
 
@@ -54,14 +54,7 @@ fun `test classes should have all members private besides tests`() {
         .classes()
         .declarations()
         .filterIsInstance<KoAnnotationProvider>()
-        .filterNot {
-            it.annotations.any { annotation ->
-                annotation
-                    .name
-                    .lowercase()
-                    .contains("test")
-            }
-        }
+        .withoutSomeAnnotationsOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
         .filterIsInstance<KoVisibilityModifierProvider>()
         .assert { it.hasPrivateModifier }
 }
