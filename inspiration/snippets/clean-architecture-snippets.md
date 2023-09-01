@@ -48,9 +48,7 @@ fun `classes with 'UseCase' suffix should have single public method named 'invok
                 function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
             }
 
-            val hasSinglePublicDeclaration = it.numPublicOrDefaultDeclarations() == 1
-
-            hasSingleInvokeOperatorMethod && hasSinglePublicDeclaration
+            hasSingleInvokeOperatorMethod && it.numPublicOrDefaultDeclarations() == 1
         }
 }
 ```
@@ -76,8 +74,8 @@ fun `every UseCase class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .withParentClass("UseCase")
-        .assert { it.hasTest() }
+        .withAllParents("UseCase")
+        .assert { it.hasTestClass() }
 }
 ```
 
