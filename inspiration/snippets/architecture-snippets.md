@@ -1,8 +1,9 @@
 # Architecture Snippets
 
-## Snippet 1
+## Snippet 1: 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin
+@Test
 fun `2 layer architecture has correct dependencies`() {
     Konsist
         .scopeFromProject()
@@ -16,12 +17,15 @@ fun `2 layer architecture has correct dependencies`() {
 }
 ```
 
-## Snippet 2
+## Snippet 2: Every File In Module Reside In Module Specific Package
 
 ```kotlin
+@Test
 fun `every file in module reside in module specific package`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
 }
 ```
+
