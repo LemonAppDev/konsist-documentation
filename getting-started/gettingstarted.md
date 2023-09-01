@@ -2,7 +2,7 @@
 description: Quickly configure Konsist and run the first test.
 ---
 
-# Quick Start
+# Getting Started
 
 The following example provides the minimum setup for writing a Konsist test.&#x20;
 
@@ -30,7 +30,7 @@ Add the following dependency to the `module\build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    testImplementation("com.lemonappdev:konsist:0.10.0")
+    testImplementation("com.lemonappdev:konsist:0.11.0")
 }
 ```
 {% endtab %}
@@ -40,7 +40,7 @@ Add the following dependency to the `module\build.gradle` file:
 
 ```groovy
 dependencies {
-    testImplementation "com.lemonappdev:konsist:0.10.0"
+    testImplementation "com.lemonappdev:konsist:0.11.0"
 }
 ```
 {% endtab %}
@@ -52,7 +52,7 @@ Add the following dependency to the `module\pom.xml` file:
 <dependency>
     <groupId>com.lemonappdev</groupId>
     <artifactId>konsist</artifactId>
-    <version>0.10.0</version>
+    <version>0.11.0</version>
     <scope>test</scope>
 </dependency>
 ```
