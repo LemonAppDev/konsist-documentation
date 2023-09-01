@@ -4,6 +4,7 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/gettingstarted.md)
+* [Getting Help](getting-started/getting-help.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
 * [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)

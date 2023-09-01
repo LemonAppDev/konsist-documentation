@@ -6,6 +6,10 @@ description: Let's Improve Konsist Together
 
 So you want to help? That's great!
 
+{% hint style="info" %}
+To chat with Konsist developers and the Konsist community please check the [#konsist channel ](https://kotlinlang.slack.com/archives/C05QG9FD6KS) at `kotlinlang` Slack workspace (preferred) or start a new [GitHub discussion](https://github.com/LemonAppDev/konsist/discussions).&#x20;
+{% endhint %}
+
 The Konsist project is now at a critical stage where community input is essential to polish and mature it.&#x20;
 
 {% hint style="info" %}
@@ -20,7 +24,7 @@ There are a variety of ways to contribute to the Konsit project:
 * **Community:** You can answer questions or participate in discussions. This is a great way to connect with other programmers.&#x20;
 * **Spread the word:** You can help to spread the word about the Konsist by talking about it with fellow developers. You can also write a short post or a full-fledged article.
 
-No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.&#x20;
+No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.
 
 ## Repositories
 
