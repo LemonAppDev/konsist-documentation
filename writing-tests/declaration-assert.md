@@ -34,6 +34,6 @@ The `assertNot` is a negation of the `assert` method. In the below snippet, the 
 ```kotlin
 koScope
     .classes()
-    .flatMap { it.properties() }
+    .properties()
     .assertNot { it.hasAnnotationOf<Inject>() }
 ```
