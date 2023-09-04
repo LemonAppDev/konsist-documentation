@@ -21,7 +21,7 @@ fun `clean architecture layers have correct dependencies`() {
 }
 ```
 
-## Snippet 2: Classes With `UseCase` Suffix Should Reside In `domain` And `usecase` Packages
+## Snippet 2: Classes With `UseCase` Suffix Should Reside In `domain` And `usecase` Package
 
 ```kotlin
 @Test
