@@ -8,7 +8,6 @@
 * [Articles](getting-started/articles.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
-* [Why there are no pre-defined rules?](getting-started/why-there-are-no-pre-defined-rules.md)
 
 ## ✅ WRITING TESTS
 
@@ -41,6 +40,7 @@
 ## 🎓 ADVANCED
 
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
+* [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
 
 ## ❓ HELP
 
