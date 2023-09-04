@@ -35,7 +35,7 @@ fun `'ViewModel' should expose data using Kotlin 'Flow'`() {
 }
 ```
 
-## Snippet 3: No Class Should Use Android Util Logging
+## Snippet 3: `Repository` Class Should Reside in `repository` package
 
 ```kotlin
 @Test
