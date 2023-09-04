@@ -34,7 +34,7 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
 }
 ```
 
-## Snippet 3: Classes With `UseCase` Suffix Should Have Single Public Method Named `invoke`
+## Snippet 3: Classes With `UseCase` Suffix Should Have Single `public operator` Method Named `invoke`
 
 ```kotlin
 @Test
@@ -78,4 +78,3 @@ fun `every UseCase class has test`() {
         .assert { it.hasTestClass() }
 }
 ```
-
