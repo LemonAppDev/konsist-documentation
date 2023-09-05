@@ -15,6 +15,7 @@
 * [Declaration Query And Filter](writing-tests/declaration-query-and-filter.md)
 * [Declaration Assert](writing-tests/declaration-assert.md)
 * [Architecture Assert](writing-tests/architecture-assert.md)
+* [Suppressing Konsist Test](writing-tests/suppressing-konsist-test.md)
 
 ## 📗 FEATURES
 
