@@ -15,17 +15,17 @@ The above code represents the declaration of the `CustomLogger` annotation class
 ```kotlin
 koScope
     .classes()
-    .withAllModifiers(KoModifier.ANNOTATION)
+    .withAnnotationModifier()
 ```
 
 For example, such declaration can be used to check if annotations reside in a desired package:
 
 ```kotlin
-// Every annotation declared inside com.logger package must have a name ending with "Logger"
+// Every annotation class must reside in the "annotation" package
 
 koScope
     .classes()
-    .withAllModifiers(KoModifier.ANNOTATION)
+    .withAnnotationModifier()
     .assert { it.resideInPackage("..annotation..") }
 ```
 
@@ -42,9 +42,10 @@ fun logHello() {
 
 The above code also contains `CustomLogger` annotation. However, this time code represents the place in the code where the annotation is used (use-site). Such annotations can be accessed using the `annotations` property:
 
-```
-koFunction.annotations
-```
+<pre class="language-kotlin"><code class="lang-kotlin">koScope
+    .functions()
+<strong>    .annotations
+</strong></code></pre>
 
 Such properties can be used to check if the function annotated with `CustomLogger` annotation has the correct name prefix:
 
