@@ -2,14 +2,10 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to be executed at the pull request (PR) level as a verification check.
+Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language compatible with all types of Kotlin projects including [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html). Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to be executed at the pull request (PR) level as a verification check.
 
 {% hint style="info" %}
 Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
-{% endhint %}
-
-{% hint style="info" %}
-A the moment [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) support is a a gray area. Dedicated keywords such as  `actual` and `expected` are supported. The Konsist underlying implementation should be compatible with multiplatform projects, however, it has not been field-tested yet.
 {% endhint %}
 
 Konsist provides two types of checks to comprehensively assess the codebase - declaration-level check and architecture-level check.
