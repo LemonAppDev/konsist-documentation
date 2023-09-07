@@ -40,8 +40,9 @@
 
 ## 🎓 ADVANCED
 
-* [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
 * [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
+* [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
+* [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
 
 ## ❓ HELP
 
