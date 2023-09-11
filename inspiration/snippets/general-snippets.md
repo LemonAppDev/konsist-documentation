@@ -23,14 +23,18 @@ fun `properties are declared before functions`() {
         .classes()
         .assert {
             val lastKoPropertyDeclarationIndex = it
-                .declarations()
-                .indexOfLastInstance<KoPropertyDeclaration>()
+                    .declarations()
+                    .indexOfLastInstance<KoPropertyDeclaration>()
 
             val firstKoFunctionDeclarationIndex = it
                 .declarations()
                 .indexOfFirstInstance<KoFunctionDeclaration>()
 
-            lastKoPropertyDeclarationIndex <= firstKoFunctionDeclarationIndex
+            if (lastKoPropertyDeclarationIndex != -1 && firstKoFunctionDeclarationIndex != -1) {
+                lastKoPropertyDeclarationIndex < firstKoFunctionDeclarationIndex
+            } else {
+                true
+            }
         }
 }
 ```
@@ -211,4 +215,3 @@ fun `forbid the usage of 'forbiddenString' in file`() {
         .assertNot { it.text.contains("forbiddenString") }
 }
 ```
-
