@@ -2,13 +2,15 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language compatible with all types of Kotlin projects including [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html). Konsist facilitates codebase standardization by enforcing coding conventions and guarding the project architecture. Konsist enables writing consistency checks in the form of unit tests. These tests are intended to be executed at the pull request (PR) level as a verification check.
+Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It is compatible with various Kotlin projects including [Android](https://www.android.com/) projects, [Spring](https://spring.io/) projects, and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
+
+Konsist simplifies the process of maintaining codebase consistency by upholding coding conventions and safeguarding the project's architecture. It empowers developers to create consistency checks through unit tests, which can be run during pull request (PR) reviews for verification.
 
 {% hint style="info" %}
 Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
 {% endhint %}
 
-Konsist provides two types of checks to comprehensively assess the codebase - declaration-level check and architecture-level check.
+Konsist offers two categories of checks, namely declaration checks and architecture checks, to thoroughly evaluate the codebase.
 
 ## Declaration Checks
 
@@ -41,7 +43,7 @@ For more KOnsist test samples see the [snippets](inspiration/snippets/ "mention"
 
 ## Architecture Checks
 
-The second type of Konsit check revolves around communication between layers, intended to maintain the separation of concerns and improve maintainability and flexibility. eg:
+The second type of Konsit checks revolves around architecture boundaries -  they are intended to maintain the separation of concerns between layers eg:
 
 * The `domain` layer is independent
 * The `data` layer depends on `domain` layer
