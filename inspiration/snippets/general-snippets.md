@@ -1,95 +1,25 @@
 # General Snippets
 
-## Snippet 1
+## 1: Files In `ext` Package Must Have Name Ending With `Ext`
 
 ```kotlin
-fun `no empty files allowed`() {
-    Konsist.scopeFromProject()
+@Test
+fun `files in 'ext' package must have name ending with 'Ext'`() {
+    Konsist
+        .scopeFromProject()
         .files
-        .assertNot { it.text.isEmpty() }
+        .withPackage("..ext..")
+        .assert { it.hasNameEndingWith("Ext") }
 }
 ```
 
-## Snippet 2
+## 2: Properties Are Declared Before Functions
 
 ```kotlin
-fun `no field should have 'm' prefix`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .properties()
-        .assertNot {
-            val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
-            it.name.startsWith('m') && secondCharacterIsUppercase
-        }
-}
-```
-
-## Snippet 3
-
-```kotlin
-fun `no class should use field injection`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .properties()
-        .assert { it.hasAnnotationOf<Inject>() }
-}
-```
-
-## Snippet 4
-
-```kotlin
-fun `no class should use Java util logging`() {
-    Konsist.scopeFromProject()
-        .files
-        .assertNot { it.hasImports("java.util.logging..") }
-}
-```
-
-## Snippet 5
-
-```kotlin
-fun `every constructor parameter has name derived from parameter type`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .flatMap { it.constructors }
-        .flatMap { it.parameters }
-        .assert {
-            val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
-            nameTitleCase == it.type.sourceType
-        }
-}
-```
-
-## Snippet 6
-
-```kotlin
-fun `every class constructor has alphabetically ordered parameters`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .flatMap { it.constructors }
-        .assert {
-            val names = it.parameters.map { parameter -> parameter.name }
-            val sortedNames = names.sorted()
-            names == sortedNames
-        }
-}
-```
-
-## Snippet 7
-
-```kotlin
-fun `package name must match file path`() {
-    Konsist.scopeFromProject()
-        .packages
-        .assert { it.hasMatchingPath }
-}
-```
-
-## Snippet 8
-
-```kotlin
+@Test
 fun `properties are declared before functions`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
             val lastKoPropertyDeclarationIndex = it
@@ -100,59 +30,189 @@ fun `properties are declared before functions`() {
                 .declarations()
                 .indexOfFirstInstance<KoFunctionDeclaration>()
 
-            lastKoPropertyDeclarationIndex <= firstKoFunctionDeclarationIndex
+            if (lastKoPropertyDeclarationIndex != -1 && firstKoFunctionDeclarationIndex != -1) {
+                lastKoPropertyDeclarationIndex < firstKoFunctionDeclarationIndex
+            } else {
+                true
+            }
         }
 }
 ```
 
-## Snippet 9
+## 3: Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
-fun `companion object is the last declaration in the class`() {
-    Konsist.scopeFromProject()
+@Test
+fun `every constructor parameter has name derived from parameter type`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .constructors
+        .parameters
+        .assert {
+            val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
+            nameTitleCase == it.type.sourceType
+        }
+}
+```
+
+## 4: Every Class Constructor Has Alphabetically Ordered Parameters
+
+```kotlin
+@Test
+fun `every class constructor has alphabetically ordered parameters`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .constructors
+        .assert {
+            val names = it.parameters.map { parameter -> parameter.name }
+            val sortedNames = names.sorted()
+            names == sortedNames
+        }
+}
+```
+
+## 5: Companion Object Is Last Declaration In The Class
+
+```kotlin
+@Test
+fun `companion object is last declaration in the class`() {
+    Konsist
+        .scopeFromProject()
         .classes()
         .assert {
-            val companionObjectIndex = it
-                .declarations()
-                .indexOfLast { declaration ->
-                    declaration is KoObjectDeclaration && declaration.hasModifiers(KoModifier.COMPANION)
-                }
+            val companionObject = it.objects().lastOrNull { obj ->
+                obj.hasModifiers(KoModifier.COMPANION)
+            }
 
-            val lastIndex = it.numDeclarations() - 1
-
-            companionObjectIndex == lastIndex || companionObjectIndex == -1
+            companionObject != null && it.declarations().last() == companionObject
         }
 }
 ```
 
-## Snippet 10
+## 6: Companion Objects Are Last Declarations In The Class
 
 ```kotlin
+@Test
+fun `companion objects are last declarations in the class`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .assert {
+            val companionObjects = it.objects().filter { obj ->
+                obj.hasModifiers(KoModifier.COMPANION)
+            }
+
+            if (companionObjects.isEmpty()) {
+                return@assert true
+            }
+
+            it.declarations().takeLast(companionObjects.size) == companionObjects
+        }
+}
+```
+
+## 7: Every Value Class Has Parameter Named `value`
+
+```kotlin
+@Test
+fun `every value class has parameter named 'value'`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withValueModifier()
+        .primaryConstructors
+        .assert { it.hasParameterNamed("value") }
+}
+```
+
+## 8: No Empty Files Allowed
+
+```kotlin
+@Test
+fun `no empty files allowed`() {
+    Konsist
+        .scopeFromProject()
+        .files
+        .assertNot { it.text.isEmpty() }
+}
+```
+
+## 9: No Field Should Have `m` Prefix
+
+```kotlin
+@Test
+fun `no field should have 'm' prefix`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .properties()
+        .assertNot {
+            val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
+            it.name.startsWith('m') && secondCharacterIsUppercase
+        }
+}
+```
+
+## 10: No Class Should Use Field Injection
+
+```kotlin
+@Test
+fun `no class should use field injection`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .properties()
+        .assertNot { it.hasAnnotationOf<Inject>() }
+}
+```
+
+## 11: No Class Should Use Java Util Logging
+
+```kotlin
+@Test
+fun `no class should use Java util logging`() {
+    Konsist
+        .scopeFromProject()
+        .files
+        .assertNot { it.hasImport { import -> import.name == "java.util.logging.." } }
+}
+```
+
+## 12: Package Name Must Match File Path
+
+```kotlin
+@Test
+fun `package name must match file path`() {
+    Konsist
+        .scopeFromProject()
+        .packages
+        .assert { it.hasMatchingPath }
+}
+```
+
+## 13: No Wildcard Imports Allowed
+
+```kotlin
+@Test
 fun `no wildcard imports allowed`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .imports
         .assertNot { it.isWildcard }
 }
 ```
 
-## Snippet 11
+## 14: Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
-fun `every value class has parameter named 'value'`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .withValueModifier()
-        .mapNotNull { it.primaryConstructor }
-        .assert { it.hasParameterNamed("value") }
-}
-```
-
-## Snippet 12
-
-```kotlin
+@Test
 fun `forbid the usage of 'forbiddenString' in file`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .files
         .assertNot { it.text.contains("forbiddenString") }
 }
 ```
+
