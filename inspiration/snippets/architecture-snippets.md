@@ -1,6 +1,6 @@
 # Architecture Snippets
 
-## Snippet 1: 2 Layer Architecture Has Correct Dependencies
+##1: 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin
 @Test
@@ -9,15 +9,21 @@ fun `2 layer architecture has correct dependencies`() {
         .scopeFromProject()
         .assertArchitecture {
             val presentation = Layer("Presentation", "com.myapp.presentation..")
-            val data = Layer("Data", "com.myapp.data..")
+            val business = Layer("Business", "com.myapp.business..")
+            val persistence = Layer("Persistence", "com.myapp.persistence..")
+            val database = Layer("Database", "com.myapp.database..")
 
-            presentation.dependsOn(data)
-            data.dependsOnNothing()
+            presentation.dependsOn(business)
+            business.dependsOn(presentation)
+            business.dependsOn(persistence)
+            persistence.dependsOn(business)
+            business.dependsOn(database)
+            database.dependsOn(business)
         }
 }
 ```
 
-## Snippet 2: Every File In Module Reside In Module Specific Package
+##2: Every File In Module Reside In Module Specific Package
 
 ```kotlin
 @Test
@@ -26,6 +32,29 @@ fun `every file in module reside in module specific package`() {
         .scopeFromProject()
         .files
         .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
+}
+```
+
+##3: Files Reside In Package That Is Derived From Module Name
+
+```kotlin
+@Test
+fun `files reside in package that is derived from module name`() {
+    Konsist.scopeFromProduction()
+        .files
+        .assert {
+            /*
+            module -> package name:
+            feature_meal_planner -> mealplanner
+            feature_caloric_calculator -> caloriccalculator
+            */
+            val featurePackageName = it
+                .moduleName
+                .removePrefix("feature_")
+                .replace("_", "")
+
+            it.hasPackage("com.myapp.$featurePackageName..")
+        }
 }
 ```
 

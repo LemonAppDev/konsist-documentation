@@ -1,6 +1,6 @@
 # General Snippets
 
-## Snippet 1: Files In `ext` Package Must Have Name Ending With `Ext`
+##1: Files In `ext` Package Must Have Name Ending With `Ext`
 
 ```kotlin
 @Test
@@ -13,7 +13,7 @@ fun `files in 'ext' package must have name ending with 'Ext'`() {
 }
 ```
 
-## Snippet 2: Properties Are Declared Before Functions
+##2: Properties Are Declared Before Functions
 
 ```kotlin
 @Test
@@ -30,12 +30,16 @@ fun `properties are declared before functions`() {
                 .declarations()
                 .indexOfFirstInstance<KoFunctionDeclaration>()
 
-            lastKoPropertyDeclarationIndex <= firstKoFunctionDeclarationIndex
+            if (lastKoPropertyDeclarationIndex != -1 && firstKoFunctionDeclarationIndex != -1) {
+                lastKoPropertyDeclarationIndex < firstKoFunctionDeclarationIndex
+            } else {
+                true
+            }
         }
 }
 ```
 
-## Snippet 3: Every Constructor Parameter Has Name Derived From Parameter Type
+##3: Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
 @Test
@@ -52,7 +56,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## Snippet 4: Every Class Constructor Has Alphabetically Ordered Parameters
+##4: Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
 @Test
@@ -69,7 +73,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## Snippet 5: Companion Object Is Last Declaration In The Class
+##5: Companion Object Is Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -87,7 +91,7 @@ fun `companion object is last declaration in the class`() {
 }
 ```
 
-## Snippet 6: Companion Objects Are Last Declarations In The Class
+##6: Companion Objects Are Last Declarations In The Class
 
 ```kotlin
 @Test
@@ -109,7 +113,7 @@ fun `companion objects are last declarations in the class`() {
 }
 ```
 
-## Snippet 7: Every Value Class Has Parameter Named `value`
+##7: Every Value Class Has Parameter Named `value`
 
 ```kotlin
 @Test
@@ -123,7 +127,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## Snippet 8: No Empty Files Allowed
+##8: No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -135,7 +139,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## Snippet 9: No Field Should Have `m` Prefix
+##9: No Field Should Have `m` Prefix
 
 ```kotlin
 @Test
@@ -151,7 +155,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## Snippet 10: No Class Should Use Field Injection
+##10: No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -164,7 +168,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## Snippet 11: No Class Should Use Java Util Logging
+##11: No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -172,11 +176,11 @@ fun `no class should use Java util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.hasImports("java.util.logging..") }
+        .assertNot { it.hasImport { import -> import.name == "java.util.logging.." } }
 }
 ```
 
-## Snippet 12: Package Name Must Match File Path
+##12: Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -188,7 +192,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## Snippet 13: No Wildcard Imports Allowed
+##13: No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -200,7 +204,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## Snippet 14: Forbid The Usage Of `forbiddenString` In File
+##14: Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
 @Test

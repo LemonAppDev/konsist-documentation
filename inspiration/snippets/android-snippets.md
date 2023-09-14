@@ -6,7 +6,7 @@ Konsist can be used to guard the consistency of the [Android](https://www.androi
 The [android-showcase](https://github.com/igorwojda/android-showcase) project contains set of Konsist tests.
 {% endhint %}
 
-## Snippet 1: Classes Extending `ViewModel` Should Have `ViewModel` Suffix
+##1: Classes Extending `ViewModel` Should Have `ViewModel` Suffix
 
 ```kotlin
 @Test
@@ -14,28 +14,28 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withAllParentsOf(ViewModel::class)
+        .withParentOf(ViewModel::class)
         .assert { it.name.endsWith("ViewModel") }
 }
 ```
 
-## Snippet 2: Every `ViewModel` public property has `Flow` type
+##2: Every `ViewModel` Public Property Has `Flow` Type
 
 ```kotlin
 @Test
-fun `'ViewModel' should expose data using Kotlin 'Flow'`() {
+fun `Every 'ViewModel' public property has 'Flow' type`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withAllParentsOf(ViewModel::class)
+        .withParentOf(ViewModel::class)
         .properties()
-        .assert { 
+        .assert {
             it.hasPublicOrDefaultModifier && it.hasType("kotlinx.coroutines.flow.Flow")
         }
 }
 ```
 
-## Snippet 3: `Repository` Class Should Reside in `repository` package
+##3: `Repository` Classes Should Reside In `repository` Package
 
 ```kotlin
 @Test
@@ -48,7 +48,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
 }
 ```
 
-## Snippet 4: No Class Should Use Android Util Logging
+##4: No Class Should Use Android Util Logging
 
 ```kotlin
 @Test
@@ -56,6 +56,7 @@ fun `no class should use Android util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.hasImports("android.util.Log") }
+        .assertNot { it.hasImport { import -> import.name == "android.util.Log" } }
 }
 ```
+
