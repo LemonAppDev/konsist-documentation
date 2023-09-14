@@ -1,6 +1,6 @@
 # Test Snippets
 
-## Snippet 1: Every Class Has Test
+##1: Every Class Has Test
 
 ```kotlin
 @Test
@@ -12,7 +12,7 @@ fun `every class has test`() {
 }
 ```
 
-## Snippet 2: Every Class - Except Data And Value Class - Has Test
+##2: Every Class - Except Data And Value Class - Has Test
 
 ```kotlin
 @Test
@@ -20,12 +20,12 @@ fun `every class - except data and value class - has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .withoutSomeModifiers(KoModifier.DATA, KoModifier.VALUE)
+        .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
         .assert { it.hasTestClass() }
 }
 ```
 
-## Snippet 3: Test Classes Should Have Test Subject Named Sut
+##3: Test Classes Should Have Test Subject Named Sut
 
 ```kotlin
 @Test
@@ -44,7 +44,7 @@ fun `test classes should have test subject named sut`() {
 }
 ```
 
-## Snippet 4: Test Classes Should Have All Members Private Besides Tests
+##4: Test Classes Should Have All Members Private Besides Tests
 
 ```kotlin
 @Test
@@ -54,13 +54,13 @@ fun `test classes should have all members private besides tests`() {
         .classes()
         .declarations()
         .filterIsInstance<KoAnnotationProvider>()
-        .withoutSomeAnnotationsOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
+        .withoutAnnotationOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
         .filterIsInstance<KoVisibilityModifierProvider>()
         .assert { it.hasPrivateModifier }
 }
 ```
 
-## Snippet 5: Don`t Use JUnit4 Test Annotation
+##5: Don`t Use JUnit4 Test Annotation
 
 ```kotlin
 @Test
@@ -69,7 +69,7 @@ fun `don't use JUnit4 Test annotation`() {
         .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { it.hasAnnotations("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+        .assertNot { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
 }
 ```
 
