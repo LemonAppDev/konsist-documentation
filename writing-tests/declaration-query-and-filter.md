@@ -57,7 +57,7 @@ Here is an example of querying all properties defined inside classes:
 
 More granular filtering can be applied to additionally filter classes annotated with certain attributes like classes annotated with `UseCase` annotation.
 
-Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` the method can be used to additionally filter the content of the `List<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
+Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` method can be used to filter the content of the `List<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
 
 ```kotlin
 koScope
@@ -75,7 +75,13 @@ koScope
     .assert { // .. }
 ```
 
-Multiple conditions can be applied to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:&#x20;
+{% hint style="info" %}
+The`.`**`withAllAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes heaving all annotations present (`Annotation1` **and** `Annotation2`).&#x20;
+
+The`.`**`withSomeAnnotationsOf`**`(Annotation1::class, Annotation2::class) filter`classes  heaving`at least one annotation` (`Annotation1` **or** `Annotation2`)`.`
+{% endhint %}
+
+Multiple conditions can be chained to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:&#x20;
 
 ```kotlin
 koScope
@@ -85,7 +91,7 @@ koScope
     .assert { // .. }
 ```
 
-It is also possible to filter declarations by using certain aspects e.g. visibility modifiers. This allows verifying the visibility of different declaration types such as classes, functions, properties, etc.:
+It is also possible to filter declarations by using certain aspects e.g. visibility modifiers. Usage of `providers` allows verifying the visibility of different declaration types such as classes, functions, properties, etc:
 
 ```kotlin
 koScope

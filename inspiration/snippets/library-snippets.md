@@ -1,6 +1,6 @@
 # Library Snippets
 
-## 1: Every Api Declaration Has KDoc
+##1: Every Api Declaration Has KDoc
 
 ```kotlin
 @Test
@@ -12,7 +12,7 @@ fun `every api declaration has KDoc`() {
 }
 ```
 
-## 2: Every Function With Parameters Has A Param Tags
+##2: Every Function With Parameters Has A Param Tags
 
 ```kotlin
 @Test
@@ -23,7 +23,7 @@ fun `every function with parameters has a param tags`() {
 }
 ```
 
-## 3: Every Function With Return Value Has A Return Tag
+##3: Every Function With Return Value Has A Return Tag
 
 ```kotlin
 @Test
@@ -34,7 +34,7 @@ fun `every function with return value has a return tag`() {
 }
 ```
 
-## 4: Every Extension Has A Receiver Tag
+##4: Every Extension Has A Receiver Tag
 
 ```kotlin
 @Test
@@ -45,7 +45,7 @@ fun `every extension has a receiver tag`() {
 }
 ```
 
-## 5: Every Public Function In Api Package Must Have Explicit Return Type
+##5: Every Public Function In Api Package Must Have Explicit Return Type
 
 ```kotlin
 @Test
@@ -57,7 +57,7 @@ fun `every public function in api package must have explicit return type`() {
 }
 ```
 
-## 6: Every Public Property In Api Package Must Have Specify Type Explicitly
+##6: Every Public Property In Api Package Must Have Specify Type Explicitly
 
 ```kotlin
 @Test

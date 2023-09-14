@@ -1,6 +1,6 @@
 # Architecture Snippets
 
-## 1: 2 Layer Architecture Has Correct Dependencies
+##1: 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin
 @Test
@@ -23,7 +23,7 @@ fun `2 layer architecture has correct dependencies`() {
 }
 ```
 
-## 2: Every File In Module Reside In Module Specific Package
+##2: Every File In Module Reside In Module Specific Package
 
 ```kotlin
 @Test
@@ -35,7 +35,7 @@ fun `every file in module reside in module specific package`() {
 }
 ```
 
-## 3: Files Reside In Package That Is Derived From Module Name
+##3: Files Reside In Package That Is Derived From Module Name
 
 ```kotlin
 @Test

@@ -1,40 +1,32 @@
 # Declaration Vs Property
 
-Some code constructs can be represented as declarations (declaration-site) and properties (use-site).&#x20;
+Some code constructs can be represented as declarations (declaration-site) and as properties (use-site).
 
 ## Declaration Site
 
 Consider this annotation class:
 
 ```kotlin
-annotation class CustomAnnotation
+annotation class CustomLogger
 ```
 
-The above code represents the declaration of `CustomAnnotation` the annotation class, the place in the code where this annotation is declared (declaration-site). This declaration can be retrieved by filtering `KoScope` declarations...
+The above code represents the declaration of the `CustomLogger` annotation class, the place in the code where this annotation is declared (declaration-site). This declaration can be retrieved by filtering `KoScope` declarations...
 
 ```kotlin
 koScope
-    .declarations()
-    .filterIsInstance<KoAnnotationDeclaration>()
+    .classes()
+    .withAnnotationModifier()
 ```
 
-..or using the `annotations` method directly:
+For example, such declaration can be used to check if annotations reside in a desired package:
 
 ```kotlin
-koScope.annotations() // List<KoAnnotationDeclaration>
-```
-
-Such declaration can be used to check if annotations declared in a given package have the correct name suffix:
-
-```kotlin
-// Every annotation declared inside com.logger package must have a name ending with "Logger"
+// Every annotation class must reside in the "annotation" package
 
 koScope
-    .annotations()
-    .withPackage("com.logger")
-    .assert {
-        it.hasNameEndingWith("Logger")
-    }
+    .classes()
+    .withAnnotationModifier()
+    .assert { it.resideInPackage("..annotation..") }
 ```
 
 ## Use Site
@@ -42,30 +34,28 @@ koScope
 Now consider this function:
 
 ```kotlin
-@CustomAnnotation
+@CustomLogger
 fun logHello() {
     println("Hello")
 }
 ```
 
-The above code also contains `CustomAnnotation` annotation. However, this time code represents the place in the code where the annotation is used (use-site). Such annotations can be accessed using the `annotations` property:
+The above code also contains `CustomLogger` annotation. However, this time code represents the place in the code where the annotation is used (use-site). Such annotations can be accessed using the `annotations` property:
 
-```
-koFunction.annotations
-```
+<pre class="language-kotlin"><code class="lang-kotlin">koScope
+    .functions()
+<strong>    .annotations
+</strong></code></pre>
 
-Such properties can be used to check if the function with certain name have the correct name suffix:
+Such properties can be used to check if the function annotated with `CustomLogger` annotation has the correct name prefix:
 
 ```kotlin
-// Every function with name starting with "log" is annotated with CustomAnnotation
+// Every function with a name starting with "log" is annotated with CustomLogger
 
 koScope
     .functions()
-    .withNameStartingWith("log")
+    .withAllAnnotations("CustomLogger")
     .assert {
-        it.hasAnnotation("CustomAnnotation")
+        it.hasNameStartingWith("log")
     }
 ```
-
-
-

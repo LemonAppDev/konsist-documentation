@@ -2,7 +2,7 @@
 
 Konsist can be used to guard the consistency of the [Spring](https://spring.io/) project.
 
-## 1: Interfaces With `Repository` Annotation Should Have `Repository` Suffix
+##1: Interfaces With `Repository` Annotation Should Have `Repository` Suffix
 
 ```kotlin
 @Test
@@ -15,7 +15,7 @@ fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() 
 }
 ```
 
-## 2: Classes With `RestController` Annotation Should Have `Controller` Suffix
+##2: Classes With `RestController` Annotation Should Have `Controller` Suffix
 
 ```kotlin
 @Test
@@ -28,7 +28,7 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
 }
 ```
 
-## 3: Classes With `RestController` Annotation Should Reside In `controller` Package
+##3: Classes With `RestController` Annotation Should Reside In `controller` Package
 
 ```kotlin
 @Test
