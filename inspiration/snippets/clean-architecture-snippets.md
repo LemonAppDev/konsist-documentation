@@ -1,6 +1,6 @@
 # Clean Architecture Snippets
 
-##1: Clean Architecture Layers Have Correct Dependencies
+## 1: Clean Architecture Layers Have Correct Dependencies
 
 ```kotlin
 @Test
@@ -21,7 +21,7 @@ fun `clean architecture layers have correct dependencies`() {
 }
 ```
 
-##2: Classes With `UseCase` Suffix Should Reside In `domain` And `usecase` Package
+## 2: Classes With `UseCase` Suffix Should Reside In `domain` And `usecase` Package
 
 ```kotlin
 @Test
@@ -34,7 +34,7 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
 }
 ```
 
-##3: Classes With `UseCase` Suffix Should Have Single `public Operator` Method Named `invoke`
+## 3: Classes With `UseCase` Suffix Should Have Single `public Operator` Method Named `invoke`
 
 ```kotlin
 @Test
@@ -53,7 +53,7 @@ fun `classes with 'UseCase' suffix should have single 'public operator' method n
 }
 ```
 
-##4: Interfaces With `Repository` Annotation Should Reside In `data` Package
+## 4: Interfaces With `Repository` Annotation Should Reside In `data` Package
 
 ```kotlin
 @Test
@@ -66,7 +66,7 @@ fun `interfaces with 'Repository' annotation should reside in 'data' package`() 
 }
 ```
 
-##5: Every UseCase Class Has Test
+## 5: Every UseCase Class Has Test
 
 ```kotlin
 @Test
