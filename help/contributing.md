@@ -7,7 +7,7 @@ description: Let's Improve Konsist Together
 So you want to help? That's great!
 
 {% hint style="info" %}
-To chat with Konsist developers and the Konsist community please check the [#konsist channel ](https://kotlinlang.slack.com/archives/C05QG9FD6KS)at `kotlinlang` Slack workspace (preferred) or start a new [GitHub discussion](https://github.com/LemonAppDev/konsist/discussions).
+To chat with Konsist developers and the Konsist community please check the [#konsist channel](https://kotlinlang.slack.com/archives/C05QG9FD6KS) at `kotlinlang` Slack workspace (preferred) or start a new [GitHub discussion](https://github.com/LemonAppDev/konsist/discussions).
 {% endhint %}
 
 The Konsist project is now at a critical stage where community input is essential to polish and mature it.
