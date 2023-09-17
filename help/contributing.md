@@ -7,21 +7,21 @@ description: Let's Improve Konsist Together
 So you want to help? That's great!
 
 {% hint style="info" %}
-To chat with Konsist developers and the Konsist community please check the [#konsist channel ](https://kotlinlang.slack.com/archives/C05QG9FD6KS) at `kotlinlang` Slack workspace (preferred) or start a new [GitHub discussion](https://github.com/LemonAppDev/konsist/discussions).&#x20;
+To chat with Konsist developers and the Konsist community please check the [#konsist channel ](https://kotlinlang.slack.com/archives/C05QG9FD6KS)at `kotlinlang` Slack workspace (preferred) or start a new [GitHub discussion](https://github.com/LemonAppDev/konsist/discussions).
 {% endhint %}
 
-The Konsist project is now at a critical stage where community input is essential to polish and mature it.&#x20;
+The Konsist project is now at a critical stage where community input is essential to polish and mature it.
 
 {% hint style="info" %}
-This contributing guide is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.&#x20;
+This contributing guide is still to be polished, so feel free to [start a new discussion or open an issue](https://github.com/LemonAppDev/konsist/discussions/new/choose) to discuss contributions, features/fixes, and implementation details.
 {% endhint %}
 
 There are a variety of ways to contribute to the Konsit project:
 
 * **Coding:** This is the most common way to contribute. You can fix bugs or add new features.
 * **Testing:** You can help to improve the quality by testing the code and reporting bugs. This is a great way to get involved and help out maturing the project.
-* **Documentation:** You can help to improve the documentation by writing or editing documentation. This is a great way to help people understand how to use Konsist.&#x20;
-* **Community:** You can answer questions or participate in discussions. This is a great way to connect with other programmers.&#x20;
+* **Documentation:** You can help to improve the documentation by writing or editing documentation. This is a great way to help people understand how to use Konsist.
+* **Community:** You can answer questions or participate in discussions. This is a great way to connect with other programmers.
 * **Spread the word:** You can help to spread the word about the Konsist by talking about it with fellow developers. You can also write a short post or a full-fledged article.
 
 No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.
@@ -57,7 +57,7 @@ To test the changes locally you can publish a `SNAPSHOOT` artifact of the Konsis
 ./gradlew publishToMavenLocal -Pkonsist.releaseTarget=local
 ```
 
-After publishing a new artifact `x.y.z-SNAPSHOT` with the version number will appear in the local Maven repository:
+After publishing a new artifact `x.y.z-SNAPSHOT` with the version number (defined in [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties)) will appear in the local Maven repository:
 
 ```
 Mac: /Users/<user_name>/.m2/repository/com/lemonappdev/konsist 
@@ -83,7 +83,7 @@ repositories {
 {% endtab %}
 
 {% tab title="Maven" %}
-Add the following block to the `module\pom.xml` file:
+By default, the Maven project uses a local repository. If not add the following block to the `module\pom.xml` file:
 
 ```xml
 <repositories>
@@ -96,13 +96,15 @@ Add the following block to the `module\pom.xml` file:
 {% endtab %}
 
 {% tab title="More" %}
-Dependency can be added to other build systems as well. Check the [snippets](https://central.sonatype.com/artifact/com.lemonappdev/konsist) section in the sonatype repository.&#x20;
+Dependency can be added to other build systems as well. Check the [snippets](https://central.sonatype.com/artifact/com.lemonappdev/konsist) section in the sonatype repository.
 {% endtab %}
 {% endtabs %}
 
-Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the version of the newly published artifact eg.
+Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact eg.
 
-`com.lemonappdev:konsist:0.9.0-SNAPSHOT`
+`com.lemonappdev:konsist:0.12.0-SNAPSHOT`
+
+The actual version is defined in the [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties) file. The `SNAPSHOT` suffix will be added automatically.
 
 Now build scripts will be able to resolve this newly published Konsist artifact.
 
@@ -115,8 +117,3 @@ IntelliJ IDEA UI provides a convenient way to check which version of Konsist is 
 ## Make a Change In Konsist Documentation Repository
 
 The [Konsist Documentation repository](https://github.com/LemonAppDev/konsist-documentation) contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request.
-
-
-
-
-
