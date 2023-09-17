@@ -41,7 +41,7 @@ This is a high-level view of project contribution:
 2. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 3. Make changes
 4. Add Tests if needed
-5. Open the Pull Request to branch `develop`
+5. Open the Pull Request to the `develop` branch
 
 {% hint style="info" %}
 See the [developer readme](https://github.com/LemonAppDev/konsist/blob/main/DeveloperReadme.md) containing more information about the project.
