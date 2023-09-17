@@ -57,13 +57,15 @@ To test the changes locally you can publish a `SNAPSHOOT` artifact of the Konsis
 ./gradlew publishToMavenLocal -Pkonsist.releaseTarget=local
 ```
 
-After publishing a new artifact `x.y.z-SNAPSHOT` with the version number (defined in [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties)) will appear in the local Maven repository:
+After publishing a new artifact `x.y.z-SNAPSHOT` with the version number will appear in the local Maven repository:
 
 ```
 Mac: /Users/<user_name>/.m2/repository/com/lemonappdev/konsist 
 Windows: C:\Users\<User_Name>\.m2\repository\com\lemonappdev\konsist 
 Linux: /home/<User_Name>/.m2/repository/com/lemonappdev/konsist 
 ```
+
+The actual Konsist version is defined in the [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties) file. The `SNAPSHOT` suffix will be added automatically to the published artifact.
 
 To use this artifact you have to add a local Maven repository to your project.
 
@@ -103,8 +105,6 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact eg.
 
 `com.lemonappdev:konsist:0.12.0-SNAPSHOT`
-
-The actual version is defined in the [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties) file. The `SNAPSHOT` suffix will be added automatically.
 
 Now build scripts will be able to resolve this newly published Konsist artifact.
 
