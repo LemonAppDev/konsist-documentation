@@ -37,3 +37,15 @@ koScope
     .properties()
     .assertNot { it.hasAnnotationOf<Inject>() }
 ```
+
+This assertion verifies that the class does not contain any properties with `public` (explicit `public` modifier) or default (implicit `public` modifier) modifiers:
+
+```
+koScope
+    .classes()
+    .assertNot { 
+        it.containsProperty { 
+            property -> property.hasPublicOrDefaultModifier 
+        } 
+    }
+```
