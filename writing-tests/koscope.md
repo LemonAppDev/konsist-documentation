@@ -89,7 +89,7 @@ project/
 ```
 
 {% hint style="warning" %}
-Nested modules are not yet supported.
+Nested modules are not yet supported. Please use [#directory-scope](koscope.md#directory-scope "mention")for now.
 {% endhint %}
 
 ### Source Set Scope
