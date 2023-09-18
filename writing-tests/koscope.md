@@ -88,6 +88,10 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+{% hint style="warning" %}
+Nested modules are not yet supported.
+{% endhint %}
+
 ### Source Set Scope
 
 The `scopeFromSourceSet` method argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
