@@ -4,7 +4,9 @@ description: Understand whats going on
 
 # Debug Konsist Test
 
-There are multiple tools that facilitate debugging and help understand what's going on inside the test.&#x20;
+This page will help you review the data exposed by the Konsist and understand what going on inside the Konsist test and Konsist API.
+
+Two primary tools can help you comprehend the inner workings of the Konsit API -  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
 
 ## Evaluate Expression
 
@@ -34,8 +36,6 @@ koScope
     .first()
     .name
 ```
-
-This is just a starting point to help you review the data exposed by the Konsist.
 
 ## Print To Console
 
