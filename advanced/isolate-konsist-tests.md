@@ -168,7 +168,7 @@ include("app", ":konsist_test").kts
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
 
-<img src="../.gitbook/assets/image (4).png" alt="" data-size="original">
+<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
 
 For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle.kts` file.
 
@@ -187,7 +187,7 @@ include ':app', ':konsist_test'
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
 
-<img src="../.gitbook/assets/image (4).png" alt="" data-size="original">
+<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
 
 For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle` file.
 
@@ -210,10 +210,6 @@ To execute all unit tests besides tests in the `konsistTest` module run:
 {% tabs %}
 {% tab title="Gradle" %}
 `./gradlew test -x konsistTest:test`
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
 {% endtab %}
 {% endtabs %}
 

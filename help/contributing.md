@@ -112,7 +112,7 @@ Now build scripts will be able to resolve this newly published Konsist artifact.
 
 IntelliJ IDEA UI provides a convenient way to check which version of Konsist is used by the project. Open the `External Libraries` section of `Project view` and search for Konsist dependency:
 
-![](<../.gitbook/assets/image (3).png>)
+![](<../.gitbook/assets/image (3) (1).png>)
 
 ## Make a Change In Konsist Documentation Repository
 
