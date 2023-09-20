@@ -48,7 +48,7 @@ fun `classes with 'UseCase' suffix should have single 'public operator' method n
                 function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
             }
 
-            hasSingleInvokeOperatorMethod && it.numPublicOrDefaultDeclarations() == 1
+            hasSingleInvokeOperatorMethod && it.it.countFunctions { method -> method.hasPublicOrDefaultModifier } == 1
         }
 }
 ```
@@ -78,4 +78,3 @@ fun `every UseCase class has test`() {
         .assert { it.hasTestClass() }
 }
 ```
-
