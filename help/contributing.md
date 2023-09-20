@@ -33,7 +33,7 @@ Konsist project is spread across multiple repositories:
 * [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
 * [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
 
-## Make a Change In The Konsist Repository
+## Make A Change In The Konsist Repository
 
 This is a high-level view of project contribution:
 
@@ -116,7 +116,7 @@ IntelliJ IDEA UI provides a convenient way to check which version of Konsist is 
 
 ## Checks
 
-During the PR review, multiple checks are run using [GitHub Actions](https://github.com/features/actions) ([.github/workflow](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows) directory). These checks can also be executed locally using the following commands:
+During the PR review, several types of checks are executed using [GitHub Actions](https://github.com/features/actions) ([.github/workflow](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows)). These checks can also be executed locally using the following commands:
 
 * [Spotless](https://github.com/diffplug/spotless) (runs [ktlint](https://github.com/pinterest/ktlint))
   * &#x20;`./gradlew spotlessCheck` - check the code using Spotless
@@ -131,6 +131,8 @@ During the PR review, multiple checks are run using [GitHub Actions](https://git
   * `./gradlew lib:konsistTest` -  run Konsist tests to test Konsist codebase 🤯😉
 
 ## Source Sets
+
+Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html)) to provide better isolation between various types of tests:
 
 * `test` - tests related to generic Konsist API (everything except the `architectureAssert`)
 * `apiTest` - tests related to `architectureAssert`
