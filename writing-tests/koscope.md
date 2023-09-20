@@ -88,9 +88,28 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+### Nested Module Scope
+
+A nested module is a module that exists within another module.
+
 {% hint style="warning" %}
-Nested modules are not yet supported. Please use [#directory-scope](koscope.md#directory-scope "mention")for now.
+Nested modules are not tested. Community reporting this feature works, however, we still have to take a closer look, review expectations, and add tests for this code.
 {% endhint %}
+
+Consider this `feature` module existing inside `app` module:
+
+```
+project/ 
+├─ app/   <--- scope contains all files from the 'app' module
+│  ├─ feature/
+│  │  ├─ Feature.kt
+```
+
+To narrow the scope to `feature` module use:
+
+```kotlin
+Konsist.scopeFromModule("app/feature")
+```
 
 ### Source Set Scope
 
