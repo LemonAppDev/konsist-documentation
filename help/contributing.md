@@ -33,7 +33,7 @@ Konsist project is spread across multiple repositories:
 * [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
 * [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
 
-## Make a Change In Konsist Repository
+## Make a Change In The Konsist Repository
 
 This is a high-level view of project contribution:
 
@@ -114,6 +114,45 @@ IntelliJ IDEA UI provides a convenient way to check which version of Konsist is 
 
 ![](<../.gitbook/assets/image (3) (1).png>)
 
-## Make a Change In Konsist Documentation Repository
+## Checks
+
+During the PR review, multiple checks are run using [GitHub Actions](https://github.com/features/actions) ([.github/workflow](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows) directory). These checks can also be executed locally using the following commands:
+
+* [Spotless](https://github.com/diffplug/spotless) (runs [ktlint](https://github.com/pinterest/ktlint))
+  * &#x20;`./gradlew spotlessCheck`  check the code using Spotless
+  * &#x20;`./gradlew spotlessApply`  - fix code using Spotless (if possible)
+* [Detekt](https://github.com/detekt/detekt)
+  * `./gradlew detektCheck`  check the code using Detekt
+  * &#x20;`./gradlew detektApply`  - fix code using Detekt (if possible)
+* Tests
+  * `./gradlew :lib:test` - run JUnit tests
+  * `./gradlew lib:apiTest` - run API tests
+  * `./gradlew lib:integrationTest` -  run integrations tests
+  * `./gradlew lib:konsistTest` -  run Konsist tests
+
+## Source Sets
+
+* `test` - tests related to generic Konsist API (everything except the `architectureAssert`)
+* `apiTest` - tests related to `architectureAssert`
+* `integrationTest` - test classes using custom Kotlin snippets (`.kttxt`) to test the Konsist API
+* `konsistTest` - tests Konsist codebase consistency using `konsist` library
+* `snippets` - contains Koltin code snippets, written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The update-snippets.py script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
+
+## Layers
+
+The high-level view of Konsist architecture:
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart LR
+    subgraph Konsist
+        direction TB
+        direction LR
+        Api --> Core
+    end
+    Client --> Konsist
+```
+
+## Make a Change In The Konsist Documentation Repository
 
 The [Konsist Documentation repository](https://github.com/LemonAppDev/konsist-documentation) contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request.
