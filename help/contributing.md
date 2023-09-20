@@ -41,11 +41,11 @@ This is a high-level view of project contribution:
 2. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 3. Make changes
 4. Add Tests if needed
-5. Open the Pull Request to the `develop` branch
-6. For some contributions, the Konist repo admin may have to manually approve the run of the checks.&#x20;
+5. Open the `Draft` Pull Request to the `develop` branch
+6. Make sure all checks are passing before marking PR as `Ready for review`.
 
 {% hint style="info" %}
-See the [developer readme](https://github.com/LemonAppDev/konsist/blob/main/DeveloperReadme.md) containing more information about the project.
+For some contributors, the repo admin may have to approve checks manually for the 1st PR.
 {% endhint %}
 
 ## Testing Changes Locally
