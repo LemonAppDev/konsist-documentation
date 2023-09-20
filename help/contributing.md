@@ -119,16 +119,16 @@ IntelliJ IDEA UI provides a convenient way to check which version of Konsist is 
 During the PR review, multiple checks are run using [GitHub Actions](https://github.com/features/actions) ([.github/workflow](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows) directory). These checks can also be executed locally using the following commands:
 
 * [Spotless](https://github.com/diffplug/spotless) (runs [ktlint](https://github.com/pinterest/ktlint))
-  * &#x20;`./gradlew spotlessCheck`  check the code using Spotless
-  * &#x20;`./gradlew spotlessApply`  - fix code using Spotless (if possible)
+  * &#x20;`./gradlew spotlessCheck` - check the code using Spotless
+  * &#x20;`./gradlew spotlessApply`  - check and fix code using Spotless (if possible)
 * [Detekt](https://github.com/detekt/detekt)
   * `./gradlew detektCheck`  check the code using Detekt
-  * &#x20;`./gradlew detektApply`  - fix code using Detekt (if possible)
+  * &#x20;`./gradlew detektApply`  - check and fix code using Detekt (if possible)
 * Tests
   * `./gradlew :lib:test` - run JUnit tests
   * `./gradlew lib:apiTest` - run API tests
   * `./gradlew lib:integrationTest` -  run integrations tests
-  * `./gradlew lib:konsistTest` -  run Konsist tests
+  * `./gradlew lib:konsistTest` -  run Konsist tests to test Konsist codebase 🤯😉
 
 ## Source Sets
 
