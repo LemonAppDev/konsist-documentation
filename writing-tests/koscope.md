@@ -93,7 +93,7 @@ project/
 A nested module is a module that exists within another module.
 
 {% hint style="warning" %}
-Nested modules are not tested. Community reporting this feature works, however, we still have to take a closer look, review expectations, and add tests for this code.
+The `nested modules` the feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests.
 {% endhint %}
 
 Consider this `feature` module existing inside `app` module:
