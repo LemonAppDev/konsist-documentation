@@ -42,6 +42,7 @@ This is a high-level view of project contribution:
 3. Make changes
 4. Add Tests if needed
 5. Open the Pull Request to the `develop` branch
+6. For the first contribution, the Konist repo admin may have to manually approve the run of the checks.&#x20;
 
 {% hint style="info" %}
 See the [developer readme](https://github.com/LemonAppDev/konsist/blob/main/DeveloperReadme.md) containing more information about the project.
@@ -125,7 +126,7 @@ During the PR review, several types of checks are executed using [GitHub Actions
   * `./gradlew detektCheck`  check the code using Detekt
   * &#x20;`./gradlew detektApply`  - check and fix code using Detekt (if possible)
 * Tests
-  * `./gradlew :lib:test` - run JUnit tests
+  * `./gradlew lib:test` - run JUnit tests
   * `./gradlew lib:apiTest` - run API tests
   * `./gradlew lib:integrationTest` -  run integrations tests
   * `./gradlew lib:konsistTest` -  run Konsist tests to test Konsist codebase 🤯😉
