@@ -88,6 +88,20 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+This approach may be helpful when refactoring existing project modules by module.
+
+```
+val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule1")
+val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule2")
+
+val scope = refactoredModule1Scope + refactoredModule1Scop2
+
+scope
+   .classes()
+   ...
+   .assert { /*..*/ }
+```
+
 ### Nested Module Scope
 
 A nested module is a module that exists within another module.
