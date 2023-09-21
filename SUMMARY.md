@@ -21,7 +21,7 @@
 
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
-* [Compiler Inference](features/compiler-inference.md)
+* [Compiler Type Inference](features/compiler-inference.md)
 * [Package Wildcard](features/packageselector.md)
 * [Debug Konsist Test](features/debug-konsist-test.md)
 
