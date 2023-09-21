@@ -38,7 +38,7 @@ fun `every use case reside in use case package`() {
 ```
 
 {% hint style="info" %}
-For more KOnsist test samples see the [snippets](inspiration/snippets/ "mention")section.
+For more Konsist test samples see the [snippets](inspiration/snippets/ "mention")section.
 {% endhint %}
 
 ## Architecture Checks
