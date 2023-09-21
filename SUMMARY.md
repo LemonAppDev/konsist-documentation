@@ -47,7 +47,7 @@
 ## ❓ HELP
 
 * [Changelog](help/changelog.md)
-* [Sending us Feedback](help/sending-us-feedback.md)
+* [Feedback & Questions](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
