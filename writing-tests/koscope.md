@@ -370,7 +370,7 @@ project/
 
 ## Scope Composition
 
-It is possible to compose scopes using Kotlin operators:
+It is possible to compose the desired scopes using Kotlin operators:
 
 ```kotlin
 // add scopes
