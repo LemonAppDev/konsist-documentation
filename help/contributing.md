@@ -103,7 +103,6 @@ repositories {
     mavenLocal()
 }
 ```
-
 {% endtab %}
 
 {% tab title="Maven" %}
@@ -117,7 +116,6 @@ By default, the Maven project uses a local repository. If not add the following 
     </repository>
 </repositories>
 ```
-
 {% endtab %}
 
 {% tab title="More" %}

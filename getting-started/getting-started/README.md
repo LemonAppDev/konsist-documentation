@@ -29,7 +29,6 @@ dependencies {
     testImplementation("com.lemonappdev:konsist:0.12.2")
 }
 ```
-
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
@@ -40,7 +39,6 @@ dependencies {
     testImplementation "com.lemonappdev:konsist:0.12.2"
 }
 ```
-
 {% endtab %}
 
 {% tab title="Maven" %}
