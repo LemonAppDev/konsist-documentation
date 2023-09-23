@@ -29,6 +29,7 @@ dependencies {
     testImplementation("com.lemonappdev:konsist:0.12.2")
 }
 ```
+
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
@@ -39,6 +40,7 @@ dependencies {
     testImplementation "com.lemonappdev:konsist:0.12.2"
 }
 ```
+
 {% endtab %}
 
 {% tab title="Maven" %}
@@ -52,6 +54,7 @@ Add the following dependency to the `module\pom.xml` file:
     <scope>test</scope>
 </dependency>
 ```
+
 {% endtab %}
 
 {% tab title="More" %}
@@ -130,7 +133,7 @@ To perform more advanced querying and filtering see the [declaration-query-and-f
 
 ### Assert
 
-Assert is the final step to perform declaration verification - use `assert` combined with  `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controller` package:
+Assert is the final step to perform declaration verification - use `assert` combined with `koClass.resideInPackage` method to make sure that all classes (filtered in the previous step) reside in `controller` package:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -175,7 +178,7 @@ Review the [snippets](../../inspiration/snippets/ "mention") for more examples o
 
 ## Architectural Check
 
-Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business`  layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies:
+Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business` layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -262,4 +265,45 @@ For more Konsist architectural check see [Protect Kotlin Project Architecture Us
 
 {% hint style="info" %}
 To debug konsist tests see [debug-konsist-test.md](../../features/debug-konsist-test.md "mention") page.
+{% endhint %}
+
+### KoTest
+
+Konsist offers integration with [KoTest](https://kotest.io/), allowing you to bypass classes marked with the `@Suppress` annotation.
+When pairing Konsist with a [KoTest testing styles](https://kotest.io/docs/framework/testing-styles.html) for code verification, it's essential to utilize the name derived from the KoTest context.
+
+```kotlin
+...
+package com.api.controller
+...
+
+@Suppress("check class with Controller ending")
+class TestController {
+    ... // avoided for simplicity
+}
+
+...
+package com.api.test
+...
+
+class ArchitectureKonsistTest: FreeSpec({
+
+    "check class with Controller ending" {
+        Konsist
+            .scopeFromProject()
+            .classes()
+            .withNameEndingWith("Controller")
+            .assertTrue (suppressName = this.testCase.name.testName) { it.resideInPackage("..controller..") }
+    }
+})
+```
+
+One can note that the `.assertTrue()` function now includes a `suppressName` parameter, tapping into the suppression annotation. To leverage KoTest's context in this situation, invoke the test name as follows:
+
+```kotlin
+this.testCase.name.testName
+```
+
+{% hint style="info" %}
+Here in the example, `FreeSpec` was used but any of the KoTest's Testing Style can be used.
 {% endhint %}
