@@ -52,7 +52,6 @@ Add the following dependency to the `module\pom.xml` file:
     <scope>test</scope>
 </dependency>
 ```
-
 {% endtab %}
 
 {% tab title="More" %}
