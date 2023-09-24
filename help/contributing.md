@@ -123,7 +123,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtab %}
 {% endtabs %}
 
-Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact eg.
+Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact e.g.
 
 `com.lemonappdev:konsist:0.12.0-SNAPSHOT`
 
@@ -159,7 +159,7 @@ Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plu
 - `apiTest` - tests related to `architectureAssert`
 - `integrationTest` - test classes using custom Kotlin snippets (`.kttxt`) to test the Konsist API
 - `konsistTest` - tests Konsist codebase consistency using `konsist` library
-- `snippets` - contains Koltin code snippets, written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The update-snippets.py script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
+- `snippets` - contains Kotlin code snippets, written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The update-snippets.py script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
 
 We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-project](https://github.com/LemonAppDev/konsist/tree/main/test-projects) directory on the Konsist repository.
 

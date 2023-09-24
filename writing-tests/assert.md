@@ -17,6 +17,10 @@ flowchart TB
 
 ## Assert
 
+> **_@Deprecated:_**  will be removed in version 1.0.0.
+> 
+> Please use `.assertTrue`. See example below.
+
 In the below snippet, the assertion (performed on the list of interfaces) verifies if every interface has a `public` visibility modifier.
 
 ```kotlin
@@ -25,9 +29,25 @@ koScope
     .assert { it.hasPublicModifier() }
 ```
 
-The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case), however, the assertion itself will be performed on every available interface.&#x20;
+The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface.&#x20;
+
+## AssertTrue
+
+In the below snippet, the assertion (performed on the list of interfaces) verifies if every interface has a `public` visibility modifier.
+
+```kotlin
+koScope
+    .interfaces()
+    .assertTrue { it.hasPublicModifier() }
+```
+
+The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface.&#x20;
 
 ## Assert Not
+
+> **_@Deprecated:_**  will be removed in version 1.0.0
+>
+> Please use `.assertFalse`
 
 The `assertNot` is a negation of the `assert` method. In the below snippet, the assertion (performed on the list of properties) verifies if none of the properties has the `Inject` annotation:
 
@@ -38,9 +58,26 @@ koScope
     .assertNot { it.hasAnnotationOf<Inject>() }
 ```
 
+## Assert False
+
+The `assertFalse` is a negation of the `assertTrue` method. In the below snippet, the assertion (performed on the list of properties) verifies if none of the properties has the `Inject` annotation:
+
+```kotlin
+koScope
+    .classes()
+    .flatMap { it.properties() }
+    .assertFalse { it.hasAnnotationOf<Inject>() }
+```
+
 ## Exceptions Thrown
 
-The `assert` and `assertNot`methods throw:
+The assertions:
+- `assert (@Deprecated)` 
+- `assertTrue`
+- `assertNot (@Deprecated)`
+- `assertFalse`
 
-* `KoCheckFailedException` if the assertion criteria are not met. The error message contains a descriptive location, pointing to the exact spot in the codebase
-* `KoPreconditionFailedException` if the assertion is performed on an empty list
+methods throw:
+
+* `KoCheckFailedException` - if the assertion criteria are not met. The error message contains a descriptive location, pointing to the exact spot in the codebase
+* `KoPreconditionFailedException` - if the assertion is performed on an empty list
