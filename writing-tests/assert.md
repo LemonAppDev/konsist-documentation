@@ -17,7 +17,7 @@ flowchart TB
 
 ## Assert
 
-> **_@Deprecated:_**  will be removed in version 1.0.0.
+> **_@Deprecated:_**  will be removed in version v1.0.0
 > 
 > Please use `.assertTrue`. See example below.
 
@@ -45,7 +45,7 @@ The `it` parameter inside the `assert` the method represents a single declaratio
 
 ## Assert Not
 
-> **_@Deprecated:_**  will be removed in version 1.0.0
+> **_@Deprecated:_**  will be removed in version v1.0.0
 >
 > Please use `.assertFalse`
 

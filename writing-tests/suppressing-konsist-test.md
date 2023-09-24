@@ -82,3 +82,47 @@ interface Book {
 }
 ```
 
+
+### Suppressing test (with KoTest)
+
+Within Konsist, KoTest specs can use `@Suppress` annotation to make use of it.
+
+When pairing Konsist with a [KoTest testing styles](https://kotest.io/docs/framework/testing-styles.html) for code verification, it's essential to utilize the name derived from the KoTest context.
+
+```kotlin
+...
+package com.api.controller
+...
+
+@Suppress("check class with Controller ending")
+class TestController {
+    ... // avoided for simplicity
+}
+
+...
+package com.api.test
+...
+
+class ArchitectureKonsistTest: FreeSpec({
+
+    "check class with Controller ending" {
+        Konsist
+            .scopeFromProject()
+            .classes()
+            .withNameEndingWith("Controller")
+            .assertTrue (suppressName = this.testCase.name.testName) { it.resideInPackage("..controller..") }
+    }
+})
+```
+
+One can note that the `.assertTrue()` function now includes a `suppressName` parameter, tapping into the suppression annotation. To leverage KoTest's context in this situation, invoke the test name as follows:
+
+```kotlin
+this.testCase.name.testName
+```
+
+{% hint style="info" %}
+Here in the example, `FreeSpec` was used but any of the KoTest's Testing Style can be used.
+{% endhint %}
+
+
