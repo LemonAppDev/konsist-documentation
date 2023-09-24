@@ -1,7 +1,3 @@
----
-description: Quickly configure Konsist and run the first test.
----
-
 # Getting Started
 
 The following example provides the minimum setup for writing a Konsist test.&#x20;

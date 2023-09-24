@@ -4,7 +4,7 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [gettingstarted.md](../getting-started/gettingstarted.md "mention")).
+The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [Broken link](broken-reference "mention")).
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
