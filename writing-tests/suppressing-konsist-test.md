@@ -35,6 +35,10 @@ interface Book {
 }
 ```
 
+{% hint style="info" %}
+Suppression without `konsist.`prefix also works (`@Suppress("every api declaration has KDoc")`). However, using the `konsist.prefix` is advised as it links the `Suppress` annotation to a specific tool. This ensures clarity on whether a particular suppression relates to a Konsist test.
+{% endhint %}
+
 When using `@Suppress` annotation, it's advisable to apply it to the smallest possible scope to ensure that only the intended warnings are suppressed, so other potential issues aren't inadvertently overlooked.  In the above example, the `@Suppress` annotation was applied to the property.&#x20;
 
 If broader suppression is necessary, you can then escalate to the interface level:
