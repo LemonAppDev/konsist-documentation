@@ -2,7 +2,7 @@
 
 ![](.gitbook/assets/konsist-logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It is compatible with various Kotlin projects including [Android](https://www.android.com/) projects, [Spring](https://spring.io/) projects, and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
+Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It supports a variety of Kotlin-based projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
 
 Konsist simplifies the process of maintaining codebase consistency by upholding coding conventions and safeguarding the project's architecture. It empowers developers to create consistency checks through unit tests, which can be run during pull request (PR) reviews for verification.
 
