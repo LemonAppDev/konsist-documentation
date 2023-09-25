@@ -4,7 +4,9 @@ description: Where we are?
 
 # Project Status
 
-Konsist has been field-tested on multiple  [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects with both [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/). build systems. On top of that Konists has a solid suite of tests (1300+ tests and 20 unique checks).
+Konsist has been field-tested on multiple  [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects with both [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/) build systems and multiple test frameworks (See [compatibility.md](compatibility.md "mention")).&#x20;
+
+Konist code base is guarded by a solid suite of tests (1400+ tests and 20 unique checks) to avoid regressions.
 
 There is still work to do, however, Konsist is already safe to use, because Konsist will is not a part of the application production code - it is part of the test source code used to verify the project code base.
 
