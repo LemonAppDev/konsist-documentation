@@ -11,7 +11,7 @@ fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() 
         .scopeFromProject()
         .interfaces()
         .withAnnotationOf(Repository::class)
-        .assert { it.hasNameEndingWith("Repository") }
+        .assertTrue { it.hasNameEndingWith("Repository") }
 }
 ```
 
@@ -24,7 +24,7 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assert { it.hasNameEndingWith("Controller") }
+        .assertTrue { it.hasNameEndingWith("Controller") }
 }
 ```
 
@@ -37,7 +37,7 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assert { it.resideInPackage("..controller..") }
+        .assertTrue { it.resideInPackage("..controller..") }
 }
 ```
 
