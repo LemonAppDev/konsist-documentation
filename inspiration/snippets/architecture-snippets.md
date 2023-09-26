@@ -1,4 +1,5 @@
 # Architecture Snippets
+
 ## 1. 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin

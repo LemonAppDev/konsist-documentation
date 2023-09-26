@@ -1,6 +1,7 @@
 # Spring Snippets
 
 Konsist can be used to guard the consistency of the [Spring](https://spring.io/) project.
+
 ## 1. Interfaces With `Repository` Annotation Should Have `Repository` Suffix
 
 ```kotlin
