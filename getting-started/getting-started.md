@@ -1,8 +1,4 @@
----
-description: Quickly configure Konsist and run the first test.
----
-
-# Quick Start
+# Getting Started
 
 The following example provides the minimum setup for writing a Konsist test.&#x20;
 
@@ -30,7 +26,7 @@ Add the following dependency to the `module\build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    testImplementation("com.lemonappdev:konsist:0.10.0")
+    testImplementation("com.lemonappdev:konsist:0.12.2")
 }
 ```
 {% endtab %}
@@ -40,7 +36,7 @@ Add the following dependency to the `module\build.gradle` file:
 
 ```groovy
 dependencies {
-    testImplementation "com.lemonappdev:konsist:0.10.0"
+    testImplementation "com.lemonappdev:konsist:0.12.2"
 }
 ```
 {% endtab %}
@@ -52,7 +48,7 @@ Add the following dependency to the `module\pom.xml` file:
 <dependency>
     <groupId>com.lemonappdev</groupId>
     <artifactId>konsist</artifactId>
-    <version>0.10.0</version>
+    <version>0.12.2</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -264,30 +260,7 @@ For more Konsist tests check the samples see the [Broken link](broken-reference 
 To debug konsist tests see [debug-konsist-test.md](../features/debug-konsist-test.md "mention") page.
 {% endhint %}
 
-## Additional JUnit5 Setup
 
-By default, JUnit tests are run sequentially in a single thread. To speed up tests parallel execution can be enabled.&#x20;
-
-Create `junit-platform.properties` a file containing:&#x20;
-
-```properties
-junit.jupiter.execution.parallel.enabled=true
-junit.jupiter.execution.parallel.mode.default=concurrent
-junit.jupiter.execution.parallel.config.strategy=dynamic
-junit.jupiter.execution.parallel.config.dynamic.factor=0.95
-```
-
-Place this file in the `resources`  directory of the test source set e.g:
-
-```
-src/test/resource/junit-platform.properties
-
-or
-
-src/konsistTest/resource/junit-platform.properties
-```
-
-Read more in the official [JUnit5 documentation](https://junit.org/junit5/docs/5.3.0-M1/user-guide/index.html#writing-tests-parallel-execution).
 
 
 

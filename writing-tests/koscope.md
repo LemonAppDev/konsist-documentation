@@ -88,6 +88,43 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+This approach may be helpful when refactoring existing project modules by module.
+
+```
+val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule1")
+val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule2")
+
+val scope = refactoredModule1Scope + refactoredModule1Scop2
+
+scope
+   .classes()
+   ...
+   .assert { /*..*/ }
+```
+
+### Nested Module Scope
+
+A nested module is a module that exists within another module.
+
+{% hint style="warning" %}
+The `nested modules` the feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests.
+{% endhint %}
+
+Consider this `feature` module existing inside `app` module:
+
+```
+project/ 
+├─ app/   <--- scope contains all files from the 'app' module
+│  ├─ feature/
+│  │  ├─ Feature.kt
+```
+
+To narrow the scope to `feature` module use:
+
+```kotlin
+Konsist.scopeFromModule("app/feature")
+```
+
 ### Source Set Scope
 
 The `scopeFromSourceSet` method argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
@@ -333,7 +370,7 @@ project/
 
 ## Scope Composition
 
-It is possible to compose scopes using Kotlin operators:
+It is possible to compose the desired scopes using Kotlin operators:
 
 ```kotlin
 // add scopes

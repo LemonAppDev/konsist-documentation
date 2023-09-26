@@ -4,7 +4,7 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [gettingstarted.md](../getting-started/gettingstarted.md "mention")).
+The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [Broken link](broken-reference "mention")).
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
@@ -14,7 +14,7 @@ To organize tests add a new test directory, module, or project. See preconfigure
 
 ## Dedicated Source Set (Spring and Kotlin Project)
 
-This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly usefull for Spring and Kotlin projects.
+This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
 {% hint style="info" %}
 This page describes the test located in the `app` module with the build config file located in `app` a folder. If the project does not contain any module then configuration should be applied in the root build config file.
@@ -131,7 +131,7 @@ Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-
 
 <figure><img src="../.gitbook/assets/KonsistTestSourceSet.png" alt=""><figcaption><p>konsistTest sorce directory</p></figcaption></figure>
 
-The `konsistTest` test source folder works exactly like build-in `test` source folder, so Kosist tests can be defined and executed in a similar way:
+The `konsistTest` test source folder works exactly like the build-in `test` source folder, so Kosist tests can be defined and executed in a similar way:
 
 {% tabs %}
 {% tab title="Gradle" %}
@@ -149,7 +149,7 @@ mvn test
 
 ## Dedicated Module
 
-This section demonstrates how to add the `konsistTest` module to the project. This configuration is mostly useful for Android projects, however, it will work with Spring and Kotlin projects.
+This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects, however, it will work with Spring and Kotlin projects.
 
 {% hint style="info" %}
 The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
@@ -168,7 +168,7 @@ include("app", ":konsist_test").kts
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
 
-<img src="../.gitbook/assets/image (4).png" alt="" data-size="original">
+<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
 
 For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle.kts` file.
 
@@ -187,7 +187,7 @@ include ':app', ':konsist_test'
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
 
-<img src="../.gitbook/assets/image (4).png" alt="" data-size="original">
+<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
 
 For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle` file.
 
@@ -195,19 +195,27 @@ Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
-
-{% endhint %}
-
-Kosist tests will be defined in the `test` source directory inside `konsistTest`. To execute tests run:
+Kosist tests will be defined in the `konsistTest` module. To execute Konsist tests run:
 
 {% tabs %}
 {% tab title="Gradle" %}
 ```
-./gradlew konsist_test:test
+./gradlew konsistTest:test
 ```
 {% endtab %}
 {% endtabs %}
+
+To execute all unit tests besides tests in the `konsistTest` module run:
+
+{% tabs %}
+{% tab title="Gradle" %}
+`./gradlew test -x konsistTest:test`
+{% endtab %}
+{% endtabs %}
+
+
+
+
 
 ## Dedicated&#x20;
 
