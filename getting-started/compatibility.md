@@ -4,7 +4,7 @@ description: Konsist ecosystem
 
 # Compatibility
 
-The `Java 9` is a minimum [Java](https://www.java.com/en) version required to run Konsist.
+The `Java 8` is a minimum [Java](https://www.java.com/en) version required to run Konsist.
 
 Konsist is compatible with all types of Kotlin projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
 
