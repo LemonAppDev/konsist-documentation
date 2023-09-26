@@ -1,2 +1,0 @@
-# KoTest Snippets
-
