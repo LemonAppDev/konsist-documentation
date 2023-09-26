@@ -1,71 +1,75 @@
 # Test Snippets
 
-## Snippet 1
+## 1. Every Class Has Test
 
 ```kotlin
+@Test
 fun `every class has test`() {
-    Konsist.scopeFromProduction()
+    Konsist
+        .scopeFromProduction()
         .classes()
-        .assert { it.hasTest() }
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
-## Snippet 2
+## 2. Every Class - Except Data And Value Class - Has Test
 
 ```kotlin
+@Test
 fun `every class - except data and value class - has test`() {
-    Konsist.scopeFromProduction()
+    Konsist
+        .scopeFromProduction()
         .classes()
-        .withoutSomeModifiers(KoModifier.DATA, KoModifier.VALUE)
-        .assert { it.hasTest() }
+        .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
-## Snippet 3
+## 3. Test Classes Should Have Test Subject Named Sut
 
 ```kotlin
+@Test
 fun `test classes should have test subject named sut`() {
-    Konsist.scopeFromTest()
+    Konsist
+        .scopeFromTest()
         .classes()
-        .assert {
+        .assertTrue {
             val type = it.name.removeSuffix("Test")
             val sut = it
                 .properties()
                 .firstOrNull { property -> property.name == "sut" }
 
-            sut != null && (sut.explicitType?.name == type || sut.text.contains("$type("))
+            sut != null && (sut.type?.name == type || sut.text.contains("$type("))
         }
 }
 ```
 
-## Snippet 4
+## 4. Test Classes Should Have All Members Private Besides Tests
 
 ```kotlin
+@Test
 fun `test classes should have all members private besides tests`() {
-    Konsist.scopeFromTest()
+    Konsist
+        .scopeFromTest()
         .classes()
         .declarations()
         .filterIsInstance<KoAnnotationProvider>()
-        .filterNot {
-            it.annotations.any { annotation ->
-                annotation
-                    .name
-                    .lowercase()
-                    .contains("test")
-            }
-        }
+        .withoutAnnotationOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
         .filterIsInstance<KoVisibilityModifierProvider>()
-        .assert { it.hasPrivateModifier }
+        .assertTrue { it.hasPrivateModifier }
 }
 ```
 
-## Snippet 5
+## 5. Don`t Use JUnit4 Test Annotation
 
 ```kotlin
+@Test
 fun `don't use JUnit4 Test annotation`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { it.hasAnnotations("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+        .assertFalse { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
 }
 ```
+

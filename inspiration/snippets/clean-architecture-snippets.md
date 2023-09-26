@@ -1,8 +1,8 @@
 # Clean Architecture Snippets
-
-## Snippet 1
+## 1. Clean Architecture Layers Have Correct Dependencies
 
 ```kotlin
+@Test
 fun `clean architecture layers have correct dependencies`() {
     Konsist
         .scopeFromProduction()
@@ -20,55 +20,61 @@ fun `clean architecture layers have correct dependencies`() {
 }
 ```
 
-## Snippet 2
+## 2. Classes With `UseCase` Suffix Should Reside In `domain` And `usecase` Package
 
 ```kotlin
-fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packages`() {
-    Konsist.scopeFromProject()
-        .classes()
-        .withNameEndingWith("UseCase")
-        .assert { it.resideInPackage("..domain..usecase..") }
-}
-```
-
-## Snippet 3
-
-```kotlin
-fun `classes with 'UseCase' suffix should have single public method named 'invoke'`() {
+@Test
+fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' package`() {
     Konsist
         .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
-        .assert {
+        .assertTrue { it.resideInPackage("..domain..usecase..") }
+}
+```
+
+## 3. Classes With `UseCase` Suffix Should Have Single `public Operator` Method Named `invoke`
+
+```kotlin
+@Test
+fun `classes with 'UseCase' suffix should have single 'public operator' method named 'invoke'`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withNameEndingWith("UseCase")
+        .assertTrue {
             val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
                 function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
             }
 
-            val hasSinglePublicDeclaration = it.numPublicOrDefaultDeclarations() == 1
-
-            hasSingleInvokeOperatorMethod && hasSinglePublicDeclaration
+            hasSingleInvokeOperatorMethod && it.countFunctions { item -> item.hasPublicOrDefaultModifier } == 1
         }
 }
 ```
 
-## Snippet 4
+## 4. Interfaces With `Repository` Annotation Should Reside In `data` Package
 
 ```kotlin
+@Test
 fun `interfaces with 'Repository' annotation should reside in 'data' package`() {
-    Konsist.scopeFromProject()
+    Konsist
+        .scopeFromProject()
         .interfaces()
-        .withAllAnnotationsOf(Repository::class)
-        .assert { it.resideInPackage("..data..") }
+        .withAnnotationOf(Repository::class)
+        .assertTrue { it.resideInPackage("..data..") }
 }
 ```
 
-## Snippet 5
+## 5. Every UseCase Class Has Test
 
 ```kotlin
+@Test
 fun `every UseCase class has test`() {
-    Konsist.scopeFromProduction()
+    Konsist
+        .scopeFromProduction()
         .classes()
-        .withParentClass("UseCase")
-        .assert { it.hasTest() }
+        .withParentNamed("UseCase")
+        .assertTrue { it.hasTestClass() }
 }
 ```
+
