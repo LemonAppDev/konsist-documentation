@@ -1,6 +1,5 @@
 # General Snippets
 
-gggggg
 ## 1. Files In `ext` Package Must Have Name Ending With `Ext`
 
 ```kotlin
