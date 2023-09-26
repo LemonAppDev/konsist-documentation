@@ -1,4 +1,5 @@
-# Clean Architecture Snippets## 1. Clean Architecture Layers Have Correct Dependencies
+# Clean Architecture Snippets
+## 1. Clean Architecture Layers Have Correct Dependencies
 
 ```kotlin
 @Test
