@@ -2,7 +2,6 @@
 
 Konsist can be used to guard the consistency of the [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) 
 library.
-
 ## 1. Classes Annotated With `Serializable` Have All Properties Annotated With `SerialName`
 
 ```kotlin
