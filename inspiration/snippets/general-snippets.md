@@ -1,6 +1,6 @@
 # General Snippets
 
-## 1. F i l e s   I n   ` e x t `   P a c k a g e   M u s t   H a v e   N a m e   E n d i n g   W i t h   ` E x t `
+## 1. Files In `ext` Package Must Have Name Ending With `Ext`
 
 ```kotlin
 @Test
@@ -13,7 +13,7 @@ fun `files in 'ext' package must have name ending with 'Ext'`() {
 }
 ```
 
-## 2. P r o p e r t i e s   A r e   D e c l a r e d   B e f o r e   F u n c t i o n s
+## 2. Properties Are Declared Before Functions
 
 ```kotlin
 @Test
@@ -39,7 +39,7 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## 3. E v e r y   C o n s t r u c t o r   P a r a m e t e r   H a s   N a m e   D e r i v e d   F r o m   P a r a m e t e r   T y p e
+## 3. Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
 @Test
@@ -56,7 +56,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## 4. E v e r y   C l a s s   C o n s t r u c t o r   H a s   A l p h a b e t i c a l l y   O r d e r e d   P a r a m e t e r s
+## 4. Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
 @Test
@@ -73,7 +73,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## 5. C o m p a n i o n   O b j e c t   I s   L a s t   D e c l a r a t i o n   I n   T h e   C l a s s
+## 5. Companion Object Is Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -95,7 +95,7 @@ fun `companion object is last declaration in the class`() {
 }
 ```
 
-## 6. E v e r y   V a l u e   C l a s s   H a s   P a r a m e t e r   N a m e d   ` v a l u e `
+## 6. Every Value Class Has Parameter Named `value`
 
 ```kotlin
 @Test
@@ -109,7 +109,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## 7. N o   E m p t y   F i l e s   A l l o w e d
+## 7. No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -121,7 +121,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## 8. N o   F i e l d   S h o u l d   H a v e   ` m `   P r e f i x
+## 8. No Field Should Have `m` Prefix
 
 ```kotlin
 @Test
@@ -137,7 +137,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## 9. N o   C l a s s   S h o u l d   U s e   F i e l d   I n j e c t i o n
+## 9. No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -150,7 +150,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## 10. N o   C l a s s   S h o u l d   U s e   J a v a   U t i l   L o g g i n g
+## 10. No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -162,7 +162,7 @@ fun `no class should use Java util logging`() {
 }
 ```
 
-## 11. P a c k a g e   N a m e   M u s t   M a t c h   F i l e   P a t h
+## 11. Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -174,7 +174,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## 12. N o   W i l d c a r d   I m p o r t s   A l l o w e d
+## 12. No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -186,7 +186,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## 13. F o r b i d   T h e   U s a g e   O f   ` f o r b i d d e n S t r i n g `   I n   F i l e
+## 13. Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
 @Test

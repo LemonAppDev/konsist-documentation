@@ -3,7 +3,7 @@
 Konsist can be used to guard the consistency of the [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) 
 library.
 
-## 1. C l a s s e s   A n n o t a t e d   W i t h   ` S e r i a l i z a b l e `   H a v e   A l l   P r o p e r t i e s   A n n o t a t e d   W i t h   ` S e r i a l N a m e `
+## 1. Classes Annotated With `Serializable` Have All Properties Annotated With `SerialName`
 
 ```kotlin
 @Test
@@ -19,7 +19,7 @@ fun `classes annotated with 'Serializable' have all properties annotated with 'S
 }
 ```
 
-## 2. E n u m   C l a s s e s   A n n o t a t e d   W i t h   ` S e r i a l i z a b l e `   H a v e   A l l   E n u m   C o n s t a n t s   A n n o t a t e d   W i t h   ` S e r i a l N a m e `
+## 2. Enum Classes Annotated With `Serializable` Have All Enum Constants Annotated With `SerialName`
 
 ```kotlin
 @Test
