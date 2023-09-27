@@ -3,7 +3,8 @@
 ## 🚀 GETTING STARTED
 
 * [What is Konsist?](README.md)
-* [Getting Started](getting-started/getting-started.md)
+* [Getting Started](getting-started/getting-started/README.md)
+  * [Adding To Existing Project](getting-started/getting-started/adding-to-existing-project.md)
 * [Getting Help](getting-started/getting-help.md)
 * [Articles](getting-started/articles.md)
 * [Compatibility](getting-started/compatibility.md)

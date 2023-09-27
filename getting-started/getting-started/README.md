@@ -60,7 +60,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtabs %}
 
 {% hint style="info" %}
-To achieve better test separation Konsist can be configured inside a `konsistTest` source set or a dedicated module. See [isolate-konsist-tests.md](../advanced/isolate-konsist-tests.md "mention").
+To achieve better test separation Konsist can be configured inside a `konsistTest` source set or a dedicated module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention").
 {% endhint %}
 
 ## High-Level Picture
@@ -83,7 +83,7 @@ flowchart TB
 ```
 
 {% hint style="info" %}
-The declaration represents Kotlin declaration eg. Kotlin class is represented by `KoClassDeclaration` allowing to access class name (`koClassDeclaration.name`), methods (`koClassDeclaration.functions()`), etc. See [declaration.md](../features/declaration.md "mention").&#x20;
+The declaration represents Kotlin declaration eg. Kotlin class is represented by `KoClassDeclaration` allowing to access class name (`koClassDeclaration.name`), methods (`koClassDeclaration.functions()`), etc. See [declaration.md](../../features/declaration.md "mention").&#x20;
 {% endhint %}
 
 ### Create The Scope
@@ -97,7 +97,7 @@ Konsist.scopeFromProject() // Define the scope containing all Kotlin files prese
 ```
 
 {% hint style="info" %}
-To define more granular scopes see the [koscope.md](../writing-tests/koscope.md "mention") page.
+To define more granular scopes see the [koscope.md](../../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
 The following sections will present how to use a scope by writing declaration checks and architecture checks.
@@ -125,7 +125,7 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To perform more advanced querying and filtering see the [declaration-query-and-filter.md](../writing-tests/declaration-query-and-filter.md "mention")page.
+To perform more advanced querying and filtering see the [declaration-query-and-filter.md](../../writing-tests/declaration-query-and-filter.md "mention")page.
 {% endhint %}
 
 ### Assert
@@ -140,11 +140,11 @@ Konsist.scopeFromProject()
 ```
 
 {% hint style="info" %}
-To learn more about assertions see [declaration-assert.md](../writing-tests/declaration-assert.md "mention") page.
+To learn more about assertions see [declaration-assert.md](../../writing-tests/declaration-assert.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
-The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../features/packageselector.md "mention") syntax).
+The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../../features/packageselector.md "mention") syntax).
 {% endhint %}
 
 ### Wrap Konsist Code In JUnit Test
@@ -257,7 +257,7 @@ For more Konsist tests check the samples see the [Broken link](broken-reference 
 {% endhint %}
 
 {% hint style="info" %}
-To debug konsist tests see [debug-konsist-test.md](../features/debug-konsist-test.md "mention") page.
+To debug konsist tests see [debug-konsist-test.md](../../features/debug-konsist-test.md "mention") page.
 {% endhint %}
 
 
