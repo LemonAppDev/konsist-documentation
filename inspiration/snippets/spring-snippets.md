@@ -2,7 +2,7 @@
 
 Konsist can be used to guard the consistency of the [Spring](https://spring.io/) project.
 
-## 1. Interfaces With `Repository` Annotation Should Have `Repository` Suffix
+## 1. I n t e r f a c e s   W i t h   ` R e p o s i t o r y `   A n n o t a t i o n   S h o u l d   H a v e   ` R e p o s i t o r y `   S u f f i x
 
 ```kotlin
 @Test
@@ -11,11 +11,11 @@ fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() 
         .scopeFromProject()
         .interfaces()
         .withAnnotationOf(Repository::class)
-        .assert { it.hasNameEndingWith("Repository") }
+        .assertTrue { it.hasNameEndingWith("Repository") }
 }
 ```
 
-## 2. Classes With `RestController` Annotation Should Have `Controller` Suffix
+## 2. C l a s s e s   W i t h   ` R e s t C o n t r o l l e r `   A n n o t a t i o n   S h o u l d   H a v e   ` C o n t r o l l e r `   S u f f i x
 
 ```kotlin
 @Test
@@ -24,11 +24,11 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assert { it.hasNameEndingWith("Controller") }
+        .assertTrue { it.hasNameEndingWith("Controller") }
 }
 ```
 
-## 3. Classes With `RestController` Annotation Should Reside In `controller` Package
+## 3. C l a s s e s   W i t h   ` R e s t C o n t r o l l e r `   A n n o t a t i o n   S h o u l d   R e s i d e   I n   ` c o n t r o l l e r `   P a c k a g e
 
 ```kotlin
 @Test
@@ -37,7 +37,7 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assert { it.resideInPackage("..controller..") }
+        .assertTrue { it.resideInPackage("..controller..") }
 }
 ```
 

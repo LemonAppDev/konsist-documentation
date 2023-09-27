@@ -1,6 +1,6 @@
 # Test Snippets
 
-## 1. Every Class Has Test
+## 1. E v e r y   C l a s s   H a s   T e s t
 
 ```kotlin
 @Test
@@ -8,11 +8,11 @@ fun `every class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .assert { it.hasTestClass() }
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
-## 2. Every Class - Except Data And Value Class - Has Test
+## 2. E v e r y   C l a s s   -   E x c e p t   D a t a   A n d   V a l u e   C l a s s   -   H a s   T e s t
 
 ```kotlin
 @Test
@@ -21,11 +21,11 @@ fun `every class - except data and value class - has test`() {
         .scopeFromProduction()
         .classes()
         .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
-        .assert { it.hasTestClass() }
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
-## 3. Test Classes Should Have Test Subject Named Sut
+## 3. T e s t   C l a s s e s   S h o u l d   H a v e   T e s t   S u b j e c t   N a m e d   S u t
 
 ```kotlin
 @Test
@@ -33,7 +33,7 @@ fun `test classes should have test subject named sut`() {
     Konsist
         .scopeFromTest()
         .classes()
-        .assert {
+        .assertTrue {
             val type = it.name.removeSuffix("Test")
             val sut = it
                 .properties()
@@ -44,7 +44,7 @@ fun `test classes should have test subject named sut`() {
 }
 ```
 
-## 4. Test Classes Should Have All Members Private Besides Tests
+## 4. T e s t   C l a s s e s   S h o u l d   H a v e   A l l   M e m b e r s   P r i v a t e   B e s i d e s   T e s t s
 
 ```kotlin
 @Test
@@ -56,11 +56,11 @@ fun `test classes should have all members private besides tests`() {
         .filterIsInstance<KoAnnotationProvider>()
         .withoutAnnotationOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
         .filterIsInstance<KoVisibilityModifierProvider>()
-        .assert { it.hasPrivateModifier }
+        .assertTrue { it.hasPrivateModifier }
 }
 ```
 
-## 5. Don`t Use JUnit4 Test Annotation
+## 5. D o n ` t   U s e   J U n i t 4   T e s t   A n n o t a t i o n
 
 ```kotlin
 @Test
@@ -69,7 +69,7 @@ fun `don't use JUnit4 Test annotation`() {
         .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+        .assertFalse { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
 }
 ```
 

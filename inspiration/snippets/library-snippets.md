@@ -1,6 +1,6 @@
 # Library Snippets
 
-## 1. Every Api Declaration Has KDoc
+## 1. E v e r y   A p i   D e c l a r a t i o n   H a s   K D o c
 
 ```kotlin
 @Test
@@ -8,44 +8,44 @@ fun `every api declaration has KDoc`() {
     Konsist
         .scopeFromPackage("..api..")
         .declarationsOf<KoKDocProvider>()
-        .assert { it.hasKDoc }
+        .assertTrue { it.hasKDoc }
 }
 ```
 
-## 2. Every Function With Parameters Has A Param Tags
+## 2. E v e r y   F u n c t i o n   W i t h   P a r a m e t e r s   H a s   A   P a r a m   T a g s
 
 ```kotlin
 @Test
 fun `every function with parameters has a param tags`() {
     Konsist.scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasValidKDocParamTags() }
+        .assertTrue { it.hasValidKDocParamTags() }
 }
 ```
 
-## 3. Every Function With Return Value Has A Return Tag
+## 3. E v e r y   F u n c t i o n   W i t h   R e t u r n   V a l u e   H a s   A   R e t u r n   T a g
 
 ```kotlin
 @Test
 fun `every function with return value has a return tag`() {
     Konsist.scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasValidKDocReturnTag() }
+        .assertTrue { it.hasValidKDocReturnTag() }
 }
 ```
 
-## 4. Every Extension Has A Receiver Tag
+## 4. E v e r y   E x t e n s i o n   H a s   A   R e c e i v e r   T a g
 
 ```kotlin
 @Test
 fun `every extension has a receiver tag`() {
     Konsist.scopeFromPackage("..api..")
         .declarationsOf<KoReceiverTypeProvider>()
-        .assert { it.hasValidKDocReceiverTag() }
+        .assertTrue { it.hasValidKDocReceiverTag() }
 }
 ```
 
-## 5. Every Public Function In Api Package Must Have Explicit Return Type
+## 5. E v e r y   P u b l i c   F u n c t i o n   I n   A p i   P a c k a g e   M u s t   H a v e   E x p l i c i t   R e t u r n   T y p e
 
 ```kotlin
 @Test
@@ -53,11 +53,11 @@ fun `every public function in api package must have explicit return type`() {
     Konsist
         .scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasReturnType() }
+        .assertTrue { it.hasReturnType() }
 }
 ```
 
-## 6. Every Public Property In Api Package Must Have Specify Type Explicitly
+## 6. E v e r y   P u b l i c   P r o p e r t y   I n   A p i   P a c k a g e   M u s t   H a v e   S p e c i f y   T y p e   E x p l i c i t l y
 
 ```kotlin
 @Test
@@ -65,7 +65,7 @@ fun `every public property in api package must have specify type explicitly`() {
     Konsist
         .scopeFromPackage("..api..")
         .properties()
-        .assert { it.hasType() }
+        .assertTrue { it.hasType() }
 }
 ```
 

@@ -1,6 +1,6 @@
 # General Snippets
 
-## 1. Files In `ext` Package Must Have Name Ending With `Ext`
+## 1. F i l e s   I n   ` e x t `   P a c k a g e   M u s t   H a v e   N a m e   E n d i n g   W i t h   ` E x t `
 
 ```kotlin
 @Test
@@ -9,11 +9,11 @@ fun `files in 'ext' package must have name ending with 'Ext'`() {
         .scopeFromProject()
         .files
         .withPackage("..ext..")
-        .assert { it.hasNameEndingWith("Ext") }
+        .assertTrue { it.hasNameEndingWith("Ext") }
 }
 ```
 
-## 2. Properties Are Declared Before Functions
+## 2. P r o p e r t i e s   A r e   D e c l a r e d   B e f o r e   F u n c t i o n s
 
 ```kotlin
 @Test
@@ -21,7 +21,7 @@ fun `properties are declared before functions`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .assert {
+        .assertTrue {
             val lastKoPropertyDeclarationIndex = it
                 .declarations(includeNested = false, includeLocal = false)
                 .indexOfLastInstance<KoPropertyDeclaration>()
@@ -39,7 +39,7 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## 3. Every Constructor Parameter Has Name Derived From Parameter Type
+## 3. E v e r y   C o n s t r u c t o r   P a r a m e t e r   H a s   N a m e   D e r i v e d   F r o m   P a r a m e t e r   T y p e
 
 ```kotlin
 @Test
@@ -49,14 +49,14 @@ fun `every constructor parameter has name derived from parameter type`() {
         .classes()
         .constructors
         .parameters
-        .assert {
+        .assertTrue {
             val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
             nameTitleCase == it.type.sourceType
         }
 }
 ```
 
-## 4. Every Class Constructor Has Alphabetically Ordered Parameters
+## 4. E v e r y   C l a s s   C o n s t r u c t o r   H a s   A l p h a b e t i c a l l y   O r d e r e d   P a r a m e t e r s
 
 ```kotlin
 @Test
@@ -65,7 +65,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
         .scopeFromProject()
         .classes()
         .constructors
-        .assert {
+        .assertTrue {
             val names = it.parameters.map { parameter -> parameter.name }
             val sortedNames = names.sorted()
             names == sortedNames
@@ -73,7 +73,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## 5. Companion Object Is Last Declaration In The Class
+## 5. C o m p a n i o n   O b j e c t   I s   L a s t   D e c l a r a t i o n   I n   T h e   C l a s s
 
 ```kotlin
 @Test
@@ -81,7 +81,7 @@ fun `companion object is last declaration in the class`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .assert {
+        .assertTrue {
             val companionObject = it.objects(includeNested = false).lastOrNull { obj ->
                 obj.hasModifier(KoModifier.COMPANION)
             }
@@ -95,29 +95,7 @@ fun `companion object is last declaration in the class`() {
 }
 ```
 
-## 6. Companion Objects Are Last Declarations In The Class
-
-```kotlin
-@Test
-fun `companion objects are last declarations in the class`() {
-    Konsist
-        .scopeFromProject()
-        .classes()
-        .assert {
-            val companionObjects = it.objects().filter { obj ->
-                obj.hasModifiers(KoModifier.COMPANION)
-            }
-
-            if (companionObjects.isEmpty()) {
-                return@assert true
-            }
-
-            it.declarations().takeLast(companionObjects.size) == companionObjects
-        }
-}
-```
-
-## 7. Every Value Class Has Parameter Named `value`
+## 6. E v e r y   V a l u e   C l a s s   H a s   P a r a m e t e r   N a m e d   ` v a l u e `
 
 ```kotlin
 @Test
@@ -127,11 +105,11 @@ fun `every value class has parameter named 'value'`() {
         .classes()
         .withValueModifier()
         .primaryConstructors
-        .assert { it.hasParameterNamed("value") }
+        .assertTrue { it.hasParameterNamed("value") }
 }
 ```
 
-## 8. No Empty Files Allowed
+## 7. N o   E m p t y   F i l e s   A l l o w e d
 
 ```kotlin
 @Test
@@ -139,11 +117,11 @@ fun `no empty files allowed`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.text.isEmpty() }
+        .assertFalse { it.text.isEmpty() }
 }
 ```
 
-## 9. No Field Should Have `m` Prefix
+## 8. N o   F i e l d   S h o u l d   H a v e   ` m `   P r e f i x
 
 ```kotlin
 @Test
@@ -152,14 +130,14 @@ fun `no field should have 'm' prefix`() {
         .scopeFromProject()
         .classes()
         .properties()
-        .assertNot {
+        .assertFalse {
             val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
             it.name.startsWith('m') && secondCharacterIsUppercase
         }
 }
 ```
 
-## 10. No Class Should Use Field Injection
+## 9. N o   C l a s s   S h o u l d   U s e   F i e l d   I n j e c t i o n
 
 ```kotlin
 @Test
@@ -168,11 +146,11 @@ fun `no class should use field injection`() {
         .scopeFromProject()
         .classes()
         .properties()
-        .assertNot { it.hasAnnotationOf<Inject>() }
+        .assertFalse { it.hasAnnotationOf<Inject>() }
 }
 ```
 
-## 11. No Class Should Use Java Util Logging
+## 10. N o   C l a s s   S h o u l d   U s e   J a v a   U t i l   L o g g i n g
 
 ```kotlin
 @Test
@@ -180,11 +158,11 @@ fun `no class should use Java util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.hasImport { import -> import.name == "java.util.logging.." } }
+        .assertFalse { it.hasImport { import -> import.name == "java.util.logging.." } }
 }
 ```
 
-## 12. Package Name Must Match File Path
+## 11. P a c k a g e   N a m e   M u s t   M a t c h   F i l e   P a t h
 
 ```kotlin
 @Test
@@ -192,11 +170,11 @@ fun `package name must match file path`() {
     Konsist
         .scopeFromProject()
         .packages
-        .assert { it.hasMatchingPath }
+        .assertTrue { it.hasMatchingPath }
 }
 ```
 
-## 13. No Wildcard Imports Allowed
+## 12. N o   W i l d c a r d   I m p o r t s   A l l o w e d
 
 ```kotlin
 @Test
@@ -204,11 +182,11 @@ fun `no wildcard imports allowed`() {
     Konsist
         .scopeFromProject()
         .imports
-        .assertNot { it.isWildcard }
+        .assertFalse { it.isWildcard }
 }
 ```
 
-## 14. Forbid The Usage Of `forbiddenString` In File
+## 13. F o r b i d   T h e   U s a g e   O f   ` f o r b i d d e n S t r i n g `   I n   F i l e
 
 ```kotlin
 @Test
@@ -216,6 +194,7 @@ fun `forbid the usage of 'forbiddenString' in file`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.text.contains("forbiddenString") }
+        .assertFalse { it.text.contains("forbiddenString") }
 }
 ```
+
