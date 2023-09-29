@@ -370,14 +370,32 @@ project/
 
 ## Scope Composition
 
-It is possible to compose the desired scopes using Kotlin operators:
+Konsist supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so it is possible can combine multiple scopes together to define a desired scope for the assertion:
 
 ```kotlin
-// add scopes
-val allKoScope = productionScope + testScope
+val featureModuleKoScope = Konsist.scopeFromModule("myFeature")
+val dataLayerScope = Konsist.scopeFromPackage("..data..")
 
-// subtract scopes
-val outerLayersScope = allLayersScope - domainLayerScope
+val desiredScope = featureModuleKoScope + dataLayerScope
+
+desiredScope
+    .classes()
+    ...
+    .assert { ... }
+```
+
+Subtraction is also supported, so it is possible for example to exclude a part of given module:
+
+```kotlin
+val moduleScope = Konsist.scopeFromModule("myFeature")
+val dataLayerScope = Konsist.scopeFromPackage("..data..")
+
+val desiredScope = moduleScope - dataLayerScope
+
+desiredScope
+    .classes()
+    ...
+    .assert { ... }
 ```
 
 ## Print Scope
