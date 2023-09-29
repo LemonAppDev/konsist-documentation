@@ -53,4 +53,5 @@
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
-* [Test 2](help/test-2.md)
+* [Test 2](help/test-2/README.md)
+  * [Page](help/test-2/page.md)
