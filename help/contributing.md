@@ -137,13 +137,15 @@ During the PR review, several types of checks are executed using [GitHub Actions
 
 ## Source Sets
 
-Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html)) to provide better isolation between various types of tests:
+Konsist contains multiple custom test source sets (defined by the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html)) to provide better isolation between various types of tests:
 
 * `test` - tests related to generic Konsist API (everything except the `architectureAssert`)
 * `apiTest` - tests related to `architectureAssert`
 * `integrationTest` - test classes using custom Kotlin snippets (`.kttxt`) to test the Konsist API
 * `konsistTest` - tests Konsist codebase consistency using `konsist` library
 * `snippets` - contains Koltin code snippets, written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The update-snippets.py script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
+
+We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-project](https://github.com/LemonAppDev/konsist/tree/main/test-projects) directory on the Konsist repository.
 
 ## Layers
 
