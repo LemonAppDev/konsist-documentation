@@ -53,4 +53,4 @@
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
-* [Test](help/test.md)
+* [Test 2](help/test-2.md)
