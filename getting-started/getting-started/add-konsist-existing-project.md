@@ -43,7 +43,7 @@ This scope will allow us to guard future modules.
 See [koscope.md](../../writing-tests/koscope.md "mention").
 {% endhint %}
 
-You may also join individual scopes to create a custom scope. See [#scope-creation](../../writing-tests/koscope.md#scope-creation "mention").
+You may also join individual scopes to create a custom scope, for example, add the module scope to the package scope. See [#scope-composition](../../writing-tests/koscope.md#scope-composition "mention").
 
 ## Suppress Annotation
 
