@@ -294,7 +294,7 @@ The `KoScope` can be printed to display a list of all files present in the scope
 
 ## Scope Reuse
 
-### Scope Per Test Class
+### Reuse Scope In Test Class
 
 To reuse scope across the test class define the scope in the companion object and access it from multiple tests:
 
@@ -303,29 +303,29 @@ class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         projectScope
-            .classes()
             .assert { // .. } 
     }
 
     fun `test 2`() {
         projectScope
-            .classes()
             .assert { // .. } 
     }
     
     companion object {
         // Create a new KoScope once for all tests
-        private val projectScope = Konsist.scopeFromProject()
+        private val classesScope = Konsist
+            .scopeFromProject()
+            .classes()
     }
 }
 </code></pre>
 
-### Global Per Test Source Set
+### Reuse Scope In Test Source Set
 
-To reuse scope across the multiple test classes define the scope in the file and access it from multiple tests classes:
+To reuse scope across the multiple test classes define the scope in the file and access it from multiple test classes:
 
 ```kotlin
-// Scope.kt
+// Scope.kt is "test" source set
 val projectScope = Konsist.scopeFromProject() // Create a new KoScope
 
 // AppTest.kt
@@ -405,6 +405,10 @@ To print all files within the scope use the `print()` method:
 ```kotlin
 koScope.print()
 ```
+
+{% hint style="info" %}
+See [debug-konsist-test.md](../features/debug-konsist-test.md "mention").
+{% endhint %}
 
 ## Access Specific Declarations
 
