@@ -12,7 +12,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
         .scopeFromProject()
         .classes()
         .withParentOf(ViewModel::class)
-        .assertTrue { it.name.endsWith("ViewModel") }
+        .assert { it.name.endsWith("ViewModel") }
 }
 ```
 
@@ -26,7 +26,7 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
         .classes()
         .withParentOf(ViewModel::class)
         .properties()
-        .assertTrue {
+        .assert {
             it.hasPublicOrDefaultModifier && it.hasType { type -> type.name == "kotlinx.coroutines.flow.Flow" }
         }
 }
@@ -41,7 +41,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
         .scopeFromProject()
         .classes()
         .withNameEndingWith("Repository")
-        .assertTrue { it.resideInPackage("..repository..") }
+        .assert { it.resideInPackage("..repository..") }
 }
 ```
 
@@ -53,7 +53,7 @@ fun `no class should use Android util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.hasImport { import -> import.name == "android.util.Log" } }
+        .assertNot { it.hasImport { import -> import.name == "android.util.Log" } }
 }
 ```
 

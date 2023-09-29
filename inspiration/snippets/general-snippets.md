@@ -9,7 +9,7 @@ fun `files in 'ext' package must have name ending with 'Ext'`() {
         .scopeFromProject()
         .files
         .withPackage("..ext..")
-        .assertTrue { it.hasNameEndingWith("Ext") }
+        .assert { it.hasNameEndingWith("Ext") }
 }
 ```
 
@@ -21,7 +21,7 @@ fun `properties are declared before functions`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .assertTrue {
+        .assert {
             val lastKoPropertyDeclarationIndex = it
                 .declarations(includeNested = false, includeLocal = false)
                 .indexOfLastInstance<KoPropertyDeclaration>()
@@ -49,7 +49,7 @@ fun `every constructor parameter has name derived from parameter type`() {
         .classes()
         .constructors
         .parameters
-        .assertTrue {
+        .assert {
             val nameTitleCase = it.name.replaceFirstChar { char -> char.titlecase(Locale.getDefault()) }
             nameTitleCase == it.type.sourceType
         }
@@ -65,7 +65,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
         .scopeFromProject()
         .classes()
         .constructors
-        .assertTrue {
+        .assert {
             val names = it.parameters.map { parameter -> parameter.name }
             val sortedNames = names.sorted()
             names == sortedNames
@@ -81,7 +81,7 @@ fun `companion object is last declaration in the class`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .assertTrue {
+        .assert {
             val companionObject = it.objects(includeNested = false).lastOrNull { obj ->
                 obj.hasModifier(KoModifier.COMPANION)
             }
@@ -105,7 +105,7 @@ fun `every value class has parameter named 'value'`() {
         .classes()
         .withValueModifier()
         .primaryConstructors
-        .assertTrue { it.hasParameterWithName("value") }
+        .assert { it.hasParameterWithName("value") }
 }
 ```
 
@@ -117,7 +117,7 @@ fun `no empty files allowed`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.text.isEmpty() }
+        .assertNot { it.text.isEmpty() }
 }
 ```
 
@@ -130,7 +130,7 @@ fun `no field should have 'm' prefix`() {
         .scopeFromProject()
         .classes()
         .properties()
-        .assertFalse {
+        .assertNot {
             val secondCharacterIsUppercase = it.name.getOrNull(1)?.isUpperCase() ?: false
             it.name.startsWith('m') && secondCharacterIsUppercase
         }
@@ -146,7 +146,7 @@ fun `no class should use field injection`() {
         .scopeFromProject()
         .classes()
         .properties()
-        .assertFalse { it.hasAnnotationOf<Inject>() }
+        .assertNot { it.hasAnnotationOf<Inject>() }
 }
 ```
 
@@ -158,7 +158,7 @@ fun `no class should use Java util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.hasImport { import -> import.name == "java.util.logging.." } }
+        .assertNot { it.hasImport { import -> import.name == "java.util.logging.." } }
 }
 ```
 
@@ -170,7 +170,7 @@ fun `package name must match file path`() {
     Konsist
         .scopeFromProject()
         .packages
-        .assertTrue { it.hasMatchingPath }
+        .assert { it.hasMatchingPath }
 }
 ```
 
@@ -182,7 +182,7 @@ fun `no wildcard imports allowed`() {
     Konsist
         .scopeFromProject()
         .imports
-        .assertFalse { it.isWildcard }
+        .assertNot { it.isWildcard }
 }
 ```
 
@@ -194,7 +194,19 @@ fun `forbid the usage of 'forbiddenString' in file`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.text.contains("forbiddenString") }
+        .assertNot { it.text.contains("forbiddenString") }
 }
 ```
 
+## 14. All files with JUnit @Test annotations end with the name "Tests"
+
+```kotlin
+@Test
+fun `all files with tests in them should end with 'Tests'`() {
+Konsist
+    .scopeFromSourceSet("test") // Only look within test files
+    .files
+    .filter { it.functions().any { fn -> fn.hasAnnotationOf(Test::class) } } // All files with a @Test function
+    .assert { it.hasNameEndingWith("Tests") }
+}
+```

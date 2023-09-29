@@ -163,7 +163,7 @@ class ControllerClassKonsistTest {
 }
 ```
 
-The above snippet presents a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controler` package. Since scope is created from all project files this test will verify existing and new classes.
+The above snippet presents a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controller` package. Since scope is created from all project files this test will verify existing and new classes.
 
 {% hint style="info" %}
 This test is written using [JUnit](https://junit.org/) testing framework that should also be added as a project dependency (see [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects)).
