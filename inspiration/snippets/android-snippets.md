@@ -60,3 +60,17 @@ fun `no class should use Android util logging`() {
 }
 ```
 
+## 5. All JetPack previews contain `Preview` in method name
+
+```kotlin
+@Test
+    fun `All JetPack previews contain 'Preview' in method name`() {
+        Konsist
+            .scopeFromProject()
+            .functions()
+            .withAnnotationOf(Preview::class)
+            .assert {
+                it.name.contans("Preview")
+            }
+    }
+```
