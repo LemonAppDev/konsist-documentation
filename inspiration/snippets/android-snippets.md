@@ -70,7 +70,7 @@ fun `no class should use Android util logging`() {
             .functions()
             .withAnnotationOf(Preview::class)
             .assert {
-                it.name.contans("Preview")
+                it.name.contains("Preview")
             }
     }
 ```
