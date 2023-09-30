@@ -37,6 +37,10 @@ Konsist project is spread across multiple repositories:
 
 Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams. For a diagram preview, it is recommended to install the [Mermaid plugin for INTELLIJ IDEA](https://plugins.jetbrains.com/plugin/20146-mermaid/reviews).
 
+## Make A Change In The Konsist Documentation Repository
+
+
+
 ## Make A Change In The Konsist Repository
 
 This is a high-level view of project contribution:
