@@ -3,7 +3,7 @@
 Retrofitting Konsist into a project that hasn't followed strict structural guidelines can pose initial challenges, necessitating a thoughtful approach to smoothly transition without disrupting ongoing development. Unlike most linters, which provide a [baseline file](https://developer.android.com/studio/write/lint#snapshot), Konsist follows a different methodology.
 
 {% hint style="info" %}
-The baseline file is concidered to be added in the future.
+The baseline file is considered to be added in the future.
 {% endhint %}
 
 There are two approaches that can be employed when retrofitting Konsist into an existing project[#create-more-granular-scopes](add-konsist-existing-project.md#create-more-granular-scopes "mention") and [#suppress-annotation](add-konsist-existing-project.md#suppress-annotation "mention").
