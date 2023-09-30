@@ -9,7 +9,7 @@ class UseCaseTest : FreeSpec({
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.hasTestClass() }
+            .assert { it.hasTestClass() }
     }
 })
 ```
@@ -24,10 +24,10 @@ class UseCaseTests : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue { it.hasTestClass() }
+                useCase.assert { it.hasTestClass() }
             }
             "${useCase.name} should reside in ..domain..usecase.. package" {
-                useCase.assertTrue { it.resideInPackage("..domain..usecase..") }
+                useCase.assert { it.resideInPackage("..domain..usecase..") }
             }
             "${useCase.name} should ..." {
                 // another Konsist assert
