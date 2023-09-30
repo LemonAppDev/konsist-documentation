@@ -10,13 +10,19 @@ There are two approaches that can be employed when retrofitting Konsist into an 
 
 ## Create More Granular Scopes
 
-Scope allows to verification of only a subset of the project code base. When refactoring application scope can be created for a single module to guard specific rules of the improved code base and then further extended to cover already refactored modules.
+Scope represents a set of Kotlin files. The scope allows to verification of all Kotlin files in the project or only a subset of the project code base.&#x20;
+
+{% hint style="info" %}
+See [koscope.md](../../writing-tests/koscope.md "mention").
+{% endhint %}
+
+When refactoring an existing application, you can either choose to first refactor a module and then add a Konsist test or initially add the Konsist test to identify errors, followed by the necessary refactor. Both strategies aim to ensure modules align with Konsist's structural guidelines.
 
 Consider this The `MyDiet` application with feature 3 modules:
 
 <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-At first Konsist test can be applied to a single refactored module:
+In the beginning, the Konsist test can be applied to a single module:
 
 ```kotlin
 Konsist
@@ -25,7 +31,7 @@ Konsist
     .assert { it.hasTest() }
 ```
 
-Before refactoring another module (`featureGroceryListGenerator`) add it to the existing Konsist test:
+As refactoring proceeds, this Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
 
 ```kotlin
 Konsist
@@ -34,7 +40,7 @@ Konsist
     .assert { it.hasTest() }
 ```
 
-Continue until all modules are aligned with the Konsist test and retrieve the scope from the entire project:
+At some point, the entire code base (all modules) will be aligned with the Konsist test, so scope should be retrieved from the entire project:
 
 ```kotlin
 Konsist
@@ -43,13 +49,9 @@ Konsist
     .assert { it.hasTest() }
 ```
 
-This scope will allow us to guard future modules.
+Usage of project scope (`scopeFromProject` ) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.
 
-{% hint style="info" %}
-See [koscope.md](../../writing-tests/koscope.md "mention").
-{% endhint %}
-
-You may also join individual scopes to create a custom scope, for example, add the module scope to the package scope. See [#scope-composition](../../writing-tests/koscope.md#scope-composition "mention").
+Konsist provides a flexible API to create scopes from modules, source sets, packages, files, etc., and combine these scopes together. See [koscope.md](../../writing-tests/koscope.md "mention").&#x20;
 
 ## Suppress Annotation
 
