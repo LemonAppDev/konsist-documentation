@@ -30,7 +30,7 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
         .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
-        .assertTrue { it.resideInPackage("..domain..usecase..") }
+        .assert { it.resideInPackage("..domain..usecase..") }
 }
 ```
 
@@ -43,8 +43,8 @@ fun `classes with 'UseCase' suffix should have single 'public operator' method n
         .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
-        .assertTrue {
-            val hasSingleInvokeOperatorMethod = it.hasFunction { function ->
+        .assert {
+            val hasSingleInvokeOperatorMethod = it.containsFunction { function ->
                 function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
             }
 
@@ -62,7 +62,7 @@ fun `interfaces with 'Repository' annotation should reside in 'data' package`() 
         .scopeFromProject()
         .interfaces()
         .withAnnotationOf(Repository::class)
-        .assertTrue { it.resideInPackage("..data..") }
+        .assert { it.resideInPackage("..data..") }
 }
 ```
 
@@ -75,7 +75,6 @@ fun `every UseCase class has test`() {
         .scopeFromProduction()
         .classes()
         .withParentNamed("UseCase")
-        .assertTrue { it.hasTestClass() }
+        .assert { it.hasTestClass() }
 }
 ```
-
