@@ -6,9 +6,9 @@
 @Test
 fun `classes with 'Test' Annotation should have 'Test' suffix`() {
 Konsist
-    .scopeFromSourceSet("test") // Only look within test files
+    .scopeFromSourceSet("test")
     .classes()
-    .filter { it.functions().any { func -> func.hasAnnotationOf(Test::class) } } // All files with a @Test function
+    .filter { it.functions().any { func -> func.hasAnnotationOf(Test::class) } }
     .assert { it.hasNameEndingWith("Tests") }
 }
 ```
@@ -22,6 +22,6 @@ fun `don't use JUnit4 Test annotation`() {
         .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+        .assertNot { it.hasAnnotationWithName("org.junit.Test") }
 }
 ```
