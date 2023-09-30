@@ -22,6 +22,10 @@ fun `don't use JUnit4 Test annotation`() {
         .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { it.hasAnnotationWithName("org.junit.Test") }
+        .assertNot { 
+            it.annotations.any { annotation ->
+                    annotation.fullyQualifiedName == "org.junit.Test"
+            }
+        }
 }
 ```
