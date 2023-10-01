@@ -169,7 +169,11 @@ The above snippet presents a complete example of a test verifying that all class
 This test is written using [JUnit](https://junit.org/) testing framework that should also be added as a project dependency (see [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects)).
 {% endhint %}
 
-## Architecture Check
+{% hint style="info" %}
+Review the [snippets](../../inspiration/snippets/ "mention") for more examples of `declaration checks`.
+{% endhint %}
+
+## Architectural Check
 
 Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows simple 3-layer architecture, where `Presentation` layer depends on `Business`  layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies:
 
@@ -253,7 +257,7 @@ fun `architecture layers have dependencies correct`() {
 ```
 
 {% hint style="info" %}
-For more Konsist tests check the samples see the [Broken link](broken-reference "mention") section.&#x20;
+For more Konsist architectural check see [Protect Kotlin Project Architecture Using Konsist](https://proandroiddev.com/protect-kotlin-project-architecture-using-konsist-3bfbe1ad0eea).&#x20;
 {% endhint %}
 
 {% hint style="info" %}
