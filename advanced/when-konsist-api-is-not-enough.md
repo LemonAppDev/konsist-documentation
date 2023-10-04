@@ -1,4 +1,4 @@
-# When Konsit API Is Not Enough
+# When Konsist API Is Not Enough
 
 You may encounter scenarios where Konsist APi is not exposing all of the required information.
 
