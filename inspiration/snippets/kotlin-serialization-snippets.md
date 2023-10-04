@@ -13,8 +13,8 @@ fun `classes annotated with 'Serializable' have all properties annotated with 'S
         .classes()
         .withAnnotationOf(Serializable::class)
         .properties()
-        .assert {
-            it.hasAnnotationsOf(SerialName::class)
+        .assertTrue {
+            it.hasAnnotationOf(SerialName::class)
         }
 }
 ```
@@ -29,7 +29,7 @@ fun `enum classes annotated with 'Serializable' have all enum constants annotate
         .withEnumModifier()
         .withAnnotationOf(Serializable::class)
         .enumConstants
-        .assert { it.hasAnnotationsOf(SerialName::class) }
+        .assertTrue { it.hasAnnotationOf(SerialName::class) }
 }
 ```
 
