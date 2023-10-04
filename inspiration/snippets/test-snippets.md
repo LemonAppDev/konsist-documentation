@@ -60,16 +60,3 @@ fun `test classes should have all members private besides tests`() {
 }
 ```
 
-## 5. Don`t Use JUnit4 Test Annotation
-
-```kotlin
-@Test
-fun `don't use JUnit4 Test annotation`() {
-    Konsist
-        .scopeFromProject()
-        .classes()
-        .functions()
-        .assertFalse { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
-}
-```
-
