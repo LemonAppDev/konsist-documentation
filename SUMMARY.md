@@ -4,9 +4,9 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
-  * [Adding To Existing Project](getting-started/getting-started/adding-to-existing-project.md)
+  * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
+  * [Articles](getting-started/getting-started/articles.md)
 * [Getting Help](getting-started/getting-help.md)
-* [Articles](getting-started/articles.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
 
@@ -35,8 +35,10 @@
   * [Android Snippets](inspiration/snippets/android-snippets.md)
   * [Spring Snippets](inspiration/snippets/spring-snippets.md)
   * [Test Snippets](inspiration/snippets/test-snippets.md)
+  * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
   * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
+  * [KoTest Snippets](inspiration/snippets/kotest-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
 

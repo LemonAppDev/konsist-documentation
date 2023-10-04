@@ -31,7 +31,7 @@ fun `every file in module reside in module specific package`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertTrue { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
+        .assert { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
 }
 ```
 
@@ -42,7 +42,7 @@ fun `every file in module reside in module specific package`() {
 fun `files reside in package that is derived from module name`() {
     Konsist.scopeFromProduction()
         .files
-        .assertTrue {
+        .assert {
             /*
             module -> package name:
             feature_meal_planner -> mealplanner

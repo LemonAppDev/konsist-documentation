@@ -4,7 +4,7 @@ description: Access the Kotlin files using Konsist API
 
 # Create The Scope
 
-The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the initial step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
+Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -50,10 +50,10 @@ The scope is dynamically constructed from the Kotlin files within the project, a
 
 ## Scope Creation
 
-Various methods can be used to obtain instances of the scope. This allows the definition of more granular Kotlist tests e.g. for certain modules, source sets, and packages of folders.
+Konsist offers an adaptable API that allows users to define scopes based on modules, source sets, packages, and files.&#x20;
 
 {% hint style="info" %}
-When refactoring application scope can be created for a single module to guard specific rules of the improved code base and then further extended to cover already refactored modules.
+See [add-konsist-existing-project.md](../getting-started/getting-started/add-konsist-existing-project.md "mention").
 {% endhint %}
 
 ### Project Scope
@@ -294,7 +294,7 @@ The `KoScope` can be printed to display a list of all files present in the scope
 
 ## Scope Reuse
 
-### Scope Per Test Class
+### Reuse Scope In Test Class
 
 To reuse scope across the test class define the scope in the companion object and access it from multiple tests:
 
@@ -303,29 +303,29 @@ class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         projectScope
-            .classes()
             .assert { // .. } 
     }
 
     fun `test 2`() {
         projectScope
-            .classes()
             .assert { // .. } 
     }
     
     companion object {
         // Create a new KoScope once for all tests
-        private val projectScope = Konsist.scopeFromProject()
+        private val classesScope = Konsist
+            .scopeFromProject()
+            .classes()
     }
 }
 </code></pre>
 
-### Global Per Test Source Set
+### Reuse Scope In Test Source Set
 
-To reuse scope across the multiple test classes define the scope in the file and access it from multiple tests classes:
+To reuse scope across the multiple test classes define the scope in the file and access it from multiple test classes:
 
 ```kotlin
-// Scope.kt
+// Scope.kt is "test" source set
 val projectScope = Konsist.scopeFromProject() // Create a new KoScope
 
 // AppTest.kt
@@ -370,14 +370,32 @@ project/
 
 ## Scope Composition
 
-It is possible to compose the desired scopes using Kotlin operators:
+Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so copes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2`  module are combined together:
 
 ```kotlin
-// add scopes
-val allKoScope = productionScope + testScope
+val featureModule1Scope = Konsist.scopeFromModule("myFeature1")
+val featureModule2Scope = Konsist.scopeFromModule("myFeature2")
 
-// subtract scopes
-val outerLayersScope = allLayersScope - domainLayerScope
+val refactoredModules = featureModule1Scope + featureModule2Scope
+
+refactoredModules
+    .classes()
+    ...
+    .assert { ... }
+```
+
+Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:&#x20;
+
+```kotlin
+val moduleScope = Konsist.scopeFromModule("myFeature")
+val dataLayerScope = Konsist.scopeFromPackage("..data..")
+
+val moduleSubsetScope = moduleScope - dataLayerScope
+
+moduleSubsetScope
+    .classes()
+    ...
+    .assert { ... }
 ```
 
 ## Print Scope
@@ -387,6 +405,10 @@ To print all files within the scope use the `print()` method:
 ```kotlin
 koScope.print()
 ```
+
+{% hint style="info" %}
+See [debug-konsist-test.md](../features/debug-konsist-test.md "mention").
+{% endhint %}
 
 ## Access Specific Declarations
 

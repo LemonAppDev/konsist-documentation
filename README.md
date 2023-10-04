@@ -10,7 +10,7 @@ Konsist simplifies the process of maintaining codebase consistency by upholding 
 Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
 {% endhint %}
 
-Konsist offers two categories of checks, namely declaration checks and architecture checks, to thoroughly evaluate the codebase.
+Konsist offers two categories of checks, namely `declaration checks` and `architectural checks`, to thoroughly evaluate the codebase.
 
 ## Declaration Checks
 
@@ -41,20 +41,20 @@ fun `every use case reside in use case package`() {
 For more Konsist test samples see the [snippets](inspiration/snippets/ "mention")section.
 {% endhint %}
 
-## Architecture Checks
+## ArchitecturalChecks
 
-The second type of Konsit checks revolves around architecture boundaries -  they are intended to maintain the separation of concerns between layers eg:
+The second type of [Konsit checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries -  they are intended to maintain the separation of concerns between layers.
+
+
+
+Consider this simple 3 layer of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html):
 
 * The `domain` layer is independent
 * The `data` layer depends on `domain` layer
 * The `presentation` layer depends on `domain` layer
 * etc.
 
-{% hint style="info" %}
-These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.
-{% endhint %}
-
-Here is a sample test that verifies if [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) dependency requirements are valid:
+Here is a Konsist test that verifies if Clean Architecture dependency requirements are valid:
 
 ```kotlin
 @Test
@@ -74,3 +74,7 @@ fun `clean architecture layers have correct dependencies`() {
         }
 } 
 ```
+
+{% hint style="info" %}
+These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.
+{% endhint %}
