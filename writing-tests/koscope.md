@@ -37,7 +37,7 @@ flowchart TD
 ```
 
 {% hint style="info" %}
-Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist  [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
+Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
 {% endhint %}
 
 The scope can be created for an entire project, module, package, and a single Kotlin file.&#x20;
@@ -50,7 +50,7 @@ The scope is dynamically constructed from the Kotlin files within the project, a
 
 ## Scope Creation
 
-Konsist offers an adaptable API that allows users to define scopes based on modules, source sets, packages, and files.&#x20;
+Various methods can be used to obtain instances of the scope. This allows the definition of more granular Kotlin tests e.g. for certain modules, source sets, and packages of folders.
 
 {% hint style="info" %}
 See [add-konsist-existing-project.md](../getting-started/getting-started/add-konsist-existing-project.md "mention").
@@ -75,7 +75,7 @@ Konsist.scopeFromModule("app")
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/   <--- scope contains all files from the 'app' module
 │  ├─ main/
 │  │  ├─ App.kt
@@ -113,7 +113,7 @@ The `nested modules` the feature is not complete. The community is reporting tha
 Consider this `feature` module existing inside `app` module:
 
 ```
-project/ 
+project/
 ├─ app/   <--- scope contains all files from the 'app' module
 │  ├─ feature/
 │  │  ├─ Feature.kt
@@ -136,7 +136,7 @@ Konsist.scopeFromSourceSet("test")
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ App.kt
@@ -161,7 +161,7 @@ Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test)
 
 ```
 
-project/ 
+project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ App.kt
@@ -185,7 +185,7 @@ Konsist.scopeFromProduction()
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ main/   <--- scope contains all production code files
 │  │  ├─ App.kt
@@ -209,7 +209,7 @@ Konsist.scopeFromTest()
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ App.kt
@@ -233,7 +233,7 @@ Konsist.sourceFromPackage("com.usecase..")
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ com/
@@ -260,7 +260,7 @@ val myScope = Konsist.scopeFromDirectory("app/domain")
 Selection:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ com/
@@ -329,28 +329,28 @@ To reuse scope across the multiple test classes define the scope in the file and
 val projectScope = Konsist.scopeFromProject() // Create a new KoScope
 
 // AppTest.kt
-class AppKonsistTest {    
+class AppKonsistTest {
     @Test
     fun `test 1`() {
         projectScope
             .objects()
-            .assert { // .. } 
+            .assert { // .. }
     }
 }
 
 // DataTest.kt
-class CoreKonsistTest {    
+class CoreKonsistTest {
     @Test
     fun `test 1`() {
         projectScope
             .classes()
-            .assert { // .. } 
+            .assert { // .. }
     }
 
     fun `test 2`() {
         projectScope
             .interfaces()
-            .assert { // .. } 
+            .assert { // .. }
     }
 }
 ```
@@ -358,7 +358,7 @@ class CoreKonsistTest {
 Here is the file structure representing the above snippet:
 
 ```
-project/ 
+project/
 ├─ app/
 │  ├─ test/
 │  │  ├─ app
@@ -370,7 +370,7 @@ project/
 
 ## Scope Composition
 
-Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so copes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2`  module are combined together:
+Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so copes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2` module are combined together:
 
 ```kotlin
 val featureModule1Scope = Konsist.scopeFromModule("myFeature1")

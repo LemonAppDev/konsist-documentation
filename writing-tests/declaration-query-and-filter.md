@@ -17,12 +17,12 @@ flowchart TB
     style Step2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
-Typically verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
+Typically, verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
 
 Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of methods to access Kotlin declarations. Each method returns a list representing a declaration subset:
 
 |                      |                                                    |
-| -------------------- | -------------------------------------------------- |
+|----------------------|----------------------------------------------------|
 | Method               | Description                                        |
 | `files()`            | returns all files present in the scope             |
 | `packages()`         | returns all packages present in the scope          |
@@ -41,7 +41,6 @@ To get all classes from the given scope use `KoScope.classes()` method:
 ```kotlin
 koScope
     .classes()
-
 ```
 
 Here is an example of querying all properties defined inside classes:
@@ -50,7 +49,9 @@ Here is an example of querying all properties defined inside classes:
     koScope
         .classes()
         .properties()
-        .assert { // .. }
+        .assertTrue { 
+            //...
+        }
 ```
 
 ## Filter Declarations
@@ -63,7 +64,9 @@ Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org
 koScope
     .classes()
     .filter { it.hasAnnotationOf<UseCase>() }
-    .assert { // .. }
+    .assertTrue { 
+        //... 
+    }
 ```
 
 Konsist provides a set of `with...` extensions to simplify the filtering syntax. The above snippet can be improved:
@@ -72,7 +75,9 @@ Konsist provides a set of `with...` extensions to simplify the filtering syntax.
 koScope
     .classes()
     .withAllAnnotationsOf(UseCase::class)
-    .assert { // .. }
+    .assertTrue { 
+        //...
+    }
 ```
 
 {% hint style="info" %}
@@ -88,7 +93,9 @@ koScope
     .classes()
     .withAllAnnotationsOf(UseCase::class)
     .resideInPackage("..usecase")
-    .assert { // .. }
+    .assertTrue { 
+        //...
+    }
 ```
 
 It is also possible to filter declarations by using certain aspects e.g. visibility modifiers. Usage of `providers` allows verifying the visibility of different declaration types such as classes, functions, properties, etc:
@@ -97,7 +104,7 @@ It is also possible to filter declarations by using certain aspects e.g. visibil
 koScope
     .declarations()
     .declarations<KoVisibilityModifierProvider>()
-    .assert { it.hasInternalModifier }
+    .assertTrue { it.hasInternalModifier() }
 ```
 
 ## Query And Filter Declaration
@@ -110,7 +117,9 @@ koScope
     .resideInPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
     .withAnnotationOf<Inject>() // filter classes in 'controller' package
-    .assert { // .. }
+    .assert { 
+        //...
+    }
 ```
 
 ## Print Declarations

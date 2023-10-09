@@ -17,6 +17,10 @@ flowchart TB
 
 ## Assert
 
+> **_@Deprecated:_**  will be removed in version v1.0.0
+>
+> Please use `.assertTrue`. See example below.
+
 In the below snippet, the assertion (performed on the list of interfaces) verifies if every interface has a `public` visibility modifier.
 
 ```kotlin
@@ -25,9 +29,30 @@ koScope
     .assert { it.hasPublicModifier() }
 ```
 
-The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case), however, the assertion itself will be performed on every available interface. The last line in the `assert` block will be evaluated as `true` or `false` providing the result for a given assert.
+The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface. The last line in the `assert` block will be evaluated as `true` or `false` providing the result for a given assert.
+
+## Assert True
+
+> **_@Deprecated:_**  will be removed in version v1.0.0
+>
+> Please use `.assertTrue`. See example below.
+
+In the below snippet, the assertion (performed on the list of interfaces) verifies if every interface has a `public` visibility modifier.
+
+```kotlin
+koScope
+    .interfaces()
+    .assertTrue { it.hasPublicModifier() }
+```
+
+The `it` parameter inside the `assertTrue` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface. The last line in the `assertTrue` block will be evaluated as `true` or `false` providing the result for a given assert.
+
 
 ## Assert Not
+
+> **_@Deprecated:_**  will be removed in version v1.0.0
+>
+> Please use `.assertTrue`. See example below.
 
 The `assertNot` is a negation of the `assert` method. In the below snippet, the assertion (performed on the list of properties) verifies if none of the properties has the `Inject` annotation:
 
@@ -44,6 +69,29 @@ This assertion verifies that the class does not contain any properties with `pub
 koScope
     .classes()
     .assertNot { 
+        it.containsProperty { 
+            property -> property.hasPublicOrDefaultModifier 
+        } 
+    }
+```
+
+## Assert False
+
+The `assertFalse` is a negation of the `assertTrue` method. In the below snippet, the assertion (performed on the list of properties) verifies if none of the properties has the `Inject` annotation:
+
+```kotlin
+koScope
+    .classes()
+    .properties()
+    .assertFalse { it.hasAnnotationOf<Inject>() }
+```
+
+This assertion verifies that the class does not contain any properties with `public` (explicit `public` modifier) or default (implicit `public` modifier) modifiers:
+
+```
+koScope
+    .classes()
+    .assertFalse { 
         it.containsProperty { 
             property -> property.hasPublicOrDefaultModifier 
         } 
