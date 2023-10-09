@@ -4,7 +4,7 @@ description: Access the Kotlin files using Konsist API
 
 # Create The Scope
 
-The [KoScope](https://github.com/LemonAppDev/konsist/blob/main/src/main/kotlin/com/lemon/konsist/core/declaration/KoScope.kt) class is the entry point to the Konsist library. It is the initial step in defining the Konsist test. Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
+Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -50,10 +50,10 @@ The scope is dynamically constructed from the Kotlin files within the project, a
 
 ## Scope Creation
 
-Various methods can be used to obtain instances of the scope. This allows the definition of more granular Kotlist tests e.g. for certain modules, source sets, and packages of folders.
+Konsist offers an adaptable API that allows users to define scopes based on modules, source sets, packages, and files.&#x20;
 
 {% hint style="info" %}
-When refactoring application scope can be created for a single module to guard specific rules of the improved code base and then further extended to cover already refactored modules.
+See [add-konsist-existing-project.md](../getting-started/getting-started/add-konsist-existing-project.md "mention").
 {% endhint %}
 
 ### Project Scope
@@ -370,29 +370,29 @@ project/
 
 ## Scope Composition
 
-Konsist supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so it is possible can combine multiple scopes together to define a desired scope for the assertion:
+Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so copes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2`  module are combined together:
 
 ```kotlin
-val featureModuleKoScope = Konsist.scopeFromModule("myFeature")
-val dataLayerScope = Konsist.scopeFromPackage("..data..")
+val featureModule1Scope = Konsist.scopeFromModule("myFeature1")
+val featureModule2Scope = Konsist.scopeFromModule("myFeature2")
 
-val desiredScope = featureModuleKoScope + dataLayerScope
+val refactoredModules = featureModule1Scope + featureModule2Scope
 
-desiredScope
+refactoredModules
     .classes()
     ...
     .assert { ... }
 ```
 
-Subtraction is also supported, so it is possible for example to exclude a part of given module:
+Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:&#x20;
 
 ```kotlin
 val moduleScope = Konsist.scopeFromModule("myFeature")
 val dataLayerScope = Konsist.scopeFromPackage("..data..")
 
-val desiredScope = moduleScope - dataLayerScope
+val moduleSubsetScope = moduleScope - dataLayerScope
 
-desiredScope
+moduleSubsetScope
     .classes()
     ...
     .assert { ... }

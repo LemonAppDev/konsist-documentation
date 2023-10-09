@@ -30,27 +30,48 @@ No matter how you choose to contribute, you will be making a valuable contributi
 
 Konsist project is spread across multiple repositories:
 
-* [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
-* [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
+* [Konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
+* [Konsist-Documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
 
-## Plusings
+## Plugins
 
 Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams. For a diagram preview, it is recommended to install the [Mermaid plugin for INTELLIJ IDEA](https://plugins.jetbrains.com/plugin/20146-mermaid/reviews).
+
+## Make A Change In The Konsist Documentation Repository
+
+For most scenarios, open PR in the [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository.&#x20;
+
+### Updating Snippets
+
+The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain current and valid, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [Konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated to update the GitBook documentation.&#x20;
+
+Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
 
 ## Make A Change In The Konsist Repository
 
 This is a high-level view of project contribution:
 
-1. Create a fork of the [Konsist](https://github.com/LemonAppDev/konsist) repository
-2. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-3. Make changes
-4. Add Tests if needed
-5. Open the `Draft` Pull Request to the `develop` branch
-6. Make sure all checks are passing before marking PR as `Ready for review`.
+1. Create a fork of the [Konsist](https://github.com/LemonAppDev/konsist) repository&#x20;
+2. Build the project
+3. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+4. Make changes
+5. Add Tests if needed
+6. Open the `Draft` Pull Request to the `develop` branch  (`develop` will be merged to `main` branch after the release)
+7. Make sure all checks are passing before marking PR as `Ready for review`.
 
 {% hint style="info" %}
 For some contributors, the repo admin may have to approve checks manually for the 1st PR.
 {% endhint %}
+
+If during build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version `19`.
+
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+
+You can install missing JDKs directly from IntelliJ IDEA - click on the `Module SDK` combo box and select `+Add SDK`.
+
+If during the build you encounter an error regarding `Could not determine the dependencies of null.` then open `File` / `Settings` / `Build, Execute, Deployment` / `Build Tools` / `Gradle` window and set Java SDK to version `19`.
+
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 ## Testing Changes Locally
 

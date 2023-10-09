@@ -2,9 +2,9 @@
 
 Many linters including [Detekt](https://github.com/detekt/detekt) and [ktlint](https://github.com/pinterest/ktlint) have a predefined set of rules. These rules are derived and aligned with guidelines or common practices for writing high-quality code and industry coding conventions ([Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html), [Android Kotlin style guide](https://developer.android.com/kotlin/style-guide), etc.).
 
-However, there are no industry standards when comes to application architecture. Every code base is different - different class naming, different package structures, different application layers, etc. As the project grows code base evolves as well - it tends to have more layers, more modules, and a more complex code structure. These "rules" are hard to capture by generic linter, because they are often specific to the given project.&#x20;
+However, there are no industry standards when comes to application architecture. Every code base is different - different class names, different package structures, different application layers, etc. As the project grows code base evolves as well - it tends to have more layers, more modules, and a more complex code structure. These "rules" are hard to capture by generic linter, because they are often specific to the given project.&#x20;
 
-Let's consider a use case - a concept defined by the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). At a high-level the use case definition is quite simple - "use case holds a business logic". How the use case is actually represented in the code base? Well... In one project this may be a class that has a name ending with `UseCase`, in another, it may be a class extending `BaseUseCase` and in another class annotated with `@UseCase` annotation. The logic for filtering "all project use cases" will vary from project to project.
+Let's consider a use case - a concept defined by the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). At a high level the use case definition is quite simple - "use case holds a business logic". How the use case is represented in the code base? Well... In one project this may be a class that has a name ending with `UseCase`, in another, it may be a class extending `BaseUseCase` and in another class annotated with `@UseCase` annotation. The logic for filtering "all project use cases" will vary from project to project.
 
 Now let's consider the actual structure of the use case class:&#x20;
 
@@ -22,5 +22,5 @@ Answers will vary from project to project. That is why Konsist favors a more fle
 
 
 {% hint style="success" %}
-Some things can be standardized across different projects e.g. constructor parameter names being derived from the property name, or alphabetic order of the parameter. Custom tests will be a core part of Konsist, however, we are considering the addition of a small set of predefined rules.&#x20;
+Some things can be standardized across different projects e.g. constructor parameter names being derived from the property name, or alphabetic order of the parameter. For now, custom tests will be a core part of Konsist, however, we are considering the addition of a small set of predefined rules in the future.
 {% endhint %}

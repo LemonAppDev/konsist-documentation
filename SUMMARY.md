@@ -4,9 +4,9 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
-  * [Add Konsist Existing Project](getting-started/getting-started/add-konsist-existing-project.md)
+  * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
+  * [Articles](getting-started/getting-started/articles.md)
 * [Getting Help](getting-started/getting-help.md)
-* [Articles](getting-started/articles.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
 
@@ -35,6 +35,7 @@
   * [Android Snippets](inspiration/snippets/android-snippets.md)
   * [Spring Snippets](inspiration/snippets/spring-snippets.md)
   * [Test Snippets](inspiration/snippets/test-snippets.md)
+  * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
   * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
@@ -42,10 +43,10 @@
 
 ## 🎓 ADVANCED
 
-* [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
 * [When Konsit API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
+* [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
 
 ## ❓ HELP
 
