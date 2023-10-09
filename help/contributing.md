@@ -69,6 +69,10 @@ If during build you encounter an error regarding `No matching toolchains found` 
 
 You can install missing JDKs directly from IntelliJ IDEA - click on the `Module SDK` combo box and select `+Add SDK`.
 
+If during the build you encounter an error regarding `Could not determine the dependencies of null.` then open `File` / `Settings` / `Build, Execute, Deployment` / `Build Tools` / `Gradle` window and set Java SDK to version `19`.
+
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+
 ## Testing Changes Locally
 
 ### Publish Local Konsist Artefact
