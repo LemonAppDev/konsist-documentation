@@ -9,7 +9,7 @@ Konsist
     .scopeFromSourceSet("test")
     .classes()
     .filter { it.functions().any { func -> func.hasAnnotationOf(Test::class) } }
-    .assert { it.hasNameEndingWith("Tests") }
+    .assertTrue { it.hasNameEndingWith("Tests") }
 }
 ```
 
@@ -22,7 +22,7 @@ fun `don't use JUnit4 Test annotation`() {
         .scopeFromProject()
         .classes()
         .functions()
-        .assertNot { 
+        .assertFalse { 
             it.annotations.any { annotation ->
                     annotation.fullyQualifiedName == "org.junit.Test"
             }

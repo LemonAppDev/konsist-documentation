@@ -50,7 +50,7 @@ Here is an example of querying all properties defined inside classes:
     koScope
         .classes()
         .properties()
-        .assert { // .. }
+        .assertTrue { // .. }
 ```
 
 ## Filter Declarations
@@ -69,7 +69,7 @@ Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org
 koScope
     .classes()
     .filter { it.hasAnnotationOf<UseCase>() }
-    .assert { // .. }
+    .assertTrue { // .. }
 ```
 
 Konsist provides a set of `with...` extensions to simplify the filtering syntax. The above snippet can be improved:
@@ -78,7 +78,7 @@ Konsist provides a set of `with...` extensions to simplify the filtering syntax.
 koScope
     .classes()
     .withAnnotationOf<UseCase>()
-    .assert { // .. }
+    .assertTrue { // .. }
 ```
 
 Multiple conditions can be applied to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:&#x20;
@@ -88,7 +88,7 @@ koScope
     .classes()
     .withAnnotationOf<UseCase>()
     .resideInPackage("..usecase")
-    .assert { // .. }
+    .assertTrue { // .. }
 ```
 
 ## Query And Filter Declaration
@@ -101,7 +101,7 @@ koScope
     .resideInPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
     .withAnnotationOf<Inject>() // filter classes in 'controller' package
-    .assert { // .. }
+    .assertTrue { // .. }
 ```
 
 ## Print Declarations

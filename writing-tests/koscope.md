@@ -99,7 +99,7 @@ val scope = refactoredModule1Scope + refactoredModule1Scop2
 scope
    .classes()
    ...
-   .assert { /*..*/ }
+   .assertTrue { /*..*/ }
 ```
 
 ### Nested Module Scope
@@ -310,12 +310,12 @@ class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         projectScope
-            .assert { // .. } 
+            .assertTrue { // .. } 
     }
 
     fun `test 2`() {
         projectScope
-            .assert { // .. } 
+            .assertTrue { // .. } 
     }
     
     companion object {
@@ -341,7 +341,7 @@ class AppKonsistTest {
     fun `test 1`() {
         projectScope
             .objects()
-            .assert { // .. }
+            .assertTrue { // .. }
     }
 }
 
@@ -351,13 +351,13 @@ class CoreKonsistTest {
     fun `test 1`() {
         projectScope
             .classes()
-            .assert { // .. }
+            .assertTrue { // .. }
     }
 
     fun `test 2`() {
         projectScope
             .interfaces()
-            .assert { // .. }
+            .assertTrue { // .. }
     }
 }
 ```
@@ -388,7 +388,7 @@ val refactoredModules = featureModule1Scope + featureModule2Scope
 refactoredModules
     .classes()
     ...
-    .assert { ... }
+    .assertTrue { ... }
 ```
 
 Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:
@@ -402,7 +402,7 @@ val moduleSubsetScope = moduleScope - dataLayerScope
 moduleSubsetScope
     .classes()
     ...
-    .assert { ... }
+    .assertTrue { ... }
 ```
 
 ## Print Scope

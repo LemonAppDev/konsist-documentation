@@ -28,7 +28,7 @@ In the beginning, the Konsist test can be applied to a single module:
 Konsist
     .scopeFromModule("featureCaloryCalculator")
     .classes()
-    .assert { it.hasTest() }
+    .assertTrue { it.hasTest() }
 ```
 
 As refactoring proceeds, this Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
@@ -37,7 +37,7 @@ As refactoring proceeds, this Konsist scope can be extended to another feature m
 Konsist
     .scopeFromModule("featureCaloryCalculator", "featureGroceryListGenerator")
     .classes()
-    .assert { it.hasTest() }
+    .assertTrue { it.hasTest() }
 ```
 
 At some point, the entire code base (all modules) will be aligned with the Konsist test, so scope should be retrieved from the entire project:
@@ -46,7 +46,7 @@ At some point, the entire code base (all modules) will be aligned with the Konsi
 Konsist
     .scopeFromProject()
     .classes()
-    .assert { it.hasTest() }
+    .assertTrue { it.hasTest() }
 ```
 
 Usage of project scope (`scopeFromProject` ) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.

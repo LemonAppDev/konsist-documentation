@@ -8,7 +8,7 @@ As a workaround, you can process the raw declaration `text` to verify the given 
 Konsist
      .scopePromProject()
      .functions()
-     .assert { it.text.contains("return") }
+     .assertTrue { it.text.contains("return") }
 ```
 
 {% hint style="info" %}

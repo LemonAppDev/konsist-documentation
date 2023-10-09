@@ -26,7 +26,7 @@ In the below snippet, the assertion (performed on the list of interfaces) verifi
 ```kotlin
 koScope
     .interfaces()
-    .assert { it.hasPublicModifier() }
+    .assertTrue { it.hasPublicModifier() }
 ```
 
 The `it` parameter inside the `assert` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface.&#x20;
@@ -55,7 +55,7 @@ The `assertNot` is a negation of the `assert` method. In the below snippet, the 
 koScope
     .classes()
     .flatMap { it.properties() }
-    .assertNot { it.hasAnnotationOf<Inject>() }
+    .assertFalse { it.hasAnnotationOf<Inject>() }
 ```
 
 ## Assert False

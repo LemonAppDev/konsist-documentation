@@ -117,7 +117,7 @@ koScope
     .resideInPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
     .withAnnotationOf<Inject>() // filter classes in 'controller' package
-    .assert { 
+    .assertTrue { 
         //...
     }
 ```

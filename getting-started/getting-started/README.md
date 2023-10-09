@@ -136,7 +136,7 @@ Assert is the final step to perform declaration verification - use `assert` comb
 Konsist.scopeFromProject()
     .classes()
     .withAllAnnotationsOf(RestController::class)
-    .assert { it.resideInPackage("..controller") } // Define the assertion
+    .assertTrue { it.resideInPackage("..controller") } // Define the assertion
 ```
 
 {% hint style="info" %}
@@ -160,7 +160,7 @@ class ControllerClassKonsistTest {
         Konsist.scopeFromProject() // 1. Create a scope representing the whole project (all Kotlin files in project)
             .classes() // 2. Get scope classes
             .withAllAnnotationsOf(RestController::class) // 2. Filter classes annotated with 'RestController'
-            .assert { it.resideInPackage("..controller..") } // 3. Define the assertion
+            .assertTrue { it.resideInPackage("..controller..") } // 3. Define the assertion
     }
 }
 ```

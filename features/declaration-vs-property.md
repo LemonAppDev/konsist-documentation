@@ -26,7 +26,7 @@ For example, such declaration can be used to check if annotations reside in a de
 koScope
     .classes()
     .withAnnotationModifier()
-    .assert { it.resideInPackage("..annotation..") }
+    .assertTrue { it.resideInPackage("..annotation..") }
 ```
 
 ## Use Site
@@ -55,7 +55,7 @@ Such properties can be used to check if the function annotated with `CustomLogge
 koScope
     .functions()
     .withAllAnnotations("CustomLogger")
-    .assert {
+    .assertTrue {
         it.hasNameStartingWith("log")
     }
 ```
