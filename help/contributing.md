@@ -47,8 +47,7 @@ For most scenarios, open PR in the [konsist-documentation](https://github.com/Le
 
 The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain current and valid, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [Konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated to update the GitBook documentation.
 
-Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. 
-[Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
+Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
 
 * [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
 * [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
@@ -144,7 +143,7 @@ Now build scripts will be able to resolve this newly published Konsist artifact.
 
 IntelliJ IDEA UI provides a convenient way to check which version of Konsist is used by the project. Open the `External Libraries` section of `Project view` and search for Konsist dependency:
 
-![](<../.gitbook/assets/image (3) (1).png>)
+![](<../.gitbook/assets/image (3) (1) (1).png>)
 
 ### Checks
 

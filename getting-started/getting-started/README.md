@@ -204,6 +204,10 @@ Notice that test class has a `KonsistTest` suffix. This is the recommended appro
 Review the [snippets](../../inspiration/snippets/ "mention") for more examples of `declaration checks`.
 {% endhint %}
 
+{% hint style="info" %}
+The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the[dynamic-tests.md](../../advanced/dynamic-tests.md "mention") page.&#x20;
+{% endhint %}
+
 ## Architectural Check
 
 Let's write a simple test to verify that application architecture rules are preserved. In this scenario, the application follows a simple 3-layer architecture, where `Presentation` layer depends on `Business` layer and `Business` layer depends on `Data` layer. The `Data` layer has no layer dependencies:

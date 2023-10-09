@@ -33,7 +33,7 @@ val TestScope.koTestName: String
     get() = this.testCase.name.testName
 ```
 
-This extension enables more concise syntax to providing Kotest test name:
+This extension enables more concise syntax to provide Kotest test name:
 
 ```kotlin
 class UseCaseTest : FreeSpec({
@@ -49,3 +49,12 @@ class UseCaseTest : FreeSpec({
 {% hint style="info" %}
 In the future, this extension will be added to the Konsist.
 {% endhint %}
+
+The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-tests.md](../../advanced/dynamic-tests.md "mention") page.&#x20;
+
+
+
+
+
+
+

@@ -5,8 +5,8 @@
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
   * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
-  * [Kotest Support](getting-started/getting-started/kotest-support.md)
   * [Articles](getting-started/getting-started/articles.md)
+  * [Kotest Support](getting-started/getting-started/kotest-support.md)
 * [Getting Help](getting-started/getting-help.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
@@ -44,6 +44,7 @@
 
 ## 🎓 ADVANCED
 
+* [Dynamic Tests](advanced/dynamic-tests.md)
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
 * [When Konsit API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)

@@ -14,11 +14,11 @@ The [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Android Studio](https://
 
 Create a simple test class and click on the line number to add the [breakpoint](https://www.jetbrains.com/help/idea/using-breakpoints.html):
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Debug the test:
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 When the program stops at the breakpoint (blue line background) run `Evaluate Expression...` action...
 
@@ -26,7 +26,7 @@ When the program stops at the breakpoint (blue line background) run `Evaluate Ex
 
 ...or press `Evaluate Expression...` button:
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 In the `Evaluate` window enter the code and click the `Evaluate` the button. For example, you can list all of the classes present in the scope to get the class names:
 
