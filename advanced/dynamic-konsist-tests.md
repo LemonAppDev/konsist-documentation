@@ -64,7 +64,7 @@ These tests would produce output in the IDE:
 
 <figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
-This setup has room for further optimization. Instead of the traditional static method where each test case is hard-coded, dynamic tests allow for the programmatic generation of test cases at runtime. This is especially beneficial for data-driven tests that require multiple inputs to be assessed using consistent logic. Instead of limiting to just two tests, this approach enables each assertion to stand as its own test, thereby producing six distinct tests given three use cases and two tests per use case:
+This setup has room for further optimization. Instead of the traditional static method where each test case is hard-coded, dynamic tests allow for the programmatic generation of test cases at runtime. Every declaration checked by Konsist can be represented as a separate JUnit5/Kotest test, thereby producing six distinct tests given three use cases and two tests per use case:
 
 * `CategorizeGroceryItemsUseCase should have test`
 * `CategorizeGroceryItemsUseCase should reside in ..domain..usecase.. package`
