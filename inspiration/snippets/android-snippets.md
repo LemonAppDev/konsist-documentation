@@ -75,18 +75,3 @@ fun `All JetPack Compose previews contain 'Preview' in method name`() {
 }
 ```
 
-## 6. Test
-
-```kotlin
-@Test
-fun `test`() {
-    Konsist
-        .scopeFromProject()
-        .functions()
-        .withAnnotationOf(Preview::class)
-        .assertTrue {
-            it.name.contains("Preview")
-        }
-}
-```
-
