@@ -2,9 +2,9 @@
 
 ![](.gitbook/assets/logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It supports a variety of Kotlin-based projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.&#x20;
+Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It supports a variety of Kotlin-based projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
 
-Konsist works with popular testing frameworks such as [JUni4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/).&#x20;
+Konsist works with popular testing frameworks such as [JUni4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/).
 
 Konsist simplifies the process of maintaining codebase consistency by upholding coding conventions and safeguarding the project's architecture. It empowers developers to create consistency checks through unit tests, which can be run during pull request (PR) reviews for verification.
 
@@ -28,15 +28,42 @@ The first type involves declaration checks, where custom tests are created to id
 
 Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
 
+{% tabs %}
+{% tab title="JUnit" %}
+<pre class="language-kotlin"><code class="lang-kotlin">class UseCaseKonsistTest {
+    @Test
+    fun `every use case reside in use case package`() {
+        Konsist
+            .scopeFromProject() // Define the scope containing all Kotlin files present in the project
+            .classes() // Get all class declarations
+            .withNameEndingWith("UseCase") // Filter classes heaving name ending with 'UseCase'
+            .assertTrue { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
+    }
+}
+<strong>
+</strong></code></pre>
+{% endtab %}
+
+{% tab title="Kotest" %}
 ```kotlin
-@Test
-fun `every use case reside in use case package`() {
-    Konsist
+class UseCaseKonsistTest : FreeSpec({
+    "every use case reside in use case package" {
+        Konsist
         .scopeFromProject() // Define the scope containing all Kotlin files present in the project
         .classes() // Get all class declarations
         .withNameEndingWith("UseCase") // Filter classes heaving name ending with 'UseCase'
-        .assertTrue { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
-}
+        .assertTrue (
+                testName = this.testCase.name.testName
+         ){ 
+              it.resideInPackage("..domain.usecase..") 
+         } // Assert that each class resides in 'any domain.usecase any' package
+    }
+})
+```
+{% endtab %}
+{% endtabs %}
+
+```kotlin
 ```
 
 {% hint style="info" %}
@@ -45,9 +72,7 @@ For more Konsist test samples see the [snippets](inspiration/snippets/ "mention"
 
 ## ArchitecturalChecks
 
-The second type of [Konsit checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries -  they are intended to maintain the separation of concerns between layers.
-
-
+The second type of [Konsit checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries - they are intended to maintain the separation of concerns between layers.
 
 Consider this simple 3 layer of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html):
 
@@ -58,24 +83,51 @@ Consider this simple 3 layer of [Clean Architecture](https://blog.cleancoder.com
 
 Here is a Konsist test that verifies if Clean Architecture dependency requirements are valid:
 
-```kotlin
-@Test
-fun `clean architecture layers have correct dependencies`() {
-    Konsist
-        .scopeFromProject() // Define the scope containing all Kotlin files present in project
-        .assertArchitecture { // Assert architecture
-            // Define layers
-            val domain = Layer("Domain", "com.myapp.domain..")
-            val presentation = Layer("Presentation", "com.myapp.presentation..")
-            val data = Layer("Data", "com.myapp.data..")
+{% tabs %}
+{% tab title="JUnit" %}
+<pre class="language-kotlin"><code class="lang-kotlin">class ArchitectureTest {
+<strong>    @Test
+</strong>    fun `clean architecture layers have correct dependencies`() {
+        Konsist
+            .scopeFromProject() // Define the scope containing all Kotlin files present in project
+            .assertArchitecture { // Assert architecture
+                // Define layers
+                val domain = Layer("Domain", "com.myapp.domain..")
+                val presentation = Layer("Presentation", "com.myapp.presentation..")
+                val data = Layer("Data", "com.myapp.data..")
+    
+                // Define architecture assertions
+                domain.dependsOnNothing()
+                presentation.dependsOn(domain)
+                data.dependsOn(domain)
+            }
+    } 
+}
+</code></pre>
+{% endtab %}
 
-            // Define architecture assertions
-            domain.dependsOnNothing()
-            presentation.dependsOn(domain)
-            data.dependsOn(domain)
-        }
-} 
+{% tab title="Kotest" %}
+```kotlin
+class ArchitectureTest : FreeSpec({
+    "every use case reside in use case package" {
+        Konsist
+            .scopeFromProject() // Define the scope containing all Kotlin files present in project
+            .assertArchitecture { // Assert architecture
+                // Define layers
+                val domain = Layer("Domain", "com.myapp.domain..")
+                val presentation = Layer("Presentation", "com.myapp.presentation..")
+                val data = Layer("Data", "com.myapp.data..")
+    
+                // Define architecture assertions
+                domain.dependsOnNothing()
+                presentation.dependsOn(domain)
+                data.dependsOn(domain)
+            }
+    }
+})
 ```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.
