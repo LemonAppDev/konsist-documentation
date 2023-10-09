@@ -47,7 +47,8 @@ For most scenarios, open PR in the [konsist-documentation](https://github.com/Le
 
 The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain current and valid, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [Konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated to update the GitBook documentation.
 
-## Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
+Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. 
+[Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
 
 * [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
 * [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
@@ -61,7 +62,7 @@ This is a high-level view of project contribution:
 3. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 4. Make changes
 5. Add Tests if needed
-6. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged to `main` branch after the release)
+6. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged to the `main` branch after the release)
 7. Make sure all checks are passing before marking PR as `Ready for review`.
 
 {% hint style="info" %}
