@@ -15,7 +15,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
         .scopeFromProject()
         .classes()
         .withParentOf(ViewModel::class)
-        .assert { it.name.endsWith("ViewModel") }
+        .assertTrue { it.name.endsWith("ViewModel") }
 }
 ```
 
@@ -29,8 +29,8 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
         .classes()
         .withParentOf(ViewModel::class)
         .properties()
-        .assert {
-            it.hasPublicOrDefaultModifier && it.hasType("kotlinx.coroutines.flow.Flow")
+        .assertTrue {
+            it.hasPublicOrDefaultModifier && it.hasType { type -> type.name == "kotlinx.coroutines.flow.Flow" }
         }
 }
 ```
@@ -44,7 +44,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
         .scopeFromProject()
         .classes()
         .withNameEndingWith("Repository")
-        .assert { it.resideInPackage("..repository..") }
+        .assertTrue { it.resideInPackage("..repository..") }
 }
 ```
 
@@ -56,21 +56,22 @@ fun `no class should use Android util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertNot { it.hasImport { import -> import.name == "android.util.Log" } }
+        .assertFalse { it.hasImport { import -> import.name == "android.util.Log" } }
 }
 ```
 
-## 5. All JetPack Compose previews contain `Preview` in method name
+## 5. All JetPack Compose Previews Contain `Preview` In Method Name
 
 ```kotlin
 @Test
-    fun `All JetPack Compose previews contain 'Preview' in method name`() {
-        Konsist
-            .scopeFromProject()
-            .functions()
-            .withAnnotationOf(Preview::class)
-            .assert {
-                it.name.contains("Preview")
-            }
-    }
+fun `All JetPack Compose previews contain 'Preview' in method name`() {
+    Konsist
+        .scopeFromProject()
+        .functions()
+        .withAnnotationOf(Preview::class)
+        .assertTrue {
+            it.name.contains("Preview")
+        }
+}
 ```
+
