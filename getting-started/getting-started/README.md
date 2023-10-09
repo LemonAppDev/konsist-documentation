@@ -177,10 +177,18 @@ class ControllerClassKonsistTest : FreeSpec({
         Konsist.scopeFromProject() // 1. Create a scope representing the whole project (all Kotlin files in project)
             .classes() // 2. Get scope classes
             .withAllAnnotationsOf(RestController::class) // 2. Filter classes annotated with 'RestController'
-            .assertTrue { it.resideInPackage("..controller..") } // 3. Define the assertion
+            .assertTrue (
+                testName = this.testCase.name.testName
+            ) { 
+                it.resideInPackage("..controller..") 
+            } // 3. Define the assertion
     }
 })
 ```
+
+{% hint style="info" %}
+For KoTest to function correctly the KoTest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+{% endhint %}
 
 {% hint style="info" %}
 The [KoTest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
@@ -306,6 +314,10 @@ class KoTestSnippets {
     })
 }
 ```
+
+{% hint style="info" %}
+For KoTest to function correctly the KoTest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+{% endhint %}
 
 {% hint style="info" %}
 The [KoTest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.

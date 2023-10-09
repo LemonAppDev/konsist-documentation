@@ -1,0 +1,43 @@
+# KoTest Support
+
+Konsist has no way of retrieving the name of the current [KoTest](https://kotest.io/) test (unlike [JUnit](https://junit.org/)).  It is recommended to pass the name of the current test using the `testName` argument. This will allow:
+
+* Correct test names are displayed when the test is failing
+* Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
+
+It is recommended to utilize the name derived from the KoTest context as the value for the `testName` argument:
+
+```kotlin
+class UseCaseTest : FreeSpec({
+    "useCase test" {
+        Konsist
+            .scopeFromProject()
+            .classes()
+            .assertTrue (testName = this.testCase.name.testName) {  }
+    }
+})
+```
+
+To facilitate test name retrieval you can add this custom `koTestName` extension:
+
+```kotlin
+val TestScope.koTestName: String
+    get() = this.testCase.name.testName
+```
+
+This extension enables more concise syntax to providing KoTest test name:
+
+```kotlin
+class UseCaseTest : FreeSpec({
+    "useCase test" {
+        Konsist
+            .scopeFromProject()
+            .classes()
+            .assertTrue (testName = koTestNamee) {  }
+    }
+})
+```
+
+{% hint style="info" %}
+In the future, this extension will be added to the Konsist.
+{% endhint %}
