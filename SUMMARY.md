@@ -31,6 +31,7 @@
 
 * [Starter Projects](inspiration/starter-projects.md)
 * [Snippets](inspiration/snippets/README.md)
+    * [Sample Snippets](inspiration/snippets/sample/sample-snippets.md)
   * [KoTest Snippets](inspiration/snippets/kotest-snippets.md)
   * [General Snippets](inspiration/snippets/general-snippets.md)
   * [Android Snippets](inspiration/snippets/android-snippets.md)
