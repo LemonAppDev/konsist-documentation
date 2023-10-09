@@ -55,7 +55,7 @@ This is a high-level view of project contribution:
 2. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 3. Make changes
 4. Add Tests if needed
-5. Open the `Draft` Pull Request to the `develop` branch
+5. Open the `Draft` Pull Request to the `develop` branch  (`develop` will be merged to `main` branch after the release)
 6. Make sure all checks are passing before marking PR as `Ready for review`.
 
 {% hint style="info" %}
