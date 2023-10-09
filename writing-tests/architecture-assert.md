@@ -19,7 +19,7 @@ flowchart TB
 
 ## Assert Architecture
 
-As an example this simple 2 layer architecture will be used:
+As an example, this simple 2-layer architecture will be used:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -33,8 +33,8 @@ The `assertArchitecture` block defines architecture layer rules and verifies tha
 ```kotlin
 Konsist
     .scopeFromProject()
-    .assertArchitecture { // Assert architecture
-
+    .assertArchitecture { 
+        // Assert architecture 
     }
 ```
 
@@ -68,7 +68,24 @@ koScope.assertArchitecture {
     }
 ```
 
-## Additional Variable
+Architecture verification can be performed on `KoScope` (as seen above) and a list containing `KoFiles`.  For example, you can remove a few files from the scope before performing an architectural check:
+
+```kotlin
+koScope
+    .files
+    .filter { it.name.startsWith("Repository") }
+    .assertArchitecture {
+        val presentation = Layer("Presentation", "com.myapp.presentation..")
+        val data = Layer("Data", "com.myapp.data..")
+
+        presentation.dependsOn(data)
+        data.dependsOnNothing()
+    }
+```
+
+This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
+
+## Architecture As Variable
 
 Architecture configuration can be defined beforehand and stored in a variable to facilitate checks for multiple scopes:&#x20;
 
