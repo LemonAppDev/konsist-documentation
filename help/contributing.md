@@ -67,6 +67,8 @@ If during build you encounter an error regarding `No matching toolchains found` 
 
 <figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
+You can install missing JDKs directly from IntelliJ IDEA - click on the `Module SDK` combo box and select `+Add SDK`.
+
 ## Testing Changes Locally
 
 ### Publish Local Konsist Artefact
