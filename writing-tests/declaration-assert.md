@@ -80,7 +80,7 @@ Konist
 
 ### Test Name
 
-Assertions offer a set of parameters allowing to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppress-konsist-test.md](suppress-konsist-test.md "mention")).
+Assertions offer a set of parameters allowing to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
 
 ### Strict
 

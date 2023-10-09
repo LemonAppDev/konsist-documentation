@@ -17,7 +17,7 @@
 * [Declaration Query And Filter](writing-tests/declaration-query-and-filter.md)
 * [Declaration Assert](writing-tests/declaration-assert.md)
 * [Architecture Assert](writing-tests/architecture-assert.md)
-* [Suppress Konsist Test](writing-tests/suppress-konsist-test.md)
+* [Suppress Konsist Test](writing-tests/suppressing-konsist-test.md)
 
 ## 📗 FEATURES
 
@@ -25,7 +25,7 @@
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
 * [Compiler Type Inference](features/compiler-type-inference.md)
-* [Package Wildcard](features/package-wildcard.md)
+* [Package Wildcard](features/packageselector.md)
 
 ## 🔍 INSPIRATION
 
@@ -52,7 +52,7 @@
 ## ❓ HELP
 
 * [Changelog](help/changelog.md)
-* [Feedback & Questions](help/feedback-and-questions.md)
+* [Feedback & Questions](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)

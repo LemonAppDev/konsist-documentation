@@ -246,7 +246,7 @@ project/
 ```
 
 {% hint style="info" %}
-The double dots (`..`) syntax means zero or more packages. Check the [package-wildcard.md](../features/package-wildcard.md "mention") page.
+The double dots (`..`) syntax means zero or more packages. Check the [packageselector.md](../features/packageselector.md "mention") page.
 {% endhint %}
 
 ### Directory Scope

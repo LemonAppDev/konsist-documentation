@@ -1,4 +1,4 @@
-# Suppressing Konsist Test
+# Suppress Konsist Test
 
 The [@Suppress](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-suppress/) annotation serves as a powerful tool to control lines and static analysis tools. When writing the Konsist test, there might be instances where the specific guard is not applicable due to certain project-specific reasons. The `@Suppress` annotation can be used to ignore those particular issues, ensuring that the codebase still adheres to the overall linting standards
 
@@ -84,7 +84,7 @@ interface Book {
 
 ### Suppressing Kotest Test
 
-Konsist has no way of retrieving the name of the current [Kotest](https://kotest.io/) test (unlike JUnit). &#x20;
+Konsist has no way of retrieving the name of the current [Kotest](https://kotest.io/) test (unlike JUnit).
 
 {% hint style="info" %}
 See the [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention") page.

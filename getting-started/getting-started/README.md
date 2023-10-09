@@ -144,7 +144,7 @@ To learn more about assertions see [declaration-assert.md](../../writing-tests/d
 {% endhint %}
 
 {% hint style="info" %}
-The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[package-wildcard.md](../../features/package-wildcard.md "mention") syntax).
+The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../../features/packageselector.md "mention") syntax).
 {% endhint %}
 
 ### Wrap Konsist Code In Test

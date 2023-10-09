@@ -7,7 +7,7 @@ description: Make Kotest work with Konsist
 Konsist can't obtain the current [kotest](https://kotest.io/) test's name, unlike JUnit. It's suggested to supply the test name using the `testName` parameter. Doing so will enable:
 
 * Correct test names are displayed when the test is failing
-* Test suppression (See [suppress-konsist-test.md](../../writing-tests/suppress-konsist-test.md "mention"))
+* Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
 
 It is recommended to utilize the name derived from the Kotest context as the value for the `testName` argument:
 
