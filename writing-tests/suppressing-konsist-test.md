@@ -82,15 +82,15 @@ interface Book {
 }
 ```
 
-### Suppressing KoTest Test
+### Suppressing Kotest Test
 
-Konsist has no way of retrieving the name of the current [KoTest](https://kotest.io/) test (unlike JUnit). &#x20;
+Konsist has no way of retrieving the name of the current [Kotest](https://kotest.io/) test (unlike JUnit). &#x20;
 
 {% hint style="info" %}
 See the [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention") page.
 {% endhint %}
 
-To allow suppression (and correct test names) it is recommended to utilize the name derived from the KoTest context using the `testName` argument:
+To allow suppression (and correct test names) it is recommended to utilize the name derived from the Kotest context using the `testName` argument:
 
 ```kotlin
 package com.api.test

@@ -2,14 +2,14 @@
 description: Make Kotest work with Konsist
 ---
 
-# KoTest Support
+# Kotest Support
 
 Konsist can't obtain the current [kotest](https://kotest.io/) test's name, unlike JUnit. It's suggested to supply the test name using the `testName` parameter. Doing so will enable:
 
 * Correct test names are displayed when the test is failing
 * Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
 
-It is recommended to utilize the name derived from the KoTest context as the value for the `testName` argument:
+It is recommended to utilize the name derived from the Kotest context as the value for the `testName` argument:
 
 ```kotlin
 class UseCaseTest : FreeSpec({
@@ -23,7 +23,7 @@ class UseCaseTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however KoTest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).&#x20;
+This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however Kotest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).&#x20;
 {% endhint %}
 
 To facilitate test name retrieval you can add this custom `koTestName` extension:
@@ -33,7 +33,7 @@ val TestScope.koTestName: String
     get() = this.testCase.name.testName
 ```
 
-This extension enables more concise syntax to providing KoTest test name:
+This extension enables more concise syntax to providing Kotest test name:
 
 ```kotlin
 class UseCaseTest : FreeSpec({

@@ -170,7 +170,7 @@ The [JUnit](https://junit.org/) testing framework project dependency should be a
 {% endhint %}
 {% endtab %}
 
-{% tab title="KoTest" %}
+{% tab title="Kotest" %}
 ```kotlin
 class ControllerClassKonsistTest : FreeSpec({
     "classes annotated with 'RestController' annotation reside in 'controller' package" {
@@ -187,11 +187,11 @@ class ControllerClassKonsistTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-For KoTest to function correctly the KoTest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
-The [KoTest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
+The [Kotest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
 {% endhint %}
 {% endtab %}
 {% endtabs %}
@@ -296,7 +296,7 @@ The [JUnit](https://junit.org/) testing framework project dependency should be a
 {% endhint %}
 {% endtab %}
 
-{% tab title="KoTest" %}
+{% tab title="Kotest" %}
 ```kotlin
 class ArchitectureKonsistTest {
     class UseCaseTest : FreeSpec({
@@ -320,11 +320,11 @@ class ArchitectureKonsistTest {
 ```
 
 {% hint style="info" %}
-For KoTest to function correctly the KoTest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
-The [KoTest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
+The [Kotest](https://kotest.io/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
 {% endhint %}
 {% endtab %}
 {% endtabs %}

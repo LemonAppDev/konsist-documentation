@@ -1,2 +1,2 @@
-# KoTest Snippets
+# Kotest Snippets
 
