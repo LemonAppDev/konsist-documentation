@@ -43,20 +43,15 @@ The `assertFalse` is a negation of the `assertTrue` method. In the below snippet
 Konist
     .scopeFromProject()
     .properties()
-    .assertFalse { it.hasAnnotationOf<Inject>() }
+    .assertFalse { ... }
 ```
 
-This assertion verifies that the class does not contain any properties with `public` (explicit `public` modifier) or default (implicit `public` modifier) modifiers:
+This assertion verifies that the class does not contain any properties with `public` (an explicit `public` modifier) or default (implicit `public` modifier) modifiers:
 
 ```kotlin
 Konist
     .scopeFromProject()
-    .classes()
-    .assertFalse { 
-        it.containsProperty { 
-            property -> property.hasPublicOrDefaultModifier 
-        } 
-    }
+    .assertFalse { ... }
 ```
 
 ### Assert Empty
@@ -83,7 +78,11 @@ Konist
 
 ## Assertion Parameters
 
+### Test Name
+
 Assertions offer a set of parameters allowing to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
+
+### Strict
 
 You can also enable enhanced verification by setting  `strict` argument to `true`:
 
@@ -91,7 +90,16 @@ You can also enable enhanced verification by setting  `strict` argument to `true
 Konist
     .scopeFromProject() 
     .classes()
-    .properties()
-    .assertFalse(strict = true) { it.hasAnnotationOf<Inject>() }
+    .assertFalse(strict = true) { ... }
 ```
 
+### Message
+
+The `message` param allows to provision of additional messages that will be displayed with the failing test. This may be a more detailed description of the problem or a hint on how to fix the issue.
+
+```kotlin
+Konist
+    .scopeFromProject() 
+    .classes()
+    .assertFalse(message = "Do X to fix the issue") { ... }
+```

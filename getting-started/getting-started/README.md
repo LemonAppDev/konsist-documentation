@@ -196,7 +196,9 @@ The [KoTest](https://kotest.io/) testing framework project dependency should be 
 {% endtab %}
 {% endtabs %}
 
-The above snippets present a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controller` package. Since scope is created from all project files this test will verify existing and new classes.
+The above snippets present a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controller` package. Since scope is created from all project files this test will verify existing and new classes.&#x20;
+
+Notice that test class has a `KonsistTest` suffix. This is the recommended approach to name Konsist tests.
 
 {% hint style="info" %}
 Review the [snippets](../../inspiration/snippets/ "mention") for more examples of `declaration checks`.
@@ -269,21 +271,23 @@ The above code describes architecture consistency logic. Same as with the declar
 {% tabs %}
 {% tab title="JUnit" %}
 ```kotlin
-@Test
-fun `architecture layers have dependencies correct`() {
-    Konsist
-        .scopeFromProject() // Define the scope containing all Kotlin files present i
-        .assertArchitecture { // Assert architecture
-            // Define layers
-            private val presentation = Layer("Presentation", "com.myapp.presentation..")
-            private val business = Layer("Business", "com.myapp.business..")
-            private val data = Layer("Data", "com.myapp.data..")
-
-            // Define architecture assertions
-            presentation.dependsOn(business)
-            business.dependsOn(data)
-            data.dependsOnNothing()
-        }
+class ArchitectureKonsistTest {
+    @Test
+    fun `architecture layers have dependencies correct`() {
+        Konsist
+            .scopeFromProject() // Define the scope containing all Kotlin files present i
+            .assertArchitecture { // Assert architecture
+                // Define layers
+                private val presentation = Layer("Presentation", "com.myapp.presentation..")
+                private val business = Layer("Business", "com.myapp.business..")
+                private val data = Layer("Data", "com.myapp.data..")
+    
+                // Define architecture assertions
+                presentation.dependsOn(business)
+                business.dependsOn(data)
+                data.dependsOnNothing()
+            }
+    }
 }
 ```
 
@@ -294,7 +298,7 @@ The [JUnit](https://junit.org/) testing framework project dependency should be a
 
 {% tab title="KoTest" %}
 ```kotlin
-class KoTestSnippets {
+class ArchitectureKonsistTest {
     class UseCaseTest : FreeSpec({
         "architecture layers have dependencies correct" {
             Konsist
