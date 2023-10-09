@@ -6,7 +6,20 @@ Konsist can be used to guard the consistency of the [Android](https://www.androi
 The [android-showcase](https://github.com/igorwojda/android-showcase) project contains set of Konsist tests.
 {% endhint %}
 
-## 1. Classes Extending `ViewModel` Should Have `ViewModel` Suffix
+## 1. Testx
+
+```kotlin
+@Test
+fun `testx`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withParentOf(ViewModel::class)
+        .assertTrue { it.name.endsWith("ViewModel") }
+}
+```
+
+## 2. Classes Extending `ViewModel` Should Have `ViewModel` Suffix
 
 ```kotlin
 @Test
@@ -19,7 +32,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
 }
 ```
 
-## 2. Every `ViewModel` Public Property Has `Flow` Type
+## 3. Every `ViewModel` Public Property Has `Flow` Type
 
 ```kotlin
 @Test
@@ -35,7 +48,7 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
 }
 ```
 
-## 3. `Repository` Classes Should Reside In `repository` Package
+## 4. `Repository` Classes Should Reside In `repository` Package
 
 ```kotlin
 @Test
@@ -48,7 +61,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
 }
 ```
 
-## 4. No Class Should Use Android Util Logging
+## 5. No Class Should Use Android Util Logging
 
 ```kotlin
 @Test
@@ -60,7 +73,7 @@ fun `no class should use Android util logging`() {
 }
 ```
 
-## 5. All JetPack Compose Previews Contain `Preview` In Method Name
+## 6. All JetPack Compose Previews Contain `Preview` In Method Name
 
 ```kotlin
 @Test
