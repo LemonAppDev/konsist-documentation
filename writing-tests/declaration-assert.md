@@ -93,13 +93,13 @@ Konist
     .assertFalse(strict = true) { ... }
 ```
 
-### Message
+### Additional Message
 
-The `message` param allows to provision of additional messages that will be displayed with the failing test. This may be a more detailed description of the problem or a hint on how to fix the issue.
+The `additionalMessage` param allows to provision of additional messages that will be displayed with the failing test. This may be a more detailed description of the problem or a hint on how to fix the issue.
 
 ```kotlin
 Konist
     .scopeFromProject() 
     .classes()
-    .assertFalse(message = "Do X to fix the issue") { ... }
+    .assertFalse(additionalMessage = "Do X to fix the issue") { ... }
 ```
