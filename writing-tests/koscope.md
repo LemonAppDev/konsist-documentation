@@ -40,7 +40,7 @@ flowchart TD
 Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
 {% endhint %}
 
-The scope can be created for an entire project, module, package, and a single Kotlin file.&#x20;
+The scope can be created for an entire project, module, package, and a single Kotlin file.
 
 {% hint style="info" %}
 To print a list of files within `koScope` use the `koScope.print()` method.
@@ -269,10 +269,17 @@ project/
 
 ## File Scope
 
-It is also possible to create scope from a single file:
+It is also possible to create scope from one or more file paths:
 
 ```kotlin
 val myScope = Konsist.scopeFromFile("app/main/domain/UseCase.kt")
+```
+
+We have added a new way of creating the scope from a list of files. This can help with certain development workflows e.g. runing Konsist Tests only on files modified in a given PR:
+
+```kotlin
+val filePaths = listOf("/domain/UseCase1.kt", "/domain/UseCase2.kt")
+val myScope = Konsist.scopeFromFile(filePaths)
 ```
 
 ## Scope Slice
@@ -384,7 +391,7 @@ refactoredModules
     .assert { ... }
 ```
 
-Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:&#x20;
+Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:
 
 ```kotlin
 val moduleScope = Konsist.scopeFromModule("myFeature")
