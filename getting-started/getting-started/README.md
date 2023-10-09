@@ -256,7 +256,7 @@ Konsist
 
 ### Wrap Konsist Code In Test
 
-The above code describes architecture consistency logic. Same as with the declaration check this logic should be executed as a unit test:
+The above code describes architecture consistency logic. Same as with the declaration check this logic should be executed as a unit test using you preferred testing framework:
 
 {% tabs %}
 {% tab title="JUnit" %}
@@ -278,8 +278,6 @@ fun `architecture layers have dependencies correct`() {
         }
 }
 ```
-
-#### KoTest Test
 
 {% hint style="info" %}
 The [JUnit](https://junit.org/) testing framework project dependency should be added to the project. See [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) to get a complete sample project.
