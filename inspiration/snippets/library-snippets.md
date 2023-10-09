@@ -8,7 +8,7 @@ fun `every api declaration has KDoc`() {
     Konsist
         .scopeFromPackage("..api..")
         .declarationsOf<KoKDocProvider>()
-        .assert { it.hasKDoc }
+        .assertTrue { it.hasKDoc }
 }
 ```
 
@@ -19,7 +19,7 @@ fun `every api declaration has KDoc`() {
 fun `every function with parameters has a param tags`() {
     Konsist.scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasValidKDocParamTags() }
+        .assertTrue { it.hasValidKDocParamTags() }
 }
 ```
 
@@ -30,7 +30,7 @@ fun `every function with parameters has a param tags`() {
 fun `every function with return value has a return tag`() {
     Konsist.scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasValidKDocReturnTag() }
+        .assertTrue { it.hasValidKDocReturnTag() }
 }
 ```
 
@@ -41,7 +41,7 @@ fun `every function with return value has a return tag`() {
 fun `every extension has a receiver tag`() {
     Konsist.scopeFromPackage("..api..")
         .declarationsOf<KoReceiverTypeProvider>()
-        .assert { it.hasValidKDocReceiverTag() }
+        .assertTrue { it.hasValidKDocReceiverTag() }
 }
 ```
 
@@ -53,7 +53,7 @@ fun `every public function in api package must have explicit return type`() {
     Konsist
         .scopeFromPackage("..api..")
         .functions()
-        .assert { it.hasReturnType() }
+        .assertTrue { it.hasReturnType() }
 }
 ```
 
@@ -65,7 +65,7 @@ fun `every public property in api package must have specify type explicitly`() {
     Konsist
         .scopeFromPackage("..api..")
         .properties()
-        .assert { it.hasType() }
+        .assertTrue { it.hasType() }
 }
 ```
 

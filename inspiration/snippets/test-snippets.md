@@ -8,7 +8,7 @@ fun `every class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .assert { it.hasTestClass() }
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
@@ -21,7 +21,7 @@ fun `every class - except data and value class - has test`() {
         .scopeFromProduction()
         .classes()
         .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
-        .assert { it.hasTestClass() }
+        .assertTrue { it.hasTestClass() }
 }
 ```
 
@@ -33,7 +33,7 @@ fun `test classes should have test subject named sut`() {
     Konsist
         .scopeFromTest()
         .classes()
-        .assert {
+        .assertTrue {
             val type = it.name.removeSuffix("Test")
             val sut = it
                 .properties()
@@ -56,20 +56,7 @@ fun `test classes should have all members private besides tests`() {
         .filterIsInstance<KoAnnotationProvider>()
         .withoutAnnotationOf(Test::class, ParameterizedTest::class, RepeatedTest::class)
         .filterIsInstance<KoVisibilityModifierProvider>()
-        .assert { it.hasPrivateModifier }
-}
-```
-
-## 5. Don`t Use JUnit4 Test Annotation
-
-```kotlin
-@Test
-fun `don't use JUnit4 Test annotation`() {
-    Konsist
-        .scopeFromProject()
-        .classes()
-        .functions()
-        .assertNot { it.hasAnnotationWithName("org.junit.Test") } // should be only org.junit.jupiter.api.Test
+        .assertTrue { it.hasPrivateModifier }
 }
 ```
 
