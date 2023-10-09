@@ -5,6 +5,7 @@
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
   * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
+  * [KoTest](getting-started/getting-started/kotest.md)
   * [Articles](getting-started/getting-started/articles.md)
 * [Getting Help](getting-started/getting-help.md)
 * [Compatibility](getting-started/compatibility.md)

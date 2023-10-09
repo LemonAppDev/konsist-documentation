@@ -4,6 +4,8 @@
 
 Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It supports a variety of Kotlin-based projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.&#x20;
 
+Konsist works with popular testing frameworks such as [JUni4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [KoTest](https://kotest.io/).&#x20;
+
 Konsist simplifies the process of maintaining codebase consistency by upholding coding conventions and safeguarding the project's architecture. It empowers developers to create consistency checks through unit tests, which can be run during pull request (PR) reviews for verification.
 
 {% hint style="info" %}
@@ -21,7 +23,7 @@ The first type involves declaration checks, where custom tests are created to id
 * Every class constructor has alphabetically ordered parameters
 * Every constructor parameter has a name derived from the class name
 * Field injection and `m` prefix is forbidden
-* Every public member in `api` package must be documented with kDoc
+* Every public member in `api` package must be documented with KDoc
 * and more...
 
 Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
