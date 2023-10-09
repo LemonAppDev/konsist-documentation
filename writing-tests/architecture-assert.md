@@ -4,7 +4,7 @@ description: Verify codebase using Konsist API
 
 # Architecture Assert
 
-Architecture assertions are used to perform architecture verification. It is the final step of Konsist verification preceded by scope creation ([koscope.md](koscope.md "mention")):
+Architecture assertions are used to perform architecture verification. It is the final step of Konsist verification preceded by scope creation ([create-the-scope.md](create-the-scope.md "mention")):
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -83,7 +83,7 @@ koScope
     }
 ```
 
-This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
+This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [create-the-scope.md](create-the-scope.md "mention").
 
 ## Architecture As Variable
 

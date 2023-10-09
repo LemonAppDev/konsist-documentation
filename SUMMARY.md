@@ -13,7 +13,7 @@
 
 ## ✅ WRITING TESTS
 
-* [Create The Scope](writing-tests/koscope.md)
+* [Create The Scope](writing-tests/create-the-scope.md)
 * [Declaration Query And Filter](writing-tests/declaration-query-and-filter.md)
 * [Declaration Assert](writing-tests/declaration-assert.md)
 * [Architecture Assert](writing-tests/architecture-assert.md)

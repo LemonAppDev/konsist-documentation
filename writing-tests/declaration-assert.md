@@ -4,7 +4,7 @@ description: Verify codebase using Konsist API
 
 # Declaration Assert
 
-Assertions are used to perform code base verification. This is the final step of Konsist verification preceded by scope creation ([koscope.md](koscope.md "mention")) and [declaration-query-and-filter.md](declaration-query-and-filter.md "mention") steps:
+Assertions are used to perform code base verification. This is the final step of Konsist verification preceded by scope creation ([create-the-scope.md](create-the-scope.md "mention")) and [declaration-query-and-filter.md](declaration-query-and-filter.md "mention") steps:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%

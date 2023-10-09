@@ -97,7 +97,7 @@ Konsist.scopeFromProject() // Define the scope containing all Kotlin files prese
 ```
 
 {% hint style="info" %}
-To define more granular scopes see the [koscope.md](../../writing-tests/koscope.md "mention") page.
+To define more granular scopes see the [create-the-scope.md](../../writing-tests/create-the-scope.md "mention") page.
 {% endhint %}
 
 The following sections will present how to use a scope by writing declaration checks and architecture checks.
@@ -196,7 +196,7 @@ The [Kotest](https://kotest.io/) testing framework project dependency should be 
 {% endtab %}
 {% endtabs %}
 
-The above snippets present a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controller` package. Since scope is created from all project files this test will verify existing and new classes.&#x20;
+The above snippets present a complete example of a test verifying that all classes annotated with `RestController` annotation reside in the `controller` package. Since scope is created from all project files this test will verify existing and new classes.
 
 Notice that test class has a `KonsistTest` suffix. This is the recommended approach to name Konsist tests.
 
@@ -338,7 +338,3 @@ For more Konsist architectural checks see [Protect Kotlin Project Architecture U
 This is the basic way of using Konsist. Take a look at this guide describing how to debug Konsist tests [debug-konsist-test.md](../../features/debug-konsist-test.md "mention") to get a better understanding of how Konsist works.
 
 Please review the Konsist documentation (this website) to read about more advanced topics and various use cases.
-
-{% hint style="info" %}
-
-{% endhint %}
