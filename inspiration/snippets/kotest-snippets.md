@@ -10,7 +10,7 @@ class KoTestSnippets {
                 .scopeFromProject()
                 .classes()
                 .withNameEndingWith("UseCase")
-                .assertTrue { it.hasTestClass() }
+                .assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
         }
     })
 }
@@ -26,10 +26,10 @@ class UseCaseTests : FreeSpec({
             .withNameEndingWith("UseCase")
             .forEach { useCase ->
                 "${useCase.name} should have test" {
-                    useCase.assertTrue { it.hasTestClass() }
+                    useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
                 }
                 "${useCase.name} should reside in ..domain..usecase.. package" {
-                    useCase.assertTrue { it.resideInPackage("..domain..usecase..") }
+                    useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain..usecase..") }
                 }
                 "${useCase.name} should ..." {
                     // another Konsist assert
