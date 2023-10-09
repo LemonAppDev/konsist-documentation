@@ -2,17 +2,13 @@
 
 ![](.gitbook/assets/logo.png)
 
-Konsist is a static code analyzer for the [Kotlin](https://kotlinlang.org/) language. It supports a variety of Kotlin-based projects including [Android](https://www.android.com/), [Spring](https://spring.io/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
-
-Konsist works with popular testing frameworks such as [JUni4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/).
-
-Konsist simplifies the process of maintaining codebase consistency by upholding coding conventions and safeguarding the project's architecture. It empowers developers to create consistency checks through unit tests, which can be run during pull request (PR) reviews for verification.
+Konsist is a powerful static code analyzer tailored for [Kotlin](https://kotlinlang.org/), focused on ensuring codebase consistency and adherence to coding conventions. Designed to be flexible, it enables developers to set custom conventions that best fit their project's requirements. Whether you're working on  [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered. By integrating seamlessly with prominent testing frameworks like JUnit4, JUnit5, and Kotest, Konsist allows developers to embed consistency checks within unit tests. These checks, which are executed during pull request reviews, act as safeguards to preserve the project's architecture.
 
 {% hint style="info" %}
 Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
 {% endhint %}
 
-Konsist offers two categories of checks, namely `declaration checks` and `architectural checks`, to thoroughly evaluate the codebase.
+Konsist offers two leves of checks, namely `declaration checks` and `architectural checks`, to thoroughly evaluate the codebase.
 
 ## Declaration Checks
 
@@ -132,3 +128,7 @@ class ArchitectureTest : FreeSpec({
 {% hint style="info" %}
 These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.
 {% endhint %}
+
+## Summary
+
+By utilizing Konsist, teams can be confident that their Kotlin codebase remains standardized and aligned with best practices, making code reviews more efficient and code maintenance smoother.
