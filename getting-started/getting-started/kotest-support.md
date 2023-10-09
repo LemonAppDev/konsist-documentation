@@ -18,6 +18,10 @@ class UseCaseTest : FreeSpec({
 })
 ```
 
+{% hint style="info" %}
+This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however KoTest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).&#x20;
+{% endhint %}
+
 To facilitate test name retrieval you can add this custom `koTestName` extension:
 
 ```kotlin

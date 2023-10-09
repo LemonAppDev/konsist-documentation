@@ -84,7 +84,13 @@ interface Book {
 
 ### Suppressing KoTest Test
 
-Konsist has no way of retrieving the name of the current [KoTest](https://kotest.io/) test (unlike JUnit).  To allow suppression (and correct test names) it is recommended to utilize the name derived from the KoTest context using the `testName` argument:
+Konsist has no way of retrieving the name of the current [KoTest](https://kotest.io/) test (unlike JUnit). &#x20;
+
+{% hint style="info" %}
+See the [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention") page.
+{% endhint %}
+
+To allow suppression (and correct test names) it is recommended to utilize the name derived from the KoTest context using the `testName` argument:
 
 ```kotlin
 package com.api.test
@@ -99,10 +105,6 @@ class UseCaseTest : FreeSpec({
 })
 ```
 
-{% hint style="info" %}
-This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however KoTest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).&#x20;
-{% endhint %}
-
 To suppress such tests use the test name prefixed with `konsist.`:
 
 ```kotlin
@@ -113,7 +115,3 @@ class MyUseCase {
     ... // code
 }
 ```
-
-{% hint style="info" %}
-See [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention").
-{% endhint %}
