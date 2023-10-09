@@ -50,7 +50,7 @@ class UseCaseTest : FreeSpec({
 In the future, this extension will be added to the Konsist.
 {% endhint %}
 
-The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-tests.md](../../advanced/dynamic-tests.md "mention") page.&#x20;
+The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.&#x20;
 
 
 

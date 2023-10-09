@@ -205,7 +205,7 @@ Review the [snippets](../../inspiration/snippets/ "mention") for more examples o
 {% endhint %}
 
 {% hint style="info" %}
-The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the[dynamic-tests.md](../../advanced/dynamic-tests.md "mention") page.&#x20;
+The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.&#x20;
 {% endhint %}
 
 ## Architectural Check
