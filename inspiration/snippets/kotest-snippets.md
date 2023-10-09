@@ -1,4 +1,4 @@
-# KoTest Snippets
+# Kotest Snippets
 
 ## 1. Use Case Test
 
