@@ -2,7 +2,7 @@
 description: From static to dynamic
 ---
 
-# Dynamic Tests
+# Dynamic Konsist Tests
 
 In the realm of Konsist tests, the default behavior runs multiple validations within a single test. When working with an application that has 3 use cases, one might question the best approach to verify if each use case adheres to specific criteria. Consider this application heaving 3 use cases:
 
@@ -144,6 +144,10 @@ In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does no
 {% endtabs %}
 
 By using dynamic tests instead of just two static ones, developers can offer more precise verifications for each use case. This not only makes failures easier to spot but also improves test organization and readability.
+
+{% hint style="info" %}
+Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
+{% endhint %}
 
 
 

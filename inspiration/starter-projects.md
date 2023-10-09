@@ -1,6 +1,6 @@
 # Starter Projects
 
-Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [starter-projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) directory.
+Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [starter-projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects) directory. Each [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test ([dynamic-konsist-tests.md](../advanced/dynamic-konsist-tests.md "mention"))(dynamic tests are currently available at the [develop branch](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects)).
 
 ## Projects:
 
