@@ -1,5 +1,5 @@
 ---
-description: Make Kotest work with Konsist
+description: Konsist + Kotest
 ---
 
 # Kotest Support
