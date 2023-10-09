@@ -4,7 +4,7 @@ description: Verify codebase using Konsist API
 
 # Declaration Assert
 
-Assertions are used to perform code base verification. This is the final step of Konsist verification preceded by scope creation ([create-the-scope.md](create-the-scope.md "mention")) and [declaration-query-and-filter.md](declaration-query-and-filter.md "mention") steps:
+Assertions are used to perform code base verification. This is the final step of Konsist verification preceded by scope creation ([koscope.md](koscope.md "mention")) and [declaration-query-and-filter.md](declaration-query-and-filter.md "mention") steps:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -80,7 +80,7 @@ Konist
 
 ### Test Name
 
-Assertions offer a set of parameters allowing to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
+Assertions offer a set of parameters allowing to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppress-konsist-test.md](suppress-konsist-test.md "mention")).
 
 ### Strict
 

@@ -7,7 +7,7 @@ description: Make Kotest work with Konsist
 Konsist can't obtain the current [kotest](https://kotest.io/) test's name, unlike JUnit. It's suggested to supply the test name using the `testName` parameter. Doing so will enable:
 
 * Correct test names are displayed when the test is failing
-* Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
+* Test suppression (See [suppress-konsist-test.md](../../writing-tests/suppress-konsist-test.md "mention"))
 
 It is recommended to utilize the name derived from the Kotest context as the value for the `testName` argument:
 
@@ -23,7 +23,7 @@ class UseCaseTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however Kotest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).&#x20;
+This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however Kotest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).
 {% endhint %}
 
 To facilitate test name retrieval you can add this custom `koTestName` extension:

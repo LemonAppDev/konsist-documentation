@@ -13,7 +13,7 @@ There are two approaches that can be employed when retrofitting Konsist into an 
 Scope represents a set of Kotlin files. The scope allows to verification of all Kotlin files in the project or only a subset of the project code base.
 
 {% hint style="info" %}
-See [create-the-scope.md](../../writing-tests/create-the-scope.md "mention").
+See [koscope.md](../../writing-tests/koscope.md "mention").
 {% endhint %}
 
 When refactoring an existing application, you can either choose to first refactor a module and then add a Konsist test or initially add the Konsist test to identify errors, followed by the necessary refactor. Both strategies aim to ensure modules align with Konsist's structural guidelines.
@@ -51,7 +51,7 @@ Konsist
 
 Usage of project scope (`scopeFromProject` ) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.
 
-Konsist provides a flexible API to create scopes from modules, source sets, packages, files, etc., and combine these scopes together. See [create-the-scope.md](../../writing-tests/create-the-scope.md "mention").
+Konsist provides a flexible API to create scopes from modules, source sets, packages, files, etc., and combine these scopes together. See [koscope.md](../../writing-tests/koscope.md "mention").
 
 ## Suppress Annotation
 

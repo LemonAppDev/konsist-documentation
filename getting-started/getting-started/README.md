@@ -97,7 +97,7 @@ Konsist.scopeFromProject() // Define the scope containing all Kotlin files prese
 ```
 
 {% hint style="info" %}
-To define more granular scopes see the [create-the-scope.md](../../writing-tests/create-the-scope.md "mention") page.
+To define more granular scopes see the [koscope.md](../../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
 The following sections will present how to use a scope by writing declaration checks and architecture checks.
@@ -144,7 +144,7 @@ To learn more about assertions see [declaration-assert.md](../../writing-tests/d
 {% endhint %}
 
 {% hint style="info" %}
-The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[packageselector.md](../../features/packageselector.md "mention") syntax).
+The double dot syntax (`..)` means zero or more packages - controller package preceded by any number of packages (see[package-wildcard.md](../../features/package-wildcard.md "mention") syntax).
 {% endhint %}
 
 ### Wrap Konsist Code In Test

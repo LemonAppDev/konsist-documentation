@@ -13,30 +13,30 @@
 
 ## ✅ WRITING TESTS
 
-* [Create The Scope](writing-tests/create-the-scope.md)
+* [Create The Scope](writing-tests/koscope.md)
 * [Declaration Query And Filter](writing-tests/declaration-query-and-filter.md)
 * [Declaration Assert](writing-tests/declaration-assert.md)
 * [Architecture Assert](writing-tests/architecture-assert.md)
-* [Suppressing Konsist Test](writing-tests/suppressing-konsist-test.md)
+* [Suppress Konsist Test](writing-tests/suppress-konsist-test.md)
 
 ## 📗 FEATURES
 
+* [Debug Konsist Test](features/debug-konsist-test.md)
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
 * [Compiler Type Inference](features/compiler-type-inference.md)
-* [Package Wildcard](features/packageselector.md)
-* [Debug Konsist Test](features/debug-konsist-test.md)
+* [Package Wildcard](features/package-wildcard.md)
 
 ## 🔍 INSPIRATION
 
 * [Starter Projects](inspiration/starter-projects.md)
 * [Snippets](inspiration/snippets/README.md)
-  * [Kotest Snippets](inspiration/snippets/kotest-snippets.md)
   * [General Snippets](inspiration/snippets/general-snippets.md)
   * [Android Snippets](inspiration/snippets/android-snippets.md)
   * [Spring Snippets](inspiration/snippets/spring-snippets.md)
   * [Test Snippets](inspiration/snippets/test-snippets.md)
   * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
+  * [Kotest Snippets](inspiration/snippets/kotest-snippets.md)
   * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
@@ -52,7 +52,7 @@
 ## ❓ HELP
 
 * [Changelog](help/changelog.md)
-* [Feedback & Questions](help/sending-us-feedback.md)
+* [Feedback & Questions](help/feedback-and-questions.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
