@@ -44,8 +44,8 @@
 
 ## 🎓 ADVANCED
 
-* [Dynamic Tests](advanced/dynamic-tests.md)
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
+* [Dynamic Tests](advanced/dynamic-tests.md)
 * [When Konsit API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
 * [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)

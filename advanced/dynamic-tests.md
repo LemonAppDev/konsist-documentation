@@ -64,7 +64,7 @@ These tests would produce output in the IDE:
 
 <figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
-This setup can be optimized further. Rather than running just two tests, you can structure it so that each test assertion becomes its own standalone test, resulting in six distinct tests (3 use cases times two tests):
+This setup has room for further optimization. Instead of the traditional static method where each test case is hard-coded, dynamic tests allow for the programmatic generation of test cases at runtime. This is especially beneficial for data-driven tests that require multiple inputs to be assessed using consistent logic. Instead of limiting to just two tests, this approach enables each assertion to stand as its own test, thereby producing six distinct tests given three use cases and two tests per use case:
 
 * `CategorizeGroceryItemsUseCase should have test`
 * `CategorizeGroceryItemsUseCase should reside in ..domain..usecase.. package`
@@ -77,7 +77,11 @@ Using this technique, it becomes easier to spot tests that have failed. Let's co
 
 {% tabs %}
 {% tab title="JUnit 5" %}
+JUnit provides built-in support for dynamic tests through its core framework. This ensures that developers can seamlessly employ dynamic testing capabilities.&#x20;
 
+{% hint style="info" %}
+The [JUnit Jupiter Params](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params) dependency is required for JUnit 5 dynamic tests to work.
+{% endhint %}
 
 ```kotlin
 class UseCaseKonsistTest {
@@ -107,10 +111,6 @@ class UseCaseKonsistTest {
 The IDE will display the tests as follows:
 
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively.
-{% endhint %}
 {% endtab %}
 
 {% tab title="Kotest" %}
@@ -136,6 +136,10 @@ class UseCaseKonsistTest : FreeSpec({
 The IDE will display the tests as follows:
 
 <figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+{% endtab %}
+
+{% tab title="JUnit 4" %}
+In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively thus dynamic tests are not supported.
 {% endtab %}
 {% endtabs %}
 
