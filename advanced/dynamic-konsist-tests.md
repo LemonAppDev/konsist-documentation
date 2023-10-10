@@ -4,11 +4,15 @@ description: From static to dynamic
 
 # Dynamic Konsist Tests
 
+On this page, we explore the domain of static tests and then progress to the flexible world of dynamic tests. As a starting point, let's dive into the traditional approach of static Konsist tests.
+
+## Static Tests
+
 In the realm of Konsist tests, the default behavior runs multiple validations within a single test. When working with an application that has 3 use cases, one might question the best approach to verify if each use case adheres to specific criteria. Consider this application heaving 3 use cases:
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-We want to verify if every use case follows certain rules:
+We want to verify if every use case follows these two rules:
 
 * if every use case has a test
 * if every use case is in `domain.usecase` package
@@ -60,20 +64,60 @@ class UseCaseKonsistTest : FreeSpec({
 {% endtab %}
 {% endtabs %}
 
-These tests would produce output in the IDE:
+Each rule is represented as a separate test for all use cases:
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart TB
+    subgraph Static Tests
+    direction LR
+    S1["🛠️ RULE use case package"]-->S3
+    S2["🛠️ RULE Verify use case has test"]-->S4
+    S3["✅ TEST Verify use case package (all use cases)"]
+    S4["✅ TEST Verify use case has test (all use cases)"]
+    end
+```
+
+Executing these tests will generate output in the IDE:
 
 <figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
-This setup has room for further optimization. Instead of the traditional static method where each test case is hard-coded, dynamic tests allow for the programmatic generation of test cases at runtime. Every declaration checked by Konsist can be represented as a separate JUnit5/Kotest test, thereby producing six distinct tests given three use cases and two tests per use case:
+This setup based on static, hard-coded tests will work just fine, however, it has room for further optimization by utilizing dynamic tests.
 
-* `CategorizeGroceryItemsUseCase should have test`
-* `CategorizeGroceryItemsUseCase should reside in ..domain..usecase.. package`
-* `AdjustCaloricGoalUseCase should have test`
-* `AdjustCaloricGoalUseCase should reside in ..domain..usecase.. package`
-* `CalculateDailyIntakeUseCase should have test`
-* `CalculateDailyIntakeUseCase should reside in ..domain..usecase.. package`
+## Dynamic Tests
 
-Using this technique, it becomes easier to spot tests that have failed. Let's convert the above test into dynamic tests:
+The dynamic tests allow for the programmatic generation of test cases at runtime based on conditions and input data. In this scenario, the dynamic input data is the list of use cases that grows over the project life cycle.
+
+The objective is to generate dynamic tests for each combination of rule and use case (KoClass declaration) verified by Konsist. With three use cases and two rules for each, this will yield a total of six separate tests:
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart TB
+   subgraph Dynamic Tests
+    direction LR
+    D1["🛠️ RULE Verify use case package"]
+    D1 --> D1T1
+    D1 --> D2T1
+    D1 --> D3T1
+
+    D2["🛠️ RULE Verify use case has test"]
+    D2 --> D1T2
+    D2 --> D2T2
+    D2 --> D3T2
+
+    D1T1["✅ TEST Verify use case package (CategorizeGroceryItemsUseCase)"]
+    D1T2["✅ TEST Verify use case has test (CategorizeGroceryItemsUseCase)"]
+
+    D2T1["✅ TEST Verify use case package (AdjustCaloricGoalUseCase)"]
+    D2T2["✅ TEST Verify use case has test (AdjustCaloricGoalUseCase)"]
+
+    D3T1["✅ TEST Verify use case package (CalculateDailyIntakeUseCase)"]
+    D3T2["✅ TEST Verify use case has test (CalculateDailyIntakeUseCase)"]
+    end
+ 
+```
+
+Let's convert the above test into dynamic tests:
 
 {% tabs %}
 {% tab title="JUnit 5" %}
@@ -143,7 +187,7 @@ In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does no
 {% endtab %}
 {% endtabs %}
 
-By using dynamic tests instead of just two static ones, developers can offer more precise verifications for each use case. This not only makes failures easier to spot but also improves test organization and readability.
+Utilizing dynamic tests over static ones provides developers with sharper verifications tailored to individual use cases. This enhancement boosts test clarity and structure, making it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.
 
 {% hint style="info" %}
 Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
