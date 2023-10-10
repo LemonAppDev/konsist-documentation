@@ -117,5 +117,5 @@ class MyUseCase {
 ```
 
 {% hint style="info" %}
-See [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention").
+See [#kotestname-extension](../getting-started/getting-started/kotest-support.md#kotestname-extension "mention") to simplify the syntax for Kotest test name.
 {% endhint %}

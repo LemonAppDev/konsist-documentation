@@ -123,7 +123,7 @@ flowchart LR
  
 ```
 
-Let's convert this idea into dynamic test:
+Let's convert this idea into a dynamic test:
 
 {% tabs %}
 {% tab title="JUnit 5" %}
@@ -161,6 +161,10 @@ class UseCaseKonsistTest {
 The IDE will display the tests as follows:
 
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")).
+{% endhint %}
 {% endtab %}
 
 {% tab title="Kotest" %}
@@ -186,14 +190,16 @@ class UseCaseKonsistTest : FreeSpec({
 The IDE will display the tests as follows:
 
 <figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+For dynamic tests such as Kotest, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")).
+{% endhint %}
 {% endtab %}
 
 {% tab title="JUnit 4" %}
 In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively thus dynamic tests are not supported.
 {% endtab %}
 {% endtabs %}
-
-
 
 ## Advantages of using Dynamic Tests
 
