@@ -163,7 +163,7 @@ The IDE will display the tests as follows:
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")).
+For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")). At the moment test names are duplicated. This aspect has to be further investigated.
 {% endhint %}
 {% endtab %}
 
