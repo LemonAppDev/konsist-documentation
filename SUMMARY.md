@@ -42,6 +42,11 @@
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
+  * [Other Snippets](inspiration/snippets/other-snippets.md)
+    * [sample](inspiration/snippets/sample)
+      * [Sample Snippets](inspiration/snippets/sample/sample-snippets.md)
+      * [nested](inspiration/snippets/sample/nested)
+        * [Nested Snippets](inspiration/snippets/sample/nested/nested-snippets.md)
 
 ## 🎓 ADVANCED
 
