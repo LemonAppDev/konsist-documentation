@@ -201,7 +201,7 @@ In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does no
 {% endtab %}
 {% endtabs %}
 
-## Advantages of using Dynamic Tests
+## Advantages Of Using Dynamic Tests
 
 With static tests, the failure is represented by a single test:
 
