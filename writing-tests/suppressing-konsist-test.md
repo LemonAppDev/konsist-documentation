@@ -115,3 +115,7 @@ class MyUseCase {
     ... // code
 }
 ```
+
+{% hint style="info" %}
+See [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention").
+{% endhint %}

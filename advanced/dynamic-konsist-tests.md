@@ -8,7 +8,9 @@ On this page, we explore the domain of static tests and then progress to the fle
 
 ## Static Tests
 
-When navigating the universe of Konsist tests, the standard approach is to execute several validations all bundled within a single test. To paint a clearer picture: imagine you have a rule (let's represent it with the tool icon 🛠️) ensuring that all use cases should be placed in a specific package. One static test (represented by the check icon ✅) can guard this rule, making sure that everything is in the right place:
+Static tests are defined at compile-time. This means the structure and number of these tests are fixed when the code is compiled. When navigating the universe of Konsist tests, the standard approach is to execute several validations all bundled within a single test.&#x20;
+
+To paint a clearer picture: imagine you have a rule (let's represent it with the tool icon 🛠️) ensuring that all use cases should be placed in a specific package. One static test (represented by the check icon ✅) can guard this rule, making sure that everything is in the right place:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -92,7 +94,7 @@ While the current setup using static, predefined tests is functional, dynamic te
 
 ## Dynamic Tests
 
-The dynamic tests allow for the programmatic generation of test cases at runtime based on conditions and input data. In this scenario, the dynamic input data is the list of use cases that grows over the project life cycle.
+Dynamic tests are generated at runtime based on conditions and input data. In this scenario, the dynamic input data is the list of use cases that grows over the project life cycle.
 
 The objective is to generate dynamic tests for each combination of rule and use case (KoClass declaration) verified by Konsist. With three use cases and two rules for each, this will yield a total of six separate tests:
 

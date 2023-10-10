@@ -59,9 +59,6 @@ class UseCaseKonsistTest : FreeSpec({
 {% endtab %}
 {% endtabs %}
 
-```kotlin
-```
-
 {% hint style="info" %}
 For more Konsist test samples see the [snippets](inspiration/snippets/ "mention")section.
 {% endhint %}
