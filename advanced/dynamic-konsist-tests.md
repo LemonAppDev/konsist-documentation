@@ -191,7 +191,23 @@ In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does no
 {% endtab %}
 {% endtabs %}
 
-Utilizing dynamic tests over static ones provides developers with sharper verifications tailored to individual use cases. This enhancement boosts test clarity and structure, making it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.
+
+
+## Advantages of using Dynamic Tests
+
+With static tests, the failure is represented by a single test:
+
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+
+From this failure, a developer discerns the breached rule and needs to dive into the test logs to determine the cause of the violation (to pinpoint the use case breaking the given rule).
+
+In contrast, dynamic tests immediately highlight the root issue since every use case is represented by its own distinct test:
+
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+Utilizing dynamic tests over static ones makes it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.&#x20;
+
+
 
 {% hint style="info" %}
 Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
