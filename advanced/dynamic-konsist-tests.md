@@ -6,6 +6,28 @@ description: From static to dynamic
 
 On this page, we explore the domain of static tests and then progress to the flexible world of dynamic tests. As a starting point, let's dive into the traditional approach of static Konsist tests.
 
+
+
+## Why Use Dynamic Tests?
+
+With static tests, the failure is represented by a single test:
+
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+
+From this failure, a developer discerns the breached rule and needs to dive into the test logs to determine the cause of the violation (to pinpoint the use case breaking the given rule).
+
+In contrast, dynamic tests immediately highlight the root issue since every use case is represented by its own distinct test:
+
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+Utilizing dynamic tests over static ones makes it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.&#x20;
+
+{% hint style="info" %}
+Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
+{% endhint %}
+
+Let's begin by creating a static test and then delve into the steps to transition towards dynamic tests.
+
 ## Static Tests
 
 Static tests are defined at compile-time. This means the structure and number of these tests are fixed when the code is compiled. When navigating the universe of Konsist tests, the standard approach is to execute several validations all bundled within a single test.&#x20;
@@ -200,26 +222,6 @@ For dynamic tests such as Kotest, it is recommended that the test name is explic
 In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively thus dynamic tests are not supported.
 {% endtab %}
 {% endtabs %}
-
-## Advantages Of Using Dynamic Tests
-
-With static tests, the failure is represented by a single test:
-
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
-
-From this failure, a developer discerns the breached rule and needs to dive into the test logs to determine the cause of the violation (to pinpoint the use case breaking the given rule).
-
-In contrast, dynamic tests immediately highlight the root issue since every use case is represented by its own distinct test:
-
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
-
-Utilizing dynamic tests over static ones makes it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.&#x20;
-
-
-
-{% hint style="info" %}
-Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
-{% endhint %}
 
 
 
