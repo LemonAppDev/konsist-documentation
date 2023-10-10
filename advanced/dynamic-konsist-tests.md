@@ -8,7 +8,7 @@ On this page, we explore the domain of static tests and then progress to the fle
 
 ## Static Tests
 
-In the realm of Konsist tests, the default behavior runs multiple validations within a single test. For example, one static test (representing rule 🛠️) can be used to verify if all use cases are placed in the correct package.
+When navigating the universe of Konsist tests, the standard approach is to execute several validations all bundled within a single test. To paint a clearer picture: imagine you have a rule (let's represent it with the tool icon 🛠️) ensuring that all use cases should be placed in a specific package. One static test (represented by the check icon ✅) can guard this rule, making sure that everything is in the right place:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
