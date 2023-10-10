@@ -4,6 +4,9 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
+      * [Veeeeery Nested Snippets](inspiration/snippets/nested/verynested/very-nested-snippets.md)
+    * [Nested Snippets](inspiration/snippets/nested/nested-snippets.md)
+  * [Sample Snippets](inspiration/snippets/sample-snippets.md)
   * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
   * [Kotest Support](getting-started/getting-started/kotest-support.md)
   * [Explicit Test Names](getting-started/getting-started/explicit-test-names.md)
