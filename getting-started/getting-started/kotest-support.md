@@ -11,6 +11,10 @@ It's recommended to provide the test name using the `testName` parameter. By doi
 * The appropriate test names will appear in the log if the test fails.
 * Test suppression will be facilitated (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
 
+{% hint style="info" %}
+See [explicit-test-names.md](explicit-test-names.md "mention")for more details.
+{% endhint %}
+
 Kotest enables fetching the test name from the context to populate the `testName` argument, ensuring consistent naming of tests:
 
 ```kotlin
