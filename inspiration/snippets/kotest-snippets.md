@@ -1,22 +1,20 @@
 # Kotest Snippets
 
-## 1. UseCase Has Test Class
+## 1. Use Case Test
 
 ```kotlin
-class KoTestSnippets {
-    class UseCaseTest : FreeSpec({
-        "UseCase has test class" {
-            Konsist
-                .scopeFromProject()
-                .classes()
-                .withNameEndingWith("UseCase")
-                .assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
-        }
-    })
-}
+class UseCaseTest : FreeSpec({
+    "UseCase has test class" {
+        Konsist
+            .scopeFromProject()
+            .classes()
+            .withNameEndingWith("UseCase")
+            .assertTrue { it.hasTestClass() }
+    }
+})
 ```
 
-## 1. 2 Use Case Tests
+## 2. Use Case Tests
 
 ```kotlin
 class UseCaseTests : FreeSpec({
@@ -26,10 +24,10 @@ class UseCaseTests : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+                useCase.assertTrue { it.hasTestClass() }
             }
             "${useCase.name} should reside in ..domain..usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain..usecase..") }
+                useCase.assertTrue { it.resideInPackage("..domain..usecase..") }
             }
             "${useCase.name} should ..." {
                 // another Konsist assert
@@ -37,3 +35,4 @@ class UseCaseTests : FreeSpec({
         }
 })
 ```
+
