@@ -142,12 +142,12 @@ class UseCaseKonsistTest {
         .flatMap { useCase ->
             Stream.of(
                 dynamicTest("${useCase.name} should have test") {
-                    useCase.assertTrue {
+                    useCase.assertTrue(testName = "${useCase.name} should have test") {
                         it.hasTestClass()
                     }
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
-                    useCase.assertTrue {
+                    useCase.assertTrue(testName = "${useCase.name} should reside in ..domain.usecase.. package") {
                         it.resideInPackage("..domain.usecase..")
                     }
                 },
@@ -162,7 +162,7 @@ The IDE will display the tests as follows:
 {% endtab %}
 
 {% tab title="Kotest" %}
-Kotest offers native support for JUnit's dynamic tests right from the get-go. This means that developers can effortlessly integrate and utilize dynamic testing features without needing additional configurations or plugins.
+Kotest offers native support for JUnit's dynamic tests. Developers can effortlessly integrate and utilize dynamic testing features without needing additional configurations or plugins.
 
 ```kotlin
 class UseCaseKonsistTest : FreeSpec({
