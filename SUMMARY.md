@@ -31,22 +31,17 @@
 ## 🔍 INSPIRATION
 
 * [Starter Projects](inspiration/starter-projects.md)
-* [Snippets](inspiration/snippets/README.md)
-  * [General Snippets](inspiration/snippets/general-snippets.md)
-  * [Android Snippets](inspiration/snippets/android-snippets.md)
-  * [Spring Snippets](inspiration/snippets/spring-snippets.md)
-  * [Test Snippets](inspiration/snippets/test-snippets.md)
-  * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
-  * [Kotest Snippets](inspiration/snippets/kotest-snippets.md)
-  * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
-  * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
-  * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
-  * [Library Snippets](inspiration/snippets/library-snippets.md)
-  * [Sample Snippets](inspiration/snippets/sample-snippets.md)
-    * [nested](inspiration/snippets/nested)
-      * [Nested Snippets](inspiration/snippets/nested/nested-snippets.md)
-      * [verynested](inspiration/snippets/nested/verynested)
-        * [Veeeeery Nested Snippets](inspiration/snippets/nested/verynested/very-nested-snippets.md)
+  * [Snippets](inspiration/snippets/README.md)
+    * [General Snippets](inspiration/snippets/general-snippets.md)
+    * [Android Snippets](inspiration/snippets/android-snippets.md)
+    * [Spring Snippets](inspiration/snippets/spring-snippets.md)
+    * [Test Snippets](inspiration/snippets/test-snippets.md)
+    * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
+    * [Kotest Snippets](inspiration/snippets/kotest-snippets.md)
+    * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
+    * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
+    * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
+    * [Library Snippets](inspiration/snippets/library-snippets.md)
 
 ## 🎓 ADVANCED
 
