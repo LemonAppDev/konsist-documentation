@@ -8,14 +8,23 @@ On this page, we explore the domain of static tests and then progress to the fle
 
 ## Static Tests
 
-In the realm of Konsist tests, the default behavior runs multiple validations within a single test. When working with an application that has 3 use cases, one might question the best approach to verify if each use case adheres to specific criteria. Consider this application heaving 3 use cases:
+In the realm of Konsist tests, the default behavior runs multiple validations within a single test. For example, one static test (representing rule 🛠️) can be used to verify if all use cases are placed in the correct package.
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart LR
+    S1["🛠️ RULE use case package"]-->S3
+    S3["✅ TEST Verify use case package (All use cases)"]
+```
+
+In most projects, the intricacy arises from a multitude of classes/interfaces, each with distinct duties. However, to simplify our understanding, let's use a straightforward and simplified example of a project with just three use cases:
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-We want to verify if every use case follows these two rules:
+The goal is to verify if every use case follows these two rules:
 
-* if every use case has a test
-* if every use case is in `domain.usecase` package
+* verify if every use case has a test
+* verify if every use case is in `domain.usecase` package
 
 A typical approach would be to write two Konsist tests:
 
@@ -56,7 +65,7 @@ class UseCaseKonsistTest : FreeSpec({
         useCases.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
     }
 
-    "use case should reside in ..domain.usecase.. packag" {
+    "use case should reside in ..domain.usecase.. package" {
         useCases.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
     }
 })
@@ -64,25 +73,22 @@ class UseCaseKonsistTest : FreeSpec({
 {% endtab %}
 {% endtabs %}
 
-Each rule is represented as a separate test for all use cases:
+Each rule is represented as a separate test verifying all of the use cases:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
-flowchart TB
-    subgraph Static Tests
-    direction LR
+flowchart LR
     S1["🛠️ RULE use case package"]-->S3
     S2["🛠️ RULE Verify use case has test"]-->S4
-    S3["✅ TEST Verify use case package (all use cases)"]
-    S4["✅ TEST Verify use case has test (all use cases)"]
-    end
+    S3["✅ TEST Verify use case package (All use cases)"]
+    S4["✅ TEST Verify use case has test (All use cases)"]
 ```
 
 Executing these tests will generate output in the IDE:
 
 <figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
-This setup based on static, hard-coded tests will work just fine, however, it has room for further optimization by utilizing dynamic tests.
+While the current setup using static, predefined tests is functional, dynamic tests offer an avenue for improved development experience and flexibility.
 
 ## Dynamic Tests
 
@@ -92,9 +98,7 @@ The objective is to generate dynamic tests for each combination of rule and use 
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
-flowchart TB
-   subgraph Dynamic Tests
-    direction LR
+flowchart LR
     D1["🛠️ RULE Verify use case package"]
     D1 --> D1T1
     D1 --> D2T1
@@ -113,11 +117,11 @@ flowchart TB
 
     D3T1["✅ TEST Verify use case package (CalculateDailyIntakeUseCase)"]
     D3T2["✅ TEST Verify use case has test (CalculateDailyIntakeUseCase)"]
-    end
+ 
  
 ```
 
-Let's convert the above test into dynamic tests:
+Let's convert this idea into dynamic test:
 
 {% tabs %}
 {% tab title="JUnit 5" %}
