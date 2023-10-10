@@ -41,7 +41,11 @@
   * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
-  * [Library Snippets](inspiration/snippets/library-snippets.md)
+  * [Library Snippets](i  * [Sample Snippets](i  * [Library Snippets](i    * [Nested Snippets](i      * [Veeeeery Nested Snippets](inspiration/snippets/nested/verynested/very-nested-snippets.md)
+nspiration/snippets/nested/nested-snippets.md)
+nspiration/snippets/library-snippets.md)
+nspiration/snippets/sample-snippets.md)
+nspiration/snippets/library-snippets.md)
 
 ## 🎓 ADVANCED
 
