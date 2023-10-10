@@ -4,9 +4,15 @@ description: Konsist + Kotest
 
 # Kotest Support
 
-Konsist can't obtain the test name from all dynamic tests (this includes [Kotest](https://kotest.io/)).&#x20;
+Konsit has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotets compatibility in mind. API has been improved to support Kotst flows.
 
-It's recommended to provide the test name using the `testName` parameter. By doing this:
+At the moment there is an additional step that is required for Konsist Kotest to be fully functional - tets name has to be explicitly provided.
+
+## Setting The Test Name
+
+Konsist can't obtain the test name from all dynamic tests (including [Kotest](https://kotest.io/) tests).&#x20;
+
+It's recommended to provide the test name using the `testName` parameter. Supplying a test name provides additional benefits:
 
 * The appropriate test names will appear in the log if the test fails.
 * Test suppression will be facilitated (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
