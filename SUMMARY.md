@@ -43,6 +43,9 @@
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
 
+  * [Sample Snippets](inspiration/snippets/sample-snippets.md)
+    * [Nested Snippets](inspiration/snippets/nested/nested-snippets.md)
+      * [Veeeeery Nested Snippets](inspiration/snippets/nested/verynested/very-nested-snippets.md)
 ## 🎓 ADVANCED
 
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
