@@ -40,17 +40,17 @@ flowchart TD
 Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
 {% endhint %}
 
-The scope can be created for an entire project, module, package, and a single Kotlin file.
+The scope can be created for an entire project, module, package, and Kotlin file.
 
-{% hint style="info" %}
-To print a list of files within `koScope` use the `koScope.print()` method.
+The scope is dynamically built based on the Kotlin files present in the project, enabling it to adapt seamlessly as the project evolves. For instance, when the scope is set to encapsulate a specific module, any additional file introduced to that module will be automatically incorporated into the scope. This ensures that the scope consistently offers thorough and current coverage.
+
+{% hint style="warning" %}
+To execute Konsist tests, the Konsist dependency must be integrated into a module. Yet, by integrating Konsist into a single module (e.g. `app` module), Konsist can still access the entire project. The specific files evaluated are determined by the evolving scope that's been defined.
 {% endhint %}
-
-The scope is dynamically constructed from the Kotlin files within the project, allowing it to naturally expand as the project grows. For example, if the scope is defined to represent a single module, then any new file added to that module will be automatically included within the scope, ensuring that the scope's coverage remains comprehensive and up-to-date.
 
 ## Scope Creation
 
-Various methods can be used to obtain instances of the scope. This allows the definition of more granular Kotlin tests e.g. for certain modules, source sets, and packages of folders.
+Various methods can be used to obtain instances of the scope. This allows the definition of more granular Konsist tests e.g. tests covering only certain modules, source sets, packages, or folders.
 
 {% hint style="info" %}
 See [add-konsist-existing-project.md](../getting-started/getting-started/add-konsist-existing-project.md "mention").
@@ -63,6 +63,18 @@ The widest scope is the scope containing all Kotlin files present inside the pro
 ```kotlin
 Konsist.scopeFromProject() // All Kotlin files present in the project
 ```
+
+To print a list of files within `koScope` use the `koScope.print()` method:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .print()
+```
+
+{% hint style="info" %}
+To review the scope content in more detail see [debug-konsist-test.md](../features/debug-konsist-test.md "mention").
+{% endhint %}
 
 ### Module Scope
 

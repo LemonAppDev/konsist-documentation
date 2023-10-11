@@ -31,6 +31,10 @@ Konsist
     .assertTrue { it.hasTest() }
 ```
 
+{% hint style="info" %}
+To review the content of a given scope see [debug-konsist-test.md](../../features/debug-konsist-test.md "mention").
+{% endhint %}
+
 As refactoring proceeds, this Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
 
 ```kotlin
