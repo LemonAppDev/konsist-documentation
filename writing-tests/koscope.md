@@ -119,7 +119,7 @@ scope
 A nested module is a module that exists within another module.
 
 {% hint style="warning" %}
-The `nested modules` the feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. COnsider this feature as experimental for now.
+The `nested modules` the feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
 {% endhint %}
 
 Consider this `feature` module existing inside `app` module:
