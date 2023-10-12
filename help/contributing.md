@@ -28,6 +28,14 @@ There are a variety of ways to contribute to the Konsit project:
 
 No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.
 
+### Articles
+
+We already have multiple community-written articles. Why not write another one?
+
+### Logos
+
+The Konsist logo can be found in the [misc folder](https://github.com/LemonAppDev/konsist/tree/main/misc/konsist-logo) of the main repository.
+
 ### Repositories
 
 Konsist project is spread across multiple repositories:
