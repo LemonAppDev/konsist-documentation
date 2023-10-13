@@ -12,7 +12,7 @@ As the project grows it may be desirable to isolate tests further e.g. separate 
 
 To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
-## Dedicated Source Set (Spring and Kotlin Project)
+## Dedicated Source Set (Spring and Kotlin Projects)
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
@@ -147,12 +147,12 @@ mvn test
 {% endtab %}
 {% endtabs %}
 
-## Dedicated Module
+## Dedicated Module (Android Projects)
 
 This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects, however, it will work with Spring and Kotlin projects.
 
 {% hint style="info" %}
-The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
+The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
 {% endhint %}
 
 {% tabs %}
