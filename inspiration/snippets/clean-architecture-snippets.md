@@ -74,8 +74,7 @@ fun `every UseCase class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .withParentNamed("UseCase")
+        .withNameEndingWith("UseCase")
         .assertTrue { it.hasTestClass() }
 }
 ```
-
