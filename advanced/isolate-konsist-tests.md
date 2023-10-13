@@ -209,13 +209,13 @@ To execute all unit tests besides tests in the `konsistTest` module run:
 
 {% tabs %}
 {% tab title="Gradle" %}
-`./gradlew test -x konsistTest:test`
+`./gradlew test -x konsistTest:test --rerun-tasks`
 {% endtab %}
 {% endtabs %}
 
-
-
-
+{% hint style="danger" %}
+You'll need to use the `--rerun-tasks` flag with Gradle. When Konsist tests are in a distinct module and there haven't been changes within that module, Gradle assumes the "unit tests" are up-to-date and might skip them. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating other modules.
+{% endhint %}
 
 ## Dedicated&#x20;
 
