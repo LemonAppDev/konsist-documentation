@@ -28,39 +28,18 @@ There are a variety of ways to contribute to the Konsit project:
 
 No matter how you choose to contribute, you will be making a valuable contribution to the open-source community.
 
-### Articles
-
-We already have multiple community-written articles. Why not write another one?
-
-### Logos
-
-The Konsist logo can be found in the [misc folder](https://github.com/LemonAppDev/konsist/tree/main/misc/konsist-logo) of the main repository.
-
-### Repositories
+## Repositories
 
 Konsist project is spread across multiple repositories:
 
-* [Konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
-* [Konsist-Documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
+* [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
+* k[onsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
 
-### IntelliJ IDEA Plugins
+## IntelliJ IDEA Plugins
 
 Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams. For a diagram preview, it is recommended to install the [Mermaid plugin](https://plugins.jetbrains.com/plugin/20146-mermaid/reviews).
 
-### Make A Change In The Konsist Documentation Repository
-
-For the majority of cases, update readme and PR in the [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository targeting the `main` branch.
-
-#### Updating Snippets
-
-The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain current and valid, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [Konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated to update the GitBook documentation.
-
-Some snippets depend on classes from frameworks, so to allow compilation, we store placeholder classes mimicking the full names of the external framework class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
-
-* [konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
-* [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
-
-### Make A Change In The Konsist Repository
+## Make A Change In The Konsist Repository
 
 This is a high-level view of project contribution:
 
@@ -82,6 +61,8 @@ Konsist adheres to stringent testing standards. Each Provider undergoes testing 
 1. Guaranteeing future compatibility with Kotlin 2.0.
 2. Due to reliance on an external library for parsing, it's imperative to have comprehensive tests to ensure the Konsist API functions as anticipated.
 {% endhint %}
+
+### No Matching Toolchains Found Error
 
 If during a build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version `19`.
 
@@ -205,4 +186,18 @@ flowchart LR
 
 ### Make a Change In The Konsist Documentation Repository
 
-The [Konsist Documentation repository](https://github.com/LemonAppDev/konsist-documentation) contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request.
+The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request targeting the `main` branch.
+
+#### Updating Snippets
+
+The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
+
+Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin). class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
+
+## Articles
+
+We already have multiple community-written articles. Why not write another one? make sure to let us know if you do.
+
+## Asserts And Logos
+
+The Konsist logo can be found in the [misc folder](https://github.com/LemonAppDev/konsist/tree/main/misc/konsist-logo) of the main repository.
