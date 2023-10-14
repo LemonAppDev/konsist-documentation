@@ -43,23 +43,37 @@ Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams.
 
 This is a high-level view of project contribution:
 
-1. Create a fork of the [Konsist](https://github.com/LemonAppDev/konsist) repository
-2. Build the project
-3. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-4. Make changes
-5. Add Tests if needed
-6. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged into the `main` branch after the release)
-7. Make sure all checks are passing before marking PR as `Ready for review`.
+1\. Create a fork of the [Konsist](https://github.com/LemonAppDev/konsist) repository
 
-{% hint style="info" %}
-For some contributors, the repo admin may have to approve checks manually for the 1st PR.
-{% endhint %}
+<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+
+2\. Uncheck "Copy the main branch only".
+
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+
+3\. Build the project
+
+4\. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+
+5\. Create a new branch from the `develop` branch
+
+6\. Implement changes
+
+7\. Add Tests
 
 {% hint style="warning" %}
 Konsist adheres to stringent testing standards. Each Provider undergoes testing against every type of declaration, leading to an extensive set of tests. This thorough testing ensures two main objectives:
 
 1. Guaranteeing future compatibility with Kotlin 2.0.
 2. Due to reliance on an external library for parsing, it's imperative to have comprehensive tests to ensure the Konsist API functions as anticipated.
+{% endhint %}
+
+8\. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged into the `main` branch after the release)
+
+9\. Make sure all checks are passing before marking PR as `Ready for review`.
+
+{% hint style="info" %}
+For some contributors, the repo admin may have to approve checks manually for the 1st PR.
 {% endhint %}
 
 ### No Matching Toolchains Found Error
