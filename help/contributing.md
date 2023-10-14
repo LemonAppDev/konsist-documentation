@@ -43,13 +43,13 @@ Konsist project is spread across multiple repositories:
 * [Konsist](https://github.com/LemonAppDev/konsist) - repository containing Konist code
 * [Konsist-Documentation](https://github.com/LemonAppDev/konsist-documentation) - repository containing Konsist documentation (this webpage)
 
-### Plugins
+### IntelliJ IDEA Plugins
 
-Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams. For a diagram preview, it is recommended to install the [Mermaid plugin for INTELLIJ IDEA](https://plugins.jetbrains.com/plugin/20146-mermaid/reviews).
+Some of the project readmes contain [Mermaid](https://mermaid.js.org/) diagrams. For a diagram preview, it is recommended to install the [Mermaid plugin](https://plugins.jetbrains.com/plugin/20146-mermaid/reviews).
 
 ### Make A Change In The Konsist Documentation Repository
 
-For most scenarios, open PR in the [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository.
+For the majority of cases, update readme and PR in the [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository targeting the `main` branch.
 
 #### Updating Snippets
 
@@ -69,14 +69,21 @@ This is a high-level view of project contribution:
 3. Open the project using [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 4. Make changes
 5. Add Tests if needed
-6. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged to the `main` branch after the release)
+6. Open the `Draft` Pull Request to the `develop` branch (`develop` will be merged into the `main` branch after the release)
 7. Make sure all checks are passing before marking PR as `Ready for review`.
 
 {% hint style="info" %}
 For some contributors, the repo admin may have to approve checks manually for the 1st PR.
 {% endhint %}
 
-If during build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version `19`.
+{% hint style="warning" %}
+Konsist adheres to stringent testing standards. Each Provider undergoes testing against every type of declaration, leading to an extensive set of tests. This thorough testing ensures two main objectives:
+
+1. Guaranteeing future compatibility with Kotlin 2.0.
+2. Due to reliance on an external library for parsing, it's imperative to have comprehensive tests to ensure the Konsist API functions as anticipated.
+{% endhint %}
+
+If during a build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version `19`.
 
 <figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
