@@ -6,4 +6,4 @@
 4. [ArchUnit vs. Konsist. Why Did We Need Another Kotlin Linter?](https://proandroiddev.com/archunit-vs-konsist-why-did-we-need-another-linter-972c4ff2622d)
 5. [Protect Kotlin Project Architecture Using Konsist](https://proandroiddev.com/protect-kotlin-project-architecture-using-konsist-3bfbe1ad0eea)
 6. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations ](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)(community)
-7. [Konsist and Conquer: Embracing the World of Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
+7. [Konsist and Conquer: Embracing the World of Kotlin Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
