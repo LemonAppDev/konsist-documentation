@@ -34,7 +34,7 @@ The best way to interact with the Konsist team is the dedicated [#konsist-dev](h
 
 ## Tickets
 
-Our [backlog is public](https://lemonappdev.atlassian.net/jira/software/c/projects/KON/boards/5?quickFilter=10) in JIRA. If you want to join say hello at  [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) Slack channel.
+Our [backlog is public](https://lemonappdev.atlassian.net/jira/software/c/projects/KON/boards/5?quickFilter=10) in JIRA. If you want to join say hello at  [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) Slack channel. If you are working on a ticket make sure to get the JIRA access, assign it to yourself, and update the ticket status to In Progress).
 
 Tickets that can be grabbed by the community have a `ContributeOpportunity` label. These are mostly tickets that are not blocking our work. You can also work on another ticket, but this will require more alignment with me, for example, certain features and planed ahead, so the ticket should be completed within a given time period.
 
