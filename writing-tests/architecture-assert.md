@@ -52,7 +52,14 @@ Konsist
     }
 ```
 
-The `com.myapp.presentation..` syntax means every class inside `com.myapp.presentation` and all sub-packages are treated as part of the given layer.
+{% hint style="warning" %}
+The inclusion of two trailing dots indicates that the layer is denoted by the `com.myapp.business` package together with all of its sub-packages.
+
+```kotlin
+val data = Layer("Data", "com.myapp.data..") // This package only and all sub-packages
+val data = Layer("Data", "com.myapp.data") // This package only
+```
+{% endhint %}
 
 ## Define Architecture Assertions
 
@@ -85,7 +92,7 @@ koScope
 
 This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
 
-## Architecture As Variable
+## Architecture As A Variable
 
 Architecture configuration can be defined beforehand and stored in a variable to facilitate checks for multiple scopes:&#x20;
 

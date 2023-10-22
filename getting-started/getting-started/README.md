@@ -247,7 +247,7 @@ Konsist
     }
 ```
 
-The `com.myapp.business..` syntax means every class inside `com.myapp.business` and all sub-packages are treated as part of the given layer.
+The presence of two dots at the end signifies that the layer is encompassed by the `com.myapp.business` package along with its sub-packages.
 
 ### Define Architecture Assertions
 
