@@ -6,7 +6,7 @@ description: Where we are?
 
 Konsist library has been field-tested on multiple [Spring](https://spring.io/), [Android](https://www.android.com/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects with both [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/) build systems. On top of that, Konsits has a solid suite of tests (1300+ tests and 20 unique checks).
 
-There is still some work to do, however, it is safe to use, because Konsist is not a part of the application production code - used to verify the code base.
+Although some work remains to be done, it is already safe for use, as Konsist, because it is not packaged with the production code (only included in the test source sets).
 
 ## Konsist Roadmap
 
