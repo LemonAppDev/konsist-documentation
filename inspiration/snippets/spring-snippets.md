@@ -41,3 +41,18 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
 }
 ```
 
+## 4. Classes With `RestController` Annotation Should never Return Collection
+
+```kotlin
+@Test
+fun `classes with 'RestController' annotation should never return collection`() {
+    Konsist
+        .scopeFromPackage("story.controller..")
+        .classes()
+        .withAnnotationOf(RestController::class)
+        .functions()
+        .assertFalse(additionalMessage = "Don't use Kotlin Collection Types") { function ->
+            function.hasReturnType { it.hasNameStartingWith("List") }
+        }
+}
+```
