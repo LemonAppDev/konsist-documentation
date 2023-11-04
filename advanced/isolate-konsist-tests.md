@@ -147,7 +147,7 @@ mvn test
 {% endtab %}
 {% endtabs %}
 
-## Dedicated Module (Android Projects)
+## Dedicated Module (Android and KMP Projects)
 
 This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects, however, it will work with Spring and Kotlin projects.
 
@@ -163,7 +163,7 @@ Add `':konsist_test'` to `include` item inside `settings.gradle` file:
 
 ```kotlin
 // settings.gradle.kts
-include("app", ":konsist_test").kts
+include(":konsist_test").kts
 ```
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
@@ -182,7 +182,7 @@ Add `':konsist_test'` to `include` item inside `settings.gradle` file:
 
 ```kotlin
 // settings.gradle
-include ':app', ':konsist_test'
+include ':konsist_test'
 ```
 
 Create `konsist_test/scr/test/kotlin` folder in the project root:
@@ -214,10 +214,10 @@ To execute all unit tests besides tests in the `konsistTest` module run:
 {% endtabs %}
 
 {% hint style="danger" %}
-The `--rerun-tasks` Gradle flag is required - when Konsist tests are placed in a distinct module and there haven't been changes within that module, Gradle assumes the "unit tests" are up-to-date and might skip them. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating other modules.
+The `--rerun-tasks` Gradle flag is required - when Konsist tests are placed in a distinct module. When the module is unchanged Gradle assumes the "unit tests" are up-to-date tests are skipped. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating code in other modules.
 {% endhint %}
 
-## Dedicated&#x20;
+## Scope From Path&#x20;
 
 In rare cases where Konsist dependency can't be added to the project, it is possible to create a [koscope.md](../writing-tests/koscope.md "mention") containing all Kotlin files from a given path e.g. from another project:
 
