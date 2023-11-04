@@ -12,7 +12,7 @@ As the project grows it may be desirable to isolate tests further e.g. separate 
 
 To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
-## Dedicated Source Set (Spring and Kotlin Projects)
+## Dedicated Source Set (Spring Projects and Pure Kotlin Projects)
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
@@ -147,83 +147,81 @@ mvn test
 {% endtab %}
 {% endtabs %}
 
-## Dedicated Module (Android and KMP Projects)
+## Dedicated Module (Android Projects and Kotlin Multiplatform Projects)
 
-This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects, however, it will work with Spring and Kotlin projects.
+This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects and Kotlin Multiplatform (KMP) projects, however, this approach will also work with Spring and pure Kotlin projects.
 
 {% hint style="info" %}
 The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
+
+The [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project contains modules with code for different platforms. To decouple Konsist tests from a single platform dedicated module containing Konsist test should be added.
 {% endhint %}
+
+### Add `konsistTest` Module:
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
-Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
+Create `konsistTest/src/test/kotlin` directory in the project root:
 
-Add `':konsist_test'` to `include` item inside `settings.gradle` file:
+<figure><img src="../.gitbook/assets/image (31).png" alt="" width="374"><figcaption></figcaption></figure>
+
+Add module include inside `settings.gradle.kts` file:&#x20;
 
 ```kotlin
 // settings.gradle.kts
-include(":konsist_test").kts
+include(":konsistTest")
 ```
-
-Create `konsist_test/scr/test/kotlin` folder in the project root:
-
-<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
-
-For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle.kts` file.
-
-Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
-Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
+Create `konsistTest/src/test/kotlin` directory in the project root:
 
-Add `':konsist_test'` to `include` item inside `settings.gradle` file:
+<figure><img src="../.gitbook/assets/image (30).png" alt="" width="374"><figcaption></figcaption></figure>
+
+Add module include inside `settings.gradle.kts` file:
 
 ```kotlin
 // settings.gradle
-include ':konsist_test'
+include ':konsistTest'
 ```
 
-Create `konsist_test/scr/test/kotlin` folder in the project root:
-
-<img src="../.gitbook/assets/image (4) (1).png" alt="" data-size="original">
-
-For Android projects add `com.android.library` plugin in the `konsist_test/scr/test/kotlin/build.gradle` file.
+For Android projects add `com.android.library` plugin in the `konsistTest/scr/test/kotlin/build.gradle` file.
 
 Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 {% endtabs %}
 
-Kosist tests will be defined in the `konsistTest` module. To execute Konsist tests run:
+### Add `konsistTest` Module Build Script
 
 {% tabs %}
-{% tab title="Gradle" %}
-```
-./gradlew konsistTest:test
-```
+{% tab title="Gradle Kotlin" %}
+Add `konsistTest/build.gradle.kts` file.
+{% endtab %}
+
+{% tab title="Gradle Groovy" %}
+Add `konsistTest/build.gradle` file.
 {% endtab %}
 {% endtabs %}
+
+The content of the file will differ depending on the project type (Android, Spring, KMP) and the selected testing framework (JUnit4, JUnit5, KoTest).
+
+Copy content from the file from one of the [starter-projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) e.g. copy from `starter-projects/konsist-starter-spring-gradle-groovy-kotest/build.gradle.kts`
+
+Refresh/Sync the Gradle Project in IDE.
+
+### Run Konsist Tests
+
+To execute tests in `konsistTest` module run:
+
+`./gradlew konsistTest:test` --rerun-tasks
+
+{% hint style="warning" %}
+The `--rerun-tasks` Gradle flag is required when Konsist tests are placed in a distinct module. When the module is unchanged Gradle assumes the tests are up-to-date, so these tests are skipped. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating code in other modules.
+{% endhint %}
 
 To execute all unit tests besides tests in the `konsistTest` module run:
 
-{% tabs %}
-{% tab title="Gradle" %}
-`./gradlew test -x konsistTest:test --rerun-tasks`
-{% endtab %}
-{% endtabs %}
-
-{% hint style="danger" %}
-The `--rerun-tasks` Gradle flag is required - when Konsist tests are placed in a distinct module. When the module is unchanged Gradle assumes the "unit tests" are up-to-date tests are skipped. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating code in other modules.
-{% endhint %}
-
-## Scope From Path&#x20;
-
-In rare cases where Konsist dependency can't be added to the project, it is possible to create a [koscope.md](../writing-tests/koscope.md "mention") containing all Kotlin files from a given path e.g. from another project:
-
-```kotlin
-val myScope = KoScope.fromPath("/path/to/project/root")
-```
+`./gradlew test -x konsistTest:test`
 
 
 
