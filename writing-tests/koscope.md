@@ -403,6 +403,8 @@ refactoredModules
     .assertTrue { ... }
 ```
 
+## Scope Subtraction
+
 Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:
 
 ```kotlin
