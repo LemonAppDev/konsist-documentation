@@ -38,6 +38,10 @@ Konsist
     }
 ```
 
+{% hint style="info" %}
+The Konsist repository [contains multiple architectural tests](https://github.com/LemonAppDev/konsist/tree/main/lib/src/apiTest/kotlin/com/lemonappdev/konsist/architecture). These tests are used internally to verify Konsist API. Each test has a Konsist code and a `mermaid` diagram presenting the architecture.
+{% endhint %}
+
 ## Define Layers
 
 Create layers instances to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define layers.
@@ -135,4 +139,3 @@ class ArchitectureTest {
 }
 ```
 
-##
