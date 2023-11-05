@@ -28,6 +28,13 @@ Add the following dependency to the `module\build.gradle.kts` file:
 dependencies {
     testImplementation("com.lemonappdev:konsist:0.13.0")
 }
+
+```
+
+If Konsist tests are failing with `KoInternalException` add the`kotlin-compiler` dependency (this issue is currently under investigation):
+
+```kotlin
+testImplementation("org.jetbrains.kotlin:kotlin-compiler:KOTLIN_VERSION")
 ```
 {% endtab %}
 
@@ -38,6 +45,12 @@ Add the following dependency to the `module\build.gradle` file:
 dependencies {
     testImplementation "com.lemonappdev:konsist:0.13.0"
 }
+```
+
+If Konsist tests are failing with `KoInternalException` add the`kotlin-compiler` dependency (this issue is currently under investigation):
+
+```kotlin
+testImplementation "org.jetbrains.kotlin:kotlin-compiler:KOTLIN_VERSION"
 ```
 {% endtab %}
 
@@ -52,6 +65,17 @@ Add the following dependency to the `module\pom.xml` file:
     <scope>test</scope>
 </dependency>
 ```
+
+If Konsist tests are failing with `KoInternalException` add the`kotlin-compiler` dependency (this issue is currently under investigation):
+
+```markup
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-compiler</artifactId>
+    <version>0.13.0</version>
+    <scope>KOTLIN_VERSION</scope>
+</dependency>
+```
 {% endtab %}
 
 {% tab title="More" %}
@@ -61,6 +85,10 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 
 {% hint style="info" %}
 To achieve better test separation Konsist can be configured inside a `konsistTest` source set or a dedicated module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention").
+{% endhint %}
+
+{% hint style="warning" %}
+If Konsist are failing you may also have to add `testImplementation("org.jetbrains.kotlin:kotlin-compiler:KOTLIN_VERSION")` dependency.
 {% endhint %}
 
 ## High-Level Picture
