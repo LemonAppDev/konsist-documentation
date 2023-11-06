@@ -1,4 +1,10 @@
-# Articles
+# Articles & Videos
+
+## Videos
+
+1. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
+
+## Articles
 
 1. [Introducing Konsist: A Cutting-Edge Kotlin Linter](https://blog.kotlin-academy.com/introducing-konsist-a-cutting-edge-kotlin-linter-d3ab916a5461)
 2. [Konsist: First experience with the new linter for Kotlin](https://proandroiddev.com/konsist-first-experience-with-the-new-linter-for-kotlin-9153b0e7e2c3)

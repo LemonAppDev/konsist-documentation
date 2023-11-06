@@ -7,7 +7,7 @@
   * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
   * [Kotest Support](getting-started/getting-started/kotest-support.md)
   * [Explicit Test Names](getting-started/getting-started/explicit-test-names.md)
-  * [Articles](getting-started/getting-started/articles.md)
+  * [Articles & Videos](getting-started/getting-started/articles.md)
 * [Getting Help](getting-started/getting-help.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Project Status](getting-started/project-status.md)
