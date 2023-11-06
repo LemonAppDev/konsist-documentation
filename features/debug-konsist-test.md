@@ -4,13 +4,13 @@ description: Understand whats going on
 
 # Debug Konsist Test
 
-This page will help you review the data exposed by the Konsist and understand what going on inside the Konsist test and Konsist API.
+To gain insight into the inner workings of the Konsist test, examine the data provided by the Konsist API.
 
-Two primary tools can help you comprehend the inner workings of the Konsit API -  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
+Two primary tools can help you comprehend the inner workings of the Konsit API are  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
 
-## Evaluate Expression
+## Evaluate Expression Debugger Window
 
-The [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Android Studio](https://developer.android.com/studio) provides a handy feature called [Evaluate Expressions](https://www.jetbrains.com/help/rider/Evaluating\_Expressions.html#eval-expression-dialog) that is ideal for debugging Konsist tests.
+The [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Android Studio](https://developer.android.com/studio) provides a handy feature called [Evaluate Expressions](https://www.jetbrains.com/help/rider/Evaluating\_Expressions.html#eval-expression-dialog) which is an excellent tool for debugging Konsist tests.
 
 Create a simple test class and click on the line number to add the [breakpoint](https://www.jetbrains.com/help/idea/using-breakpoints.html):
 
