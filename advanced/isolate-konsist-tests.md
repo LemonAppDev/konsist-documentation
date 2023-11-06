@@ -209,7 +209,7 @@ Copy content from the file from one of the [starter-projects](https://github.com
 
 Refresh/Sync the Gradle Project in IDE.
 
-### Run Konsist Tests
+### Running Konsist Tests
 
 To execute tests in `konsistTest` module run:
 
