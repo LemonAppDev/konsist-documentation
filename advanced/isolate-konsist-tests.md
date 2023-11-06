@@ -41,7 +41,7 @@ testing {
                 implementation(project())
                 
                 // Add Konsist dependency
-                implementation("com.lemonappdev:konsist:0.7.4") 
+                implementation("com.lemonappdev:konsist:0.13.0") 
             }
         }
     }
@@ -76,7 +76,7 @@ testing {
                 implementation project() 
                 
                 // Add Konsist dependency
-                implementation "com.lemonappdev:konsist:0.7.4"
+                implementation "com.lemonappdev:konsist:0.13.0"
             }
 
             targets { 
@@ -100,8 +100,8 @@ tasks.named('check') {
 {% tab title="Maven" %}
 Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-plugin/) to define the `konsistTest` test source directory. Add plugin config to the project configuration:
 
-````xml
-// app/pom.xml
+```xml
+# app/pom.xml
 
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
@@ -123,7 +123,6 @@ Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-
     </executions>
 </plugin>
 ```
-````
 {% endtab %}
 {% endtabs %}
 
