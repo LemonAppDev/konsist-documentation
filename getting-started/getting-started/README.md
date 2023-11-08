@@ -59,10 +59,6 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 {% endtab %}
 {% endtabs %}
 
-{% hint style="warning" %}
-If Konsist tests are failing with `KoInternalException` also add the `org.jetbrains.kotlin:kotlin-compiler:KOTLIN_VERSION` dependency.
-{% endhint %}
-
 {% hint style="info" %}
 To achieve better test separation Konsist can be configured inside a `konsistTest` source set or a dedicated module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention").
 {% endhint %}
