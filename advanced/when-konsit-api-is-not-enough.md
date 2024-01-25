@@ -1,2 +1,2 @@
-# When Konsit API Is Not Enough
+# When Konsist API Is Not Enough
 

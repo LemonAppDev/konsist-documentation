@@ -65,7 +65,7 @@ For more Konsist test samples see the [snippets](inspiration/snippets/ "mention"
 
 ## ArchitecturalChecks
 
-The second type of [Konsit checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries - they are intended to maintain the separation of concerns between layers.
+The second type of [Konsist checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries - they are intended to maintain the separation of concerns between layers.
 
 Consider this simple 3 layer of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html):
 
