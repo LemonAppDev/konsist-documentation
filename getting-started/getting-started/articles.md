@@ -14,3 +14,4 @@
 6. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations ](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)
 7. [Konsist and Conquer: Embracing the World of Kotlin Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
 8. [Adding Konsist and Ktlint to a GitHub Actions Continuous Integration](https://akjaw.com/konsist-and-ktlint-in-github-actions-continous-integration/)
+9. [Konsist is more than you might think](https://medium.com/@kacper.wojciechowski/konsist-is-more-than-you-might-think-3a2bdc498425)
