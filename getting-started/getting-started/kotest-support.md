@@ -4,7 +4,7 @@ description: Konsist + Kotest
 
 # Kotest Support
 
-Konsit has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotets compatibility in mind. API has been improved to support Kotst flows.
+Konsist has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotets compatibility in mind. API has been improved to support Kotst flows.
 
 At the moment there is an additional step that is required for Konsist Kotest to be fully functional - the test name has to be explicitly provided.
 

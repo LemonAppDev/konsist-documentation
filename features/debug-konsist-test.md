@@ -6,7 +6,7 @@ description: Understand whats going on
 
 To gain insight into the inner workings of the Konsist test, examine the data provided by the Konsist API.
 
-Two primary tools can help you comprehend the inner workings of the Konsit API are  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
+Two primary tools can help you comprehend the inner workings of the Konsist API are  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
 
 ## Evaluate Expression Debugger Window
 
