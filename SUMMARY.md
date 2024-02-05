@@ -56,5 +56,6 @@
 * [Changelog](help/changelog.md)
 * [Feedback & Questions](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
+* [Asserts And Logos](help/asserts-and-logos.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
