@@ -15,3 +15,4 @@
 7. [Konsist and Conquer: Embracing the World of Kotlin Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
 8. [Adding Konsist and Ktlint to a GitHub Actions Continuous Integration](https://akjaw.com/konsist-and-ktlint-in-github-actions-continous-integration/)
 9. [Konsist is more than you might think](https://medium.com/@kacper.wojciechowski/konsist-is-more-than-you-might-think-3a2bdc498425)
+10. [Konsist adoption with a custom Baseline definition](https://medium.com/@chethan.n/we-randomly-stumbled-upon-konsist-and-were-excited-about-the-possibilities-it-offered-bd4e0db51090)
