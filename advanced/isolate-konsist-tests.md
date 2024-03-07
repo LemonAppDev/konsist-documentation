@@ -4,7 +4,11 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-The `konsist` library can be added to the project by adding the dependency on the existing `test` source set (see [Broken link](broken-reference "mention")).
+It is recommended to keep all Konsist tests in a single place, because they affect entire codebase.
+
+## Existing Test Source Set
+
+The `konsist` library can be added to the project by adding the dependency on the existing `test` source set .
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
@@ -12,7 +16,7 @@ As the project grows it may be desirable to isolate tests further e.g. separate 
 
 To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
-## Dedicated Source Set (Spring Projects and Pure Kotlin Projects)
+## Dedicated konsist-test Source Set (Spring Projects and Pure Kotlin Projects)
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
