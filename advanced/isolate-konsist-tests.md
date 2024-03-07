@@ -4,21 +4,20 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the architecture of the entire project's codebase. There are three potential options:
+Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the structure of the entire project's codebase. There are three potential options for storing Konsist tests:
 
 <table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set">#dedicated-konsist-test-source-set</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module">#dedicated-module</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
 
-Recommended approach is to use `konsist-test` source set or dedicated module. This approach allows to separate Konsist tests from other types of tests.
+Recommended approach is to use `konsist-test` source set or dedicated module. This approach allows to isolate Konsist tests from other types of tests e.g. separate `unit tests` from `Konsist tests`.
 
 ## Existing Test Source Set
 
-The `Konsist` library can be added to the project by adding the dependency on the existing `test` source set .
+The Konsist library can be added to the project by adding the dependency on the existing `test` source set .
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
-As the project grows it may be desirable to isolate tests further e.g. separate `unit tests` from `Konsist tests`. &#x20;
+The downside of this approach is that various types of tests are mixed in `test` source set e.g. `unit tests` and `Konsist tests`. &#x20;
 
-To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
 ## Dedicated konsist-test Source Set
 
