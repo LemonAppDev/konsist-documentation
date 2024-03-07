@@ -12,7 +12,7 @@ Recommended approach is to use `konsist-test` source set or dedicated module. Th
 
 ## Existing Test Source Set
 
-The `konsist` library can be added to the project by adding the dependency on the existing `test` source set .
+The `Konsist` library can be added to the project by adding the dependency on the existing `test` source set .
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
