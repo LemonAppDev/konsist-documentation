@@ -4,9 +4,11 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-In most cases it is recommended to keep all Konsist tests in a single place, because usually these are used to verify structure of entire project codebase. There are 3 possibilities:
+Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the architecture of the entire project's codebase. There are three potential options:
 
-<table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set-spring-projects-and-pure-kotlin-projects">#dedicated-konsist-test-source-set-spring-projects-and-pure-kotlin-projects</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module-android-projects-and-kotlin-multiplatform-projects">#dedicated-module-android-projects-and-kotlin-multiplatform-projects</a> </td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set">#dedicated-konsist-test-source-set</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module">#dedicated-module</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
+
+Recommended approach is to use `konsist-test` source set or dedicated module. This approach allows to separate Konsist tests from other types of tests.
 
 ## Existing Test Source Set
 
