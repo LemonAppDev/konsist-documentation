@@ -4,7 +4,9 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-It is recommended to keep all Konsist tests in a single place, because they affect entire codebase.
+In most cases it is recommended to keep all Konsist tests in a single place, because usually these are used to verify structure of entire project codebase. There are 3 possibilities:
+
+<table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set-spring-projects-and-pure-kotlin-projects">#dedicated-konsist-test-source-set-spring-projects-and-pure-kotlin-projects</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module-android-projects-and-kotlin-multiplatform-projects">#dedicated-module-android-projects-and-kotlin-multiplatform-projects</a> </td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
 
 ## Existing Test Source Set
 
@@ -16,7 +18,7 @@ As the project grows it may be desirable to isolate tests further e.g. separate 
 
 To organize tests add a new test directory, module, or project. See preconfigured [starter-projects.md](../inspiration/starter-projects.md "mention").
 
-## Dedicated konsist-test Source Set (Spring Projects and Pure Kotlin Projects)
+## Dedicated konsist-test Source Set
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
@@ -150,7 +152,7 @@ mvn test
 {% endtab %}
 {% endtabs %}
 
-## Dedicated Module (Android Projects and Kotlin Multiplatform Projects)
+## Dedicated Module
 
 This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects and Kotlin Multiplatform (KMP) projects, however, this approach will also work with Spring and pure Kotlin projects.
 
