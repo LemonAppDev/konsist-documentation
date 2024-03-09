@@ -20,19 +20,19 @@ Over the next few months, we will fix bugs, improve existing APIs, and implement
   * ✅ Create documentation
   * ✅ Internal closed testing Android
   * ✅ Internal closed testing Spring
-* 🚀 Milestone 2 (Q4 2023 Alpha)
-  * 🚀 Community-driven testing
-  * 🚀 Improve existing APIs
-  * 🚀 Fix Bugs
-  * 🚀 Polish documentation and samples
-  * 🚀 Implement new features
-* 🕝 Milestone 3 (Q1 2024 Beta)
-  * 🕝 Stabilise APIs (minimal breaking changes)
-  * 🕝 Fix Bugs
-  * 🕝 Polish documentation and samples
-  * 🕝 Implement new features
+* ✅ Milestone 2 (Q4 2023 Alpha)
+  * ✅ Community-driven testing
+  * ✅ Improve existing APIs
+  * ✅ Fix Bugs
+  * ✅ Polish documentation and samples
+  * ✅ Implement new features
+* ✅  Milestone 3 (Q1 2024 Beta)
+  * ✅  Stabilise APIs (minimal breaking changes)
+  * ✅ Fix Bugs
+  * ✅ Polish documentation and samples
+  * ✅ Implement new features
 * 🕝 Milestone 4 (Q2 2024)
-  * 🕝 Release 1.0
   * 🕝 Bug fixes, improvements, new features
+  * 🕝 Release 1.0
 * 🕝 Milestone 5 (H2 2024)
   * 🕝 Further maintenance and improvements

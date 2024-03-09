@@ -2,13 +2,17 @@
 
 ![](.gitbook/assets/logo.png)
 
-Konsist is a powerful static code analyzer tailored for [Kotlin](https://kotlinlang.org/), focused on ensuring codebase consistency and adherence to coding conventions. Designed to be flexible, it enables developers to set custom conventions that best fit their project's requirements. Whether you're working on  [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered. By integrating seamlessly with prominent testing frameworks like JUnit4, JUnit5, and Kotest, Konsist allows developers to embed consistency checks within unit tests. These checks, which are executed during pull request reviews, act as safeguards to preserve the project's architecture.
+Konsist is a structural linter (static code analyzer) designed for [Kotlin](https://kotlinlang.org/) language. It aims to standardize the codebase by ensuring adherence to a common set of coding conventions, thereby improving the readability and maintainability of the code.
+
+The Konsist API provides developers with the capability to create custom checks through unit tests, customized to align with the project's unique requirements. Additionally, it offers smooth integration with leading testing frameworks, including [JUnit4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/), further streamlining the development process.
+
+Konsist tests can be executed during pull request reviews, act as safeguards to preserve the project's codebase structure and architecture. Whether you're working on [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered.&#x20;
 
 {% hint style="info" %}
-Konsist is in the early stage of development. See the [project-status.md](getting-started/project-status.md "mention").
+Konsist is approaching its 1.0 release, marking a significant milestone in its development journey. See the [project-status.md](getting-started/project-status.md "mention").
 {% endhint %}
 
-Konsist offers two leves of checks, namely `declaration checks` and `architectural checks`, to thoroughly evaluate the codebase.
+Konsist offers two types of checks, namely [#declaration-checks](./#declaration-checks "mention") and [#architecturalchecks](./#architecturalchecks "mention"), to thoroughly evaluate the codebase.
 
 ## Declaration Checks
 
@@ -26,7 +30,8 @@ Here is a sample test that verifies if every use case class resides in `domain.u
 
 {% tabs %}
 {% tab title="JUnit" %}
-<pre class="language-kotlin"><code class="lang-kotlin">class UseCaseKonsistTest {
+```kotlin
+class UseCaseKonsistTest {
     @Test
     fun `every use case reside in use case package`() {
         Konsist
@@ -36,8 +41,8 @@ Here is a sample test that verifies if every use case class resides in `domain.u
             .assertTrue { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
     }
 }
-<strong>
-</strong></code></pre>
+
+```
 {% endtab %}
 
 {% tab title="Kotest" %}
