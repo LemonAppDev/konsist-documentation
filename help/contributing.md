@@ -87,7 +87,7 @@ Some of the project README files contain [Mermaid](https://mermaid.js.org/) diag
 
 ## Testing Changes Locally
 
-#### Publish Local Konsist Artefact
+#### Publish Konsist Artifact To Local Maven Repository
 
 To test the changes locally you can publish a `SNAPSHOT` artifact of the Konsist to the local maven repository:
 
