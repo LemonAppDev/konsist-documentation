@@ -33,7 +33,9 @@ koScope
 
 The `it` parameter inside the `assertTrue` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface. The last line in the `assertTrue` block will be evaluated as `true` or `false` providing the result for a given asset.
 
-
+{% hint style="info" %}
+Each `KoDeclaration` comes with an API, comprising methods and properties, for verifying the declaration. Additionally, the Konsist API offers a `text` property for exceptional cases where the standard API falls short. This should be used as a last resort, and any issues encountered should be reported [getting-help.md](../getting-started/getting-help.md "mention").
+{% endhint %}
 
 ### Assert False
 
