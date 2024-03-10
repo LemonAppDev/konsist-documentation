@@ -27,6 +27,8 @@
 * [Declaration Vs Property](features/declaration-vs-property.md)
 * [Compiler Type Inference](features/compiler-type-inference.md)
 * [Package Wildcard](features/packageselector.md)
+* [Declaration References](features/declaration-references.md)
+* [Indirect Parents](features/indirect-parents.md)
 
 ## 🔍 INSPIRATION
 
