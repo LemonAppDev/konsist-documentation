@@ -1,25 +1,21 @@
 # Declaration References
 
-Declaration reference represents a link between codebase declarations. Konsist allows to precisely verify properties of linked type.
+Declaration reference represents a link between codebase declarations. Konsist allows to precisely verify properties of linked type. This can be type used in function or property declaration or child/parent class or interface. For example
 
-For example it is possible to verify if all types of function parameters are interfaces...
+1\. Verify if all types of function parameters are interfaces:
 
 ```kotlin
-fun `all function parameters are interfaces`() {
-    Konsist
-        .scopeFromProject()
-        .functions()
-        .parameters
-        .types
-        .assertTrue {
-            it.isInterface
-        }
-}
-
-
+Konsist
+    .scopeFromProject()
+    .functions()
+    .parameters
+    .types
+    .assertTrue {
+        it.isInterface
+    }
 ```
 
-..or access properties of parents, for example check if parent class has `internal` modifier.
+2\. Access properties of parents (parent classes and child interfaces). Below snippet checks if parent class has `internal` modifier:
 
 ```kotlin
 fun `all parrent interfaces are internal`() {
@@ -31,6 +27,19 @@ fun `all parrent interfaces are internal`() {
             it.hasInternalModifier()
         }
 }
+```
+
+3\. Access properties of children (child classes and child interfaces). Below snippet checks if all interfaces have children that resided in `..somepackage..` package:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .interfaces()
+    .assertTrue {
+        it.hasAllChildren(indirectChildren = true) { child -> 
+            child.resideInPackage("..somepackage..") 
+        }
+    }
 ```
 
 ## Type Representation
