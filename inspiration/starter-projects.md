@@ -31,6 +31,8 @@ Konsist provides preconfigured sample projects. Each project contains a complete
 
 ### KMP
 
-* [konsist-starter-kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-junit5)
-* [konsist-starter-kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-kotest)
+* JUnit5
+  * [konsist-starter-kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-junit5)
+* Kotest
+  * [konsist-starter-kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-kotest)
 
