@@ -1,5 +1,7 @@
 # Library Snippets
 
+Snippets to library authors.
+
 ## 1. Every Api Declaration Has KDoc
 
 ```kotlin

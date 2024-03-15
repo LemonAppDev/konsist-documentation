@@ -28,7 +28,30 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
 }
 ```
 
-## 3. Classes With `RestController` Annotation Should Reside In `controller` Package
+## 3. Controllers Never Returns Collection Types
+
+```kotlin
+@Test
+fun `controllers never returns collection types`() {
+    /*
+    Avoid returning collection types directly. Structuring the response as
+    an object that contains a collection field is preferred. This approach
+    allows for future expansion (e.g., adding more properties like "totalPages")
+    without disrupting the existing API contract, which would happen if a JSON
+    array were returned directly.
+    */
+    Konsist
+        .scopeFromPackage("story.controller..")
+        .classes()
+        .withAnnotationOf(RestController::class)
+        .functions()
+        .assertFalse { function ->
+            function.hasReturnType { it.isKotlinCollectionType }
+        }
+}
+```
+
+## 4. Classes With `RestController` Annotation Should Reside In `controller` Package
 
 ```kotlin
 @Test
@@ -41,7 +64,7 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
 }
 ```
 
-## 4. Classes With `RestController` Annotation Should never Return Collection
+## 5. Classes With `RestController` Annotation Should Never Return Collection
 
 ```kotlin
 @Test
@@ -51,8 +74,9 @@ fun `classes with 'RestController' annotation should never return collection`() 
         .classes()
         .withAnnotationOf(RestController::class)
         .functions()
-        .assertFalse(additionalMessage = "Don't use Kotlin Collection Types") { function ->
+        .assertFalse { function ->
             function.hasReturnType { it.hasNameStartingWith("List") }
         }
 }
 ```
+
