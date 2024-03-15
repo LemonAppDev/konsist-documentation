@@ -13,7 +13,48 @@ fun `files in 'ext' package must have name ending with 'Ext'`() {
 }
 ```
 
-## 2. Properties Are Declared Before Functions
+## 2. All Data Class Properties Are Defined In Constructor
+
+```kotlin
+@Test
+fun `all data class properties are defined in constructor`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withModifier(KoModifier.DATA)
+        .properties()
+        .assertTrue {
+            it.isConstructorDefined
+        }
+}
+```
+
+## 3. Every Class Has Test
+
+```kotlin
+@Test
+fun `every class has test`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .assertTrue { it.hasTestClass() }
+}
+```
+
+## 4. Every Class - Except Data And Value Class - Has Test
+
+```kotlin
+@Test
+fun `every class - except data and value class - has test`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
+        .assertTrue { it.hasTestClass() }
+}
+```
+
+## 5. Properties Are Declared Before Functions
 
 ```kotlin
 @Test
@@ -39,7 +80,7 @@ fun `properties are declared before functions`() {
 }
 ```
 
-## 3. Every Constructor Parameter Has Name Derived From Parameter Type
+## 6. Every Constructor Parameter Has Name Derived From Parameter Type
 
 ```kotlin
 @Test
@@ -56,7 +97,7 @@ fun `every constructor parameter has name derived from parameter type`() {
 }
 ```
 
-## 4. Every Class Constructor Has Alphabetically Ordered Parameters
+## 7. Every Class Constructor Has Alphabetically Ordered Parameters
 
 ```kotlin
 @Test
@@ -73,7 +114,7 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## 5. Companion Object Is Last Declaration In The Class
+## 8. Companion Object Is Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -95,7 +136,7 @@ fun `companion object is last declaration in the class`() {
 }
 ```
 
-## 6. Every Value Class Has Parameter Named `value`
+## 9. Every Value Class Has Parameter Named `value`
 
 ```kotlin
 @Test
@@ -109,7 +150,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## 7. No Empty Files Allowed
+## 10. No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -121,7 +162,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## 8. No Field Should Have `m` Prefix
+## 11. No Field Should Have `m` Prefix
 
 ```kotlin
 @Test
@@ -137,7 +178,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## 9. No Class Should Use Field Injection
+## 12. No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -150,7 +191,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## 10. No Class Should Use Java Util Logging
+## 13. No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -162,7 +203,7 @@ fun `no class should use Java util logging`() {
 }
 ```
 
-## 11. Package Name Must Match File Path
+## 14. Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -174,7 +215,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## 12. No Wildcard Imports Allowed
+## 15. No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -186,7 +227,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## 13. Forbid The Usage Of `forbiddenString` In File
+## 16. Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
 @Test
@@ -195,6 +236,37 @@ fun `forbid the usage of 'forbiddenString' in file`() {
         .scopeFromProject()
         .files
         .assertFalse { it.text.contains("forbiddenString") }
+}
+```
+
+## 17. All Function Parameters Are Interfaces
+
+```kotlin
+@Test
+fun `all function parameters are interfaces`() {
+    Konsist
+        .scopeFromProject()
+        .functions()
+        .parameters
+        .types
+        .assertTrue {
+            it.isInterface
+        }
+}
+```
+
+## 18. All Parrent Interfaces Are Public
+
+```kotlin
+@Test
+fun `all parrent interfaces are public`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .parentInterfaces()
+        .assertTrue {
+            it.hasPublicModifier()
+        }
 }
 ```
 

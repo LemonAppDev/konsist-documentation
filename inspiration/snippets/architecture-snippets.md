@@ -1,5 +1,7 @@
 # Architecture Snippets
 
+Snippets used to guard application architecture.
+
 ## 1. 2 Layer Architecture Has Correct Dependencies
 
 ```kotlin

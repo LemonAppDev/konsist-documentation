@@ -14,7 +14,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withParentOf(ViewModel::class)
+        .withParentClassOf(ViewModel::class)
         .assertTrue { it.name.endsWith("ViewModel") }
 }
 ```
@@ -27,7 +27,7 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withParentOf(ViewModel::class)
+        .withParentClassOf(ViewModel::class)
         .properties()
         .assertTrue {
             it.hasPublicOrDefaultModifier && it.hasType { type -> type.name == "kotlinx.coroutines.flow.Flow" }
@@ -70,7 +70,7 @@ fun `All JetPack Compose previews contain 'Preview' in method name`() {
         .functions()
         .withAnnotationOf(Preview::class)
         .assertTrue {
-            it.name.contains("Preview")
+            it.hasNameContaining("Preview")
         }
 }
 ```
