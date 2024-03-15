@@ -44,6 +44,14 @@
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
+  * [Clean Architecture Snippets](inspiration/snippets/clean+architecture+snippets.md)
+  * [General Snippets](inspiration/snippets/general+snippets.md)
+  * [Architecture Snippets](inspiration/snippets/architecture+snippets.md)
+  * [Kotest Snippets](inspiration/snippets/kotest+snippets.md)
+  * [Library Snippets](inspiration/snippets/library+snippets.md)
+  * [Spring Snippets](inspiration/snippets/spring+snippets.md)
+  * [Android Snippets](inspiration/snippets/android+snippets.md)
+  * [Kotlin Serialization Snippets](inspiration/snippets/kotlin+serialization+snippets.md)
 
 ## 🎓 ADVANCED
 
