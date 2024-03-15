@@ -1,5 +1,7 @@
 # Clean Architecture Snippets
 
+Snippets used to guard clean architecture dependencies.
+
 ## 1. Clean Architecture Layers Have Correct Dependencies
 
 ```kotlin
@@ -78,3 +80,4 @@ fun `every UseCase class has test`() {
         .assertTrue { it.hasTestClass() }
 }
 ```
+

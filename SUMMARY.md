@@ -44,6 +44,7 @@
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
+  * [JUnit Snippets](inspiration/snippets/j-unit-snippets.md)
 
 ## 🎓 ADVANCED
 

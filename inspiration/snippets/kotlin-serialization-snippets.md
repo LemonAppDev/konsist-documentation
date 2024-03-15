@@ -1,6 +1,7 @@
 # Kotlin Serialization Snippets
 
-Konsist can be used to guard the consistency of the [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) 
+Konsist can be used to guard the consistency of classes related to the [Kotlin Serialization](https://kotlinlang.
+org/docs/serialization.html) 
 library.
 
 ## 1. Classes Annotated With `Serializable` Have All Properties Annotated With `SerialName`
@@ -30,6 +31,20 @@ fun `enum classes annotated with 'Serializable' have all enum constants annotate
         .withAnnotationOf(Serializable::class)
         .enumConstants
         .assertTrue { it.hasAnnotationOf(SerialName::class) }
+}
+```
+
+## 3. All Models Are Serializable
+
+```kotlin
+@Test
+fun `all models are serializable`() {
+    Konsist
+        .scopeFromPackage("com.myapp.model..")
+        .classes()
+        .assertTrue {
+            it.hasAnnotationOf(Serializable::class)
+        }
 }
 ```
 
