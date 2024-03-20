@@ -1,10 +1,10 @@
 # java.lang.OutOfMemoryError: Java heap space
 
-For large projects with many classes to parse, the default JVM heap size might not suffice. If you encounter `java.lang.OutOfMemoryError: Java heap space` errors while running Konsist tests, consider increasing the `maxHeapSize` for the `test` source set:
+For large projects with many classes to parse, the default JVM heap size might not suffice. If you encounter `java.lang.OutOfMemoryError: Java heap space` error consider increasing the `maxHeapSize` for the `test` source set:
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
-Add the following dependency to the `build.gradle.kts` file:
+Add the following argument to the`build.gradle.kts` file:
 
 ```kotlin
 tasks.withType<Test> {
@@ -14,7 +14,7 @@ tasks.withType<Test> {
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
-Add the following dependency to the `module\build.gradle` file:
+Add the following argument to the `build.gradle` file:
 
 ```groovy
 test {
@@ -24,7 +24,7 @@ test {
 {% endtab %}
 
 {% tab title="Maven" %}
-Add the following dependency to the `module\pom.xml` file:
+Add the following argument to the `pom.xml` file:
 
 ```xml
 <plugin>
