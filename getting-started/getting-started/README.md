@@ -53,10 +53,6 @@ Add the following dependency to the `module\pom.xml` file:
 </dependency>
 ```
 {% endtab %}
-
-{% tab title="More" %}
-Dependency can be added to other build systems as well. Check the [snippets](https://central.sonatype.com/artifact/com.lemonappdev/konsist) section in the Sonatype repository.
-{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}

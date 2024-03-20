@@ -52,6 +52,7 @@
 * [When Konsist API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
 * [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
+* [Konsist Snapshots](advanced/konsist-snapshots.md)
 
 ## ❓ HELP
 
