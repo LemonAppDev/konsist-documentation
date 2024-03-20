@@ -56,6 +56,8 @@
 
 ## ❓ HELP
 
+* [Troubleshooting](help/troubleshooting/README.md)
+  * [java.lang.OutOfMemoryError: Java heap space](help/troubleshooting/java.lang.outofmemoryerror-java-heap-space.md)
 * [Changelog](help/changelog.md)
 * [Feedback & Questions](help/sending-us-feedback.md)
 * [Contributing](help/contributing.md)
