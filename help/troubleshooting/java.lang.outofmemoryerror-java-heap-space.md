@@ -8,7 +8,7 @@ Add the following dependency to the `build.gradle.kts` file:
 
 ```kotlin
 tasks.withType<Test> {
-    maxHeapSize = "1024m"
+    maxHeapSize = "1g"
 }
 ```
 {% endtab %}
@@ -18,7 +18,7 @@ Add the following dependency to the `module\build.gradle` file:
 
 ```groovy
 test {
-    maxHeapSize = "4096m"
+    maxHeapSize = "1g"
 }
 ```
 {% endtab %}
@@ -32,12 +32,14 @@ Add the following dependency to the `module\pom.xml` file:
     <artifactId>maven-surefire-plugin</artifactId>
     <version>3.0.0</version>
     <configuration>
-        <argLine>-Xmx4096m</argLine>
+        <argLine>-Xmx1g</argLine>
     </configuration>
 </plugin>
 ```
 {% endtab %}
 {% endtabs %}
 
-
+{% hint style="info" %}
+You may need to set larger value than 1 gigabyte.
+{% endhint %}
 
