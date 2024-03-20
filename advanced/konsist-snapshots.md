@@ -59,22 +59,6 @@ Add the following dependency to the `module\pom.xml` file:
 {% endtab %}
 {% endtabs %}
 
-Include the Konsist snapshot dependency:
-
-{% tabs %}
-{% tab title="Gradle (Kotlin)" %}
-Add the following dependency to the `module\build.gradle.kts` file:
-
-```kotlin
-dependencies {
-    testImplementation("com.lemonappdev:X.Y.Z-SNAPSHOT")
-}
-```
-{% endtab %}
-{% endtabs %}
-
-
-
 ### Add Konsist Dependency
 
 To use Konsist, include the Konsist dependency from Maven Central:
