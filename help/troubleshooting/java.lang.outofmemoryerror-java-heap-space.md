@@ -17,8 +17,8 @@ tasks.withType<Test> {
 Add the following argument to the `build.gradle` file:
 
 ```groovy
-test {
-    maxHeapSize = "1g"
+tasks.withType(Test).configureEach { 
+    maxHeapSize = "1g" 
 }
 ```
 {% endtab %}
