@@ -26,12 +26,12 @@ Over the next few months, we will fix bugs, improve existing APIs, and implement
   * ✅ Fix Bugs
   * ✅ Polish documentation and samples
   * ✅ Implement new features
-* ✅  Milestone 3 (Q1 2024 Beta)
+* ✅  Milestone 3 (Q1 2024)
   * ✅  Stabilize APIs (minimal breaking changes)
   * ✅ Fix Bugs
   * ✅ Polish documentation and samples
   * ✅ Implement new features
-* 🚀 Milestone 4 (Q2 2024)
+* 🚀 Milestone 4 (Q2 2024 Beta)
   * ✅  Declaration references
   * 🚀 Architecture checks improvements
   * 🚀 Bug fixes, improvements, new features
