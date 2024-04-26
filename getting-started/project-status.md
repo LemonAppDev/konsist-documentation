@@ -32,7 +32,7 @@ Over the next few months, we will fix bugs, improve existing APIs, and implement
   * ✅ Polish documentation and samples
   * ✅ Implement new features
 * 🚀 Milestone 4 (Q2 2024)
-  * 🚀 Declaration references
+  * ✅  Declaration references
   * 🚀 Architecture checks improvements
   * 🚀 Bug fixes, improvements, new features
   * 🚀 Release 1.0
