@@ -7,7 +7,7 @@ description: Access the Kotlin files using Konsist API
 Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
 
 {% hint style="info" %}
-Scopes are an alternative for base. Subsets of the codebase can be refactored to be aligned with Konsit tests e.g. code in the single module.
+Scopes are an alternative for `baseline` file. Subsets of the codebase can be refactored to be aligned with Konsit tests e.g. code in the single module.
 {% endhint %}
 
 ```mermaid
