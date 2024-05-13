@@ -2,7 +2,7 @@
 description: Verify codebase using Konsist API
 ---
 
-# Architecture Assert
+# Architecture Assertion
 
 Architecture assertions are used to perform architecture verification. It is the final step of Konsist verification preceded by scope creation ([koscope.md](koscope.md "mention")):
 
@@ -11,7 +11,7 @@ Architecture assertions are used to perform architecture verification. It is the
 flowchart TB
     StepA2["2. Assert Architecture"]-->StepA3
     StepA3["2a. Define Layers"]-->StepA4
-    StepA4["2b. Define Architecture Assertions"]
+    StepA4["2b. Define Assertion"]
     style StepA2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
     style StepA3 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
     style StepA4 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
