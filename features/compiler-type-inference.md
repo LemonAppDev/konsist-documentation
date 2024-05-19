@@ -16,7 +16,7 @@ Is `Logger` class `public`? Yes obviously it is `public`, however, the `hasPubli
 koClass.hasPublicModifier() // false
 ```
 
-Why is that? The `public` visibility modifier is the default visibility modifier in Kotlin. Meaning that class will be `public` even if it does not have the explicit `public` modifier. Since the class has no `public` modifier the `hasPublicModifier` method returns false. To distinguish between class being `public` and class heaving explicit`public` modifier Konsist API provides another method to retrieve declaration visibility:
+Why is that? The `public` visibility modifier is the default visibility modifier in Kotlin. Meaning that class will be `public` even if it does not have the explicit `public` modifier. Since the class has no `public` modifier the `hasPublicModifier` method returns false. To distinguish between class being `public` and class having explicit`public` modifier Konsist API provides another method to retrieve declaration visibility:
 
 ```kotlin
 koClass.isPublicOrDefault() // true
@@ -44,7 +44,7 @@ Let's look at the primary constructor for the same class:
 class Logger
 ```
 
-The `Logger` the class has a primary constructor because the Kotlin compiler will generate a parameterless constrictor under the hood. However, the Konsist API will return a `null` value  because the primary constructor is not present in the Kotlin source code:
+The `Logger` the class has a primary constructor because the Kotlin compiler will generate a parameterless constructor under the hood. However, the Konsist API will return a `null` value  because the primary constructor is not present in the Kotlin source code:
 
 ```kotlin
 koClass.primaryConstructor // null

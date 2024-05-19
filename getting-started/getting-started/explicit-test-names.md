@@ -9,7 +9,7 @@ For dynamic tests, Konsist can't obtain the current test's name. Test name may b
 See [dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention").
 {% endhint %}
 
-The `testName` argument is should be passed to `assertX` methods such as `assertTrue` , `assertFalse` etc. Let's look at the code:
+The `testName` argument should be passed to `assertX` methods such as `assertTrue` , `assertFalse` etc. Let's look at the code:
 
 ```kotlin
 Konsist.scopeFromProject()

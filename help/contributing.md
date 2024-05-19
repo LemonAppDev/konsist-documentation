@@ -26,11 +26,11 @@ No matter how you choose to contribute, you will be making a valuable contributi
 
 ## Contributing
 
-Our [contributor backlog is public](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20%28Open%2C%20%22Board%20Backlog%22%2C%20Backlog%29%20ORDER%20BY%20created%20DESC) in JIRA.&#x20;
+Our [contributor backlog is public](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20%28Open%2C%20%22Board%20Backlog%22%2C%20Backlog%29%20ORDER%20BY%20created%20DESC) in JIRA.
 
-The best way to interact with the Konsist team is the dedicated [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) channel ([kotlinlang Slack workspace](https://kotlinlang.slack.com/)). If you want to help or need guidelines just say hello at  [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) Slack channel.
+The best way to interact with the Konsist team is the dedicated [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) channel ([kotlinlang Slack workspace](https://kotlinlang.slack.com/)). If you want to help or need guidelines just say hello at [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) Slack channel.
 
-Tickets that can be grabbed by the community have a [ContributeOpportunity](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20\(Open%2C%20%22Board%20Backlog%22%2C%20Backlog\)%20ORDER%20BY%20created%20DESC) label. You can also work on another improvement or bug-fix, but this may require more alignment, for example, certain features and planed ahead, so the ticket should be completed within a given time period.
+Tickets that can be grabbed by the community have a [ContributeOpportunity](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20\(Open%2C%20%22Board%20Backlog%22%2C%20Backlog\)%20ORDER%20BY%20created%20DESC) label. You can also work on another improvement or bug-fix, but this may require more alignment, for example, certain features and planned ahead, so the ticket should be completed within a given time period.
 
 ### Start Contributing - Konsist
 
@@ -51,7 +51,7 @@ Tickets that can be grabbed by the community have a [ContributeOpportunity](http
 
 ### Start Contributing - Konsist Docs
 
-The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository contains Konsist documentation (this webpage). &#x20;
+The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository contains Konsist documentation (this webpage).
 
 1. Fork [Konsist-documentation](https://github.com/LemonAppDev/konsist) repository
 2. Branch of [main](https://github.com/LemonAppDev/konsist-documentation/tree/main) branch
@@ -199,7 +199,6 @@ The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation
 
 #### Updating Snippets
 
-The [snippets](../inspiration/snippets/ "mention")section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
+The [snippets](../inspiration/snippets/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
 
 Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin). class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
-

@@ -1,5 +1,5 @@
 ---
-description: Where we are now?
+description: Where are we now?
 ---
 
 # Project Status

@@ -84,7 +84,7 @@ Architecture verification can be performed on `KoScope` (as seen above) and a li
 ```kotlin
 koScope
     .files
-    .filter { it.name.startsWith("Repository") }
+    .withNameStartingWith("Repository")
     .assertArchitecture {
         val presentation = Layer("Presentation", "com.myapp.presentation..")
         val data = Layer("Data", "com.myapp.data..")

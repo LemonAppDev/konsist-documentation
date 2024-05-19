@@ -1,6 +1,6 @@
 # Declaration References
 
-Declaration reference represents a link between codebase declarations. Konsist allows to precisely verify properties of linked type. This can be type used in function or property declaration or child/parent class or interface. For example
+Declaration reference represents a link between codebase declarations. Konsist allows to precisely verify properties of linked type. This type can be used in function or property declaration or child/parent class or interface. For example
 
 1\. Verify if all types of function parameters are interfaces:
 
@@ -61,13 +61,13 @@ The `Foo` type can be defined by:
 * function type
 * external library (type defined outside project codebase) represents declaration which is not defined in the project
 
-The `Foo`  type can be represented by one of `KoDeclarationX` classes:
+The `Foo`  type can be represented by one of `KoXDeclaration` classes:
 
 <table><thead><tr><th width="464">Sorce</th><th width="282">Declaration</th></tr></thead><tbody><tr><td><a data-mention href="declaration-references.md#type-represented-by-class">#type-represented-by-class</a></td><td><code>KoClassDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-interface">#type-represented-by-interface</a></td><td><code>KoInterfaceDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-object">#type-represented-by-object</a></td><td><code>KoObjectDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-type-apias">#type-represented-by-type-apias</a></td><td><code>KoTypeAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-import-alias">#type-represented-by-import-alias</a></td><td><code>KoImportAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-kotlin-type">#type-represented-by-kotlin-type</a></td><td><code>KoKotlinTypeDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-function-type">#type-represented-function-type</a></td><td><code>KoFunctionDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-external-type">#type-represented-by-external-type</a></td><td><code>KoExternalDeclaration</code></td></tr></tbody></table>
 
 Each of these types possesses a largely distinct set of characteristics; for instance, classes and interfaces can include annotations, whereas import aliases cannot.
 
-To access properties the specific declaration type, the deceleration cast to more specific type is required (from generic `KoTypeDeclaration`). Example below assumes that `Foo` is represented by the `Foo` class:
+To access properties the specific declaration type, the declaration cast to more specific type is required (from generic `KoTypeDeclaration`). Example below assumes that `Foo` is represented by the `Foo` class:
 
 ```kotlin
 Konsist
@@ -91,7 +91,9 @@ Konsist
     .properties()
     .types
     .assertTrue { koTypeDeclaration ->
-        koTypeDeclaration.asSourceClass.hasAllAnnotations {
+        koTypeDeclaration
+        .asClassDeclaration
+        ?.hasAllAnnotations {
             it.representsTypeOf<String>()
         }
     }
@@ -180,7 +182,7 @@ scope
     }
 ```
 
-### Type Represented By Type Apias
+### Type Represented By Type Alias
 
 Source code:
 
@@ -292,7 +294,7 @@ Konsist test:
 
 ### Type Represented By External Type
 
-External type represents the type is define outside of the project codebase, usually by external library. Konsist is not able to parse this type, so type  information is limited (Konsist is not able to parse the compiled file).
+External type represents the type defined outside of the project codebase, usually by external library. Konsist is not able to parse this type, so type  information is limited (Konsist is not able to parse the compiled file).
 
 For Example:
 

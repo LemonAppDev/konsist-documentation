@@ -1,6 +1,6 @@
 # Indirect Parents
 
-The `indirectParents` parameter  (`parents()`, `hasParentClass()`, `hasAllParentInterfacesOf` methods etc.). specifies whether or not to retrieve parent opf the parent (indirect parents). By default, `indirectParents` is `false` e.g.
+The `indirectParents` parameter  (`parents()`, `hasParentClass()`, `hasAllParentInterfacesOf` methods etc.). specifies whether or not to retrieve parent of the parent (indirect parents). By default, `indirectParents` is `false` e.g.
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -21,7 +21,7 @@ Konsist
 	.parents() // ClassB
 ```
 
-2. All parents presents present in the codebase hierarchy (`ClassB` and `ClassC`):
+2. All parents present in the codebase hierarchy (`ClassB` and `ClassC`):
 
 ```
 Konsist

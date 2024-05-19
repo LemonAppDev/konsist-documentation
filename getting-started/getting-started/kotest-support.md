@@ -4,13 +4,13 @@ description: Konsist + Kotest
 
 # Kotest Support
 
-Konsist has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotets compatibility in mind. API has been improved to support Kotst flows.
+Konsist has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotest compatibility in mind. API has been improved to support Kotest flows.
 
 At the moment there is an additional step that is required for Konsist Kotest to be fully functional - the test name has to be explicitly provided.
 
 ## Setting The Test Name
 
-Konsist can't obtain the test name from all dynamic tests (including [Kotest](https://kotest.io/) tests).&#x20;
+Konsist can't obtain the test name from all dynamic tests (including [Kotest](https://kotest.io/) tests).
 
 It's recommended to provide the test name using the `testName` parameter. Supplying a test name provides additional benefits:
 
@@ -65,5 +65,5 @@ class UseCaseTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.&#x20;
+The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.
 {% endhint %}

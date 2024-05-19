@@ -28,7 +28,7 @@ In the beginning, the Konsist test can be applied to a single module:
 Konsist
     .scopeFromModule("featureCaloryCalculator")
     .classes()
-    .assertTrue { it.hasTest() }
+    .assertTrue { it.hasTestClasses() }
 ```
 
 {% hint style="info" %}

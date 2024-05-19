@@ -31,7 +31,7 @@ koScope
     .assertTrue { it.hasPublicModifier() }
 ```
 
-The `it` parameter inside the `assertTrue` the method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface. The last line in the `assertTrue` block will be evaluated as `true` or `false` providing the result for a given asset.
+The `it` parameter inside the `assertTrue` method represents a single declaration (single interface in this case). However, the assertion itself will be performed on every available interface. The last line in the `assertTrue` block will be evaluated as `true` or `false` providing the result for a given asset.
 
 {% hint style="info" %}
 Each `KoDeclaration` comes with an API, comprising methods and properties, for verifying the declaration. Additionally, the Konsist API offers a `text` property for exceptional cases where the standard API falls short. This should be used as a last resort, and any issues encountered should be reported [getting-help.md](../getting-started/getting-help.md "mention").
@@ -45,7 +45,9 @@ The `assertFalse` is a negation of the `assertTrue` method. In the below snippet
 Konist
     .scopeFromProject()
     .properties()
-    .assertFalse { ... }
+    .assertFalse { 
+        it.hasAnnotationOf(Inject::class)
+    }
 ```
 
 This assertion verifies that the class does not contain any properties with `public` (an explicit `public` modifier) or default (implicit `public` modifier) modifiers:
@@ -53,7 +55,10 @@ This assertion verifies that the class does not contain any properties with `pub
 ```kotlin
 Konist
     .scopeFromProject()
-    .assertFalse { ... }
+    .properties()
+    .assertFalse { 
+        it.hasPublicOrDefaultModifier
+    }
 ```
 
 ### Assert Empty

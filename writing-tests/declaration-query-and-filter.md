@@ -19,22 +19,21 @@ flowchart TB
 
 Typically, verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
 
-Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of methods to access Kotlin declarations. Each method returns a list representing a declaration subset:
+Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of properties and methods to access Kotlin declarations. Each of them returns a list representing a declaration subset:
 
-|                      |                                                    |
-| -------------------- | -------------------------------------------------- |
-| Method               | Description                                        |
-| `files()`            | returns all files present in the scope             |
-| `packages()`         | returns all packages present in the scope          |
-| `imports()`          | returns all imports present in the scope           |
-| `classes()`          | returns all classes present in the scope           |
-| `interfaces()`       | returns all interfaces present in the scope        |
-| `objects()`          | returns all objects present in the scope           |
-| `functions()`        | returns all functions present in the scope         |
-| `properties()`       | returns all properties present in the scope        |
-| `companionObjects()` | returns all companion objects present in the scope |
-| `typeAliases()`      | returns all type aliases present in the scope      |
-| `declarations()`     | returns all declarations present in the scope      |
+|                  |                                               |
+| ---------------- | --------------------------------------------- |
+| Method           | Description                                   |
+| `files`          | returns all files present in the scope        |
+| `packages`       | returns all packages present in the scope     |
+| `imports`        | returns all imports present in the scope      |
+| `classes()`      | returns all classes present in the scope      |
+| `interfaces()`   | returns all interfaces present in the scope   |
+| `objects()`      | returns all objects present in the scope      |
+| `functions()`    | returns all functions present in the scope    |
+| `properties()`   | returns all properties present in the scope   |
+| `typeAliases`    | returns all type aliases present in the scope |
+| `declarations()` | returns all declarations present in the scope |
 
 To get all classes from the given scope use `KoScope.classes()` method:
 
@@ -81,9 +80,9 @@ koScope
 ```
 
 {% hint style="info" %}
-The`.`**`withAllAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes heaving all annotations present (`Annotation1` **and** `Annotation2`).
+The`.`**`withAllAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes having all annotations present (`Annotation1` **and** `Annotation2`).
 
-The`.`**`withSomeAnnotationsOf`**`(Annotation1::class, Annotation2::class) filter`classes heaving`at least one annotation` (`Annotation1` **or** `Annotation2`)`.`
+The`.`**`withSomeAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes having at least one annotation (`Annotation1` **or** `Annotation2`)`.`
 {% endhint %}
 
 Multiple conditions can be chained to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:
@@ -92,7 +91,7 @@ Multiple conditions can be chained to perform more specific filtering. The below
 koScope
     .classes()
     .withAllAnnotationsOf(UseCase::class)
-    .resideInPackage("..usecase")
+    .withPackage("..usecase")
     .assertTrue { 
         //...
     }
@@ -102,21 +101,20 @@ It is also possible to filter declarations by using certain aspects e.g. visibil
 
 ```kotlin
 koScope
-    .declarations()
-    .declarations<KoVisibilityModifierProvider>()
-    .assertTrue { it.hasInternalModifier() }
+    .declarationsOf<KoVisibilityModifierProvider>()
+    .assertTrue { it.hasInternalModifier }
 ```
 
 ## Query And Filter Declaration
 
-Queuing and filtering stages can be mixed to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
+Querying and filtering stages can be mixed to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
 
 ```kotlin
 koScope
     .classes() // query all classes
-    .resideInPackage("..controller") // filter classes in 'controller' package
+    .withPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
-    .withAnnotationOf<Inject>() // filter classes in 'controller' package
+    .withAnnotationOf(Inject::class) // filter classes in 'controller' package
     .assertTrue { 
         //...
     }

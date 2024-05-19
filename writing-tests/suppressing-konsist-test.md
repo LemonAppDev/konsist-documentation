@@ -2,7 +2,7 @@
 
 The [@Suppress](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-suppress/) annotation serves as a powerful tool to control lines and static analysis tools. When writing the Konsist test, there might be instances where the specific guard is not applicable due to certain project-specific reasons. The `@Suppress` annotation can be used to ignore those particular issues, ensuring that the codebase still adheres to the overall linting standards
 
-In Konsist the `@Suppress` annotation parameter name is derived from the name of the test of the test to be suppressed. For example - this test verifies if every API declaration has KDoc:
+In Konsist the `@Suppress` annotation parameter name is derived from the name of the test to be suppressed. For example - this test verifies if every API declaration has KDoc:
 
 ```
 fun `every api declaration has KDoc`() {
