@@ -2,7 +2,7 @@
 description: Query and filter declarations using Konsist API
 ---
 
-# Declaration Query And Filter
+# Declaration
 
 ## Declaration Querying
 
@@ -12,7 +12,7 @@ Declaration querying allows to retrieval of declarations of a given type. It is 
 %%{init: {'theme':'forest'}}%%
 flowchart TB
     Step1["1. Create The Scope"]-->Step2
-    Step2["2. Query and Filter The Declarations"]-->Step3
+    Step2["2. Filter Declarations"]-->Step3
     Step3["3. Define Assertion"]
     style Step2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```

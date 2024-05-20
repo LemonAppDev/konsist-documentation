@@ -15,7 +15,7 @@ Scopes are an alternative for `baseline` file. Subsets of the codebase can be re
 flowchart TB
     Step1["1. Create The Scope"]-->StepD2
     Step1["1. Create The Scope"]-->StepA2
-    StepD2["2. Query and Filter The Declarations"]-->StepD3
+    StepD2["2. Filter Declarations"]-->StepD3
     StepD3["3. Define Assertion"]
     StepA2["2. Assert Architecture"]-->StepA3
     StepA3["2a. Define Layers"]-->StepA4
