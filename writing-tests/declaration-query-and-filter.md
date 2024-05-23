@@ -2,9 +2,9 @@
 description: Query and filter declarations using Konsist API
 ---
 
-# Declaration
+# Declaration Filtering
 
-## Declaration Querying
+## Declaration Filtering
 
 Declaration querying allows to retrieval of declarations of a given type. It is the middle step of the Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by the verification ([declaration-assert.md](declaration-assert.md "mention")) step.
 

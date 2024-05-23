@@ -15,7 +15,7 @@
 ## ✅ WRITING TESTS
 
 * [Create The Scope](writing-tests/koscope.md)
-* [Declaration](writing-tests/declaration-query-and-filter.md)
+* [Declaration Filtering](writing-tests/declaration-query-and-filter.md)
 * [Declaration Assertion](writing-tests/declaration-assert.md)
 * [Architecture Assertion](writing-tests/architecture-assert.md)
 * [Suppress Konsist Test](writing-tests/suppressing-konsist-test.md)
