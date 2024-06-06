@@ -29,15 +29,16 @@ fun `all data class properties are defined in constructor`() {
 }
 ```
 
-## 3. Every Class Has Test
+## 3. `Repository` Classes Should Reside In `repository` Package
 
 ```kotlin
 @Test
-fun `every class has test`() {
+fun `'Repository' classes should reside in 'repository' package`() {
     Konsist
-        .scopeFromProduction()
+        .scopeFromProject()
         .classes()
-        .assertTrue { it.hasTestClass() }
+        .withNameEndingWith("Repository")
+        .assertTrue { it.resideInPackage("..repository..") }
 }
 ```
 
