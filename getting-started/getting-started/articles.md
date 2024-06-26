@@ -3,7 +3,8 @@
 ## Videos
 
 1. [Maintain consistency in your Kotlin Codebase with Konsist!](https://www.youtube.com/watch?v=WrGuZ9fgWBg)
-2. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
+2. [Harmonizing Kotlin codebase with Konsist (KotlinConf 2024)](https://kotlinconf.com/talks/569136/)
+3. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
 
 ## Articles
 
