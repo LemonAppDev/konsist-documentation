@@ -2,7 +2,8 @@
 
 ## Videos
 
-1. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
+1. [Maintain consistency in your Kotlin Codebase with Konsist!](https://www.youtube.com/watch?v=WrGuZ9fgWBg)
+2. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
 
 ## Articles
 
@@ -14,7 +15,6 @@
 6. [Refactoring Multi-Module Kotlin Project With Konsist](https://medium.com/p/f0de0de59a3d)
 7. [ArchUnit vs. Konsist. Why Did We Need Another Kotlin Linter?](https://proandroiddev.com/archunit-vs-konsist-why-did-we-need-another-linter-972c4ff2622d)
 8. [Protect Kotlin Project Architecture Using Konsist](https://proandroiddev.com/protect-kotlin-project-architecture-using-konsist-3bfbe1ad0eea)
-9. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations ](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)
+9. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)
 10. [Konsist and Conquer: Embracing the World of Kotlin Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
 11. [Adding Konsist and Ktlint to a GitHub Actions Continuous Integration](https://akjaw.com/konsist-and-ktlint-in-github-actions-continous-integration/)
-
