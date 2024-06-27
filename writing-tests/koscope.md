@@ -325,12 +325,12 @@ To reuse scope across the test class define the scope in the companion object an
 class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
-        projectScope
+        classesScope
             .assertTrue { // .. } 
     }
 
     fun `test 2`() {
-        projectScope
+        classesScope
             .assertTrue { // .. } 
     }
     
