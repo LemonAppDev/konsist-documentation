@@ -16,8 +16,7 @@ The Konsist library can be added to the project by adding the dependency on the 
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
-The downside of this approach is that various types of tests are mixed in `test` source set e.g. `unit tests` and `Konsist tests`. &#x20;
-
+The downside of this approach is that various types of tests are mixed in `test` source set e.g. `unit tests` and `Konsist tests`.
 
 ## Dedicated konsist-test Source Set
 
@@ -34,7 +33,7 @@ This test directory will have a `kotlin` folder containing Kotlin code.
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
 ```kotlin
-// app/build.gradle.kts
+// build.gradle.kts (root)
 
 plugins {
     `jvm-test-suite`
@@ -54,7 +53,8 @@ testing {
     }
 }
 
-// Optional block to run Konsist tests together with the Gradle 'check' task
+// Optional 
+// Block running Konsist tests together with the Gradle 'check' task
 tasks.named("check") { 
     dependsOn(testing.suites.named("konsistTest"))
 }
@@ -65,7 +65,7 @@ tasks.named("check") {
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
 ```kotlin
-// app/build.gradle
+// build.gradle (root)
 
 plugins {
     id 'jvm-test-suite'
@@ -97,7 +97,8 @@ testing {
     }
 }
 
-// Optional block to run Konsist tests together with the Gradle 'check' task
+// Optional 
+// Block running Konsist tests together with the Gradle 'check' task
 tasks.named('check') { 
     dependsOn(testing.suites.konsistTest)
 }
@@ -133,7 +134,7 @@ Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-
 {% endtab %}
 {% endtabs %}
 
-&#x20;Create `app/src/konsistTest/kotlin` folder and reload the project. The IDE will present a new `konsistTest` source set in the `app` module.
+Create `app/src/konsistTest/kotlin` folder and reload the project. The IDE will present a new `konsistTest` source set in the `app` module.
 
 <figure><img src="../.gitbook/assets/KonsistTestSourceSet.png" alt=""><figcaption><p>konsistTest sorce directory</p></figcaption></figure>
 
@@ -171,7 +172,7 @@ Create `konsistTest/src/test/kotlin` directory in the project root:
 
 <figure><img src="../.gitbook/assets/image (31).png" alt="" width="374"><figcaption></figcaption></figure>
 
-Add module include inside `settings.gradle.kts` file:&#x20;
+Add module include inside `settings.gradle.kts` file:
 
 ```kotlin
 // settings.gradle.kts
@@ -228,6 +229,3 @@ The `--rerun-tasks` Gradle flag is required when Konsist tests are placed in a d
 To execute all unit tests besides tests in the `konsistTest` module run:
 
 `./gradlew test -x konsistTest:test`
-
-
-
