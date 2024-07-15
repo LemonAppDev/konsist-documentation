@@ -53,10 +53,9 @@ testing {
     }
 }
 
-// Optional 
-// Block running Konsist tests together with the Gradle 'check' task
-tasks.named("check") { 
-    dependsOn(testing.suites.named("konsistTest"))
+// Optional : Remove Konsist tests from the 'check' task if it exists
+tasks.matching { it.name == "check" }.configureEach {
+  setDependsOn(dependsOn.filter { it.toString() != "konsistTest" })
 }
 ```
 {% endtab %}
@@ -97,10 +96,9 @@ testing {
     }
 }
 
-// Optional 
-// Block running Konsist tests together with the Gradle 'check' task
-tasks.named('check') { 
-    dependsOn(testing.suites.konsistTest)
+// Optional: Remove Konsist tests from the 'check' task if it exists
+tasks.matching { it.name == "check" }.configureEach { task ->
+    task.setDependsOn(task.getDependsOn().findAll { it.toString() != "konsistTest" })
 }
 ```
 {% endtab %}
