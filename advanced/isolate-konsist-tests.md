@@ -216,12 +216,14 @@ Refresh/Sync the Gradle Project in IDE.
 
 ### Running Konsist Tests
 
+When running Konsist tests in a multi-module Gradle project, always include the `--rerun-tasks` flag if your Konsist tests reside in a separate module.
+
 To execute tests in defined in`konsistTest` module run:
 
 `./gradlew konsistTest:test --rerun-tasks`
 
 {% hint style="warning" %}
-The `--rerun-tasks` Gradle flag is required when Konsist tests are placed in a distinct module. When the module is unchanged Gradle assumes the tests are up-to-date, so these tests are skipped. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating code in other modules.
+Gradle's incremental build system sees an unchanged Konsist test module and assumes the tests are up-to-date, leading to skipped executions. However, Konsist analyzes your entire codebase. This discrepancy means your Konsist tests might be skipped even when code changes in other modules impact their results, potentially giving you a false sense of code quality. Using `--rerun-tasks flag` forces Gradle to execute your Konsist tests regardless of perceived changes, ensuring accurate and reliable test outcomes.
 {% endhint %}
 
 To execute all unit tests besides tests in the `konsistTest` module run:
