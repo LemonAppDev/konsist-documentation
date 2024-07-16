@@ -216,9 +216,9 @@ Refresh/Sync the Gradle Project in IDE.
 
 ### Running Konsist Tests
 
-To execute tests in `konsistTest` module run:
+To execute tests in defined in`konsistTest` module run:
 
-`./gradlew konsistTest:test` --rerun-tasks
+`./gradlew konsistTest:test --rerun-tasks`
 
 {% hint style="warning" %}
 The `--rerun-tasks` Gradle flag is required when Konsist tests are placed in a distinct module. When the module is unchanged Gradle assumes the tests are up-to-date, so these tests are skipped. This can lead to misleading test outcomes, as Gradle isn't aware that these tests are actually evaluating code in other modules.
