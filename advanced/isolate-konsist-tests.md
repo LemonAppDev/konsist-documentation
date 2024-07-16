@@ -4,11 +4,11 @@ description: Aim for better test separation.
 
 # Isolate Konsist Tests
 
-Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the structure of the entire project's codebase. There are three potential options for storing Konsist tests:
+Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the structure of the entire project's codebase. There are three potential options for storing Konsist tests in project codebase:
 
 <table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set">#dedicated-konsist-test-source-set</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module">#dedicated-module</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
 
-Recommended approach is to use `konsist-test` source set or dedicated module. This approach allows to isolate Konsist tests from other types of tests e.g. separate `unit tests` from `Konsist tests`.
+Recommended approach is to use [#dedicated-konsisttest-source-set](isolate-konsist-tests.md#dedicated-konsisttest-source-set "mention") or a [#dedicated-module](isolate-konsist-tests.md#dedicated-module "mention"). These approaches allows to easily isolate Konsist tests from other types of tests e.g. separate `unit tests` from `Konsist tests`.
 
 ## Existing Test Source Set
 
@@ -16,9 +16,11 @@ The Konsist library can be added to the project by adding the dependency on the 
 
 ![test sorce directory](../.gitbook/assets/TestSourceSet.png)
 
+To execute tests run `./gradlew test` command.
+
 The downside of this approach is that various types of tests are mixed in `test` source set e.g. `unit tests` and `Konsist tests`.
 
-## Dedicated konsist-test Source Set
+## Dedicated konsistTest Source Set
 
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
@@ -216,9 +218,7 @@ Refresh/Sync the Gradle Project in IDE.
 
 ### Running Konsist Tests
 
-To execute tests in defined in`konsistTest` module run:
-
-`./gradlew konsistTest:test --rerun-tasks`
+To execute tests in defined in`konsistTest` module run `./gradlew konsistTest:test --rerun-tasks` command.
 
 {% hint style="warning" %}
 When running Konsist tests in a multi-module Gradle project, always include the `--rerun-tasks` flag.
