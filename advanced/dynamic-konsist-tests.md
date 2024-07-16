@@ -152,7 +152,7 @@ Let's convert this idea into a dynamic test:
 JUnit provides built-in support for dynamic tests through its core framework. This ensures that developers can seamlessly employ dynamic testing capabilities.&#x20;
 
 {% hint style="info" %}
-The [JUnit Jupiter Params](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params) dependency is required for JUnit 5 dynamic tests to work.
+The`org.junit.jupiter:junit-jupiter-params:x.v.z` dependency is required to enable JUnit 5 dynamic tests.
 {% endhint %}
 
 ```kotlin
