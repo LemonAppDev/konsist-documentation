@@ -1,12 +1,12 @@
 # Getting Started
 
-The following example provides the minimum setup for writing a Konsist test.
+The following example provides the minimum setup for defining and running a single Konsist test.
 
 {% hint style="info" %}
 Starter (preconfigured) projects containing Konsist tests are available [here](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects).
 {% endhint %}
 
-### Add Repository
+### Add Maven Central Repository
 
 Add `mavenCentral` repository:
 
@@ -56,7 +56,7 @@ Add the following dependency to the `module\pom.xml` file:
 {% endtabs %}
 
 {% hint style="info" %}
-To achieve better test separation Konsist can be configured inside a `konsistTest` source set or a dedicated module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention").
+To achieve better test separation Konsist can be configured inside a custom`konsistTest` source set or a dedicated `konsistTest` module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention") for guidelines on how to store Konsist test in project codebase and how to run them using cmd.
 {% endhint %}
 
 At a high-level Konsist check is a Unit test following multiple implicit steps.
