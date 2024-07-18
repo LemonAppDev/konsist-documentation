@@ -214,24 +214,24 @@ To avoid manually passing `--rerun-tasks` flag each time a custom `konsistCheck`
 {% tab title="Gradle Kotlin" %}
 Add to root `build.gradle.kts`:
 
-```
+```kotlin
 tasks.register("konsistCheck") {
     group = "verification"
     description = "Runs Konsist static code analysis"
 
     doLast {
-        def output = new ByteArrayOutputStream()
-        def result = project . exec {
-            commandLine './gradlew', 'konsistTest:test', '--rerun-tasks'
+        val output = ByteArrayOutputStream()
+        val result = project.exec {
+            commandLine("./gradlew", "konsistTest:test", "--rerun-tasks")
             standardOutput = output
             errorOutput = output
-            ignoreExitValue = true
+            isIgnoreExitValue = true
         }
 
-        println output . toString ()
+        println(output.toString())
 
         if (result.exitValue != 0) {
-            throw new GradleException ("Konsist tests failed")
+            throw GradleException("Konsist tests failed")
         }
     }
 }
