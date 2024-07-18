@@ -331,6 +331,10 @@ The [Kotest](https://kotest.io/) testing framework project dependency should be 
 For more Konsist architectural checks see [Protect Kotlin Project Architecture Using Konsist](https://proandroiddev.com/protect-kotlin-project-architecture-using-konsist-3bfbe1ad0eea) article.
 {% endhint %}
 
+## Running Konsist Tests
+
+Run Konsist tests in a same way as other (`JUnit`/`KoTest`) tests in your project. For multi module configuration see [#running-konsist-tests](./#running-konsist-tests "mention").
+
 ## Summary
 
 This is the basic way of using Konsist. Take a look at this guide describing how to debug Konsist tests [debug-konsist-test.md](../../features/debug-konsist-test.md "mention") to get a better understanding of how Konsist works.
