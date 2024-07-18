@@ -1,10 +1,10 @@
 ---
-description: >-
-  To be able to see full exception log containing failed declaration enable
-  `exceptionFormat` in Gradle `testLogging`:
+description: Boost command line output
 ---
 
 # Enable Full Command Line Logging
+
+To be able to see full exception log containing failed declaration file path enable `exceptionFormat` in Gradle `testLogging`:
 
 {% tabs %}
 {% tab title="Gradle Kotlin" %}
