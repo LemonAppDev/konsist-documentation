@@ -1,7 +1,5 @@
 # Kotest Snippets
 
-Code snippets employed to ensure the uniformity of tests written with [Kotest](https://kotest.io/) library.
-
 ## 1. Use Case Test
 
 ```kotlin
@@ -11,7 +9,7 @@ class UseCaseTest : FreeSpec({
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+            .assertTrue(testName = this.testCase.name.testName) { it.hasTestClasses() }
     }
 })
 ```
@@ -26,7 +24,7 @@ class UseCaseTests : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain..usecase.. package" {
                 useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain..usecase..") }

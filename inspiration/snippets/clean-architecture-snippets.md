@@ -55,7 +55,44 @@ fun `classes with 'UseCase' suffix should have single 'public operator' method n
 }
 ```
 
-## 4. Interfaces With `Repository` Annotation Should Reside In `data` Package
+## 4. Classes With `UseCase` Suffix And Parents Should Have Single `public Operator` Method Named `invoke`
+
+```kotlin
+@Test
+fun `classes with 'UseCase' suffix and parents should have single 'public operator' method named 'invoke'`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withNameEndingWith("UseCase")
+        .assertTrue {
+            // Class and it's parent
+            val declarations = listOf(it) + it.parents(true)
+
+            // Functions from all parents without overrides
+            val uniqueFunctions = declarations
+                .mapNotNull { koParentDeclaration -> koParentDeclaration as? KoFunctionProvider }
+                .flatMap { koFunctionProvider ->
+                    koFunctionProvider.functions(
+                        includeNested = false,
+                        includeLocal = false
+                    )
+                }
+                .filterNot { koFunctionDeclaration -> koFunctionDeclaration.hasOverrideModifier }
+
+            val hasInvokeOperatorMethod = uniqueFunctions.any { functionDeclaration ->
+                functionDeclaration.name == "invoke" && functionDeclaration.hasPublicOrDefaultModifier && functionDeclaration.hasOperatorModifier
+            }
+
+            val numParentPublicFunctions = uniqueFunctions.count { functionDeclaration ->
+                functionDeclaration.hasPublicOrDefaultModifier
+            }
+
+            hasInvokeOperatorMethod && numParentPublicFunctions == 1
+        }
+}
+```
+
+## 5. Interfaces With `Repository` Annotation Should Reside In `data` Package
 
 ```kotlin
 @Test
@@ -68,7 +105,7 @@ fun `interfaces with 'Repository' annotation should reside in 'data' package`() 
 }
 ```
 
-## 5. Every UseCase Class Has Test
+## 6. Every UseCase Class Has Test
 
 ```kotlin
 @Test
@@ -77,7 +114,7 @@ fun `every UseCase class has test`() {
         .scopeFromProduction()
         .classes()
         .withNameEndingWith("UseCase")
-        .assertTrue { it.hasTestClass() }
+        .assertTrue { it.hasTestClasses() }
 }
 ```
 
