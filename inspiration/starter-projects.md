@@ -9,30 +9,30 @@ Konsist provides preconfigured sample projects. Each project contains a complete
 ### Android
 
 * JUnit 4
-  * [android-gradle-groovy-junit-4](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-groovy-junit-4)
-  * [android-gradle-kotlin-junit-4](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-kotlin-junit-4)
+    * [android-gradle-groovy-junit-4](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-groovy-junit-4)
+    * [android-gradle-kotlin-junit-4](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-kotlin-junit-4)
 * JUnit 5
-  * [android-gradle-groovy-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-groovy-junit-5)
-  * [android-gradle-kotlin-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-kotlin-junit-5)
+    * [android-gradle-groovy-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-groovy-junit-5)
+    * [android-gradle-kotlin-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-kotlin-junit-5)
 * Kotest
-  * [android-gradle-groovy-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-groovy-kotest)
-  * [android-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-android-gradle-kotlin-kotest)
+    * [android-gradle-groovy-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-groovy-kotest)
+    * [android-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/android-gradle-kotlin-kotest)
 
 ### Spring
 
 * JUnit 5
-  * [spring-gradle-groovy-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-gradle-groovy-junit-5)
-  * [spring-gradle-kotlin-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-gradle-kotlin-junit-5)
-  * [spring-maven-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-maven-junit5)
+    * [spring-gradle-groovy-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-gradle-groovy-junit-5)
+    * [spring-gradle-kotlin-junit-5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-gradle-kotlin-junit-5)
+    * [spring-maven-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-maven-junit5)
 * Kotest
-  * [spring-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-gradle-kotlin-kotest)
-  * [spring-gradle-groovy-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-gradle-groovy-kotest)
-  * [spring-maven-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-spring-maven-kotest)
+    * [spring-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-gradle-kotlin-kotest)
+    * [spring-gradle-groovy-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-gradle-groovy-kotest)
+    * [spring-maven-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/spring-maven-kotest)
 
 ### KMP
 
 * JUnit5
-  * [konsist-starter-kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-junit5)
+    * [konsist-starter-kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-junit5)
 * Kotest
-  * [konsist-starter-kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/konsist-starter-kmp-gradle-kotlin-kotest)
+    * [konsist-starter-kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-kotest)
 
