@@ -33,7 +33,7 @@ fun `every file in module reside in module specific package`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertTrue { it.packagee?.fullyQualifiedName?.startsWith(it.moduleName) }
+        .assertTrue { it.packagee?.name?.startsWith(it.moduleName) }
 }
 ```
 

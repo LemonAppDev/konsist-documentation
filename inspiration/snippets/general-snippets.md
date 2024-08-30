@@ -37,7 +37,7 @@ fun `every class has test`() {
     Konsist
         .scopeFromProduction()
         .classes()
-        .assertTrue { it.hasTestClass() }
+        .assertTrue { it.hasTestClasses() }
 }
 ```
 
@@ -50,7 +50,7 @@ fun `every class - except data and value class - has test`() {
         .scopeFromProduction()
         .classes()
         .withoutModifier(KoModifier.DATA, KoModifier.VALUE)
-        .assertTrue { it.hasTestClass() }
+        .assertTrue { it.hasTestClasses() }
 }
 ```
 
@@ -235,7 +235,7 @@ fun `forbid the usage of 'forbiddenString' in file`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.text.contains("forbiddenString") }
+        .assertFalse { it.hasTextContaining("forbiddenString") }
 }
 ```
 
@@ -255,18 +255,16 @@ fun `all function parameters are interfaces`() {
 }
 ```
 
-## 18. All Parrent Interfaces Are Public
+## 18. All Parent Interfaces Are Public
 
 ```kotlin
 @Test
-fun `all parrent interfaces are public`() {
+fun `all parent interfaces are public`() {
     Konsist
         .scopeFromProject()
         .classes()
         .parentInterfaces()
-        .assertTrue {
-            it.hasPublicModifier()
-        }
+        .assertTrue { it.hasPublicModifier }
 }
 ```
 
