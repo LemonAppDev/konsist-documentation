@@ -18,9 +18,7 @@ fun `2 layer architecture has correct dependencies`() {
             presentation.dependsOn(business)
             business.dependsOn(presentation)
             business.dependsOn(persistence)
-            persistence.dependsOn(business)
-            business.dependsOn(database)
-            database.dependsOn(business)
+
         }
 }
 ```
