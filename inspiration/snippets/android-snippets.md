@@ -14,8 +14,7 @@ fun `classes extending 'ViewModel' should have 'ViewModel' suffix`() {
     Konsist
         .scopeFromProject()
         .classes()
-        .withParentClassOf(ViewModel::class)
-        .assertTrue { it.name.endsWith("ViewModel") }
+
 }
 ```
 
