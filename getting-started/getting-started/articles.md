@@ -4,7 +4,8 @@
 
 1. [Maintain consistency in your Kotlin Codebase with Konsist!](https://www.youtube.com/watch?v=WrGuZ9fgWBg)
 2. [Harmonizing Kotlin codebase with Konsist (KotlinConf 2024)](https://www.youtube.com/watch?v=3qbKYSI1u1k)
-3. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
+3. Stop Debating in Code Reviews. Start Enforcing with Lint Rules
+4. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
 
 ## Articles
 
