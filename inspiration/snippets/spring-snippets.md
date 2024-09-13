@@ -80,3 +80,63 @@ fun `classes with 'RestController' annotation should never return collection`() 
 }
 ```
 
+## 6. Service Classes Should Be Annotated With Service Annotation
+
+```kotlin
+@Test
+fun `Service classes should be annotated with Service annotation`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withNameEndingWith("Service")
+        .assertTrue { it.hasAnnotationOf(Service::class) }
+}
+```
+
+## 7. Entity Classes Should Have An Id Field
+
+```kotlin
+@Test
+fun `Entity classes should have an Id field`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withAnnotationOf(Entity::class)
+        .assertTrue { clazz ->
+            clazz.properties().any { property ->
+                property.hasAnnotationOf(Id::class)
+            }
+        }
+}
+```
+
+## 8. DTO Classes Should Be Data Classes
+
+```kotlin
+@Test
+fun `DTO classes should be data classes`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withNameEndingWith("DTO")
+        .assertTrue { it.hasModifier(KoModifier.DATA) }
+}
+```
+
+## 9. RestControllers Should Not Have State Fields
+
+```kotlin
+@Test
+fun `RestControllers should not have state fields`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withAnnotationOf(RestController::class)
+        .objects()
+        .withModifier(KoModifier.COMPANION)
+        .assertTrue {
+            it.properties().isEmpty()
+        }
+}
+```
+
