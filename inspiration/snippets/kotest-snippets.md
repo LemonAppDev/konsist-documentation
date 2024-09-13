@@ -1,5 +1,7 @@
 # Kotest Snippets
 
+Sample tests writen using [Kotest](https://kotest.io/) library.
+
 ## 1. Use Case Test
 
 ```kotlin
