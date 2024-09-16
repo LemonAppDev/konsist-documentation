@@ -1,11 +1,43 @@
-# Running Konsist Tests
+# Running Konsist Tests In Dedicated Gradle Module
 
-To execute tests defined in`konsistTest` module run `./gradlew konsistTest:test --rerun-tasks` command.
+Gradle's default behavior assumes that a module's code is up-to-date if the module itself hasn't been modified. This can lead to issues when Konsist tests are placed in a separate module. In such cases, Gradle may skip these tests, believing they're unnecessary.
 
-{% hint style="warning" %}
-When running Konsist tests in a multi-module Gradle project, always include the `--rerun-tasks` flag.
+However, this approach doesn't align well with Konsist's functionality. Konsist analyzes the entire codebase, not just individual modules. As a result, when Gradle skips Konsist tests based on its module-level change detection, it fails to account for potential changes in other modules that Konsist would typically examine.&#x20;
 
-The Gradle flag `--rerun-tasks` is essential when Konsist tests are located in a separate module. Without this flag, Gradle assumes the tests are current if the module remains unchanged, leading to test skipping. This becomes problematic with Konsist, as it examines the entire codebase. Consequently, test results may be misleading since Gradle doesn't recognize that these tests are actually evaluating code across multiple modules.
+There are few solutions to this problem.
+
+## Solution 1: Module Is Always Out of Date
+
+An alternative solution for this problem is to define `konsistTest` module as always being out of date:
+
+{% tabs %}
+{% tab title="Gradle Kotlin" %}
+```kotlin
+// konsistTest/build.gradle.kts
+
+tasks.withType<Test> {
+    outputs.upToDateWhen { false }
+}
+```
+{% endtab %}
+
+{% tab title="Gradle Grovy" %}
+```groovy
+// konsistTest/build.gradle
+
+tasks.withType(Test) {
+    outputs.upToDateWhen { false }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+## Solution 2: Flag --rerun-tasks
+
+{% hint style="info" %}
+To execute all unit tests besides tests in the `konsistTest` module run:
+
+`./gradlew test -x konsistTest:test`
 {% endhint %}
 
 To avoid manually passing `--rerun-tasks` flag each time a custom `konsistCheck` task can be added to the root build config file:
@@ -67,9 +99,3 @@ tasks.register("konsistCheck") {
 {% endtabs %}
 
 After adding `konsistCheck` task run `./gradlew konsistCheck` to execute all Konsist tests.
-
-{% hint style="info" %}
-To execute all unit tests besides tests in the `konsistTest` module run:
-
-`./gradlew test -x konsistTest:test`
-{% endhint %}

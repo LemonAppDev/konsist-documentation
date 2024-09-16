@@ -164,7 +164,7 @@ The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-
 The [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project contains modules with code for different platforms. To decouple Konsist tests from a single platform dedicated module containing Konsist test should be added.
 {% endhint %}
 
-### Add `konsistTest` Module:
+### Add Gradle `konsistTest` Module:
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
@@ -198,6 +198,4 @@ Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
-See [running-konsist-tests.md](running-konsist-tests.md "mention").
-{% endhint %}
+To execute tests defined in`konsistTest` module see [running-konsist-tests-in-dedicated-gradle-module.md](running-konsist-tests-in-dedicated-gradle-module.md "mention")
