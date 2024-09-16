@@ -47,6 +47,7 @@
 
 ## 🎓 ADVANCED
 
+* [Running Konsist Tests](advanced/running-konsist-tests.md)
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
 * [Enable Full Command Line Logging](advanced/enable-full-command-line-logging.md)
 * [Dynamic Konsist Tests](advanced/dynamic-konsist-tests.md)
