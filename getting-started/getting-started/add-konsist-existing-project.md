@@ -8,7 +8,7 @@ The baseline file is considered to be added in the future.
 
 There are two approaches that can be employed when retrofitting Konsist into an existing project[#create-more-granular-scopes](add-konsist-existing-project.md#create-more-granular-scopes "mention") and [#suppress-annotation](add-konsist-existing-project.md#suppress-annotation "mention").
 
-## Create More Granular Scopes
+## Create Granular Scopes
 
 Scope represents a set of Kotlin files. The scope allows to verification of all Kotlin files in the project or only a subset of the project code base.
 
@@ -22,7 +22,7 @@ Consider this The `MyDiet` application with feature 3 modules:
 
 <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-In the beginning, the Konsist test can be applied to a single module:
+At first, the Konsist test can be applied to a single module:
 
 ```kotlin
 Konsist
@@ -35,7 +35,7 @@ Konsist
 To review the content of a given scope see [debug-konsist-test.md](../../features/debug-konsist-test.md "mention").
 {% endhint %}
 
-As refactoring proceeds, this Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
+As refactoring proceeds and code gets aligned, the Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
 
 ```kotlin
 Konsist
@@ -44,7 +44,7 @@ Konsist
     .assertTrue { it.hasTest() }
 ```
 
-At some point, the entire code base (all modules) will be aligned with the Konsist test, so scope should be retrieved from the entire project:
+When entire code base (all modules) are aligned with the Konsist tests, the scope can be retrieved from the entire project:
 
 ```kotlin
 Konsist

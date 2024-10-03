@@ -1,6 +1,6 @@
 # Konsist Snapshots
 
-Occasionally  Konsist snapshots are released to snapshots repo.
+Occasionally Konsist snapshots are released to snapshots repo.
 
 {% hint style="info" %}
 At some point this process will be automated - new snapshot will be released each time code is merged to `develop` branch
@@ -17,9 +17,7 @@ To use Konsist snapshot, include the snapshot repository in your project:
 ```kotlin
 repositories {
     // Konsist snapshot repository
-    maven {
-        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    }
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
     // More repositorues
 }

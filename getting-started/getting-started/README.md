@@ -3,7 +3,7 @@
 The following example provides the minimum setup for defining and running a single Konsist test.
 
 {% hint style="info" %}
-Starter (preconfigured) projects containing Konsist tests are available [here](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects).
+Check the [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) containing Konsist tests or review the [Konsist API reference](https://reference.konsist.lemonappdev.com).
 {% endhint %}
 
 ### Add Maven Central Repository
@@ -54,6 +54,13 @@ Add the following dependency to the `module\pom.xml` file:
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+Konsist depends on:
+
+* `org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4` (minimal coroutine usage make Konsist compatible with newer coroutines versions)
+* `org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.20` (backwards compatible with Kotlin 1.8)
+{% endhint %}
 
 {% hint style="info" %}
 To achieve better test separation Konsist can be configured inside a custom`konsistTest` source set or a dedicated `konsistTest` module. See [isolate-konsist-tests.md](../../advanced/isolate-konsist-tests.md "mention") for guidelines on how to store Konsist test in project codebase and how to run them using cmd.
