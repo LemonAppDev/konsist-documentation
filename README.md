@@ -2,7 +2,7 @@
 
 ![](.gitbook/assets/logo.png)
 
-Konsist is a structural linter (static code analyzer) designed for [Kotlin](https://kotlinlang.org/) language. It aims to standardize the codebase by ensuring adherence to a common set of coding conventions, thereby improving the readability and maintainability of the code.
+Konsist is a structural linter (static code analyzer) designed for [Kotlin](https://kotlinlang.org/) language. It aims to standardize the codebase by ensuring adherence to a common set of coding conventions, thereby improving the readability and maintainability of the code. It's like [ArchUnit](https://www.archunit.org/), but for Kotlin language.
 
 The Konsist API provides developers with the capability to create custom checks through unit tests, customized to align with the project's unique requirements. Additionally, it offers smooth integration with leading testing frameworks, including [JUnit4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/), further streamlining the development process.
 

@@ -56,10 +56,7 @@ Add the following dependency to the `module\pom.xml` file:
 {% endtabs %}
 
 {% hint style="info" %}
-Konsist depends on:
-
-* `org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4` (minimal coroutine usage make Konsist compatible with newer coroutines versions)
-* `org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.20` (backwards compatible with Kotlin 1.8)
+See [compatibility.md](../compatibility.md "mention")to learn how Konsist integrates with Kotlin ecosystem.
 {% endhint %}
 
 {% hint style="info" %}
