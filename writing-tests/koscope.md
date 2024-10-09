@@ -80,6 +80,54 @@ Konsist
 To review the scope content in more detail see [debug-konsist-test.md](../features/debug-konsist-test.md "mention").
 {% endhint %}
 
+### Production Codebase
+
+The `scopeFromProduction` method allows the creation of a scope containing only a production code (equivalent to `Konsist.scopeFromProject() - Konsist.scopeFromTest()`):
+
+```kotlin
+Konsist.scopeFromProduction()
+```
+
+Contains:
+
+```
+project/
+├─ app/
+│  ├─ main/   <--- scope contains all production code files
+│  │  ├─ App.kt
+│  ├─ test/
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/   <--- scope contains all production code files
+│  │  ├─ Core.kt
+│  ├─ test/
+│  │  ├─ CoreTest.kt
+```
+
+### Test Codebase
+
+The `scopeFromTest` method allows the creation of a scope containing only a test code:
+
+```kotlin
+Konsist.scopeFromTest()
+```
+
+Contains:
+
+```
+project/
+├─ app/
+│  ├─ main/
+│  │  ├─ App.kt
+│  ├─ test/   <--- scope contains all test code files
+│  │  ├─ AppTest.kt
+├─ core/
+│  ├─ main/
+│  │  ├─ Core.kt
+│  ├─ test/   <--- scope contains all test code files
+│  │  ├─ CoreTest.kt
+```
+
 ### Module Scope
 
 The `scopeFromModule` method allows the creation of more granular scopes based on the module name e.g. creating a scope containing all Kotlin files present in the `app` module:
@@ -88,7 +136,7 @@ The `scopeFromModule` method allows the creation of more granular scopes based o
 Konsist.scopeFromModule("app")
 ```
 
-Selection:
+Contains:
 
 ```
 project/
@@ -149,7 +197,7 @@ The `scopeFromSourceSet` method argument allows the creation of more granular sc
 Konsist.scopeFromSourceSet("test")
 ```
 
-Selection:
+Contains:
 
 ```
 project/
@@ -173,7 +221,7 @@ To retrieve scope by using both module and source set use the `scopeFromProject`
 Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test)
 ```
 
-### Selection:
+Contains:
 
 ```
 
@@ -190,53 +238,7 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
-### Production Codebase
 
-The `scopeFromProduction` method allows the creation of a scope containing only a production code:
-
-```kotlin
-Konsist.scopeFromProduction()
-```
-
-Selection:
-
-```
-project/
-├─ app/
-│  ├─ main/   <--- scope contains all production code files
-│  │  ├─ App.kt
-│  ├─ test/
-│  │  ├─ AppTest.kt
-├─ core/
-│  ├─ main/   <--- scope contains all production code files
-│  │  ├─ Core.kt
-│  ├─ test/
-│  │  ├─ CoreTest.kt
-```
-
-### Test Codebase
-
-The `scopeFromTest` method allows the creation of a scope containing only a test code:
-
-```kotlin
-Konsist.scopeFromTest()
-```
-
-Selection:
-
-```
-project/
-├─ app/
-│  ├─ main/
-│  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all test code files
-│  │  ├─ AppTest.kt
-├─ core/
-│  ├─ main/
-│  │  ├─ Core.kt
-│  ├─ test/   <--- scope contains all test code files
-│  │  ├─ CoreTest.kt
-```
 
 ### Package Scope
 
@@ -246,7 +248,7 @@ The `sourceFromPackage` method allows the creation of a scope containing code pr
 Konsist.sourceFromPackage("com.usecase..")
 ```
 
-Selection:
+Contains:
 
 ```
 project/
@@ -273,7 +275,7 @@ The `scopeFromDirectory` method allows the creation of a scope containing code p
 val myScope = Konsist.scopeFromDirectory("app/domain")
 ```
 
-Selection:
+Contains:
 
 ```
 project/
