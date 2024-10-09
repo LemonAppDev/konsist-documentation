@@ -8,8 +8,8 @@
   * [Kotest Support](getting-started/getting-started/kotest-support.md)
   * [Explicit Test Names](getting-started/getting-started/explicit-test-names.md)
   * [Articles & Videos](getting-started/getting-started/articles.md)
-* [Getting Help](getting-started/getting-help.md)
 * [Compatibility](getting-started/compatibility.md)
+* [Getting Help](getting-started/getting-help.md)
 * [Project Status](getting-started/project-status.md)
 
 ## ✅ WRITING TESTS
@@ -57,7 +57,6 @@
 
 ## ❓ HELP
 
-* [Bug reports, Issues and Feature Requests](help/bug-reports-issues-and-feature-requests.md)
 * [Troubleshooting](help/troubleshooting/README.md)
   * [java.lang.OutOfMemoryError: Java heap space](help/troubleshooting/java.lang.outofmemoryerror-java-heap-space.md)
 * [Changelog](help/changelog.md)
