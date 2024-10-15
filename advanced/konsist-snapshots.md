@@ -1,16 +1,20 @@
 # Konsist Snapshots
 
-Occasionally Konsist snapshots are released to snapshots repo.
+Konsist occasionally releases snapshot versions to a dedicated [snapshot repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/lemonappdev/konsist/). These snapshots provide early access to new features and bug fixes.
 
-{% hint style="info" %}
-At some point this process will be automated - new snapshot will be released each time code is merged to `develop` branch
+{% hint style="warning" %}
+Snapshot versions are development builds and may contain unstable features.
 {% endhint %}
 
-To use snapshot add snapshot repository and update Konsist version.
+## Snapshot Release Process
+
+Currently, snapshots are released manually. At some point this process will be automated - new snapshot will be released each time code is merged to `develop` branch
+
+## How to Use Snapshots
 
 ### Add Snapshot Repository
 
-To use Konsist snapshot, include the snapshot repository in your project:
+First, you need to include the snapshot repository in your project configuration. Here's how to do it for different build systems:
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
@@ -59,7 +63,7 @@ Add the following dependency to the `module\pom.xml` file:
 
 ### Add Konsist Dependency
 
-To use Konsist, include the Konsist dependency from Maven Central:
+To use Konsist SNAPSHOT dependency changing version to `X.Y.Z-SNAPSHOT` (versions can be found in [snapshot repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/lemonappdev/konsist/)):
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
@@ -95,8 +99,4 @@ Add the following dependency to the `module\pom.xml` file:
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-To a
-{% endhint %}
 
