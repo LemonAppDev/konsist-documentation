@@ -1,6 +1,6 @@
 # 💰 Sponsor Konsist
 
-We appreciate your interest in Konsist. If you find our project valuable, please consider supporting Konsist through [OpenCollective](https://opencollective.com/konsist).&#x20;
+We appreciate your interest in Konsist. If you find our project valuable, please consider supporting Konsist through [OpenCollective](https://opencollective.com/konsist). Every contribution, no matter how small, adds up to make a significant impact.
 
 ## **Personal Support**
 
