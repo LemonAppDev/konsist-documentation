@@ -52,7 +52,7 @@
 * [Dynamic Konsist Tests](advanced/dynamic-konsist-tests.md)
 * [When Konsist API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
-* [Why there are no pre-defined rules?](advanced/why-there-are-no-pre-defined-rules.md)
+* [Why There Are No Pre-defined Rules?](advanced/why-there-are-no-pre-defined-rules.md)
 * [Konsist Snapshots](advanced/konsist-snapshots.md)
 
 ## ❓ HELP
@@ -61,6 +61,7 @@
   * [java.lang.OutOfMemoryError: Java heap space](help/troubleshooting/java.lang.outofmemoryerror-java-heap-space.md)
 * [Changelog](help/changelog.md)
 * [Contributing](help/contributing.md)
-* [Asserts And Logos](help/asserts-and-logos.md)
+* [Assets And Logos](help/asserts-and-logos.md)
 * [Contributors](help/contributors.md)
 * [Open Source Licenses](help/open-source-licenses.md)
+* [💰 Sponsor Konsist](help/sponsor-konsist.md)
