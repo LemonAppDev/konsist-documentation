@@ -56,7 +56,7 @@ Add the following dependency to the `module\pom.xml` file:
 {% endtabs %}
 
 {% hint style="info" %}
-See [compatibility.md](../compatibility.md "mention")to learn how Konsist integrates with Kotlin ecosystem.
+See [compatibility.md](../../help/compatibility.md "mention")to learn how Konsist integrates with Kotlin ecosystem.
 {% endhint %}
 
 {% hint style="info" %}

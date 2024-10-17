@@ -4,10 +4,8 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
-  * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
-  * [Articles & Videos](getting-started/getting-started/articles.md)
-* [Compatibility](getting-started/compatibility.md)
-* [Getting Help](getting-started/getting-help.md)
+  * [Add Konsist Existing To Project](getting-started/getting-started/add-konsist-existing-project.md)
+* [Articles & Videos](getting-started/articles.md)
 
 ## ✅ WRITING TESTS
 
@@ -56,12 +54,17 @@
 
 ## ❓ HELP
 
-* [Troubleshooting](help/troubleshooting/README.md)
-  * [java.lang.OutOfMemoryError: Java heap space](help/troubleshooting/java.lang.outofmemoryerror-java-heap-space.md)
+* [Getting Help](help/getting-help.md)
+* [Known Issues](help/known-issues/README.md)
+  * [java.lang.OutOfMemoryError: Java heap space](help/known-issues/java.lang.outofmemoryerror-java-heap-space.md)
+* [Compatibility](help/compatibility.md)
+
+## ℹ️ OTHER
+
 * [Changelog](help/changelog.md)
 * [Project Status](help/project-status.md)
 * [Contributing](help/contributing.md)
 * [Contributors](help/contributors.md)
-* [💰 Sponsor Konsist](help/sponsor-konsist.md)
 * [Assets And Logos](help/asserts-and-logos.md)
 * [Open Source Licenses](help/open-source-licenses.md)
+* [Sponsor Konsist](help/sponsor-konsist.md)
