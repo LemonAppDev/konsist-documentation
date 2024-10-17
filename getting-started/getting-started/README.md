@@ -185,7 +185,7 @@ class ControllerClassKonsistTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](../../features/kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
@@ -203,7 +203,7 @@ Review the [snippets](../../inspiration/snippets/ "mention") for more examples o
 {% endhint %}
 
 {% hint style="info" %}
-The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.
+The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the[dynamic-konsist-tests](../../advanced/dynamic-konsist-tests/ "mention") page.
 {% endhint %}
 
 ## Architectural Check
@@ -322,7 +322,7 @@ class ArchitectureKonsistTest {
 ```
 
 {% hint style="info" %}
-For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](kotest-support.md "mention") page.
+For Kotest to function correctly the Kotest test name has to be explicitly passed. See the[kotest-support.md](../../features/kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}

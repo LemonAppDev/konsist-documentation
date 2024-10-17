@@ -12,13 +12,13 @@ On this page, we explore the domain of static tests and then progress to the fle
 
 With static tests, the failure is represented by a single test:
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 From this failure, a developer discerns the breached rule and needs to dive into the test logs to determine the cause of the violation (to pinpoint the use case breaking the given rule).
 
 In contrast, dynamic tests immediately highlight the root issue since every use case is represented by its own distinct test:
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 Utilizing dynamic tests over static ones makes it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.&#x20;
 
@@ -43,7 +43,7 @@ flowchart LR
 
 In most projects, the intricacy arises from a multitude of classes/interfaces, each with distinct duties. However, to simplify our understanding, let's use a straightforward and simplified example of a project with just three use cases:
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 The goal is to verify if every use case follows these two rules:
 
@@ -110,7 +110,7 @@ flowchart LR
 
 Executing these tests will generate output in the IDE:
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 While the current setup using static, predefined tests is functional, dynamic tests offer an avenue for improved development experience and flexibility.
 
@@ -182,10 +182,10 @@ class UseCaseKonsistTest {
 
 The IDE will display the tests as follows:
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")). At the moment test names are duplicated. This aspect has to be further investigated.
+For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")). At the moment test names are duplicated. This aspect has to be further investigated.
 {% endhint %}
 {% endtab %}
 
@@ -211,10 +211,10 @@ class UseCaseKonsistTest : FreeSpec({
 
 The IDE will display the tests as follows:
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as Kotest, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](../getting-started/getting-started/explicit-test-names.md "mention")).
+For dynamic tests such as Kotest, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")).
 {% endhint %}
 {% endtab %}
 

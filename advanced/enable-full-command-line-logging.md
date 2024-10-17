@@ -4,7 +4,7 @@ description: Boost command line output
 
 # Enable Full Command Line Logging
 
-When running using non- [dynamic-konsist-tests.md](dynamic-konsist-tests.md "mention")the default command line output contains only the test name:
+When running using non- [dynamic-konsist-tests](dynamic-konsist-tests/ "mention")the default command line output contains only the test name:
 
 ```
 > Task :konsistTest:test

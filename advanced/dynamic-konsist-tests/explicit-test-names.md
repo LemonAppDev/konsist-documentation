@@ -6,7 +6,7 @@ For dynamic tests, Konsist can't obtain the current test's name. Test name may b
 * Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
 
 {% hint style="info" %}
-See [dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention").
+See [.](./ "mention").
 {% endhint %}
 
 The `testName` argument should be passed to `assertX` methods such as `assertTrue` , `assertFalse` etc. Let's look at the code:

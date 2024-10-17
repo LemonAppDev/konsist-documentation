@@ -9,7 +9,7 @@ The Konsist API provides developers with the capability to create custom checks 
 Konsist tests can be executed during pull request reviews, act as safeguards to preserve the project's codebase structure and architecture. Whether you're working on [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered.&#x20;
 
 {% hint style="info" %}
-Konsist is approaching its 1.0 release, marking a significant milestone in its development journey. See the [project-status.md](getting-started/project-status.md "mention").
+Konsist is approaching its 1.0 release, marking a significant milestone in its development journey. See the [project-status.md](help/project-status.md "mention").
 {% endhint %}
 
 Konsist offers two types of checks, namely [#declaration-checks](./#declaration-checks "mention") and [#architecturalchecks](./#architecturalchecks "mention"), to thoroughly evaluate the codebase.

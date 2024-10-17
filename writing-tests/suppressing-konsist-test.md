@@ -87,7 +87,7 @@ interface Book {
 Konsist has no way of retrieving the name of the current [Kotest](https://kotest.io/) test (unlike JUnit).
 
 {% hint style="info" %}
-See the [kotest-support.md](../getting-started/getting-started/kotest-support.md "mention") page.
+See the [kotest-support.md](../features/kotest-support.md "mention") page.
 {% endhint %}
 
 To allow suppression (and correct test names) it is recommended to utilize the name derived from the Kotest context using the `testName` argument:
@@ -117,5 +117,5 @@ class MyUseCase {
 ```
 
 {% hint style="info" %}
-See [#kotestname-extension](../getting-started/getting-started/kotest-support.md#kotestname-extension "mention") to simplify the syntax for Kotest test name.
+See [#kotestname-extension](../features/kotest-support.md#kotestname-extension "mention") to simplify the syntax for Kotest test name.
 {% endhint %}

@@ -15,10 +15,10 @@ Konsist can't obtain the test name from all dynamic tests (including [Kotest](ht
 It's recommended to provide the test name using the `testName` parameter. Supplying a test name provides additional benefits:
 
 * The appropriate test names will appear in the log if the test fails.
-* Test suppression will be facilitated (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
+* Test suppression will be facilitated (See [suppressing-konsist-test.md](../writing-tests/suppressing-konsist-test.md "mention"))
 
 {% hint style="info" %}
-See [explicit-test-names.md](explicit-test-names.md "mention")for more details.
+See [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention")for more details.
 {% endhint %}
 
 Kotest enables fetching the test name from the context to populate the `testName` argument, ensuring consistent naming of tests:
@@ -65,5 +65,5 @@ class UseCaseTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests.md](../../advanced/dynamic-konsist-tests.md "mention") page.
+The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests](../advanced/dynamic-konsist-tests/ "mention") page.
 {% endhint %}

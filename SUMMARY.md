@@ -5,12 +5,9 @@
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
   * [Add Konsist To Project](getting-started/getting-started/add-konsist-existing-project.md)
-  * [Kotest Support](getting-started/getting-started/kotest-support.md)
-  * [Explicit Test Names](getting-started/getting-started/explicit-test-names.md)
   * [Articles & Videos](getting-started/getting-started/articles.md)
 * [Compatibility](getting-started/compatibility.md)
 * [Getting Help](getting-started/getting-help.md)
-* [Project Status](getting-started/project-status.md)
 
 ## ✅ WRITING TESTS
 
@@ -29,6 +26,7 @@
 * [Package Wildcard](features/packageselector.md)
 * [Declaration References](features/declaration-references.md)
 * [Indirect Parents](features/indirect-parents.md)
+* [Kotest Support](features/kotest-support.md)
 
 ## 🔍 INSPIRATION
 
@@ -49,7 +47,8 @@
 
 * [Isolate Konsist Tests](advanced/isolate-konsist-tests.md)
 * [Enable Full Command Line Logging](advanced/enable-full-command-line-logging.md)
-* [Dynamic Konsist Tests](advanced/dynamic-konsist-tests.md)
+* [Dynamic Konsist Tests](advanced/dynamic-konsist-tests/README.md)
+  * [Explicit Test Names](advanced/dynamic-konsist-tests/explicit-test-names.md)
 * [When Konsist API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
 * [Why There Are No Pre-defined Rules?](advanced/why-there-are-no-pre-defined-rules.md)
@@ -60,8 +59,9 @@
 * [Troubleshooting](help/troubleshooting/README.md)
   * [java.lang.OutOfMemoryError: Java heap space](help/troubleshooting/java.lang.outofmemoryerror-java-heap-space.md)
 * [Changelog](help/changelog.md)
+* [Project Status](help/project-status.md)
 * [Contributing](help/contributing.md)
-* [Assets And Logos](help/asserts-and-logos.md)
 * [Contributors](help/contributors.md)
-* [Open Source Licenses](help/open-source-licenses.md)
 * [💰 Sponsor Konsist](help/sponsor-konsist.md)
+* [Assets And Logos](help/asserts-and-logos.md)
+* [Open Source Licenses](help/open-source-licenses.md)
