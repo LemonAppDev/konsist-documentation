@@ -18,7 +18,7 @@ It's recommended to provide the test name using the `testName` parameter. Supply
 * Test suppression will be facilitated (See [suppressing-konsist-test.md](../writing-tests/suppressing-konsist-test.md "mention"))
 
 {% hint style="info" %}
-See [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention")for more details.
+See [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention") for more details.
 {% endhint %}
 
 Kotest enables fetching the test name from the context to populate the `testName` argument, ensuring consistent naming of tests:
@@ -47,11 +47,7 @@ val TestScope.koTestName: String
     get() = this.testCase.name.testName
 ```
 
-{% hint style="info" %}
-In the future, this extension will be added to the Konsist.
-{% endhint %}
-
-This extension enables more concise syntax to provide Kotest test name:
+This extension enables more concise syntax for providing Kotest test name:
 
 ```kotlin
 class UseCaseTest : FreeSpec({
