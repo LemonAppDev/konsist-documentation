@@ -4,9 +4,7 @@ description: Konsist + Kotest
 
 # Kotest Support
 
-Konsist has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotest compatibility in mind. API has been improved to support Kotest flows.
-
-At the moment there is an additional step that is required for Konsist Kotest to be fully functional - the test name has to be explicitly provided.
+Konsist has first-class support for [Kotest](https://kotest.io/) meaning that every following release will be developed with Kotest compatibility in mind. API has been improved to support Kotest flows. However, Konsist cannot automatically retrieve Kotest test names, meaning the test name won't appear in error logs upon test failure. To fully utilize Konsist with Kotest, you must explicitly provide the test name.
 
 ## Setting The Test Name
 
