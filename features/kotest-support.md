@@ -59,7 +59,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue (testName = koTestNamee) {  } // extension used
+            .assertTrue (testName = koTestName) {  } // extension used
     }
 })
 ```
