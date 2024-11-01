@@ -57,7 +57,7 @@ To execute Konsist tests, the Konsist dependency must be integrated into a modul
 Various methods can be used to obtain instances of the scope. This allows the definition of more granular Konsist tests e.g. tests covering only certain modules, source sets, packages, or folders.
 
 {% hint style="info" %}
-See [add-konsist-existing-project.md](../getting-started/getting-started/add-konsist-existing-project.md "mention").
+See [add-konsist-existing-project.md](../features/add-konsist-existing-project.md "mention").
 {% endhint %}
 
 ### Project Scope

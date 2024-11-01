@@ -4,7 +4,9 @@
 
 * [What is Konsist?](README.md)
 * [Getting Started](getting-started/getting-started/README.md)
-  * [Add Konsist Existing To Project](getting-started/getting-started/add-konsist-existing-project.md)
+  * [Add Konsist Dependency](getting-started/getting-started/add-konsist-dependency.md)
+  * [Create First Konsist Test - Declaration Check](getting-started/getting-started/create-first-konsist-test-declaration-check.md)
+  * [Create Secound Konsist Test - Architectural Check](getting-started/getting-started/create-secound-konsist-test-architectural-check.md)
 * [Articles & Videos](getting-started/articles.md)
 
 ## ✅ WRITING TESTS
@@ -17,6 +19,7 @@
 
 ## 📗 FEATURES
 
+* [Baseline Konsist Existing To Project](features/add-konsist-existing-project.md)
 * [Debug Konsist Test](features/debug-konsist-test.md)
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
