@@ -7,7 +7,7 @@ Konsist's `Architectural Checks` serve as a robust tool for maintaining layer is
 * ...
 
 {% hint style="info" %}
-See [architecture-snippets.md](../../inspiration/snippets/architecture-snippets.md "mention")section and the [architectural test projects](https://github.com/LemonAppDev/konsist/tree/main/lib/src/apiTest/kotlin/com/lemonappdev/konsist/architecture/assertarchitecture) for more examples.
+See [architecture-snippets.md](../../inspiration/snippets/architecture-snippets.md "mention")section for more examples.
 {% endhint %}
 
 ## Write First Architectural Check
