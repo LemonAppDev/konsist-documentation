@@ -19,7 +19,7 @@
 
 ## 📗 FEATURES
 
-* [Baseline Konsist Existing To Project](features/add-konsist-existing-project.md)
+* [Add Konsist Existing To Project (Baseline)](features/add-konsist-existing-project.md)
 * [Debug Konsist Test](features/debug-konsist-test.md)
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
