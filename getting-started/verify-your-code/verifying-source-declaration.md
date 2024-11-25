@@ -24,7 +24,11 @@ Konsist
    .scopeFromProject()
    .properties()
    .assertTrue {
-      it.type?.sourceDeclaration?.asClassDeclaration()?.hasInnerModifier // true
+      it
+      .type
+      ?.sourceDeclaration
+      ?.asClassDeclaration()
+      ?.hasInternalModifier // true
    }
 
 ```
