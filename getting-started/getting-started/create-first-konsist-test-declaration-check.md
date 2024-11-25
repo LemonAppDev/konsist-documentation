@@ -172,11 +172,9 @@ The [Kotest](https://kotest.io/) testing framework project dependency should be 
 
 Note that test class has a `KonsistTest` suffix. This is the recommended approach to name classes containing Konsist tests.
 
-
-
 ## Summary
 
-This section described the basic way of writing Konsist declaration test. To get a better understanding of how Konsist API works see [debug-konsist-test.md](../../features/debug-konsist-test.md "mention").&#x20;
+This section described the basic way of writing Konsist declaration test. To get a better understanding of how Konsist API works see [Broken link](broken-reference "mention") and [debug-konsist-test.md](../../features/debug-konsist-test.md "mention") sections.&#x20;
 
 The above test will execute multiple assertions per test (all controllers will be verified in a single test). If you prefer better isolation each assertion can be executed as a separate test. See the [dynamic-konsist-tests](../../advanced/dynamic-konsist-tests/ "mention") page.
 
