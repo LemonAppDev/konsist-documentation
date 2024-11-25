@@ -107,14 +107,28 @@ fun `every class constructor has alphabetically ordered parameters`() {
         .classes()
         .constructors
         .assertTrue {
-            val names = it.parameters.map { parameter -> parameter.name }
-            val sortedNames = names.sorted()
-            names == sortedNames
+            it.parameters.isSortedByName()
+        }
+}
+
+@Test```
+
+## 8. Enums Has Alphabetically Ordered Consts
+
+```kotlin
+@Test
+fun `enums has alphabetically ordered consts`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withAllModifiers(KoModifier.ENUM)
+        .assertTrue {
+            it.enumConstants.isSortedByName()
         }
 }
 ```
 
-## 8. Companion Object Is Last Declaration In The Class
+## 9. Companion Object Is Last Declaration In The Class
 
 ```kotlin
 @Test
@@ -136,7 +150,7 @@ fun `companion object is last declaration in the class`() {
 }
 ```
 
-## 9. Every Value Class Has Parameter Named `value`
+## 10. Every Value Class Has Parameter Named `value`
 
 ```kotlin
 @Test
@@ -150,7 +164,7 @@ fun `every value class has parameter named 'value'`() {
 }
 ```
 
-## 10. No Empty Files Allowed
+## 11. No Empty Files Allowed
 
 ```kotlin
 @Test
@@ -162,7 +176,7 @@ fun `no empty files allowed`() {
 }
 ```
 
-## 11. No Field Should Have `m` Prefix
+## 12. No Field Should Have `m` Prefix
 
 ```kotlin
 @Test
@@ -178,7 +192,7 @@ fun `no field should have 'm' prefix`() {
 }
 ```
 
-## 12. No Class Should Use Field Injection
+## 13. No Class Should Use Field Injection
 
 ```kotlin
 @Test
@@ -191,7 +205,7 @@ fun `no class should use field injection`() {
 }
 ```
 
-## 13. No Class Should Use Java Util Logging
+## 14. No Class Should Use Java Util Logging
 
 ```kotlin
 @Test
@@ -203,7 +217,7 @@ fun `no class should use Java util logging`() {
 }
 ```
 
-## 14. Package Name Must Match File Path
+## 15. Package Name Must Match File Path
 
 ```kotlin
 @Test
@@ -215,7 +229,7 @@ fun `package name must match file path`() {
 }
 ```
 
-## 15. No Wildcard Imports Allowed
+## 16. No Wildcard Imports Allowed
 
 ```kotlin
 @Test
@@ -227,7 +241,7 @@ fun `no wildcard imports allowed`() {
 }
 ```
 
-## 16. Forbid The Usage Of `forbiddenString` In File
+## 17. Forbid The Usage Of `forbiddenString` In File
 
 ```kotlin
 @Test
@@ -239,7 +253,7 @@ fun `forbid the usage of 'forbiddenString' in file`() {
 }
 ```
 
-## 17. All Function Parameters Are Interfaces
+## 18. All Function Parameters Are Interfaces
 
 ```kotlin
 @Test
@@ -255,7 +269,7 @@ fun `all function parameters are interfaces`() {
 }
 ```
 
-## 18. All Parent Interfaces Are Public
+## 19. All Parent Interfaces Are Public
 
 ```kotlin
 @Test
@@ -265,6 +279,19 @@ fun `all parent interfaces are public`() {
         .classes()
         .parentInterfaces()
         .assertTrue { it.hasPublicModifier }
+}
+```
+
+## 20. Return Type Of All Functions Are Immutable
+
+```kotlin
+@Test
+fun `return type of all functions are immutable`() {
+    Konsist
+        .scopeFromProject()
+        .functions()
+        .returnTypes
+        .assertFalse { it.isMutableType }
 }
 ```
 
