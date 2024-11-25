@@ -152,16 +152,24 @@ Check if class extends `CrudRepository`:
 }
 ```
 
+Check if class extends `CrudRepository`:
+
+```kotlin
+.assertTrue {
+   it.hasParentOf(Class::CrudRepository)
+}
+```
+
 ## Verify Companion Objects
 
 Companion object declarations, their contents, and usage patterns can be verified for compliance.
 
-Check if class has `companion object`:
+Check if class have parent that is annotated with `Service` annotation:
 
 ```kotlin
 ...
 .assertTrue {
-   it.objects().any { objectt -> objectt.hasCompanionModifier }
+    it.parents().any { parent -> parent.hasAnnotationOf(Service::class) }
 }
 ```
 
