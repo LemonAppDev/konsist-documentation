@@ -86,7 +86,7 @@ Check if methods (functions defined inside class) have no annotations:
 }
 ```
 
-See [verify-fucntions.md](verify-fucntions.md "mention").
+See [Broken link](broken-reference "mention").
 
 ## Verify Properties
 

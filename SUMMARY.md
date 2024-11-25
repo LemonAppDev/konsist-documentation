@@ -21,7 +21,7 @@
 
 * [Verify Classes](veryfying-codebase/verify-classes.md)
 * [Verify Interfaces](veryfying-codebase/verify-interfaces.md)
-* [Verify Fucntions](veryfying-codebase/verify-fucntions.md)
+* [Verify Functions](veryfying-codebase/verify-functions.md)
 * [Verify Properties](veryfying-codebase/verify-properties.md)
 * [Verify Generics](verify-codebase/verify-generics.md)
 * [Verify Source Declarations](verify-codebase/verify-source-declarations.md)

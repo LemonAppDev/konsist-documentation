@@ -1,4 +1,4 @@
-# Verify Fucntions
+# Verify Functions
 
 Functions can be validated for their signatures, modifiers, naming patterns, return types, and parameter structures.
 
