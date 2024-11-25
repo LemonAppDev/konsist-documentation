@@ -6,7 +6,7 @@ Konsist API allows for verify properties of such type e.g.:
 
 * Check if property type implements certain interface
 * Check if function return type name ends with `Repository`
-* Check if parent class is annotated with `given annotation`
+* Check if parent class is annotated with given annotation
 
 
 
