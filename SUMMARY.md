@@ -7,6 +7,9 @@
   * [Add Konsist Dependency](getting-started/getting-started/add-konsist-dependency.md)
   * [Create First Konsist Test - Declaration Check](getting-started/getting-started/create-first-konsist-test-declaration-check.md)
   * [Create Secound Konsist Test - Architectural Check](getting-started/getting-started/create-secound-konsist-test-architectural-check.md)
+* [Verify Your Code](getting-started/verify-your-code/README.md)
+  * [Verifying Generics](getting-started/verify-your-code/verifying-generics.md)
+  * [Verifying Source Declaration](getting-started/verify-your-code/verifying-source-declaration.md)
 * [Articles & Videos](getting-started/articles.md)
 
 ## ✅ WRITING TESTS
