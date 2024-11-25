@@ -9,11 +9,10 @@ fun `all generic return types contain X in their name`() {
         .scopeFromProduction()
         .functions()
         .returnTypes
-        .genericTypeDeclarations()
+        .withGeneric()
         .assertTrue { it.hasNameContaining("X") }
 }
-
-@Test```
+```
 
 ## 2. Property Generic Type Does Not Contains Star Projection
 
@@ -24,13 +23,14 @@ fun `property generic type does not contains star projection`() {
         .scopeFromProduction()
         .properties()
         .types
-        .genericTypeDeclarations { it.hasGenericType { type -> type.isKotlinType } }
-        .typeArguments
-        .sourceDeclarations()
-        .assertFalse { it.isStarProjection }
+        .assertFalse { type ->
+            type
+                .typeArguments
+                ?.flatten()
+                ?.any { it.isStarProjection }
+        }
 }
-
-@Test```
+```
 
 ## 3. All Generic Return Types Contain Kotlin Collection Type Argument
 
@@ -41,13 +41,11 @@ fun `all generic return types contain Kotlin collection type argument`() {
         .scopeFromProduction()
         .functions()
         .returnTypes
-        .genericTypeDeclarations()
+        .withGeneric()
         .typeArguments
-        .sourceDeclarations()
-        .assertTrue { it.isKotlinCollectionType }
+        .assertTrue { it.sourceDeclaration?.isKotlinCollectionType }
 }
-
-@Test```
+```
 
 ## 4. Function Parameter Has Generic Type Argument With Name Ending With `Repository`
 
@@ -59,8 +57,8 @@ fun `function parameter has generic type argument with name ending with 'Reposit
         .functions()
         .parameters
         .types
-        .genericTypeDeclarations()
-        .genericTypes
+        .withGeneric()
+        .sourceDeclarations()
         .assertFalse { it.hasNameEndingWith("Repository") }
 }
 ```

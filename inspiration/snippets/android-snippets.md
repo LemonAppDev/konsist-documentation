@@ -93,7 +93,8 @@ fun `every class with Serializable must have its properties Serializable`() {
         .withParentNamed("Serializable")
         .properties()
         .types
-        .withoutKotlinBasicType()
+        .sourceDeclarations()
+        .withoutKotlinBasicTypeDeclaration()
         .withoutClassDeclaration { it.hasEnumModifier }
         .assertTrue(additionalMessage = message) {
             it.asClassDeclaration()?.hasParentWithName("Serializable")

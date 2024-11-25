@@ -138,8 +138,7 @@ fun `RestControllers should not have state fields`() {
             it.properties().isEmpty()
         }
 }
-
-@Test```
+```
 
 ## 10. Files With Domain Package Do Not Have Spring References
 
@@ -157,8 +156,7 @@ fun `files with domain package do not have Spring references`() {
                 }
         }
 }
-
-@Test```
+```
 
 ## 11. Transactional Annotation Should Only Be Used On Default Or Public Methods That Are Not Part Of An Interface
 
@@ -169,11 +167,10 @@ fun `Transactional annotation should only be used on default or public methods t
         .functions()
         .withAnnotationOf(Transactional::class)
         .assertTrue {
-            it.hasPublicOrDefaultModifier && !it.isInterface
+            it.hasPublicOrDefaultModifier && it.containingDeclaration !is KoInterfaceDeclaration
         }
 }
-
-@Test```
+```
 
 ## 12. Every API Method In RestController With `Admin` Suffix Should Have PreAuthorize Annotation With ROLE_ADMIN
 
@@ -189,8 +186,7 @@ fun `every API method in RestController with 'Admin' suffix should have PreAutho
             it.hasAnnotationOf(PreAuthorize::class) && it.text.contains("hasRole('ROLE_ADMIN')")
         }
 }
-
-@Test```
+```
 
 ## 13. Every Non-public Controller Should Have @PreAuthorize On Class Or On Each Endpoint Method
 
