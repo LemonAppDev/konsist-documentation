@@ -2,11 +2,11 @@
 
 ![](.gitbook/assets/logo.png)
 
-Konsist is a structural linter (static code analyzer) designed for [Kotlin](https://kotlinlang.org/) language. It aims to standardize the codebase by ensuring adherence to a common set of coding conventions, thereby improving the readability and maintainability of the code. It's like [ArchUnit](https://www.archunit.org/), but for Kotlin language.
+Konsist is a structural linter (static code analyzer) designed for [Kotlin](https://kotlinlang.org/) language. Verifying codebase with Konsist enables development teams to enforce architectural rules and class structures through automated testing.&#x20;
+
+Konsist offers comprehensive verification capabilities that enable developers to enforce architectural rules and maintain code consistency, thereby improving the readability and maintainability of the code. It's like [ArchUnit](https://www.archunit.org/), but for Kotlin language. Whether you're working on [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered.&#x20;
 
 The Konsist API provides developers with the capability to create custom checks through unit tests, customized to align with the project's unique requirements. Additionally, it offers smooth integration with leading testing frameworks, including [JUnit4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/), further streamlining the development process.
-
-Konsist tests can be executed during pull request reviews, act as safeguards to preserve the project's codebase structure and architecture. Whether you're working on [Android](https://www.android.com/), [Spring](https://spring.io/), or [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects, Konsist has got you covered.&#x20;
 
 {% hint style="info" %}
 Konsist is approaching its 1.0 release, marking a significant milestone in its development journey. See the [project-status.md](help/project-status.md "mention").

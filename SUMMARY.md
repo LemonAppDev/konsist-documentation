@@ -19,8 +19,12 @@
 
 ## ✏️ VERYFYING CODEBASE
 
-* [Verifying Generic](verify-codebase/verify-generics.md)
-* [Verifying Source Declaration](verify-codebase/verify-source-declarations.md)
+* [Verify Classes](veryfying-codebase/verify-classes.md)
+* [Verify Interfaces](veryfying-codebase/verify-interfaces.md)
+* [Verify Fucntions](veryfying-codebase/verify-fucntions.md)
+* [Verify Properties](veryfying-codebase/verify-properties.md)
+* [Verify Generics](verify-codebase/verify-generics.md)
+* [Verify Source Declarations](verify-codebase/verify-source-declarations.md)
 
 ## 📗 FEATURES
 
