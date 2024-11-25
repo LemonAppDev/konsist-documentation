@@ -20,6 +20,10 @@
 * [Architecture Assertion](writing-tests/architecture-assert.md)
 * [Suppress Konsist Test](writing-tests/suppressing-konsist-test.md)
 
+## ✏️ VERYFYING CODEBASE
+
+
+
 ## 📗 FEATURES
 
 * [Add Konsist Existing To Project (Baseline)](features/add-konsist-existing-project.md)
