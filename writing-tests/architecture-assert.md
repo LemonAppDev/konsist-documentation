@@ -96,6 +96,26 @@ koScope
 
 This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
 
+## Include Layer Without Defining Dependency
+
+The `include()` method allows to include layer in architecture verification, without defining a dependency for this layer:
+
+```kotlin
+private val domain = Layer("Domain",  "com.domain..")
+private val presentation = Layer("Presentation", "com..presentation..")
+
+Konsist
+    .scopeFromProject()
+    scope.assertArchitecture {
+        // Include presentation for architectural check without defining a dependency
+        presentation.include()
+        
+        // Include domain layer or architectural check and define no dependency (independent)
+        domain.doesOnNothing()
+    }
+}
+```
+
 ## Architecture As A Variable
 
 Architecture configuration can be defined beforehand and stored in a variable to facilitate checks for multiple scopes:&#x20;
