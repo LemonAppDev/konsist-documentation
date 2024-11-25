@@ -75,3 +75,29 @@ fun `All JetPack Compose previews contain 'Preview' in method name`() {
 }
 ```
 
+## 6. Every Class With Serializable Must Have Its Properties Serializable
+
+```kotlin
+@Test
+fun `every class with Serializable must have its properties Serializable`() {
+    val message =
+        """In Android, every serializable class must implement the Serializable interface 
+    |or be a simple non-enum type because this is how the Java and Android serialization 
+    |mechanisms identify which objects can be safely converted to a byte stream for 
+    |storage or transmission, ensuring that complex objects can be properly reconstructed 
+    |when deserialized.""".trimMargin()
+
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withParentNamed("Serializable")
+        .properties()
+        .types
+        .withoutKotlinBasicType()
+        .withoutClassDeclaration { it.hasEnumModifier }
+        .assertTrue(additionalMessage = message) {
+            it.asClassDeclaration()?.hasParentWithName("Serializable")
+        }
+}
+```
+

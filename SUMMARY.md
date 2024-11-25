@@ -43,6 +43,7 @@
   * [Clean Architecture Snippets](inspiration/snippets/clean-architecture-snippets.md)
   * [Kotlin Serialization Snippets](inspiration/snippets/kotlin-serialization-snippets.md)
   * [Library Snippets](inspiration/snippets/library-snippets.md)
+  * [Generic Types Snippets](inspiration/snippets/generic-types-snippets.md)
 
 ## 🎓 ADVANCED
 
