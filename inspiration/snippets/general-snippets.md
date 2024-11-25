@@ -23,9 +23,7 @@ fun `all data class properties are defined in constructor`() {
         .classes()
         .withModifier(KoModifier.DATA)
         .properties()
-        .assertTrue {
-            it.isConstructorDefined
-        }
+        .assertTrue { it.isConstructorDefined }
 }
 ```
 
@@ -106,12 +104,9 @@ fun `every class constructor has alphabetically ordered parameters`() {
         .scopeFromProject()
         .classes()
         .constructors
-        .assertTrue {
-            it.parameters.isSortedByName()
-        }
+        .assertTrue { it.parameters.isSortedByName() }
 }
-
-@Test```
+```
 
 ## 8. Enums Has Alphabetically Ordered Consts
 
@@ -122,9 +117,7 @@ fun `enums has alphabetically ordered consts`() {
         .scopeFromProduction()
         .classes()
         .withAllModifiers(KoModifier.ENUM)
-        .assertTrue {
-            it.enumConstants.isSortedByName()
-        }
+        .assertTrue { it.enumConstants.isSortedByName() }
 }
 ```
 
@@ -263,9 +256,7 @@ fun `all function parameters are interfaces`() {
         .functions()
         .parameters
         .types
-        .assertTrue {
-            it.isInterface
-        }
+        .assertTrue { it.sourceDeclaration?.isInterface }
 }
 ```
 
@@ -278,6 +269,8 @@ fun `all parent interfaces are public`() {
         .scopeFromProject()
         .classes()
         .parentInterfaces()
+        .sourceDeclarations()
+        .interfaceDeclarations()
         .assertTrue { it.hasPublicModifier }
 }
 ```
