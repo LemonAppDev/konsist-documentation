@@ -66,7 +66,6 @@ Check if class has `model` package or sub-packages (`..` means include sub-packa
 
 ```kotlin
 ...
-.properties()
 .assertTrue {
    it.resideInPackage("com.lemonappdev.model..")
 }
@@ -82,7 +81,7 @@ Check if methods (functions defined inside class) have no annotations:
 ...
 .functions()
 .assertTrue {
-    it.all { function -> function.annotations.isEmpty() }
+    .assertTrue { it.annotations.isEmpty() }
 }
 ```
 
