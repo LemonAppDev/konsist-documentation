@@ -1,8 +1,8 @@
-# Verifying Generics
+# Verify Generics
 
 Type parameter vs type argument
 
-To undersigned Konsist API let's look at the difference between  `generic type parameters` and `generic type arguments`:
+To undersigned Konsist API let's look at the difference between `generic type parameters` and `generic type arguments`:
 
 1. **Type Parameter** is the placeholder (like `T`) you write when _creating_ a class or function (declaration site)
 2. **Type Argument** is the actual type (like `String` or `Int`) you provide when _using_ that class or function (use site)
@@ -30,12 +30,12 @@ printWithType<String>("Hello")  // prints: Type is: String
 
 ## Verify Type Parameters
 
-Type parameters can be defined inside class or function.
+Type parameters can be defined, for example, inside class or function.
 
 ### Check whether a class's generic type parameter has the name `UiState`:
 
 ```kotlin
-//Code Snippet 
+// Code Snippet 
 class View<UiState>(val state: UiState) // UiState is typeParamener 
 
 // Konsist
@@ -120,6 +120,7 @@ class StringContainer(text: String) : Container<String>(text) { }
 // Konsist Test
 Konsist
     .scopeFromProject()
+    .classes()
     .parents()
     .typeArguments
     .flatten()

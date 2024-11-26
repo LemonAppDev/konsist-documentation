@@ -81,7 +81,7 @@ Check if methods (functions defined inside class) have no annotations:
 ...
 .functions()
 .assertTrue {
-    .assertTrue { it.annotations.isEmpty() }
+   it.annotations.isEmpty()
 }
 ```
 
@@ -97,7 +97,7 @@ Check if all properties (defined inside class) has `val` modifiers:
 ...
 .properties()
 .assertTrue {
-   it.all { property -> property.isVal }
+   it.isVal
 }
 ```
 
@@ -133,8 +133,8 @@ Generic type parameters and constraints can be checked for correct usage and bou
 Check if class has not type parameters:
 
 <pre class="language-kotlin"><code class="lang-kotlin">...
-.assertTrue {
-<strong>    it.typeParameters.isEmpty()
+.assertFalse {
+<strong>    it.hasTypeParameters()
 </strong>}
 </code></pre>
 
@@ -147,15 +147,7 @@ Check if class extends `CrudRepository`:
 ```kotlin
 ...
 .assertTrue {
-   it.hasParentOf(Class::CrudRepository)
-}
-```
-
-Check if class extends `CrudRepository`:
-
-```kotlin
-.assertTrue {
-   it.hasParentOf(Class::CrudRepository)
+   it.hasParentOf(CrudRepository::class)
 }
 ```
 
@@ -163,12 +155,12 @@ Check if class extends `CrudRepository`:
 
 Companion object declarations, their contents, and usage patterns can be verified for compliance.
 
-Check if class have parent that is annotated with `Service` annotation:
+Check if class have companion object:
 
 ```kotlin
 ...
-.assertTrue {
-    it.parents().any { parent -> parent.hasAnnotationOf(Service::class) }
+.assertTrue { declaration ->
+    declaration.hasObject { it.hasCompanionModifier }
 }
 ```
 

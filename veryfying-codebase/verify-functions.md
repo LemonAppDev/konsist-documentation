@@ -65,7 +65,7 @@ Check if function has `public` or default (also `public`) modifier:
 
 Function-level and member annotations can be verified for presence, correct usage, and required attribute values.
 
-Check if function is annotated with `Service` annotation:
+Check if function is annotated with `Binding` annotation:
 
 ```kotlin
 ...
@@ -102,7 +102,7 @@ Check if function has parameter of type `String`:
 ```kotlin
 ...
 .assertTrue { 
-    it.parameters.any { parameter  -> parameter.hasTypeOf<String>() }
+    it.hasParameter { parameter  -> parameter.hasTypeOf(String::class) }
 }
 ```
 
@@ -128,7 +128,7 @@ Check if function has type parameters:
 ```kotlin
 ...
 .assertTrue { 
-    it.typeParameters.isNotEmpty()
+    it.hasTypeParameters()
 }
 ```
 

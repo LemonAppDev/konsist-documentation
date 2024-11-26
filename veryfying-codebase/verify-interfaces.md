@@ -66,7 +66,6 @@ Check if interface has `model` package or sub-packages (`..` means include sub-p
 
 ```kotlin
 ...
-.properties()
 .assertTrue {
    it.resideInPackage("com.lemonappdev.model..")
 }
@@ -82,7 +81,7 @@ Check if methods (functions defined inside interface) have name starting with `L
 ...
 .functions()
 .assertTrue {
-    it.all { function -> function.hasNameStartingWith("Local") }
+    it.hasNameStartingWith("Local")
 }
 ```
 
@@ -98,7 +97,7 @@ Check if all properties (defined inside interface) has `val` modifiers:
 ...
 .properties()
 .assertTrue {
-   it.all { property -> property.isVal }
+   it.isVal
 }
 ```
 
@@ -111,8 +110,8 @@ Generic type parameters and constraints can be checked for correct usage and bou
 Check if interface has not type parameters:
 
 <pre class="language-kotlin"><code class="lang-kotlin">...
-.assertTrue {
-<strong>    it.typeParameters.isEmpty()
+.assertFalse {
+<strong>    it.hasTypeParameters()
 </strong>}
 </code></pre>
 
@@ -125,7 +124,7 @@ Check if interface extends `CrudRepository`:
 ```kotlin
 ...
 .assertTrue {
-   it.hasParentOf(Class::CrudRepository)
+   it.hasParentOf(CrudRepository::class)
 }
 ```
 
@@ -138,7 +137,7 @@ Check if interface has `companion object`:
 ```kotlin
 ...
 .assertTrue {
-   it.objects().any { objectt -> objectt.hasCompanionModifier }
+   it.hasObject { objectt -> objectt.hasCompanionModifier }
 }
 ```
 
