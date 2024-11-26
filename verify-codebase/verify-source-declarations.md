@@ -20,6 +20,7 @@ Check if type of `current` property is has a type which is a class declaration h
 // Code Snippet
 internal class Engine
 val current: Engine? = null
+
 // Konsist test
 Konsist
    .scopeFromProject()
