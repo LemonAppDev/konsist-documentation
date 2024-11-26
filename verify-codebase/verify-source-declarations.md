@@ -14,26 +14,6 @@ Let's look at few examples:
 
 ## Verify Property Source Declaration
 
-Check if property type implements certain interface:
-
-```kotlin
-// Code Snippet
-internal class Engine
-val current: Engine? = null // testing this in below test
-
-// Konsist test
-Konsist
-   .scopeFromProject()
-   .properties()
-   .assertTrue {
-      it
-      .type
-      ?.sourceDeclaration
-      ?.asClassDeclaration()
-      ?.hasInternalModifier // true
-   }
-```
-
 Check if type of `current` property is has a type which is a class declaration heaving `internal` modifier:
 
 ```kotlin
