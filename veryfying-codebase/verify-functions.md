@@ -132,6 +132,19 @@ Check if function has type parameters:
 }
 ```
 
+## Verify Generic Type Arguments
+
+Generic type arguments can be checked for correct usage.
+
+Check if return type has no type arguments:
+
+```kotlin
+...
+.assertFalse {
+    it.returnType?.hasTypeArguments()
+}
+```
+
 ## **Verify Top Level**
 
 Top-level functions (functions not declared inside a class) can be specifically queried and validated:

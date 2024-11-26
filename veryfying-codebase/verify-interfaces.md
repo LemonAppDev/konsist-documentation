@@ -115,6 +115,20 @@ Check if interface has not type parameters:
 </strong>}
 </code></pre>
 
+## Verify Generic Type Arguments
+
+Generic type arguments can be checked for correct usage.
+
+Check if parent has no type arguments:
+
+```kotlin
+...
+.parents()
+.assertFalse {
+    it.hasTypeArguments()
+}
+```
+
 ## Verify Parents
 
 Inheritance hierarchies, interfaces implementations, and superclass relationships can be validated.
