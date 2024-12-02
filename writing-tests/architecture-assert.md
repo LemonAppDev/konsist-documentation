@@ -38,13 +38,9 @@ Konsist
     }
 ```
 
-{% hint style="info" %}
-The Konsist repository [contains multiple architectural tests](https://github.com/LemonAppDev/konsist/tree/main/lib/src/apiTest/kotlin/com/lemonappdev/konsist/architecture). These tests are used internally to verify Konsist API. Each test has a Konsist code and a `mermaid` diagram presenting the architecture.
-{% endhint %}
-
 ## Define Layers
 
-Create layers instances to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define layers.
+Create [Layer](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer/index.html?query=data%20class%20Layer\(name:%20String,%20rootPackage:%20String\)) class instance to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define architectural layer:
 
 ```kotlin
 Konsist
@@ -56,33 +52,61 @@ Konsist
     }
 ```
 
-{% hint style="warning" %}
+{% hint style="info" %}
 The inclusion of two trailing dots indicates that the layer is denoted by the `com.myapp.business` package together with all of its sub-packages.
-
-```kotlin
-val data = Layer("Data", "com.myapp.data..") // This package only and all sub-packages
-val data = Layer("Data", "com.myapp.data") // This package only
-```
 {% endhint %}
 
 ## Define Architecture Assertions
 
-The final step is to define the relations between each layer:
+The final step is to define the dependencies (relations) between each layer using one of these methods:
+
+* `dependsOn`
+* `dependsOnNothing`
+* `doesNotDependOn`
+
+{% hint style="info" %}
+See the [language reference](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/index.html) for above methods.
+{% endhint %}
+
+The above methods follow up the layer definitions inside `assertArchitecture` block:
 
 ```kotlin
-koScope.assertArchitecture {
+Konsist
+    .scopeFromProject()
+    .assertArchitecture {
         val presentation = Layer("Presentation", "com.myapp.presentation..")
         val data = Layer("Data", "com.myapp.data..")
 
+        // Define dependencies 
         presentation.dependsOn(data)
         data.dependsOnNothing()
     }
 ```
 
+## Strict DependsOn
+
+By default `dependsOn` method works like does not perform strict layer validation (`strict = false`).  However this behaviour is controlled b y`strict` parameter:
+
+* `strict = false` (default) - may depend on layer
+* `strict = true`  - have to depend on layer
+
+e.g.
+
+```kotlin
+// Optional dependency - Feature layer may depend on Domain layer
+featureLayer.dependsOn(domainLayer) // strict = false by default
+
+// Required dependency - Feature layer must depend on Domain layer
+featureLayer.dependsOn(domainLayer, strict = true)
+```
+
+## Excluding Files
+
 Architecture verification can be performed on `KoScope` (as seen above) and a list containing `KoFiles`.  For example, you can remove a few files from the scope before performing an architectural check:
 
 ```kotlin
-koScope
+Konsist
+    .scopeFromProject()
     .files
     .withNameStartingWith("Repository")
     .assertArchitecture {
@@ -98,7 +122,7 @@ This approach provides more flexibility when working with complex projects, howe
 
 ## Include Layer Without Defining Dependency
 
-The `include()` method allows to include layer in architecture verification, without defining a dependency for this layer:
+The [include](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/include.html) method allows to include layer in architecture verification, without defining a dependency for this layer:
 
 ```kotlin
 private val domain = Layer("Domain",  "com.domain..")
