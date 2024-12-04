@@ -20,7 +20,7 @@ Add the following dependency to the `module\build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    testImplementation("com.lemonappdev:konsist:0.17.1")
+    testImplementation("com.lemonappdev:konsist:0.17.2")
 }
 ```
 {% endtab %}
@@ -30,7 +30,7 @@ Add the following dependency to the `module\build.gradle` file:
 
 ```groovy
 dependencies {
-    testImplementation "com.lemonappdev:konsist:0.17.1"
+    testImplementation "com.lemonappdev:konsist:0.17.2"
 }
 ```
 {% endtab %}
@@ -42,7 +42,7 @@ Add the following dependency to the `module\pom.xml` file:
 <dependency>
     <groupId>com.lemonappdev</groupId>
     <artifactId>konsist</artifactId>
-    <version>0.17.1</version>
+    <version>0.17.2</version>
     <scope>test</scope>
 </dependency>
 ```
