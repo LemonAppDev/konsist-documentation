@@ -6,6 +6,7 @@
 2. [Harmonizing Kotlin codebase with Konsist (KotlinConf 2024)](https://www.youtube.com/watch?v=3qbKYSI1u1k)
 3. [Stop Debating in Code Reviews. Start Enforcing with Lint Rules (Droidcon Berlin 2024)](https://www.droidcon.com/2024/08/30/stop-debating-in-code-reviews-start-enforcing-with-lint-rules-3/)&#x20;
 4. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
+5. [Standardisez votre codebase avec Konsist](https://www.youtube.com/watch?v=_bn77FkZkUM) (FR) &#x20;
 
 ## Articles
 
