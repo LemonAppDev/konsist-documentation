@@ -9,7 +9,7 @@ Architecture assertions are used to perform architecture verification. It is the
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    StepA2["2. Assert Architecture"]-->StepA3
+    StepA2["2\. Assert Architecture"]-->StepA3
     StepA3["2a. Define Layers"]-->StepA4
     StepA4["2b. Define Assertion"]
     style StepA2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff

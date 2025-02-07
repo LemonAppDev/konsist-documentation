@@ -13,11 +13,11 @@ At a high-level Konsist check is a Unit test following multiple implicit steps.
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Create The Scope"]-->StepD2
-    Step1["1. Create The Scope"]-->StepA2
-    StepD2["2. Query and Filter The Declarations"]-->StepD3
-    StepD3["3. Assert"]
-    StepA2["2. Assert Architecture"]-->StepA3
+    Step1["1\. Create The Scope"]-->StepD2
+    Step1["1\. Create The Scope"]-->StepA2
+    StepD2["2\. Query and Filter The Declarations"]-->StepD3
+    StepD3["3\. Assert"]
+    StepA2["2\. Assert Architecture"]-->StepA3
     StepA3["2a. Define Layers"]-->StepA4
     StepA4["2b. Define Architecture Assertions"]
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff

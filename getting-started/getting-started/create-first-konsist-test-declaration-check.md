@@ -24,10 +24,10 @@ On a high level writing Konsist `declaration check` requires 4 steps:
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Create The Scope"]-->Step2
-    Step2["2. Retrieve Declarations"]-->Step3
-    Step3["3. Filter Declarations"]-->Step4
-    Step4["4. Define Assertion"]
+    Step1["1\. Create The Scope"]-->Step2
+    Step2["2\. Retrieve Declarations"]-->Step3
+    Step3["3\. Filter Declarations"]-->Step4
+    Step4["4\. Define Assertion"]
 ```
 
 Let's take a closer look at each of these steps.

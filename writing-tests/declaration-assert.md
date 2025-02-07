@@ -9,9 +9,9 @@ Assertions are used to perform code base verification. This is the final step of
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Create The Scope"]-->Step2
-    Step2["2. Filter Declarations"]-->Step3
-    Step3["3. Define Assertion"]
+    Step1["1\. Create The Scope"]-->Step2
+    Step2["2\. Filter Declarations"]-->Step3
+    Step3["3\. Define Assertion"]
     style Step3 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
