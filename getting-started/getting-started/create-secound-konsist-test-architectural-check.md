@@ -28,9 +28,9 @@ On a high level writing Konsist `architectural check` requires 3 steps:
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1. Define Layers"]-->Step2
-    Step2["2. Create The Scope"]-->Step3
-    Step3["3. Assert Architecture"]
+    Step1["1\. Define Layers"]-->Step2
+    Step2["2\. Create The Scope"]-->Step3
+    Step3["3\. Assert Architecture"]
 ```
 
 Let's take a closer look at each of these steps.
