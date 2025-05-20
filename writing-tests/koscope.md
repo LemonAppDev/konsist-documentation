@@ -242,10 +242,10 @@ project/
 
 ### Package Scope
 
-The `sourceFromPackage` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
+The `scopeFromPackage` method allows the creation of a scope containing code present in a given package e.g. `com.usecase` package:
 
 ```kotlin
-Konsist.sourceFromPackage("com.usecase..")
+Konsist.scopeFromPackage("com.usecase..")
 ```
 
 Contains:
