@@ -1,4 +1,4 @@
-# Create Secound Konsist Test - Architectural Check
+# Create Second Konsist Test - Architectural Check
 
 Konsist's `Architectural Checks` serve as a robust tool for maintaining layer isolation, enabling development teams to enforce strict boundaries between different architectural layers. Here few things that can be verified with Konsist:
 
