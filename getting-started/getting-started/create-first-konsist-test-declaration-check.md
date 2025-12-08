@@ -1,6 +1,6 @@
 # Create First Konsist Test - Declaration Check
 
-Konsist `Declaration Checks` provide a powerful mechanism for validating the structural elements of the Kotlin codebase. These checks allow developers to enforce structural rules and coding conventions by verifying classes, interfaces, functions, properties, and other code declarations. Here few things that can be verified with Konsist:
+Konsist `Declaration Checks` provide a powerful mechanism for validating the structural elements of the Kotlin codebase. These checks allow developers to enforce structural rules and coding conventions by verifying classes, interfaces, functions, properties, and other code declarations. Here are a few things that can be verified with Konsist:
 
 * All Use cases should reside in `usecase` specific package
 * Repository classes must implement Repository interface
