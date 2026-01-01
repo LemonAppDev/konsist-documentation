@@ -21,7 +21,7 @@ Konsist
 ...
 ```
 
-Konsist allows you to verify multiple aspects of a properties. For a complete understanding of the available APIs, refer to the language reference documentation for KoPropertyDeclaration[^1].
+Konsist allows you to verify multiple aspects of a properties. For a complete understanding of the available APIs, refer to the language reference documentation for [KoPropertyDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-property-declaration/index.html).
 
 Let's look at few examples.
 
@@ -152,4 +152,3 @@ Check if property is mutable:
 }
 ```
 
-[^1]: 
