@@ -6,7 +6,7 @@
 2. [Harmonizing Kotlin codebase with Konsist (KotlinConf 2024)](https://www.youtube.com/watch?v=3qbKYSI1u1k)
 3. [Stop Debating in Code Reviews. Start Enforcing with Lint Rules (Droidcon Berlin 2024)](https://www.droidcon.com/2024/08/30/stop-debating-in-code-reviews-start-enforcing-with-lint-rules-3/)&#x20;
 4. [A Tour Through Konsist](https://youtu.be/AlYTvzwZOc4)
-5. [Standardisez votre codebase avec Konsist](https://www.youtube.com/watch?v=_bn77FkZkUM) (FR) &#x20;
+5. [Standardisez votre codebase avec Konsist](https://www.youtube.com/watch?v=_bn77FkZkUM) (FR)&#x20;
 
 ## Articles
 
@@ -24,3 +24,4 @@
 12. [Kotlin “Lint” Testing With Konsist](https://blog.stackademic.com/kotlin-lint-testing-with-konsist-63756e80cf5a)
 13. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)
 14. [Konsist: First experience with the new linter for Kotlin](https://www.droidcon.com/2023/10/17/konsist-first-experience-with-the-new-linter-for-kotlin/)
+15. [Your codebase agreements are broken. You just don’t know it yet](https://medium.com/@yassine.sayah/your-codebase-agreements-are-broken-you-just-dont-know-it-yet-b62826dee074)
