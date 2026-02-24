@@ -97,9 +97,9 @@ Utilize `dependsX` methods to validate that your project's layers adhere to the 
 Konsist
     .scopeFromProject()
     .assertArchitecture {
-        private val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
-        private val domainLayer = Layer("Domain", "com.myapp.business..")
-        private val dataLayer = Layer("Data", "com.myapp.data..")
+        val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
+        val domainLayer = Layer("Domain", "com.myapp.business..")
+        val dataLayer = Layer("Data", "com.myapp.data..")
 
         // Define layer dependnecies
         presentationLayer.dependsOn(domainLayer)
@@ -123,9 +123,9 @@ class ArchitectureKonsistTest {
         Konsist
             .scopeFromProject()
             .assertArchitecture {
-                private val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
-                private val domainLayer = Layer("Domain", "com.myapp.business..")
-                private val dataLayer = Layer("Data", "com.myapp.data..")
+                val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
+                val domainLayer = Layer("Domain", "com.myapp.business..")
+                val dataLayer = Layer("Data", "com.myapp.data..")
         
                 // Define layer dependnecies
                 presentationLayer.dependsOn(domainLayer)
@@ -149,9 +149,9 @@ class ArchitectureKonsistTest {
             Konsist
                 .scopeFromProject()
                 .assertArchitecture {
-                    private val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
-                    private val domainLayer = Layer("Domain", "com.myapp.business..")
-                    private val dataLayer = Layer("Data", "com.myapp.data..")
+                    val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
+                    val domainLayer = Layer("Domain", "com.myapp.business..")
+                    val dataLayer = Layer("Data", "com.myapp.data..")
             
                     // Define layer dependnecies
                     presentationLayer.dependsOn(domainLayer)
