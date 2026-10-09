@@ -1,6 +1,6 @@
 # Library Snippets
 
-Snippets to library authors.
+Snippets for library authors.
 
 ## 1. Every Api Declaration Has KDoc
 
@@ -14,11 +14,11 @@ fun `every api declaration has KDoc`() {
 }
 ```
 
-## 2. Every Function With Parameters Has A Param Tags
+## 2. Every Function With Parameters Has Param Tags
 
 ```kotlin
 @Test
-fun `every function with parameters has a param tags`() {
+fun `every function with parameters has param tags`() {
     Konsist.scopeFromPackage("..api..")
         .functions()
         .assertTrue { it.hasValidKDocParamTags() }
@@ -55,18 +55,20 @@ fun `every public function in api package must have explicit return type`() {
     Konsist
         .scopeFromPackage("..api..")
         .functions()
+        .withPublicOrDefaultModifier()
         .assertTrue { it.hasReturnType() }
 }
 ```
 
-## 6. Every Public Property In Api Package Must Have Specify Type Explicitly
+## 6. Every Public Property In Api Package Must Specify Type Explicitly
 
 ```kotlin
 @Test
-fun `every public property in api package must have specify type explicitly`() {
+fun `every public property in api package must specify type explicitly`() {
     Konsist
         .scopeFromPackage("..api..")
         .properties()
+        .withPublicOrDefaultModifier()
         .assertTrue { it.hasType() }
 }
 ```

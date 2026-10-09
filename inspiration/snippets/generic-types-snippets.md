@@ -14,11 +14,11 @@ fun `all generic return types contain X in their name`() {
 }
 ```
 
-## 2. Property Generic Type Does Not Contains Star Projection
+## 2. Property Generic Type Does Not Contain Star Projection
 
 ```kotlin
 @Test
-fun `property generic type does not contains star projection`() {
+fun `property generic type does not contain star projection`() {
     Konsist
         .scopeFromProduction()
         .properties()
@@ -47,18 +47,18 @@ fun `all generic return types contain Kotlin collection type argument`() {
 }
 ```
 
-## 4. Function Parameter Has Generic Type Argument With Name Ending With `Repository`
+## 4. Function Parameter Has No Generic Type Argument With Name Ending With `Repository`
 
 ```kotlin
 @Test
-fun `function parameter has generic type argument with name ending with 'Repository'`() {
+fun `function parameter has no generic type argument with name ending with 'Repository'`() {
     Konsist
         .scopeFromProduction()
         .functions()
         .parameters
         .types
         .withGeneric()
-        .sourceDeclarations()
+        .typeArguments
         .assertFalse { it.hasNameEndingWith("Repository") }
 }
 ```

@@ -108,11 +108,11 @@ fun `every class constructor has alphabetically ordered parameters`() {
 }
 ```
 
-## 8. Enums Has Alphabetically Ordered Consts
+## 8. Enums Have Alphabetically Ordered Constants
 
 ```kotlin
 @Test
-fun `enums has alphabetically ordered consts`() {
+fun `enums have alphabetically ordered constants`() {
     Konsist
         .scopeFromProduction()
         .classes()
@@ -206,7 +206,7 @@ fun `no class should use Java util logging`() {
     Konsist
         .scopeFromProject()
         .files
-        .assertFalse { it.hasImport { import -> import.name == "java.util.logging.." } }
+        .assertFalse { it.hasImport { import -> import.hasNameStartingWith("java.util.logging") } }
 }
 ```
 
@@ -275,11 +275,11 @@ fun `all parent interfaces are public`() {
 }
 ```
 
-## 20. Return Type Of All Functions Are Immutable
+## 20. Return Types Of All Functions Are Immutable
 
 ```kotlin
 @Test
-fun `return type of all functions are immutable`() {
+fun `return types of all functions are immutable`() {
     Konsist
         .scopeFromProject()
         .functions()

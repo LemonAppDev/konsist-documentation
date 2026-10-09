@@ -45,7 +45,6 @@
   * [General Snippets](inspiration/snippets/general-snippets.md)
   * [Android Snippets](inspiration/snippets/android-snippets.md)
   * [Spring Snippets](inspiration/snippets/spring-snippets.md)
-  * [Test Snippets](inspiration/snippets/test-snippets.md)
   * [JUnit Snippets](inspiration/snippets/junit-snippets.md)
   * [Kotest Snippets](inspiration/snippets/kotest-snippets.md)
   * [Architecture Snippets](inspiration/snippets/architecture-snippets.md)

@@ -2,11 +2,11 @@
 
 Snippets used to guard application architecture.
 
-## 1. 2 Layer Architecture Has Correct Dependencies
+## 1. 4 Layer Architecture Has Correct Dependencies
 
 ```kotlin
 @Test
-fun `2 layer architecture has correct dependencies`() {
+fun `4 layer architecture has correct dependencies`() {
     Konsist
         .scopeFromProject()
         .assertArchitecture {
@@ -16,20 +16,18 @@ fun `2 layer architecture has correct dependencies`() {
             val database = Layer("Database", "com.myapp.database..")
 
             presentation.dependsOn(business)
-            business.dependsOn(presentation)
             business.dependsOn(persistence)
-            persistence.dependsOn(business)
-            business.dependsOn(database)
-            database.dependsOn(business)
+            persistence.dependsOn(database)
+            database.dependsOnNothing()
         }
 }
 ```
 
-## 2. Every File In Module Reside In Module Specific Package
+## 2. Every File In Module Resides In Module-specific Package
 
 ```kotlin
 @Test
-fun `every file in module reside in module specific package`() {
+fun `every file in module resides in module-specific package`() {
     Konsist
         .scopeFromProject()
         .files

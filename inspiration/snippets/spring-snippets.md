@@ -28,11 +28,11 @@ fun `classes with 'RestController' annotation should have 'Controller' suffix`()
 }
 ```
 
-## 3. Controllers Never Returns Collection Types
+## 3. Controllers Never Return Collection Types
 
 ```kotlin
 @Test
-fun `controllers never returns collection types`() {
+fun `controllers never return collection types`() {
     /*
     Avoid returning collection types directly. Structuring the response as
     an object that contains a collection field is preferred. This approach
@@ -46,7 +46,7 @@ fun `controllers never returns collection types`() {
         .withAnnotationOf(RestController::class)
         .functions()
         .assertFalse { function ->
-            function.hasReturnType { it.isKotlinCollectionType }
+            function.hasReturnType { it.sourceDeclaration?.isKotlinCollectionType == true }
         }
 }
 ```
@@ -196,7 +196,7 @@ fun `every non-public Controller should have @PreAuthorize on class or on each e
     Konsist.scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .filterNot { it.hasPublicModifier }
+        .filterNot { it.hasPublicOrDefaultModifier }
         .assertTrue { controller ->
             controller.hasAnnotationOf(PreAuthorize::class) ||
                     controller.functions()

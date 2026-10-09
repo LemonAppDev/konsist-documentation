@@ -7,14 +7,14 @@ library.
 
 ```kotlin
 @Test
-fun `classes with 'Test' Annotation should have 'Test' suffix`() {
+fun `classes with 'Test' annotation should have 'Test' suffix`() {
     Konsist
         .scopeFromSourceSet("test")
         .classes()
         .filter {
             it.functions().any { func -> func.hasAnnotationOf(Test::class) }
         }
-        .assertTrue { it.hasNameEndingWith("Tests") }
+        .assertTrue { it.hasNameEndingWith("Test") }
 }
 ```
 

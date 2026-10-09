@@ -1,6 +1,6 @@
 # Kotest Snippets
 
-Sample tests writen using [Kotest](https://kotest.io/) library.
+Sample tests written using the [Kotest](https://kotest.io/) library.
 
 ## 1. Use Case Test
 
@@ -11,7 +11,7 @@ class UseCaseTest : FreeSpec({
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue(testName = this.testCase.name.testName) { it.hasTestClasses() }
+            .assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
     }
 })
 ```
@@ -26,10 +26,10 @@ class UseCaseTests : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClasses() }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
             }
-            "${useCase.name} should reside in ..domain..usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain..usecase..") }
+            "${useCase.name} should reside in ..domain.usecase.. package" {
+                useCase.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
             }
             "${useCase.name} should ..." {
                 // another Konsist assert
