@@ -54,12 +54,15 @@ testing {
         }
     }
 }
-
-// Optional : Remove Konsist tests from the 'check' task if it exists
-tasks.matching { it.name == "check" }.configureEach {
-  setDependsOn(dependsOn.filter { it.toString() != "konsistTest" })
-}
 ```
+
+{% hint style="info" %}
+Konsist tests don't run as part of the `check`/`build` task by default. Run them with `./gradlew app:konsistTest`. To include them in the `check` task:
+
+```kotlin
+tasks.named("check") { dependsOn(testing.suites.named("konsistTest")) }
+```
+{% endhint %}
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
@@ -97,12 +100,15 @@ testing {
         }
     }
 }
-
-// Optional: Remove Konsist tests from the 'check' task if it exists
-tasks.matching { it.name == "check" }.configureEach { task ->
-    task.setDependsOn(task.getDependsOn().findAll { it.toString() != "konsistTest" })
-}
 ```
+
+{% hint style="info" %}
+Konsist tests don't run as part of the `check`/`build` task by default. Run them with `./gradlew app:konsistTest`. To include them in the `check` task:
+
+```groovy
+tasks.named('check') { dependsOn(testing.suites.konsistTest) }
+```
+{% endhint %}
 {% endtab %}
 
 {% tab title="Maven" %}
