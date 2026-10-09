@@ -4,7 +4,7 @@ description: Where are we now?
 
 # Project Status
 
-The Konsist linter has undergone extensive field testing across a variety of projects, including  [Spring](https://spring.io/), [Android](https://www.android.com/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html), and is compatible with both [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/) build systems. Additionally, Konsist features a comprehensive test suite with around 5,000 tests, running on various operating systems including MacOS, Windows, and Ubuntu, to minimize the risk of regressions.
+The Konsist linter has undergone extensive field testing across a variety of projects, including [Spring](https://spring.io/), [Android](https://www.android.com/), and [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html), and is compatible with both [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/) build systems. Additionally, Konsist features a comprehensive test suite with around 5,000 tests, running on various operating systems including macOS, Windows, and Ubuntu, to minimize the risk of regressions.
 
 Konsist is safe for use because it is not bundled with the production code (only included in the test source sets).
 
@@ -31,7 +31,7 @@ Over the next few months, we will fix bugs, improve existing APIs, and implement
   * ✅ Fix Bugs
   * ✅ Polish documentation and samples
   * ✅ Implement new features
-* 🚀 Milestone 4 (Q2 2024)
+* ✅ Milestone 4 (Q2 2024)
   * ✅  Declaration references
 * 🚀 Milestone 5 (Q3 2024)
   * 🚀 Architecture checks improvements
@@ -41,5 +41,5 @@ Over the next few months, we will fix bugs, improve existing APIs, and implement
   * 🚀 Bug fixes
   * 🚀 API improvements
   * 🚀 Release 1.0
-* 🕝 Milestone 5 (H1 2025)
+* 🕝 Milestone 7 (H1 2025)
   * 🕝 Further maintenance and improvements

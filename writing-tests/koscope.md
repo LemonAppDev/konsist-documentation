@@ -7,7 +7,7 @@ description: Access the Kotlin files using Konsist API
 Scope represents a set of Kotlin files to be further queried, filtered ([declaration-query-and-filter.md](declaration-query-and-filter.md "mention")), and verified ([declaration-assert.md](declaration-assert.md "mention")).
 
 {% hint style="info" %}
-Scopes are an alternative for `baseline` file. Subsets of the codebase can be refactored to be aligned with Konsist tests e.g. code in the single module.
+Scopes are an alternative to a `baseline` file. Subsets of the codebase can be refactored to be aligned with Konsist tests e.g. code in a single module.
 {% endhint %}
 
 ```mermaid
@@ -41,7 +41,7 @@ flowchart TD
 ```
 
 {% hint style="info" %}
-Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin code base declarations. Konsist [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure:
+Konsist is built on top of [Kotlin Compiler Psi](https://github.com/JetBrains/kotlin/tree/master/compiler/psi/src/org/jetbrains/kotlin/psi). It wraps the Kotlin compiler parser and provides a simple API to access Kotlin codebase declarations. Konsist [declaration.md](../features/declaration.md "mention") tree mimics the Kotlin code structure.
 {% endhint %}
 
 The scope can be created for an entire project, module, package, and Kotlin file.
@@ -82,7 +82,7 @@ To review the scope content in more detail see [debug-konsist-test.md](../featur
 
 ### Production Codebase
 
-The `scopeFromProduction` method allows the creation of a scope containing only a production code (equivalent to `Konsist.scopeFromProject() - Konsist.scopeFromTest()`):
+The `scopeFromProduction` method allows the creation of a scope containing only production code (equivalent to `Konsist.scopeFromProject() - Konsist.scopeFromTest()`):
 
 ```kotlin
 Konsist.scopeFromProduction()
@@ -106,7 +106,7 @@ project/
 
 ### Test Codebase
 
-The `scopeFromTest` method allows the creation of a scope containing only a test code:
+The `scopeFromTest` method allows the creation of a scope containing only test code:
 
 ```kotlin
 Konsist.scopeFromTest()
@@ -152,13 +152,13 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
-This approach may be helpful when refactoring existing project modules by module.
+This approach may be helpful when refactoring an existing project module by module.
 
-```
+```kotlin
 val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule1")
-val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule2")
+val refactoredModule2Scope = Konsist.scopeFromModule("refactoredModule2")
 
-val scope = refactoredModule1Scope + refactoredModule1Scop2
+val scope = refactoredModule1Scope + refactoredModule2Scope
 
 scope
    .classes()
@@ -171,15 +171,15 @@ scope
 A nested module is a module that exists within another module.
 
 {% hint style="warning" %}
-The `nested modules` the feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
+The `nested modules` feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
 {% endhint %}
 
 Consider this `feature` module existing inside `app` module:
 
 ```
 project/
-├─ app/   <--- scope contains all files from the 'app' module
-│  ├─ feature/
+├─ app/
+│  ├─ feature/   <--- scope contains all files from the 'app/feature' module
 │  │  ├─ Feature.kt
 ```
 
@@ -191,7 +191,7 @@ Konsist.scopeFromModule("app/feature")
 
 ### Source Set Scope
 
-The `scopeFromSourceSet` method argument allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
+The `scopeFromSourceSet` method allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
 
 ```kotlin
 Konsist.scopeFromSourceSet("test")
@@ -204,12 +204,12 @@ project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all files the 'test' directory
+│  ├─ test/   <--- scope contains all files from the 'test' directory
 │  │  ├─ AppTest.kt
 ├─ core/
 │  ├─ main/
 │  │  ├─ Core.kt
-│  ├─ test/   <--- scope contains all files the 'test' directory
+│  ├─ test/   <--- scope contains all files from the 'test' directory
 │  │  ├─ CoreTest.kt
 ```
 
@@ -217,8 +217,8 @@ project/
 
 To retrieve scope by using both module and source set use the `scopeFromProject` method with `moduleName` and `sourceSetName` arguments:
 
-```
-Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test)
+```kotlin
+Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test")
 ```
 
 Contains:
@@ -229,7 +229,7 @@ project/
 ├─ app/
 │  ├─ main/
 │  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all files the 'test' directory
+│  ├─ test/   <--- scope contains all files from the 'test' directory
 │  │  ├─ AppTest.kt
 ├─ core/
 │  ├─ main/
@@ -256,11 +256,11 @@ project/
 │  ├─ main/
 │  │  ├─ com/
 │  │  │  ├─ usecase/
-│  │  │  │  ├─ UseCase.kt <--- scope contains files present from 'com.usecase' package kon
+│  │  │  │  ├─ UseCase.kt <--- scope contains files present in 'com.usecase' package
 │  ├─ test/
 │  │  ├─ com/
 │  │  │  ├─ usecase/
-│  │  │  │  ├─ UseCaseTest.kt <--- scope contains files present from 'com.usecase' package
+│  │  │  │  ├─ UseCaseTest.kt <--- scope contains files present in 'com.usecase' package
 ```
 
 {% hint style="info" %}
@@ -293,11 +293,11 @@ It is also possible to create scope from one or more file paths:
 val myScope = Konsist.scopeFromFile("app/main/domain/UseCase.kt")
 ```
 
-We have added a new way of creating the scope from a list of files. This can help with certain development workflows e.g. runing Konsist Tests only on files modified in a given PR:
+It is also possible to create the scope from a list of files. This can help with certain development workflows e.g. running Konsist tests only on files modified in a given PR:
 
 ```kotlin
 val filePaths = listOf("/domain/UseCase1.kt", "/domain/UseCase2.kt")
-val myScope = Konsist.scopeFromFile(filePaths)
+val myScope = Konsist.scopeFromFiles(filePaths)
 ```
 
 ## Scope Slice
@@ -306,34 +306,33 @@ For even more granular control you can use the `KoScope.slice` method to retriev
 
 ```kotlin
 // scope containing all files in the 'test' folder
-koScope.slice { it.relativePath.contains("/test/") }
+koScope.slice { it.projectPath.contains("/test/") }
 
 // scope containing all files in 'com.domain.usecase' package
-koScope.slice { it.hasImport("com.domain.usecase") }
+koScope.slice { it.hasPackage("com.domain.usecase") }
 
 // scope containing all files in 'usecase' package and its sub-packages
-koScope.slice { it.hasImport("usecase..") }
+koScope.slice { it.hasPackage("..usecase..") }
 ```
-
-The `KoScope` can be printed to display a list of all files present in the scope. Here is an example:
 
 ## Scope Reuse
 
 ### Reuse Scope In Test Class
 
-To reuse scope across the test class define the scope in the companion object and access it from multiple tests:
+To reuse the scope across the test class, define the scope in the companion object and access it from multiple tests:
 
 <pre class="language-kotlin"><code class="lang-kotlin">// Test.kt
 class DataTest {
 <strong>    @Test
 </strong>    fun `test 1`() {
         classesScope
-            .assertTrue { // .. } 
+            .assertTrue { /* .. */ }
     }
 
+    @Test
     fun `test 2`() {
         classesScope
-            .assertTrue { // .. } 
+            .assertTrue { /* .. */ }
     }
     
     companion object {
@@ -347,35 +346,36 @@ class DataTest {
 
 ### Reuse Scope In Test Source Set
 
-To reuse scope across the multiple test classes define the scope in the file and access it from multiple test classes:
+To reuse the scope across multiple test classes, define the scope in a file and access it from multiple test classes:
 
 ```kotlin
-// Scope.kt is "test" source set
+// Scope.kt in "test" source set
 val projectScope = Konsist.scopeFromProject() // Create a new KoScope
 
-// AppTest.kt
+// AppKonsistTest.kt
 class AppKonsistTest {
     @Test
     fun `test 1`() {
         projectScope
             .objects()
-            .assertTrue { // .. }
+            .assertTrue { /* .. */ }
     }
 }
 
-// DataTest.kt
+// CoreKonsistTest.kt
 class CoreKonsistTest {
     @Test
     fun `test 1`() {
         projectScope
             .classes()
-            .assertTrue { // .. }
+            .assertTrue { /* .. */ }
     }
 
+    @Test
     fun `test 2`() {
         projectScope
             .interfaces()
-            .assertTrue { // .. }
+            .assertTrue { /* .. */ }
     }
 }
 ```
@@ -390,7 +390,7 @@ project/
 │  │     ├─ AppKonsistTest.kt
 │  │  ├─ core
 │  │     ├─ CoreKonsistTest.kt
-│  │  ├─ Scope.kt   <--- Instance of the KoScope used in both DataTest and AppTest classes.
+│  │  ├─ Scope.kt   <--- Instance of the KoScope used in both AppKonsistTest and CoreKonsistTest classes.
 ```
 
 ## Scope Composition

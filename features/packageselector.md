@@ -6,14 +6,15 @@ description: Select packages
 
 Package wildcard syntax is used to provide a more flexible way of querying packages.
 
-The two dots (`..`) means any zero or more packages eg. all classes reside in a package starting with `com.app`:
+The two dots (`..`) mean zero or more packages, e.g. all classes reside in a package starting with `com.app`:
 
 ```kotlin
     Konsist
         .scopeFromProject()
         .classes()
-        .assertTrue { it.resideInPackages("com.app..") }
+        .assertTrue { it.resideInPackage("com.app..") }
         
+// com.app - valid
 // com.app.data - valid  
 // com.app.data.repository - valid  
 // com.data - invalid
@@ -27,7 +28,7 @@ Package wildcard syntax can be used multiple times inside the string argument. H
     Konsist
         .scopeFromProject()
         .interfaces()
-        .assertTrue { it.resideInPackages("..logger..") }
+        .assertTrue { it.resideInPackage("..logger..") }
 
 // logger - valid  
 // com.logger - valid  

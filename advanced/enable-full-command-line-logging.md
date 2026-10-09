@@ -4,7 +4,7 @@ description: Boost command line output
 
 # Enable Full Command Line Logging
 
-When running using non- [dynamic-konsist-tests](dynamic-konsist-tests/ "mention")the default command line output contains only the test name:
+When running non-[dynamic-konsist-tests](dynamic-konsist-tests/ "mention") the default command line output contains only the test name:
 
 ```
 > Task :konsistTest:test
@@ -21,7 +21,7 @@ FAILURE: Build failed with an exception.
 
 ```
 
-To be able to see full exception log containing invalid declaration `file path` and `line number` enable `exceptionFormat` in Gradle `testLogging`:
+To see the full exception log containing the invalid declaration's `file path` and `line number`, enable `exceptionFormat` in Gradle `testLogging`:
 
 {% tabs %}
 {% tab title="Gradle Kotlin" %}
@@ -37,7 +37,7 @@ tasks.withType<Test> {
 
 {% tab title="Gradle Groovy" %}
 ```groovy
-tasks.test { 
+tasks.withType(Test).configureEach { 
     testLogging { 
         events(TestLogEvent.FAILED)
         exceptionFormat = TestExceptionFormat.FULL 
@@ -47,7 +47,7 @@ tasks.test {
 {% endtab %}
 {% endtabs %}
 
-Now log output provides all informations relevant to pin point the invalid declaration:
+Now the log output provides all information relevant to pinpoint the invalid declaration:
 
 ```
 > Task :konsistTest:test

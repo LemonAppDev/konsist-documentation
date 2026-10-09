@@ -1,6 +1,6 @@
 # Konsist Snapshots
 
-Konsist occasionally releases snapshot versions to a dedicated [snapshot repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/lemonappdev/konsist/). These snapshots provide early access to new features and bug fixes.
+Konsist occasionally releases snapshot versions to a dedicated [snapshot repository](https://central.sonatype.com/repository/maven-snapshots/com/lemonappdev/konsist/). These snapshots provide early access to new features and bug fixes.
 
 {% hint style="warning" %}
 Snapshot versions are development builds and may contain unstable features.
@@ -8,7 +8,7 @@ Snapshot versions are development builds and may contain unstable features.
 
 ## Snapshot Release Process
 
-Currently, snapshots are released manually. At some point this process will be automated - new snapshot will be released each time code is merged to `develop` branch
+Currently, snapshots are released manually. At some point, this process will be automated - a new snapshot will be released each time code is merged to the `develop` branch.
 
 ## How to Use Snapshots
 
@@ -21,9 +21,9 @@ First, you need to include the snapshot repository in your project configuration
 ```kotlin
 repositories {
     // Konsist snapshot repository
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://central.sonatype.com/repository/maven-snapshots/")
 
-    // More repositorues
+    // More repositories
 }
 ```
 {% endtab %}
@@ -33,7 +33,7 @@ repositories {
 repositories {
     // Konsist snapshot repository
     maven {
-        url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+        url 'https://central.sonatype.com/repository/maven-snapshots/'
     }
     
     // More repositories
@@ -42,14 +42,14 @@ repositories {
 {% endtab %}
 
 {% tab title="Maven" %}
-Add the following dependency to the `module\pom.xml` file:
+Add the following repository to the `module/pom.xml` file:
 
 ```xml
 <repositories>
     <!-- Konsist snapshot repository -->
     <repository>
         <id>konsist-snapshots</id>
-        <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         <snapshots>
             <enabled>true</enabled>
         </snapshots>
@@ -63,11 +63,11 @@ Add the following dependency to the `module\pom.xml` file:
 
 ### Add Konsist Dependency
 
-To use Konsist SNAPSHOT dependency changing version to `X.Y.Z-SNAPSHOT` (versions can be found in [snapshot repository](https://s01.oss.sonatype.org/content/repositories/snapshots/com/lemonappdev/konsist/)):
+To use a Konsist SNAPSHOT dependency, change the version to `X.Y.Z-SNAPSHOT` (versions can be found in [snapshot repository](https://central.sonatype.com/repository/maven-snapshots/com/lemonappdev/konsist/)):
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
-Add the following dependency to the `module\build.gradle.kts` file:
+Add the following dependency to the `module/build.gradle.kts` file:
 
 ```kotlin
 dependencies {
@@ -77,7 +77,7 @@ dependencies {
 {% endtab %}
 
 {% tab title="Gradle (Groovy)" %}
-Add the following dependency to the `module\build.gradle` file:
+Add the following dependency to the `module/build.gradle` file:
 
 ```groovy
 dependencies {
@@ -87,7 +87,7 @@ dependencies {
 {% endtab %}
 
 {% tab title="Maven" %}
-Add the following dependency to the `module\pom.xml` file:
+Add the following dependency to the `module/pom.xml` file:
 
 ```xml
 <dependency>

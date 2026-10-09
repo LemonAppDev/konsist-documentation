@@ -4,9 +4,9 @@ description: Query and filter declarations using Konsist API
 
 # Declaration Filtering
 
-## Declaration Filtering
+## Query Declarations
 
-Declaration querying allows to retrieval of declarations of a given type. It is the middle step of the Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by the verification ([declaration-assert.md](declaration-assert.md "mention")) step.
+Declaration querying allows retrieval of declarations of a given type. It is the middle step of the Konsist config preceded by scope retrieval ([koscope.md](koscope.md "mention")) and followed by the verification ([declaration-assert.md](declaration-assert.md "mention")) step.
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -17,13 +17,12 @@ Step3["3\. Define Assertion"]
     style Step2 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
 ```
 
-Typically, verification has performed a collection of declarations such as methods marked with particular annotations or classes located within a single package.
+Typically, verification is performed on a collection of declarations such as methods marked with particular annotations or classes located within a single package.
 
-Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClass`), properties (`KoProperty`), functions (`KoFunction`), etc. The `KoScope` class provides a set of properties and methods to access Kotlin declarations. Each of them returns a list representing a declaration subset:
+Every [koscope.md](koscope.md "mention") contains a set of declarations ([declaration.md](../features/declaration.md "mention")) such as classes (`KoClassDeclaration`), properties (`KoPropertyDeclaration`), functions (`KoFunctionDeclaration`), etc. The `KoScope` class provides a set of properties and methods to access Kotlin declarations. Each of them returns a list representing a declaration subset:
 
-|                  |                                               |
-| ---------------- | --------------------------------------------- |
 | Method           | Description                                   |
+| ---------------- | --------------------------------------------- |
 | `files`          | returns all files present in the scope        |
 | `packages`       | returns all packages present in the scope     |
 | `imports`        | returns all imports present in the scope      |
@@ -57,7 +56,7 @@ Here is an example of querying all properties defined inside classes:
 
 More granular filtering can be applied to additionally filter classes annotated with certain attributes like classes annotated with `UseCase` annotation.
 
-Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` method can be used to filter the content of the `List<KoClass>`: Here filter return classes annotated with `UseCase` annotation:
+Konsist is compatible with [Kotlin Collection processing](https://kotlinlang.org/docs/collections-overview.html#list) API, so the `filter` method can be used to filter the content of the `List<KoClassDeclaration>`. Here, `filter` returns classes annotated with `UseCase` annotation:
 
 ```kotlin
 koScope
@@ -80,12 +79,12 @@ koScope
 ```
 
 {% hint style="info" %}
-The`.`**`withAllAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes having all annotations present (`Annotation1` **and** `Annotation2`).
+The `.`**`withAllAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filters classes having all annotations present (`Annotation1` **and** `Annotation2`).
 
-The`.`**`withSomeAnnotationsOf`**`(Annotation1::class, Annotation2::class)` filter classes having at least one annotation (`Annotation1` **or** `Annotation2`)`.`
+The `.`**`withAnnotationOf`**`(Annotation1::class, Annotation2::class)` filters classes having at least one annotation (`Annotation1` **or** `Annotation2`)`.`
 {% endhint %}
 
-Multiple conditions can be chained to perform more specific filtering. The below snippet filters classes with the `BaseUseCase` parent class that resides in the `usecase` package:
+Multiple conditions can be chained to perform more specific filtering. The below snippet filters classes annotated with the `UseCase` annotation that reside in the `usecase` package:
 
 ```kotlin
 koScope
@@ -107,14 +106,14 @@ koScope
 
 ## Query And Filter Declaration
 
-Querying and filtering stages can be mixed to perform more specific checks. The below snippet filters classes reside in the `controller` package retrieves all properties, and filters properties with `Inject` annotation:
+Querying and filtering stages can be mixed to perform more specific checks. The below snippet filters classes residing in the `controller` package, retrieves all properties, and filters properties with the `Inject` annotation:
 
 ```kotlin
 koScope
     .classes() // query all classes
     .withPackage("..controller") // filter classes in 'controller' package
     .properties()  // query all properties
-    .withAnnotationOf(Inject::class) // filter classes in 'controller' package
+    .withAnnotationOf(Inject::class) // filter properties annotated with 'Inject'
     .assertTrue { 
         //...
     }
@@ -122,7 +121,7 @@ koScope
 
 ## Print Declarations
 
-To print all declarations within use the `print()` method:
+To print all declarations within the list, use the `print()` method:
 
 ```kotlin
 koScope

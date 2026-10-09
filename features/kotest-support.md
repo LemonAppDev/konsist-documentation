@@ -27,13 +27,17 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue (testName = this.testCase.name.testName) {  }
+            .assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
     }
 })
 ```
 
 {% hint style="info" %}
-This example is used [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec) however Kotest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).
+For Kotest 5.x use `this.testCase.name.testName` instead of `this.testCase.name.name`.
+{% endhint %}
+
+{% hint style="info" %}
+This example uses [FreeSpec](https://kotest.io/docs/framework/testing-styles.html#free-spec), however, Kotest provides [multiple testing styles](https://kotest.io/docs/framework/testing-styles.html).
 {% endhint %}
 
 ## KoTestName Extension
@@ -42,7 +46,7 @@ To facilitate test name retrieval you can add a custom `koTestName` extension:
 
 ```kotlin
 val TestScope.koTestName: String
-    get() = this.testCase.name.testName
+    get() = this.testCase.name.name
 ```
 
 This extension enables more concise syntax for providing Kotest test name:
@@ -53,11 +57,11 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue (testName = koTestName) {  } // extension used
+            .assertTrue(testName = koTestName) { it.resideInPackage("..domain.usecase..") } // extension used
     }
 })
 ```
 
 {% hint style="info" %}
-The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the[dynamic-konsist-tests](../advanced/dynamic-konsist-tests/ "mention") page.
+The above test will execute multiple assertions per test (all use cases will be verified in a single test). If you prefer better isolation and more visibility you can execute every assertion as a separate test. See the [dynamic-konsist-tests](../advanced/dynamic-konsist-tests/ "mention") page.
 {% endhint %}

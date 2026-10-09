@@ -12,32 +12,32 @@ The Konsist API provides developers with the capability to create custom checks 
 Konsist is approaching its 1.0 release, marking a significant milestone in its development journey. See the [project-status.md](help/project-status.md "mention").
 {% endhint %}
 
-Konsist offers two types of checks, namely [#declaration-checks](./#declaration-checks "mention") and [#architecturalchecks](./#architecturalchecks "mention"), to thoroughly evaluate the codebase.
+Konsist offers two types of checks, namely [#declaration-checks](./#declaration-checks "mention") and [#architectural-checks](./#architectural-checks "mention"), to thoroughly evaluate the codebase.
 
 ## Declaration Checks
 
 The first type involves declaration checks, where custom tests are created to identify common issues and violations at the declaration level (classes, functions, properties, etc.). These cover various aspects such as class naming, package structure, visibility modifiers, presence of annotations, etc. Here are a few ideas of things to check:
 
-* Every child class extending `ViewModel` must have `ViewModel` suffix
-* Classes with the `@Repository` annotation should reside in `..repository..` package
+* Every child class extending `ViewModel` must have the `ViewModel` suffix
+* Classes with the `@Repository` annotation should reside in the `..repository..` package
 * Every class constructor has alphabetically ordered parameters
 * Every constructor parameter has a name derived from the class name
-* Field injection and `m` prefix is forbidden
+* Field injection and `m` prefix are forbidden
 * Every public member in `api` package must be documented with KDoc
 * and more...
 
-Here is a sample test that verifies if every use case class resides in `domain.usecase` package:
+Here is a sample test that verifies if every use case class resides in the `domain.usecase` package:
 
 {% tabs %}
 {% tab title="JUnit" %}
 ```kotlin
 class UseCaseKonsistTest {
     @Test
-    fun `every use case reside in use case package`() {
+    fun `every use case resides in use case package`() {
         Konsist
             .scopeFromProject() // Define the scope containing all Kotlin files present in the project
             .classes() // Get all class declarations
-            .withNameEndingWith("UseCase") // Filter classes heaving name ending with 'UseCase'
+            .withNameEndingWith("UseCase") // Filter classes having name ending with 'UseCase'
             .assertTrue { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
     }
 }
@@ -48,16 +48,14 @@ class UseCaseKonsistTest {
 {% tab title="Kotest" %}
 ```kotlin
 class UseCaseKonsistTest : FreeSpec({
-    "every use case reside in use case package" {
+    "every use case resides in use case package" {
         Konsist
-        .scopeFromProject() // Define the scope containing all Kotlin files present in the project
-        .classes() // Get all class declarations
-        .withNameEndingWith("UseCase") // Filter classes heaving name ending with 'UseCase'
-        .assertTrue (
-                testName = this.testCase.name.testName
-         ){ 
-              it.resideInPackage("..domain.usecase..") 
-         } // Assert that each class resides in 'any domain.usecase any' package
+            .scopeFromProject() // Define the scope containing all Kotlin files present in the project
+            .classes() // Get all class declarations
+            .withNameEndingWith("UseCase") // Filter classes having name ending with 'UseCase'
+            .assertTrue(testName = this.testCase.name.name) {
+                it.resideInPackage("..domain.usecase..") // Assert that each class resides in 'any domain.usecase any' package
+            }
     }
 })
 ```
@@ -65,18 +63,18 @@ class UseCaseKonsistTest : FreeSpec({
 {% endtabs %}
 
 {% hint style="info" %}
-For more Konsist test samples see the [snippets](inspiration/snippets/ "mention")section.
+For more Konsist test samples see the [snippets](inspiration/snippets/ "mention") section.
 {% endhint %}
 
-## ArchitecturalChecks
+## Architectural Checks
 
 The second type of [Konsist checks](https://github.com/LemonAppDev/konsist) revolves around architecture boundaries - they are intended to maintain the separation of concerns between layers.
 
-Consider this simple 3 layer of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html):
+Consider this simple 3-layer [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html):
 
 * The `domain` layer is independent
-* The `data` layer depends on `domain` layer
-* The `presentation` layer depends on `domain` layer
+* The `data` layer depends on the `domain` layer
+* The `presentation` layer depends on the `domain` layer
 * etc.
 
 Here is a Konsist test that verifies if Clean Architecture dependency requirements are valid:
@@ -107,10 +105,10 @@ Here is a Konsist test that verifies if Clean Architecture dependency requiremen
 {% tab title="Kotest" %}
 ```kotlin
 class ArchitectureTest : FreeSpec({
-    "every use case reside in use case package" {
+    "clean architecture layers have correct dependencies" {
         Konsist
             .scopeFromProject() // Define the scope containing all Kotlin files present in project
-            .assertArchitecture { // Assert architecture
+            .assertArchitecture(testName = this.testCase.name.name) { // Assert architecture
                 // Define layers
                 val domain = Layer("Domain", "com.myapp.domain..")
                 val presentation = Layer("Presentation", "com.myapp.presentation..")

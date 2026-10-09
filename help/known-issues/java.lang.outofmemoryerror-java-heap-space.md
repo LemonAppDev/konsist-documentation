@@ -1,10 +1,10 @@
 # java.lang.OutOfMemoryError: Java heap space
 
-For large projects with many classes to parse, the default JVM heap size might not suffice. If you encounter `java.lang.OutOfMemoryError: Java heap space` error consider increasing the `maxHeapSize` for the `test` source set:
+For large projects with many classes to parse, the default JVM heap size might not suffice. If you encounter `java.lang.OutOfMemoryError: Java heap space` error, consider increasing the `maxHeapSize` for `Test` tasks:
 
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
-Add the following argument to the`build.gradle.kts` file:
+Add the following argument to the `build.gradle.kts` file:
 
 ```kotlin
 tasks.withType<Test> {
@@ -40,6 +40,6 @@ Add the following argument to the `pom.xml` file:
 {% endtabs %}
 
 {% hint style="info" %}
-You may need to set larger value than 1 gigabyte.
+You may need to set a larger value than 1 gigabyte.
 {% endhint %}
 

@@ -1,6 +1,6 @@
 # Verify Classes
 
-Konsist enables development teams to enforce structural rules for class ensuring code consistency across projects.
+Konsist enables development teams to enforce structural rules for classes, ensuring code consistency across projects.
 
 To verify classes start by querying all classes present in the project:
 
@@ -17,7 +17,7 @@ The above code selects all classes present in the project codebase. While this d
 
 Konsist allows you to verify multiple aspects of a class. For a complete understanding of the available APIs, refer to the language reference documentation for [KoClassDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-class-declaration/index.html).
 
-Let's look at few examples.
+Let's look at a few examples.
 
 ## Verify Name
 
@@ -85,13 +85,13 @@ Check if methods (functions defined inside class) have no annotations:
 }
 ```
 
-See [Broken link](broken-reference "mention").
+See [verify-functions.md](verify-functions.md "mention").
 
 ## Verify Properties
 
 Properties can be checked for proper access modifiers, type declarations, and initialization patterns.
 
-Check if all properties (defined inside class) has `val` modifiers:
+Check if all properties (defined inside class) have `val` modifier:
 
 ```kotlin
 ...
@@ -101,7 +101,7 @@ Check if all properties (defined inside class) has `val` modifiers:
 }
 ```
 
-See [#verify-properties](verify-classes.md#verify-properties "mention").
+See [verify-properties.md](verify-properties.md "mention").
 
 ## Verify Constructors
 
@@ -122,7 +122,7 @@ Check if primary constructor is annotated with `Inject` annotation:
 ...
 .primaryConstructors
 .assertTrue {
-    it.hasAnnotation(Inject::class)
+    it.hasAnnotationOf(Inject::class)
 }
 ```
 
@@ -130,7 +130,7 @@ Check if primary constructor is annotated with `Inject` annotation:
 
 Generic type parameters and constraints can be checked for correct usage and bounds declarations.
 
-Check if class has not type parameters:
+Check if class has no type parameters:
 
 <pre class="language-kotlin"><code class="lang-kotlin">...
 .assertFalse {
@@ -154,7 +154,7 @@ Check if parent has no type arguments:
 
 ## Verify Parents
 
-Inheritance hierarchies, interfaces implementations, and superclass relationships can be validated.
+Inheritance hierarchies, interface implementations, and superclass relationships can be validated.
 
 Check if class extends `CrudRepository`:
 
@@ -173,8 +173,8 @@ Check if class has companion object:
 
 ```kotlin
 ...
-.assertTrue { declaration ->
-    declaration.hasObject { it.hasCompanionModifier }
+.assertTrue {
+    it.hasCompanionObject()
 }
 ```
 

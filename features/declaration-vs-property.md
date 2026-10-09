@@ -50,11 +50,11 @@ The above code also contains `CustomLogger` annotation. However, this time code 
 Such properties can be used to check if the function annotated with `CustomLogger` annotation has the correct name prefix:
 
 ```kotlin
-// Every function with a name starting with "log" is annotated with CustomLogger
+// Every function annotated with CustomLogger has a name starting with "log"
 
 koScope
     .functions()
-    .withAllAnnotations("CustomLogger")
+    .withAnnotationNamed("CustomLogger")
     .assertTrue {
         it.hasNameStartingWith("log")
     }

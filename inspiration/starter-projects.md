@@ -1,8 +1,8 @@
 # Starter Projects
 
-Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [starter-projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects) directory. Each [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test ([dynamic-konsist-tests](../advanced/dynamic-konsist-tests/ "mention"))(dynamic tests are currently available at the [develop branch](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects)).
+Konsist provides preconfigured sample projects. Each project contains a complete build script config and a simple Konsist test. Projects are available in the [starter-projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects) directory. Each Gradle [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test ([dynamic-konsist-tests](../advanced/dynamic-konsist-tests/ "mention")).
 
-<table><thead><tr><th width="225"></th><th width="148">JUnit 4</th><th>JUnit 5</th><th>Kotest</th></tr></thead><tbody><tr><td>Android</td><td>Static</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr><tr><td>Spring</td><td>Static</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr><tr><td>Kotlin Multiplatform</td><td>Static</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr></tbody></table>
+<table><thead><tr><th width="225"></th><th width="148">JUnit 4</th><th>JUnit 5</th><th>Kotest</th></tr></thead><tbody><tr><td>Android</td><td>Static</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr><tr><td>Spring</td><td>-</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr><tr><td>Kotlin Multiplatform</td><td>-</td><td>Static + Dynamic</td><td>Static + Dynamic</td></tr></tbody></table>
 
 ## Projects:
 
@@ -31,7 +31,7 @@ Konsist provides preconfigured sample projects. Each project contains a complete
 
 ### KMP
 
-* JUnit5
-  * [konsist-starter-kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-junit5)
+* JUnit 5
+  * [kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-junit5)
 * Kotest
-  * [konsist-starter-kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-kotest)
+  * [kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-kotest)

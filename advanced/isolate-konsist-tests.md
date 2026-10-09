@@ -6,15 +6,15 @@ description: Aim for better test separation.
 
 Typically, it's advisable to consolidate all Konsist tests in a unified location. This approach is preferred because these tests are often designed to validate the structure of the entire project's codebase. There are three potential options for storing Konsist tests in project codebase:
 
-<table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsist-test-source-set">#dedicated-konsist-test-source-set</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-module">#dedicated-module</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th width="205"></th><th>Android</th><th>Spring</th><th>KMP</th><th>Pure Kotlin</th></tr></thead><tbody><tr><td><a data-mention href="isolate-konsist-tests.md#existing-test-source-set">#existing-test-source-set</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-konsisttest-source-set">#dedicated-konsisttest-source-set</a></td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><a data-mention href="isolate-konsist-tests.md#dedicated-gradle-module">#dedicated-gradle-module</a></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
 
-Recommended approach is to use [#dedicated-konsisttest-source-set](isolate-konsist-tests.md#dedicated-konsisttest-source-set "mention") or a [#dedicated-module](isolate-konsist-tests.md#dedicated-module "mention"). These approaches allows to easily isolate Konsist tests from other types of tests e.g. separate `unit tests` from `Konsist tests`.
+Recommended approach is to use [#dedicated-konsisttest-source-set](isolate-konsist-tests.md#dedicated-konsisttest-source-set "mention") or a [#dedicated-gradle-module](isolate-konsist-tests.md#dedicated-gradle-module "mention"). These approaches allow you to easily isolate Konsist tests from other types of tests e.g. separate `unit tests` from `Konsist tests`.
 
 ## Existing Test Source Set
 
-The Konsist library can be added to the project by adding the dependency on the existing `test` source set .
+The Konsist library can be added to the project by adding the dependency on the existing `test` source set.
 
-![test sorce directory](../.gitbook/assets/TestSourceSet.png)
+![test source directory](../.gitbook/assets/TestSourceSet.png)
 
 To execute tests run `./gradlew test` command.
 
@@ -25,7 +25,7 @@ The downside of this approach is that various types of tests are mixed in `test`
 This section demonstrates how to add the `konsistTest` test source directory inside the `app` module. This configuration is mostly useful for Spring and Kotlin projects.
 
 {% hint style="info" %}
-This page describes the test located in the `app` module with the build config file located in `app` a folder. If the project does not contain any module then configuration should be applied in the root build config file.
+This page describes the test located in the `app` module with the build config file located in the `app` folder. If the project does not contain any module then configuration should be applied in the root build config file.
 {% endhint %}
 
 This test directory will have a `kotlin` folder containing Kotlin code.
@@ -35,7 +35,7 @@ This test directory will have a `kotlin` folder containing Kotlin code.
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
 ```kotlin
-// build.gradle.kts (root)
+// app/build.gradle.kts
 
 plugins {
     `jvm-test-suite`
@@ -49,7 +49,7 @@ testing {
                 implementation(project())
                 
                 // Add Konsist dependency
-                implementation("com.lemonappdev:konsist:0.13.0") 
+                implementation("com.lemonappdev:konsist:0.18.0") 
             }
         }
     }
@@ -65,8 +65,8 @@ tasks.matching { it.name == "check" }.configureEach {
 {% tab title="Gradle (Groovy)" %}
 Use the Gradle built-in [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) to define the `konsistTest` source set. Add a `testing` block to the project configuration:
 
-```kotlin
-// build.gradle (root)
+```groovy
+// app/build.gradle
 
 plugins {
     id 'jvm-test-suite'
@@ -84,7 +84,7 @@ testing {
                 implementation project() 
                 
                 // Add Konsist dependency
-                implementation "com.lemonappdev:konsist:0.13.0"
+                implementation "com.lemonappdev:konsist:0.18.0"
             }
 
             targets { 
@@ -109,7 +109,7 @@ tasks.matching { it.name == "check" }.configureEach { task ->
 Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-plugin/) to define the `konsistTest` test source directory. Add plugin config to the project configuration:
 
 ```xml
-# app/pom.xml
+<!-- app/pom.xml -->
 
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
@@ -136,9 +136,9 @@ Use the [Maven Build Helper Plugin](https://www.mojohaus.org/build-helper-maven-
 
 Create `app/src/konsistTest/kotlin` folder and reload the project. The IDE will present a new `konsistTest` source set in the `app` module.
 
-<figure><img src="../.gitbook/assets/KonsistTestSourceSet.png" alt=""><figcaption><p>konsistTest sorce directory</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/KonsistTestSourceSet.png" alt=""><figcaption><p>konsistTest source directory</p></figcaption></figure>
 
-The `konsistTest` test source folder works exactly like the build-in `test` source folder, so Kosist tests can be defined and executed in a similar way:
+The `konsistTest` test source folder works exactly like the built-in `test` source folder, so Konsist tests can be defined and executed in a similar way:
 
 {% tabs %}
 {% tab title="Gradle" %}
@@ -148,7 +148,7 @@ The `konsistTest` test source folder works exactly like the build-in `test` sour
 {% endtab %}
 
 {% tab title="Maven" %}
-```yaml
+```bash
 mvn test
 ```
 {% endtab %}
@@ -161,7 +161,7 @@ This section demonstrates how to add the `konsistTest` module to the project. Th
 {% hint style="info" %}
 The [Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin) is used to build Android apps. The Android Gradle Plugin is not compatible with the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html) and it does not allow adding new source sets. To fully isolate tests a new module is required.
 
-The [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project contains modules with code for different platforms. To decouple Konsist tests from a single platform dedicated module containing Konsist test should be added.
+The [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project contains modules with code for different platforms. To decouple Konsist tests from a single platform, a dedicated module containing Konsist tests should be added.
 {% endhint %}
 
 ### Add Gradle `konsistTest` Module:
@@ -185,14 +185,14 @@ Create `konsistTest/src/test/kotlin` directory in the project root:
 
 <figure><img src="../.gitbook/assets/image (30).png" alt="" width="374"><figcaption></figcaption></figure>
 
-Add module include inside `settings.gradle.kts` file:
+Add module include inside `settings.gradle` file:
 
-```kotlin
+```groovy
 // settings.gradle
 include ':konsistTest'
 ```
 
-For Android projects add `com.android.library` plugin in the `konsistTest/scr/test/kotlin/build.gradle` file.
+For Android projects add `com.android.library` plugin in the `konsistTest/build.gradle` file.
 
 Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
@@ -204,11 +204,11 @@ Gradle's default behavior assumes that a module's code is up-to-date if the modu
 
 However, this approach doesn't align well with Konsist's functionality. Konsist analyzes the entire codebase, not just individual modules. As a result, when Gradle skips Konsist tests based on its module-level change detection, it fails to account for potential changes in other modules that Konsist would typically examine.&#x20;
 
-There are few solutions to this problem.
+There are a few solutions to this problem.
 
 #### Solution 1: Module Is Always Out of Date
 
-An alternative solution for this problem is to define `konsistTest` module as always being out of date:
+One solution is to define `konsistTest` module as always being out of date:
 
 {% tabs %}
 {% tab title="Gradle Kotlin" %}
@@ -221,7 +221,7 @@ tasks.withType<Test> {
 ```
 {% endtab %}
 
-{% tab title="Gradle Grovy" %}
+{% tab title="Gradle Groovy" %}
 ```groovy
 // konsistTest/build.gradle
 
@@ -233,6 +233,8 @@ tasks.withType(Test) {
 {% endtabs %}
 
 #### Solution 2: Flag --rerun-tasks
+
+Run `./gradlew konsistTest:test --rerun-tasks` to force Gradle to execute Konsist tests.
 
 {% hint style="info" %}
 To execute all unit tests besides tests in the `konsistTest` module run:
@@ -247,25 +249,10 @@ To avoid manually passing `--rerun-tasks` flag each time a custom `konsistCheck`
 Add to root `build.gradle.kts`:
 
 ```kotlin
-tasks.register("konsistCheck") {
+tasks.register<Exec>("konsistCheck") {
     group = "verification"
     description = "Runs Konsist static code analysis"
-
-    doLast {
-        val output = ByteArrayOutputStream()
-        val result = project.exec {
-            commandLine("./gradlew", "konsistTest:test", "--rerun-tasks")
-            standardOutput = output
-            errorOutput = output
-            isIgnoreExitValue = true
-        }
-
-        println(output.toString())
-
-        if (result.exitValue != 0) {
-            throw GradleException("Konsist tests failed")
-        }
-    }
+    commandLine("./gradlew", "konsistTest:test", "--rerun-tasks")
 }
 ```
 {% endtab %}
@@ -274,25 +261,10 @@ tasks.register("konsistCheck") {
 Add to root `build.gradle`:
 
 ```groovy
-tasks.register("konsistCheck") {
+tasks.register("konsistCheck", Exec) {
     group = "verification"
     description = "Runs Konsist static code analysis"
-
-    doLast {
-        def output = new ByteArrayOutputStream()
-        def result = project . exec {
-            commandLine './gradlew', 'konsistTest:test', '--rerun-tasks'
-            standardOutput = output
-            errorOutput = output
-            ignoreExitValue = true
-        }
-
-        println output . toString ()
-
-        if (result.exitValue != 0) {
-            throw new GradleException ("Konsist tests failed")
-        }
-    }
+    commandLine './gradlew', 'konsistTest:test', '--rerun-tasks'
 }
 ```
 {% endtab %}

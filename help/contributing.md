@@ -14,7 +14,7 @@ To chat with Konsist developers and the Konsist community please check the [#kon
 
 The Konsist project is now at a critical stage where community input is essential to polish and mature it.
 
-There are a variety of ways to contribute to the Konsit project:
+There are a variety of ways to contribute to the Konsist project:
 
 * **Coding:** This is the most common way to contribute. You can fix bugs or add new features.
 * **Testing:** You can help to improve the quality by testing the code and reporting bugs. This is a great way to get involved and help out maturing the project.
@@ -30,37 +30,37 @@ Our [contributor backlog is public](https://lemonappdev.atlassian.net/issues/?jq
 
 The best way to interact with the Konsist team is the dedicated [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) channel ([kotlinlang Slack workspace](https://kotlinlang.slack.com/)). If you want to help or need guidelines just say hello at [#konsist-dev](https://kotlinlang.slack.com/archives/C0628CK7TEV) Slack channel.
 
-Tickets that can be grabbed by the community have a [ContributeOpportunity](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20\(Open%2C%20%22Board%20Backlog%22%2C%20Backlog\)%20ORDER%20BY%20created%20DESC) label. You can also work on another improvement or bug-fix, but this may require more alignment, for example, certain features and planned ahead, so the ticket should be completed within a given time period.
+Tickets that can be grabbed by the community have a [ContributeOpportunity](https://lemonappdev.atlassian.net/issues/?jql=labels%20%3D%20ContributeOpportunity%20and%20status%20in%20\(Open%2C%20%22Board%20Backlog%22%2C%20Backlog\)%20ORDER%20BY%20created%20DESC) label. You can also work on another improvement or bug-fix, but this may require more alignment, for example, certain features are planned ahead, so the ticket should be completed within a given time period.
 
 ### Start Contributing - Konsist
 
-1. Get contributor JIRA access - send your email in DM to [#igorwojda](https://kotlinlang.slack.com/archives/D2T3KL43X) at [kotlinlang Slack workspace](https://kotlinlang.slack.com/).
+1. Get contributor JIRA access - send your email in DM to [@igorwojda](https://kotlinlang.slack.com/archives/D2T3KL43X) at [kotlinlang Slack workspace](https://kotlinlang.slack.com/).
 2. Pick the ticket in JIRA
 3. Assign it to yourself, and update the ticket status to `In Progress`
-4. Fork [Konsist ](https://github.com/LemonAppDev/konsist)repository (uncheck "Copy the main branch only")
+4. Fork [Konsist](https://github.com/LemonAppDev/konsist) repository (uncheck "Copy the main branch only")
 
 <figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
-5. Branch of [develop](https://github.com/LemonAppDev/konsist/tree/develop) branch
+5. Branch off [develop](https://github.com/LemonAppDev/konsist/tree/develop) branch
 6. Implement the changes
 7. Add tests (look around in codebase for similar code being tested)
-8. Open draft[ Pull Request](https://github.com/LemonAppDev/konsist/compare) with [develop](https://github.com/LemonAppDev/konsist/tree/develop) branch as target ([develop](https://github.com/LemonAppDev/konsist/tree/develop) branch will be merged into the [main](https://github.com/LemonAppDev/konsist/tree/main) branch after the release)
+8. Open draft [Pull Request](https://github.com/LemonAppDev/konsist/compare) with [develop](https://github.com/LemonAppDev/konsist/tree/develop) branch as target ([develop](https://github.com/LemonAppDev/konsist/tree/develop) branch will be merged into the [main](https://github.com/LemonAppDev/konsist/tree/main) branch after the release)
    1. Make sure all checks are passing before marking PR as `Ready for review`.
 
 ### Start Contributing - Konsist Docs
 
-The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) - repository contains Konsist documentation (this webpage).
+The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository contains Konsist documentation (this webpage).
 
-1. Fork [Konsist-documentation](https://github.com/LemonAppDev/konsist) repository
-2. Branch of [main](https://github.com/LemonAppDev/konsist-documentation/tree/main) branch
+1. Fork [Konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository
+2. Branch off [main](https://github.com/LemonAppDev/konsist-documentation/tree/main) branch
 3. Make changes
 4. Open [new Pull Request](https://github.com/LemonAppDev/konsist-documentation/compare) with [main](https://github.com/LemonAppDev/konsist-documentation/tree/main) branch as a target
 
 ## Checks
 
-During the PR review, several types of checks are executed using [GitHub Actions](https://github.com/features/actions) ([.github/workflow](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows)). These checks can also be executed locally using the following commands:
+During the PR review, several types of checks are executed using [GitHub Actions](https://github.com/features/actions) ([.github/workflows](https://github.com/LemonAppDev/konsist/tree/main/.github/workflows)). These checks can also be executed locally using the following commands:
 
 * [Spotless](https://github.com/diffplug/spotless) (runs [ktlint](https://github.com/pinterest/ktlint))
   * `./gradlew spotlessCheck` - check the code using Spotless
@@ -71,13 +71,13 @@ During the PR review, several types of checks are executed using [GitHub Actions
 * Tests
   * `./gradlew lib:test` - run JUnit tests
   * `./gradlew lib:apiTest` - run API tests
-  * `./gradlew lib:integrationTest` - run integrations tests
+  * `./gradlew lib:integrationTest` - run integration tests
   * `./gradlew lib:konsistTest` - run Konsist tests to test Konsist codebase 🤯😉
 
 {% hint style="info" %}
 Konsist adheres to stringent testing standards. Each Provider undergoes testing against every type of declaration, leading to an extensive set of tests. This thorough testing ensures two main objectives:
 
-1. Guaranteeing future compatibility with Kotlin 2.0.
+1. Guaranteeing compatibility with future Kotlin versions.
 2. Due to reliance on an external library for parsing, it's imperative to have comprehensive tests to ensure the Konsist API functions as anticipated.
 {% endhint %}
 
@@ -95,7 +95,7 @@ To test the changes locally you can publish a `SNAPSHOT` artifact of the Konsist
 ./gradlew publishToMavenLocal -Pkonsist.releaseTarget=local
 ```
 
-After publishing a new artifact `x.y.z-SNAPSHOT` with the version number will appear in the local Maven repository:
+After publishing, a new artifact with the `x.y.z-SNAPSHOT` version will appear in the local Maven repository:
 
 ```
 Mac: /Users/<user_name>/.m2/repository/com/lemonappdev/konsist
@@ -123,7 +123,7 @@ repositories {
 {% endtab %}
 
 {% tab title="Maven" %}
-By default, the Maven project uses a local repository. If not add the following block to the `module\pom.xml` file:
+By default, the Maven project uses a local repository. If not, add the following block to the `module/pom.xml` file:
 
 ```xml
 <repositories>
@@ -142,7 +142,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 
 Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact e.g.
 
-`com.lemonappdev:konsist:0.12.0-SNAPSHOT`
+`com.lemonappdev:konsist:0.18.0-SNAPSHOT`
 
 Now build scripts will be able to resolve this newly published Konsist artifact.
 
@@ -154,13 +154,13 @@ IntelliJ IDEA UI provides a convenient way to check which version of Konsist is 
 
 ## No Matching Toolchains Found Error
 
-If during a build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version e.g. `19`.
+If during a build you encounter an error regarding `No matching toolchains found` then open `Module Settings` / `Project Structure` windows and set Java SDK to version e.g. `25`.
 
 <figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 You can install missing JDKs directly from IntelliJ IDEA - click on the `Module SDK` combo box and select `+Add SDK`.
 
-If during the build you encounter an error regarding `Could not determine the dependencies of null.` then open `File` / `Settings` / `Build, Execute, Deployment` / `Build Tools` / `Gradle` window and set Java SDK to version `19`.
+If during the build you encounter an error regarding `Could not determine the dependencies of null.` then open `File` / `Settings` / `Build, Execution, Deployment` / `Build Tools` / `Gradle` window and set Java SDK to version `25`.
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
@@ -170,13 +170,13 @@ If during the build you encounter an error regarding `Could not determine the de
 
 Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plugin](https://docs.gradle.org/current/userguide/jvm\_test\_suite\_plugin.html)) to provide better isolation between various types of tests:
 
-* `test` - tests related to generic Konsist API (everything except the `architectureAssert`)
-* `apiTest` - tests related to `architectureAssert`
-* `integrationTest` - test classes using custom Kotlin snippets (`.kttxt`) to test the Konsist API
+* `test` - tests related to generic Konsist API (everything except the `assertArchitecture`)
+* `apiTest` - tests related to `assertArchitecture`
+* `integrationTest` - test classes using custom Kotlin snippets (`.kttest`) to test the Konsist API
 * `konsistTest` - tests Konsist codebase consistency using `konsist` library
-* `snippets` - contains Kotlin code snippets, written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The update-snippets.py script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
+* `snippet` - contains Kotlin code snippets (`.ktdoc` files), written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The `misc/scripts/deploy_snippets_to_konsist_documentation_repo.py` script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
 
-We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-project](https://github.com/LemonAppDev/konsist/tree/main/test-projects) directory on the Konsist repository.
+We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-projects](https://github.com/LemonAppDev/konsist/tree/main/misc/test-projects) directory on the Konsist repository.
 
 ### Layers
 
@@ -201,4 +201,4 @@ The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation
 
 The [snippets](../inspiration/snippets/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
 
-Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin). class e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/javax/inject/Inject.kt).
+Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin/dummyclasses), e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/dummyclasses/javax/inject/Inject.kt).

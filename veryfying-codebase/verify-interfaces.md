@@ -1,8 +1,8 @@
 # Verify Interfaces
 
-Konsist enables development teams to enforce structural rules for interfaces ensuring code consistency across projects.
+Konsist enables development teams to enforce structural rules for interfaces, ensuring code consistency across projects.
 
-To verify interfaces start by querying all interface present in the project:
+To verify interfaces start by querying all interfaces present in the project:
 
 ```kotlin
 Konsist
@@ -12,12 +12,12 @@ Konsist
 ```
 
 {% hint style="info" %}
-The above code selects all interfaces present in the project codebase. While this demonstrates Konsist's API capabilities, in practical scenarios you'll typically want to verify a specific subset of interface - such as those with a particular name suffix or interfaces within a given package. See [koscope.md](../writing-tests/koscope.md "mention") and [declaration-query-and-filter.md](../writing-tests/declaration-query-and-filter.md "mention").&#x20;
+The above code selects all interfaces present in the project codebase. While this demonstrates Konsist's API capabilities, in practical scenarios you'll typically want to verify a specific subset of interfaces - such as those with a particular name suffix or interfaces within a given package. See [koscope.md](../writing-tests/koscope.md "mention") and [declaration-query-and-filter.md](../writing-tests/declaration-query-and-filter.md "mention").&#x20;
 {% endhint %}
 
-Konsist allows you to verify multiple aspects of a interfaces. For a complete understanding of the available APIs, refer to the language reference documentation for [KoInterfaceDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-interface-declaration/index.html).
+Konsist allows you to verify multiple aspects of interfaces. For a complete understanding of the available APIs, refer to the language reference documentation for [KoInterfaceDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-interface-declaration/index.html).
 
-Let's look at few examples.
+Let's look at a few examples.
 
 ## Verify Name
 
@@ -26,7 +26,7 @@ Interface names can be validated to ensure they follow project naming convention
 Check if interface name ends with `Repository`:
 
 ```kotlin
-..
+...
 .assertTrue {
    it.hasNameEndingWith("Repository")
 }
@@ -39,7 +39,7 @@ Interface modifiers can be validated to ensure proper encapsulation and access c
 Check if interface has `internal` modifier:
 
 ```kotlin
-..
+...
 .assertTrue {
    it.hasInternalModifier
 }
@@ -60,7 +60,7 @@ Check if interface is annotated with `Service` annotation:
 
 ## Verify Package
 
-Package declarations can be validated to ensure classes are located in the correct package structure according to architectural guidelines.
+Package declarations can be validated to ensure interfaces are located in the correct package structure according to architectural guidelines.
 
 Check if interface has `model` package or sub-packages (`..` means include sub-packages):
 
@@ -85,13 +85,13 @@ Check if methods (functions defined inside interface) have name starting with `L
 }
 ```
 
-See [Broken link](broken-reference "mention").
+See [verify-functions.md](verify-functions.md "mention").
 
 ## Verify Properties
 
 Properties can be checked for proper access modifiers, type declarations, and initialization patterns.
 
-Check if all properties (defined inside interface) has `val` modifiers:
+Check if all properties (defined inside interface) have `val` modifier:
 
 ```kotlin
 ...
@@ -101,13 +101,13 @@ Check if all properties (defined inside interface) has `val` modifiers:
 }
 ```
 
-See [#verify-properties](verify-interfaces.md#verify-properties "mention").
+See [verify-properties.md](verify-properties.md "mention").
 
 ## Verify Generic Type Parameters
 
 Generic type parameters and constraints can be checked for correct usage and bounds declarations.
 
-Check if interface has not type parameters:
+Check if interface has no type parameters:
 
 <pre class="language-kotlin"><code class="lang-kotlin">...
 .assertFalse {
@@ -131,7 +131,7 @@ Check if parent has no type arguments:
 
 ## Verify Parents
 
-Inheritance hierarchies, interfaces implementations, and superclass relationships can be validated.
+Inheritance hierarchies, interface implementations, and superclass relationships can be validated.
 
 Check if interface extends `CrudRepository`:
 
@@ -151,7 +151,7 @@ Check if interface has `companion object`:
 ```kotlin
 ...
 .assertTrue {
-   it.hasObject { objectt -> objectt.hasCompanionModifier }
+   it.hasCompanionObject()
 }
 ```
 

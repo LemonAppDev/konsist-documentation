@@ -40,7 +40,7 @@ Konsist
 
 ## Define Layers
 
-Create [Layer](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer/index.html?query=data%20class%20Layer\(name:%20String,%20rootPackage:%20String\)) class instance to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `package` used to define architectural layer:
+Create [Layer](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer/index.html?query=data%20class%20Layer\(name:%20String,%20rootPackage:%20String\)) class instance to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `rootPackage` used to define the architectural layer:
 
 ```kotlin
 Konsist
@@ -53,7 +53,7 @@ Konsist
 ```
 
 {% hint style="info" %}
-The inclusion of two trailing dots indicates that the layer is denoted by the `com.myapp.business` package together with all of its sub-packages.
+The inclusion of two trailing dots indicates that the layer is denoted by the `com.myapp.presentation` package together with all of its sub-packages.
 {% endhint %}
 
 ## Define Architecture Assertions
@@ -85,7 +85,7 @@ Konsist
 
 ## Strict DependsOn
 
-By default `dependsOn` method works like does not perform strict layer validation (`strict = false`).  However this behaviour is controlled b y`strict` parameter:
+By default, the `dependsOn` method does not perform strict layer validation (`strict = false`). However, this behaviour is controlled by the `strict` parameter:
 
 * `strict = false` (default) - may depend on layer
 * `strict = true`  - have to depend on layer
@@ -102,13 +102,13 @@ featureLayer.dependsOn(domainLayer, strict = true)
 
 ## Excluding Files
 
-Architecture verification can be performed on `KoScope` (as seen above) and a list containing `KoFiles`.  For example, you can remove a few files from the scope before performing an architectural check:
+Architecture verification can be performed on `KoScope` (as seen above) and a list of `KoFileDeclaration`s. For example, you can remove a few files from the scope before performing an architectural check:
 
 ```kotlin
 Konsist
     .scopeFromProject()
     .files
-    .withNameStartingWith("Repository")
+    .withoutNameStartingWith("Repository")
     .assertArchitecture {
         val presentation = Layer("Presentation", "com.myapp.presentation..")
         val data = Layer("Data", "com.myapp.data..")
@@ -118,26 +118,25 @@ Konsist
     }
 ```
 
-This approach provides more flexibility when working with complex projects, however, The desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
+This approach provides more flexibility when working with complex projects; however, the desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
 
 ## Include Layer Without Defining Dependency
 
-The [include](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/include.html) method allows to include layer in architecture verification, without defining a dependency for this layer:
+The [include](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/include.html) method allows including a layer in architecture verification without defining a dependency for this layer:
 
 ```kotlin
 private val domain = Layer("Domain",  "com.domain..")
-private val presentation = Layer("Presentation", "com..presentation..")
+private val presentation = Layer("Presentation", "com.presentation..")
 
 Konsist
     .scopeFromProject()
-    scope.assertArchitecture {
+    .assertArchitecture {
         // Include presentation for architectural check without defining a dependency
         presentation.include()
         
-        // Include domain layer or architectural check and define no dependency (independent)
-        domain.doesOnNothing()
+        // Include domain layer for architectural check and define no dependency (independent)
+        domain.dependsOnNothing()
     }
-}
 ```
 
 ## Architecture As A Variable

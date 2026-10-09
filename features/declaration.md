@@ -4,7 +4,7 @@ description: What is declaration?
 
 # Declaration
 
-The declaration (`KoDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFileDeclaration`) contains one or more declarations. The declaration can be a package (`KoPackageDeclaration`), property (`KoPropertyDeclaration`), annotation (`KoAnnotationDeclaration`), class (`KoClassDeclaration`), etc.
+The declaration (`KoBaseDeclaration`) represents a code entity, a piece of Kotlin code. Every parsed Kotlin File (`KoFileDeclaration`) contains one or more declarations. The declaration can be a package (`KoPackageDeclaration`), property (`KoPropertyDeclaration`), annotation (`KoAnnotationDeclaration`), class (`KoClassDeclaration`), etc.
 
 Consider this Kotlin code snippet file:
 
@@ -19,7 +19,7 @@ open class Logger(val level: String) {
 }
 ```
 
-The above snippet is represented by the `KoFileDeclaration`class. It contains two declarations - property declaration (`KoPropertyDeclaration`) and class declaration (`KoClassDeclaration`). The `Logger` class declaration contains a single function declaration (`KoFunctionDeclaration` ):
+The above snippet is represented by the `KoFileDeclaration` class. It contains two declarations - property declaration (`KoPropertyDeclaration`) and class declaration (`KoClassDeclaration`). The `Logger` class declaration contains a single function declaration (`KoFunctionDeclaration` ):
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -30,10 +30,10 @@ flowchart TD
     KoClass---KoFunction
 ```
 
-Declarations mimic the Kotlin file structure. Konsts API provides a way to retrieve every element. To get all functions in all classes inside the file using `.classes().functions()` :
+Declarations mimic the Kotlin file structure. Konsist API provides a way to retrieve every element. To get all functions in all classes inside the file use `.classes().functions()`:
 
 ```kotlin
-koFile // List<KoFile>
+koFile // KoFileDeclaration
     .classes()  // List<KoClassDeclaration>
     .functions() // List<KoFunctionDeclaration>
 ```
@@ -44,10 +44,10 @@ To print declaration content use `koDeclaration.print()` method.
 
 ## Declaration Properties
 
-Each declaration contains a set of properties to facilitate filtering and verification eg. `KoClass` declaration has `name`,  `modifiers` , `annotations` , `declarations` (containing `KoFunction`) etc. Here is how the `name` of the function can be retrieved.
+Each declaration contains a set of properties to facilitate filtering and verification e.g. `KoClassDeclaration` has `name`, `modifiers`, `annotations`, `declarations` (containing `KoFunctionDeclaration`) etc. Here is how the `name` of the function can be retrieved.
 
 ```kotlin
-val name = koFile // List<KoFileDeclaration>
+val name = koFile // KoFileDeclaration
     .classes()  // List<KoClassDeclaration>
     .functions() // List<KoFunctionDeclaration>
     .first() // KoFunctionDeclaration
@@ -62,7 +62,7 @@ Although it is possible to retrieve a property of a single declaration usually v
 
 Each declaration exposes a few additional properties to help with debugging:
 
-* `text` - provides declaration text eg. `val property role = "Developer"`
-* `location` - provides file path with file name, line, and column e.g. `~\Dev\IdeaProject\SampleApp\src\kotlin\com\sample\Logger:10:5`
+* `text` - provides declaration text e.g. `val role = "Developer"`
+* `location` - provides file path with file name, line, and column e.g. `~\Dev\IdeaProject\SampleApp\src\kotlin\com\sample\Logger.kt:10:5`
 * `locationWithText` - provides `location` together with the declaration `text`
 

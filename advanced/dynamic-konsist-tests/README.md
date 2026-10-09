@@ -23,7 +23,7 @@ In contrast, dynamic tests immediately highlight the root issue since every use 
 Utilizing dynamic tests over static ones makes it simpler to pinpoint failures. Consequently, it reduces the time and effort spent on parsing long error logs, offering a more efficient testing experience.&#x20;
 
 {% hint style="info" %}
-Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
+Take a look at [sample projects](https://github.com/LemonAppDev/konsist/tree/develop/samples/starter-projects). Every Gradle-based [JUnit5](https://junit.org/junit5/) and [Kotest](https://kotest.io/) project has an additional dynamic test (`SampleDynamicKonsistTest`) preconfigured. Check out the project and run the test.
 {% endhint %}
 
 Let's begin by creating a static test and then delve into the steps to transition towards dynamic tests.
@@ -62,16 +62,16 @@ class UseCaseKonsistTest {
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.hasTestClass() }
+            .assertTrue { it.hasTestClasses() }
     }
 
     @Test
-    fun `use case reside in domain dor usecase package`() {
+    fun `use case should reside in domain dot usecase package`() {
         Konsist
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.resideInPackage("..domain..usecase..") }
+            .assertTrue { it.resideInPackage("..domain.usecase..") }
     }
 }
 ```
@@ -86,11 +86,11 @@ class UseCaseKonsistTest : FreeSpec({
         .withNameEndingWith("UseCase")
 
     "use case should have test" {
-        useCases.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+        useCases.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
     }
 
     "use case should reside in ..domain.usecase.. package" {
-        useCases.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
+        useCases.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
     }
 })
 ```
@@ -118,7 +118,7 @@ While the current setup using static, predefined tests is functional, dynamic te
 
 Dynamic tests are generated at runtime based on conditions and input data. In this scenario, the dynamic input data is the list of use cases that grows over the project life cycle.
 
-The objective is to generate dynamic tests for each combination of rule and use case (KoClass declaration) verified by Konsist. With three use cases and two rules for each, this will yield a total of six separate tests:
+The objective is to generate dynamic tests for each combination of rule and use case (`KoClassDeclaration`) verified by Konsist. With three use cases and two rules for each, this will yield a total of six separate tests:
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -152,7 +152,7 @@ Let's convert this idea into a dynamic test:
 JUnit provides built-in support for dynamic tests through its core framework. This ensures that developers can seamlessly employ dynamic testing capabilities.&#x20;
 
 {% hint style="info" %}
-The`org.junit.jupiter:junit-jupiter-params:x.v.z` dependency is required to enable JUnit 5 dynamic tests.
+The `org.junit.jupiter:junit-jupiter-api:x.y.z` dependency is required to enable JUnit 5 dynamic tests.
 {% endhint %}
 
 ```kotlin
@@ -167,7 +167,7 @@ class UseCaseKonsistTest {
             Stream.of(
                 dynamicTest("${useCase.name} should have test") {
                     useCase.assertTrue(testName = "${useCase.name} should have test") {
-                        it.hasTestClass()
+                        it.hasTestClasses()
                     }
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
@@ -190,7 +190,7 @@ For dynamic tests such as JUnit 5, it is recommended that the test name is expli
 {% endtab %}
 
 {% tab title="Kotest" %}
-Kotest offers native support for JUnit's dynamic tests. Developers can effortlessly integrate and utilize dynamic testing features without needing additional configurations or plugins.
+Kotest natively supports dynamic tests. Developers can effortlessly integrate and utilize dynamic testing features without needing additional configurations or plugins.
 
 ```kotlin
 class UseCaseKonsistTest : FreeSpec({
@@ -200,10 +200,10 @@ class UseCaseKonsistTest : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain..usecase..") }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
             }
         }
 })
@@ -219,7 +219,7 @@ For dynamic tests such as Kotest, it is recommended that the test name is explic
 {% endtab %}
 
 {% tab title="JUnit 4" %}
-In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively thus dynamic tests are not supported.
+In JUnit 4, the concept of dynamic tests (like JUnit 5's `@TestFactory`) does not exist natively, thus dynamic tests are not supported.
 {% endtab %}
 {% endtabs %}
 

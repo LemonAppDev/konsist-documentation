@@ -1,20 +1,20 @@
 # Verify Source Declarations
 
-The source declaration (`sourceDeclaration` property) holds the reference to actual type declaration such as class or interface.
+The source declaration (`sourceDeclaration` property) holds the reference to the actual type declaration such as class or interface.
 
-Konsist API allows for verify properties of such type e.g.:
+Konsist API allows verifying properties of such types, e.g.:
 
 * Check if property type implements certain interface
 * Check if function return type name ends with `Repository`
 * Check if parent class is annotated with given annotation
 
-Every declaration that is using another type such as property, function, parent exposes `sourceDeclaration` property.
+Every type used by a declaration (e.g. property type, function return type, parent) exposes the `sourceDeclaration` property.
 
-Let's look at few examples:
+Let's look at a few examples:
 
 ## Verify Property Source Declaration
 
-Check if type of `current` property is has a type which is a class declaration heaving `internal` modifier:
+Check if the `current` property has a type which is a class declaration having the `internal` modifier:
 
 ```kotlin
 // Code Snippet
@@ -46,7 +46,7 @@ Check if function return type is a basic Kotlin type:
 ```kotlin
 // Code Snippet
 internal class Engine {
-   fun start(): Boolean
+   fun start(): Boolean = true
 }
 
 // Konsist test
@@ -55,19 +55,21 @@ Konsist
    .classes()
    .functions()
    .assertTrue {
-      it.returnType?
-      .sourceDeclaration
+      it.returnType
+      ?.sourceDeclaration
       ?.isKotlinBasicType
    }
 ```
 
 ## Verify Class Has Interface Source Declaration
 
+Check if all class parents are interfaces:
+
 ```kotlin
 // Code Snippet
-internal class Engine {
-   fun start(): Boolean
-}
+interface Vehicle
+
+internal class Engine : Vehicle
 
 // Konsist test
 Konsist

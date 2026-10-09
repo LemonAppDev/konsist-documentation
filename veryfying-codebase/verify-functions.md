@@ -21,25 +21,25 @@ Konsist
 ...
 ```
 
-Konsist API allows to query `local` functions:
+Local functions are included by default. To exclude them, set `includeLocal = false`:
 
 ```kotlin
 Konsist
 .scopeFromProject()
 .classes()
-.functions(includeLocal = true)
+.functions(includeLocal = false)
 ...
 ```
 
-Konsist allows you to verify multiple aspects of a functions. For a complete understanding of the available APIs, refer to the language reference documentation for [KoFunctionDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-function-declaration/index.html).
+Konsist allows you to verify multiple aspects of functions. For a complete understanding of the available APIs, refer to the language reference documentation for [KoFunctionDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-function-declaration/index.html).
 
-Let's look at few examples.
+Let's look at a few examples.
 
 ## Verify Name
 
 Function names can be validated to ensure they follow project naming conventions and patterns.
 
-Check if function name starts with `get` :
+Check if function name starts with `get`:
 
 ```kotlin
 ...
@@ -55,7 +55,7 @@ Function modifiers can be validated to ensure proper encapsulation and access co
 Check if function has `public` or default (also `public`) modifier:
 
 ```kotlin
-..
+...
 .assertTrue {
    it.hasPublicOrDefaultModifier
 }
@@ -110,7 +110,7 @@ Check if function has parameter of type `String`:
 
 Return types can be checked to ensure functions follow expected return type patterns and contracts.
 
-Check if function has Kotlin collection type:
+Check if function return type is a Kotlin collection type:
 
 ```kotlin
 ...
@@ -157,15 +157,3 @@ Top-level functions (functions not declared inside a class) can be specifically 
 ```
 
 This helps ensure top-level functions follow project conventions, such as limiting their usage or enforcing specific naming patterns.
-
-
-
-
-
-
-
-
-
-
-
-##

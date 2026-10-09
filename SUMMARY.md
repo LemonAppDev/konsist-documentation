@@ -6,7 +6,7 @@
 * [Getting Started](getting-started/getting-started/README.md)
   * [Add Konsist Dependency](getting-started/getting-started/add-konsist-dependency.md)
   * [Create First Konsist Test - Declaration Check](getting-started/getting-started/create-first-konsist-test-declaration-check.md)
-  * [Create Secound Konsist Test - Architectural Check](getting-started/getting-started/create-secound-konsist-test-architectural-check.md)
+  * [Create Second Konsist Test - Architectural Check](getting-started/getting-started/create-secound-konsist-test-architectural-check.md)
 * [Articles & Videos](getting-started/articles.md)
 
 ## ✅ WRITING TESTS
@@ -17,7 +17,7 @@
 * [Architecture Assertion](writing-tests/architecture-assert.md)
 * [Suppress Konsist Test](writing-tests/suppressing-konsist-test.md)
 
-## ✏️ VERYFYING CODEBASE
+## ✏️ VERIFYING CODEBASE
 
 * [Verify Classes](veryfying-codebase/verify-classes.md)
 * [Verify Interfaces](veryfying-codebase/verify-interfaces.md)
@@ -28,7 +28,7 @@
 
 ## 📗 FEATURES
 
-* [Add Konsist Existing To Project (Baseline)](features/add-konsist-existing-project.md)
+* [Add Konsist To Existing Project (Baseline)](features/add-konsist-existing-project.md)
 * [Debug Konsist Test](features/debug-konsist-test.md)
 * [Declaration](features/declaration.md)
 * [Declaration Vs Property](features/declaration-vs-property.md)
@@ -62,7 +62,7 @@
   * [Explicit Test Names](advanced/dynamic-konsist-tests/explicit-test-names.md)
 * [When Konsist API Is Not Enough](advanced/when-konsit-api-is-not-enough.md)
 * [Additional JUnit5 Setup](advanced/additional-junit5-setup.md)
-* [Why There Are No Pre-defined Rules?](advanced/why-there-are-no-pre-defined-rules.md)
+* [Why Are There No Pre-defined Rules?](advanced/why-there-are-no-pre-defined-rules.md)
 * [Konsist Snapshots](advanced/konsist-snapshots.md)
 
 ## ❓ HELP

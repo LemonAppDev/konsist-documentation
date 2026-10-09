@@ -9,7 +9,7 @@ For dynamic tests, Konsist can't obtain the current test's name. Test name may b
 See [.](./ "mention").
 {% endhint %}
 
-The `testName` argument should be passed to `assertX` methods such as `assertTrue` , `assertFalse` etc. Let's look at the code:
+The `testName` argument should be passed to `assertX` methods such as `assertTrue`, `assertFalse`, etc. Let's look at the code:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -26,7 +26,7 @@ Here is the summary of test frameworks:
 | JUnit5            | dynamic       | Recommended    |
 | Kotest            | dynamic       | Recommended    |
 
-Here is a concrete implementation passing he `testName` argument for each test Framework:
+Here is a concrete implementation passing the `testName` argument for each test framework:
 
 {% tabs %}
 {% tab title="JUnit 5 (static test)" %}
@@ -42,7 +42,7 @@ fun myTest() {
 ```
 {% endtab %}
 
-{% tab title="Junit 5 (dynamic test)" %}
+{% tab title="JUnit 5 (dynamic test)" %}
 [JUnit 5](https://junit.org/junit5/) introduced native support for dynamic tests, allowing tests to be generated at runtime through the `@TestFactory` annotation.
 
 ```kotlin
@@ -56,8 +56,8 @@ class SampleDynamicKonsistTest {
         .flatMap { useCase ->
             Stream.of(
                 dynamicTest("${useCase.name} should have test") {
-                   useCase.assertTrue(testName = "${useCase.name} should have test") {
-                        it.hasTestClass()
+                    useCase.assertTrue(testName = "${useCase.name} should have test") {
+                        it.hasTestClasses()
                     }
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
@@ -72,7 +72,7 @@ class SampleDynamicKonsistTest {
 {% endtab %}
 
 {% tab title="Kotest" %}
-[Kotest](https://kotest.io/) provides robust support for dynamic tests, allowing developers to define test cases programmatically at runtime, making it a flexible alternative to traditional JUnit testing. It is recommended to utilize the name derived from the Kotest (`this.testCase.name.testName`) context as the value for the `testName` argument:
+[Kotest](https://kotest.io/) provides robust support for dynamic tests, allowing developers to define test cases programmatically at runtime, making it a flexible alternative to traditional JUnit testing. It is recommended to utilize the name derived from the Kotest (`this.testCase.name.name`) context as the value for the `testName` argument:
 
 ```kotlin
 class SampleDynamicKonsistTest : FreeSpec({
@@ -82,10 +82,10 @@ class SampleDynamicKonsistTest : FreeSpec({
         .withNameEndingWith("UseCase")
         .forEach { useCase ->
             "${useCase.name} should have test" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClass() }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
             }
         }
 })
@@ -95,7 +95,7 @@ To facilitate test name retrieval you can add this custom `koTestName` extension
 
 ```kotlin
 val TestScope.koTestName: String
-    get() = this.testCase.name.testName
+    get() = this.testCase.name.name
 ```
 {% endtab %}
 

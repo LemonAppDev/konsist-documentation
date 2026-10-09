@@ -1,4 +1,4 @@
-# Baseline Konsist Existing To Project
+# Add Konsist To Existing Project (Baseline)
 
 Retrofitting Konsist into a project that hasn't followed strict structural guidelines can pose initial challenges, necessitating a thoughtful approach to smoothly transition without disrupting ongoing development. Unlike most linters, which provide a [baseline file](https://developer.android.com/studio/write/lint#snapshot), Konsist follows a different methodology (for now).
 
@@ -6,11 +6,11 @@ Retrofitting Konsist into a project that hasn't followed strict structural guide
 The baseline file will be added in the future.
 {% endhint %}
 
-There are two approaches that can be employed when retrofitting Konsist into an existing project[#create-more-granular-scopes](add-konsist-existing-project.md#create-more-granular-scopes "mention") and [#suppress-annotation](add-konsist-existing-project.md#suppress-annotation "mention").
+There are two approaches that can be employed when retrofitting Konsist into an existing project: [#create-granular-scopes](add-konsist-existing-project.md#create-granular-scopes "mention") and [#suppress-annotation](add-konsist-existing-project.md#suppress-annotation "mention").
 
 ## Create Granular Scopes
 
-Scope represents a set of Kotlin files. The scope allows to verification of all Kotlin files in the project or only a subset of the project code base.
+Scope represents a set of Kotlin files. The scope allows verification of all Kotlin files in the project or only a subset of the project code base.
 
 {% hint style="info" %}
 See [koscope.md](../writing-tests/koscope.md "mention").
@@ -18,7 +18,7 @@ See [koscope.md](../writing-tests/koscope.md "mention").
 
 When refactoring an existing application, you can either choose to first refactor a module and then add a Konsist test or initially add the Konsist test to identify errors, followed by the necessary refactor. Both strategies aim to ensure modules align with Konsist's structural guidelines.
 
-Consider this The `MyDiet` application with feature 3 modules:
+Consider the `MyDiet` application with 3 feature modules:
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
@@ -41,16 +41,16 @@ As refactoring proceeds and code gets aligned, the Konsist scope can be extended
 Konsist
     .scopeFromModule("featureCaloryCalculator", "featureGroceryListGenerator")
     .classes()
-    .assertTrue { it.hasTest() }
+    .assertTrue { it.hasTestClasses() }
 ```
 
-When entire code base (all modules) are aligned with the Konsist tests, the scope can be retrieved from the entire project:
+When the entire code base (all modules) is aligned with the Konsist tests, the scope can be retrieved from the entire project:
 
 ```kotlin
 Konsist
     .scopeFromProject()
     .classes()
-    .assertTrue { it.hasTest() }
+    .assertTrue { it.hasTestClasses() }
 ```
 
 Usage of project scope (`scopeFromProject` ) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.
@@ -59,4 +59,4 @@ Konsist provides a flexible API to create scopes from modules, source sets, pack
 
 ## Suppress Annotation
 
-The second approach, Suppress Annotation, may be helpful when to Konsist swiftly without making substantial alterations to the existing kotlin files. See [#suppress](add-konsist-existing-project.md#suppress "mention").
+The second approach, Suppress Annotation, may be helpful to add Konsist swiftly without making substantial alterations to the existing Kotlin files. See [suppressing-konsist-test.md](../writing-tests/suppressing-konsist-test.md "mention").

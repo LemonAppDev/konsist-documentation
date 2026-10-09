@@ -1,8 +1,8 @@
 # Verify Generics
 
-Type parameter vs type argument
+## Type Parameter vs Type Argument
 
-To undersigned Konsist API let's look at the difference between `generic type parameters` and `generic type arguments`:
+To understand the Konsist API, let's look at the difference between `generic type parameters` and `generic type arguments`:
 
 1. **Type Parameter** is the placeholder (like `T`) you write when _creating_ a class or function (declaration site)
 2. **Type Argument** is the actual type (like `String` or `Int`) you provide when _using_ that class or function (use site)
@@ -24,7 +24,7 @@ fun <T> printWithType(item: T) {
     println("Type is: ${item::class.simpleName}")
 }
 
-// Here 'String' and 'Int' are TYPE ARGUMENTS
+// Here 'String' is a TYPE ARGUMENT
 printWithType<String>("Hello")  // prints: Type is: String
 ```
 
@@ -36,7 +36,7 @@ Type parameters can be defined, for example, inside class or function.
 
 ```kotlin
 // Code Snippet 
-class View<UiState>(val state: UiState) // UiState is typeParamener 
+class View<UiState>(val state: UiState) // UiState is a type parameter
 
 // Konsist
 Konsist
@@ -48,22 +48,21 @@ Konsist
     }
 ```
 
-### Check whether function `type parameters` has `out` modifier:
+### Check whether class `type parameters` has `out` modifier:
 
-<pre class="language-kotlin"><code class="lang-kotlin">//Code Snippet 
-<strong>fun &#x3C;out T> setState(item: T?) {
-</strong>    // ...
-}
+```kotlin
+// Code Snippet 
+class Producer<out T>(val item: T)
 
 // Konsist
 Konsist
     .scopeFromProject()
-    .functions()
+    .classes()
     .typeParameters // access type parameters
     .assertTrue {
         it.hasOutModifier // true
     }
-</code></pre>
+```
 
 ## Verify Type Arguments
 
@@ -86,13 +85,13 @@ Konsist
     }
 ```
 
-The `flatten()` extension method allows to flatten type parameters structure:
+The `flatten()` extension method allows flattening the type arguments structure:
 
-* For a type argument like `String`, it returns `listOf()`.
-* For a type argument like `List<String>`, it returns `listOf(String)`.
-* For a type argument like `Map<List<String>, Int>`, it returns `listOf("List, String, Int)`.
+* For a type like `String`, it returns `listOf()`.
+* For a type like `List<String>`, it returns `listOf(String)`.
+* For a type like `Map<List<String>, Int>`, it returns `listOf(List, String, Int)`.
 
-### Check if all functions parameters are have generic type argument ending with `UIState`:
+### Check if all function parameters have generic type argument ending with `UIState`:
 
 ```kotlin
 // Snippet 
@@ -101,7 +100,7 @@ fun setState(uiState: View<WelcomeUIState>)
 // Konsist Test
 Konsist
     .scopeFromProject()
-    .properties()
+    .functions()
     .parameters
     .types
     .typeArguments
@@ -110,7 +109,7 @@ Konsist
     }
 ```
 
-### Check all parents have \`String\` type argument:
+### Check all parents have `String` type argument:
 
 ```kotlin
 // Snippet 

@@ -21,9 +21,9 @@ Konsist
 ...
 ```
 
-Konsist allows you to verify multiple aspects of a properties. For a complete understanding of the available APIs, refer to the language reference documentation for [KoPropertyDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-property-declaration/index.html).
+Konsist allows you to verify multiple aspects of properties. For a complete understanding of the available APIs, refer to the language reference documentation for [KoPropertyDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-property-declaration/index.html).
 
-Let's look at few examples.
+Let's look at a few examples.
 
 ## **Verify Name**&#x20;
 
@@ -33,8 +33,9 @@ Check if `Boolean` property has name starting with `is`:
 
 ```kotlin
 ...
+.filter { it.type?.name == "Boolean" }
 .assertTrue { 
-    it.type?.name == "Boolean" && it.hasNameStartingWith("is")
+    it.hasNameStartingWith("is")
 }
 ```
 
@@ -110,7 +111,7 @@ Property delegates can be verified:
 
 Check if property has `lazy` delegate:
 
-```
+```kotlin
 ...
 .assertTrue { 
     it.hasDelegate("lazy") 
@@ -126,7 +127,7 @@ Check if property has `internal` modifier:
 ```kotlin
 ...
 .assertTrue { 
-    it.isInternal
+    it.hasInternalModifier
 }
 ```
 

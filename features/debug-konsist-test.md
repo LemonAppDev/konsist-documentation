@@ -1,16 +1,16 @@
 ---
-description: Understand whats going on
+description: Understand what's going on
 ---
 
 # Debug Konsist Test
 
 To gain insight into the inner workings of the Konsist test, examine the data provided by the Konsist API.
 
-Two primary tools can help you comprehend the inner workings of the Konsist API are  [#evaluate-expression](debug-konsist-test.md#evaluate-expression "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
+Two primary tools that can help you comprehend the inner workings of the Konsist API are [#evaluate-expression-debugger-window](debug-konsist-test.md#evaluate-expression-debugger-window "mention") and [#print-to-console](debug-konsist-test.md#print-to-console "mention").
 
 ## Evaluate Expression Debugger Window
 
-The [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Android Studio](https://developer.android.com/studio) provides a handy feature called [Evaluate Expressions](https://www.jetbrains.com/help/rider/Evaluating\_Expressions.html#eval-expression-dialog) which is an excellent tool for debugging Konsist tests.
+The [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [Android Studio](https://developer.android.com/studio) provides a handy feature called [Evaluate Expressions](https://www.jetbrains.com/help/idea/evaluating-expressions.html) which is an excellent tool for debugging Konsist tests.
 
 Create a simple test class and click on the line number to add the [breakpoint](https://www.jetbrains.com/help/idea/using-breakpoints.html):
 
@@ -28,7 +28,7 @@ When the program stops at the breakpoint (blue line background) run `Evaluate Ex
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-In the `Evaluate` window enter the code and click the `Evaluate` the button. For example, you can list all of the classes present in the scope to get the class names:
+In the `Evaluate` window enter the code and click the `Evaluate` button. For example, you can list all of the classes present in the scope to get the class names:
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
@@ -43,9 +43,9 @@ koScope
 
 ## Print To Console
 
-Konsist provides a flexible API that allows to output of the specified data as console logs. Scopes, lists of declarations, and single declarations can all be printed.
+Konsist provides a flexible API that allows outputting the specified data as console logs. Scopes, lists of declarations, and single declarations can all be printed.
 
-Print a list of files from `KoScope`:
+Print a list of classes from `KoScope`:
 
 ```kotlin
 koScope // KoScope
@@ -65,7 +65,7 @@ Print a given attribute for each declaration:
 ```kotlin
 koScope
     .classes() // List<KoClassDeclaration>
-    .print { it.fullyQualifiedName }
+    .print { it.fullyQualifiedName.orEmpty() }
 ```
 
 Print single declaration:
@@ -83,7 +83,7 @@ Print list of queried declarations before and after query:
 koScope
     .classes() // List<KoClassDeclaration>
     .print(prefix = "Before") // or .print(prefix = "Before") { it.name }
-    .withSomeAnnotations("Logger")
+    .withAnnotationNamed("Logger")
     .print(prefix = "After") // or .print(prefix = "After") { it.name }
 ```
 
