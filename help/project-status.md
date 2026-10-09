@@ -12,34 +12,5 @@ Konsist is safe for use because it is not bundled with the production code (only
 
 Over the next few months, we will fix bugs, improve existing APIs, and implement missing features (in this order). Here is a high-level roadmap:
 
-* ✅ Milestone 1 (Q1-Q2-Q3 2023)
-  * ✅ Setup GitHub project
-  * ✅ Setup CI pipeline
-  * ✅ Core Library development
-  * ✅ Publish artifact to Maven Central
-  * ✅ Create documentation
-  * ✅ Internal closed testing Android
-  * ✅ Internal closed testing Spring
-* ✅ Milestone 2 (Q4 2023 Alpha)
-  * ✅ Community-driven testing
-  * ✅ Improve existing APIs
-  * ✅ Fix Bugs
-  * ✅ Polish documentation and samples
-  * ✅ Implement new features
-* ✅  Milestone 3 (Q1 2024)
-  * ✅  Stabilize APIs (minimal breaking changes)
-  * ✅ Fix Bugs
-  * ✅ Polish documentation and samples
-  * ✅ Implement new features
-* ✅ Milestone 4 (Q2 2024)
-  * ✅  Declaration references
-* 🚀 Milestone 5 (Q3 2024)
-  * 🚀 Architecture checks improvements
-  * 🚀 Bug fixes
-  * 🚀 API improvements
-* 🚀 Milestone 6 (Q4 2024 Beta)
-  * 🚀 Bug fixes
-  * 🚀 API improvements
-  * 🚀 Release 1.0
-* 🕝 Milestone 7 (H1 2025)
-  * 🕝 Further maintenance and improvements
+* 🚀 Address Community feedback (Q3 2026)
+* 🚀 Release 1.0 (Q1 2027)
