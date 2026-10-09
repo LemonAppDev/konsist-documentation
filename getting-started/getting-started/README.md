@@ -3,7 +3,7 @@
 The following example provides the minimum setup for defining and running a single Konsist test.
 
 {% hint style="info" %}
-Check the [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) containing Konsist tests or review the [Konsist API reference](https://reference.konsist.lemonappdev.com).
+Check the [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) containing Konsist tests.
 {% endhint %}
 
 At a high level, a Konsist check is a unit test following multiple implicit steps.

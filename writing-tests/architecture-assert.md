@@ -40,7 +40,7 @@ Konsist
 
 ## Define Layers
 
-Create [Layer](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer/index.html?query=data%20class%20Layer\(name:%20String,%20rootPackage:%20String\)) class instance to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `rootPackage` used to define the architectural layer:
+Create a `Layer` class instance to represent project layers. Each `Layer` instance accepts the `name` (used for presenting architecture violation errors) and `rootPackage` used to define the architectural layer:
 
 ```kotlin
 Konsist
@@ -63,10 +63,6 @@ The final step is to define the dependencies (relations) between each layer usin
 * `dependsOn`
 * `dependsOnNothing`
 * `doesNotDependOn`
-
-{% hint style="info" %}
-See the [language reference](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/index.html) for above methods.
-{% endhint %}
 
 The above methods follow up the layer definitions inside `assertArchitecture` block:
 
@@ -122,7 +118,7 @@ This approach provides more flexibility when working with complex projects; howe
 
 ## Include Layer Without Defining Dependency
 
-The [include](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.architecture/-layer-dependencies/include.html) method allows including a layer in architecture verification without defining a dependency for this layer:
+The `include` method allows including a layer in architecture verification without defining a dependency for this layer:
 
 ```kotlin
 private val domain = Layer("Domain",  "com.domain..")

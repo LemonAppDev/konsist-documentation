@@ -15,7 +15,7 @@ Konsist
 The above code selects all interfaces present in the project codebase. While this demonstrates Konsist's API capabilities, in practical scenarios you'll typically want to verify a specific subset of interfaces - such as those with a particular name suffix or interfaces within a given package. See [koscope.md](../writing-tests/koscope.md "mention") and [declaration-query-and-filter.md](../writing-tests/declaration-query-and-filter.md "mention").&#x20;
 {% endhint %}
 
-Konsist allows you to verify multiple aspects of interfaces. For a complete understanding of the available APIs, refer to the language reference documentation for [KoInterfaceDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-interface-declaration/index.html).
+Konsist allows you to verify multiple aspects of interfaces. For the complete list of available APIs, explore `KoInterfaceDeclaration` in your IDE (code completion and KDoc).
 
 Let's look at a few examples.
 

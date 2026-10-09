@@ -21,7 +21,7 @@ Konsist
 ...
 ```
 
-Konsist allows you to verify multiple aspects of properties. For a complete understanding of the available APIs, refer to the language reference documentation for [KoPropertyDeclaration](https://lemonappdev.github.io/konsist/-konsist%200.17.0/com.lemonappdev.konsist.api.declaration/-ko-property-declaration/index.html).
+Konsist allows you to verify multiple aspects of properties. For the complete list of available APIs, explore `KoPropertyDeclaration` in your IDE (code completion and KDoc).
 
 Let's look at a few examples.
 
