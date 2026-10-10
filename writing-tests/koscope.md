@@ -157,7 +157,7 @@ The module name can be passed in any of these formats:
 * Gradle project path, e.g. `:feature:auth` or `feature:auth` (preferred)
 * Directory path with `/` or `\` separators, e.g. `feature/auth` or `feature\auth` (both accepted on all OSes)
 
-The top-level (root) module can be referenced as `:` or `root`.
+The top-level (root) module can be referenced as `:` or `root`. Module names are case-sensitive on all OSes (`:App` does not match the `app` directory).
 
 {% hint style="info" %}
 Konsist resolves the module name to a directory relative to the project root (`:feature:auth` -> `feature/auth`). Gradle modules with a custom `projectDir` (set in `settings.gradle.kts`) must be referenced by their directory path.
