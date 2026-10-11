@@ -185,7 +185,7 @@ The IDE will display the tests as follows:
 <figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")). At the moment test names are duplicated. This aspect has to be further investigated.
+Without the `testName` argument Konsist uses the `@TestFactory` method name (`use case test`) for every dynamic test created by this method. Pass `testName` (see [explicit-test-names.md](explicit-test-names.md "mention")) to display the dynamic test name in the error message and to suppress a single dynamic test.
 {% endhint %}
 {% endtab %}
 

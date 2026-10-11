@@ -114,9 +114,20 @@ Check if property has `lazy` delegate:
 ```kotlin
 ...
 .assertTrue { 
-    it.hasDelegate("lazy") 
+    it.hasLazyDelegate() 
 }
 ```
+
+Check if property has `lazy` delegate with a given thread safety mode (`lazy` without an explicit mode uses `LazyThreadSafetyMode.SYNCHRONIZED`):
+
+```kotlin
+...
+.assertTrue { 
+    it.hasLazyDelegate(LazyThreadSafetyMode.NONE) 
+}
+```
+
+Other built-in delegates can be verified using `hasObservableDelegate` (`Delegates.observable`), `hasVetoableDelegate` (`Delegates.vetoable`), `hasNotNullDelegate` (`Delegates.notNull`) and `hasPropertyReferenceDelegate` (`by ::otherProperty`). Custom delegates can be verified using `hasDelegate("delegateName")`.
 
 ## **Verify Visibility**&#x20;
 
@@ -151,5 +162,17 @@ Check if property is mutable:
 .assertTrue { 
     it.isVar
 }
+```
+
+Check if public property does not expose a mutable type (e.g. `MutableList`, `ArrayList`, `Array` or a class with a `var` property), including type arguments (e.g. `List<MutableList<String>>`):
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withPublicOrDefaultModifier()
+    .assertFalse {
+        it.type?.isMutableType == true || it.type?.hasMutableTypeArgument == true
+    }
 ```
 

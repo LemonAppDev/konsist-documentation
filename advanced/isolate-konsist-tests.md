@@ -49,7 +49,7 @@ testing {
                 implementation(project())
                 
                 // Add Konsist dependency
-                implementation("com.lemonappdev:konsist:0.18.0") 
+                implementation("com.lemonappdev:konsist:0.18.1") 
             }
         }
     }
@@ -87,7 +87,7 @@ testing {
                 implementation project() 
                 
                 // Add Konsist dependency
-                implementation "com.lemonappdev:konsist:0.18.0"
+                implementation "com.lemonappdev:konsist:0.18.1"
             }
 
             targets { 

@@ -8,7 +8,7 @@ Konsist has first-class support for [Kotest](https://kotest.io/) meaning that ev
 
 ## Setting The Test Name
 
-Konsist can't obtain the test name from all dynamic tests (including [Kotest](https://kotest.io/) tests).
+[Kotest](https://kotest.io/) tests are lambdas, so the test name is not present in the call stack and Konsist can't obtain it. Without `testName` the error message does not contain the test name (e.g. `Assert was violated (1 time)` or `Test has failed.` for architecture assertions).
 
 It's recommended to provide the test name using the `testName` parameter. Supplying a test name provides additional benefits:
 

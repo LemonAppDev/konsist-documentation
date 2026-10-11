@@ -127,3 +127,20 @@ Konsist
         it.name == "String"  // true
     }
 ```
+
+## Verify Full Generic Type
+
+The reified `hasTypeOf<T>()`, `hasReturnTypeOf<T>()` and `hasReceiverTypeOf<T>()` methods compare the whole type including type arguments, while the `KClass` overloads (e.g. `hasReturnTypeOf(List::class)`) ignore type arguments:
+
+```kotlin
+// Snippet
+fun getNames(): List<String> = emptyList()
+
+// Konsist
+koFunction.hasReturnTypeOf<List<String>>() // true
+koFunction.hasReturnTypeOf<List<*>>()      // true - star projection matches any type argument
+koFunction.hasReturnTypeOf<List<Int>>()    // false
+koFunction.hasReturnTypeOf(List::class)    // true - type arguments are not checked
+```
+
+A nullable type (`String?`) matches only a nullable type, while a non-nullable type (`String`) matches both. Nullability and variance (`out`, `in`) of type arguments must match exactly.
