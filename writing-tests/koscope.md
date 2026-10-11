@@ -200,6 +200,36 @@ To narrow the scope to `feature` module use:
 Konsist.scopeFromModule(":app:feature")
 ```
 
+Modules can be nested at any depth (e.g. `:app:feature:payment`). The module name is always the full path from the project root, so `scopeFromModule(":feature")` does not match the `app/feature` module.
+
+The parent module scope contains only the parent module files - files of nested modules are not included:
+
+```
+project/
+├─ app/   <--- scope contains only files from the 'app' module
+│  ├─ App.kt
+│  ├─ feature/
+│  │  ├─ Feature.kt
+```
+
+```kotlin
+Konsist.scopeFromModule(":app")
+```
+
+To include the parent module and its nested modules pass all of them:
+
+```kotlin
+Konsist.scopeFromModule(":app", ":app:feature")
+```
+
+The `moduleName` property of a nested module declaration returns the directory path with `/` separators on all OSes (e.g. `app/feature`). To create a scope containing all modules nested inside the `app` directory use [Scope Slice](#scope-slice):
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .slice { it.moduleName.startsWith("app/") }
+```
+
 ### Source Set Scope
 
 The `scopeFromSourceSet` method allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
