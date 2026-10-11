@@ -63,7 +63,7 @@ class UseCaseKonsistTest : FreeSpec({
 {% endtabs %}
 
 {% hint style="info" %}
-For more Konsist test samples see the [snippets](inspiration/starter-tests/ "mention") section.
+For more Konsist test samples see the [snippets](inspiration/starter-test-snippets/ "mention") section.
 {% endhint %}
 
 ## Architectural Checks
