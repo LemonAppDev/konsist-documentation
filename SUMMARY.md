@@ -42,16 +42,16 @@
 
 * [Starter Projects](inspiration/starter-projects.md)
 * [Starter Test Snippets](inspiration/starter-test-snippets/README.md)
-  * [General Tests](inspiration/starter-test-snippets/general-tests.md)
-  * [Android Tests](inspiration/starter-test-snippets/android-tests.md)
-  * [Spring Tests](inspiration/starter-test-snippets/spring-tests.md)
-  * [JUnit Tests](inspiration/starter-test-snippets/junit-tests.md)
-  * [Kotest Tests](inspiration/starter-test-snippets/kotest-tests.md)
-  * [Architecture Tests](inspiration/starter-test-snippets/architecture-tests.md)
-  * [Clean Architecture Tests](inspiration/starter-test-snippets/clean-architecture-tests.md)
-  * [Kotlin Serialization Tests](inspiration/starter-test-snippets/kotlin-serialization-tests.md)
-  * [Library Tests](inspiration/starter-test-snippets/library-tests.md)
-  * [Generic Types Tests](inspiration/starter-test-snippets/generic-types-tests.md)
+  * [General Test Snippets](inspiration/starter-test-snippets/general-test-snippets.md)
+  * [Android Test Snippets](inspiration/starter-test-snippets/android-test-snippets.md)
+  * [Spring Test Snippets](inspiration/starter-test-snippets/spring-test-snippets.md)
+  * [JUnit Test Snippets](inspiration/starter-test-snippets/junit-test-snippets.md)
+  * [Kotest Test Snippets](inspiration/starter-test-snippets/kotest-test-snippets.md)
+  * [Architecture Test Snippets](inspiration/starter-test-snippets/architecture-test-snippets.md)
+  * [Clean Architecture Test Snippets](inspiration/starter-test-snippets/clean-architecture-test-snippets.md)
+  * [Kotlin Serialization Test Snippets](inspiration/starter-test-snippets/kotlin-serialization-test-snippets.md)
+  * [Library Test Snippets](inspiration/starter-test-snippets/library-test-snippets.md)
+  * [Generic Types Test Snippets](inspiration/starter-test-snippets/generic-types-test-snippets.md)
 
 ## 🎓 ADVANCED
 

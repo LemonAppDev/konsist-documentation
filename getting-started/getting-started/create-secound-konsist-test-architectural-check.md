@@ -7,7 +7,7 @@ Konsist's `Architectural Checks` serve as a robust tool for maintaining layer is
 * ...
 
 {% hint style="info" %}
-See [architecture-tests.md](../../inspiration/starter-test-snippets/architecture-tests.md "mention") section for more examples.
+See [architecture-test-snippets.md](../../inspiration/starter-test-snippets/architecture-test-snippets.md "mention") section for more examples.
 {% endhint %}
 
 ## Write First Architectural Check

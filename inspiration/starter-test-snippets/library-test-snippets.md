@@ -1,4 +1,4 @@
-# Library Tests
+# Library Test Snippets
 
 Snippets for library authors.
 
