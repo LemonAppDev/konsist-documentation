@@ -8,6 +8,8 @@ Konsist is compatible with all types of Kotlin projects including [Android](http
 
 Konsist works with popular testing frameworks executing Kotlin code. Konsist has first-class support for [JUnit4](https://junit.org/junit4/), [JUnit5](https://junit.org/junit5/), and [Kotest](https://kotest.io/).
 
+Konsist works with Kotest `5.x` and `6.x`. The `KoKotestExtension` (see [kotest-support.md](../features/kotest-support.md "mention")) requires Kotest `6.x`. With Kotest `5.x` pass the `testName` argument instead.
+
 Konsist is compatible with popular build systems such as [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/).
 
 
@@ -23,3 +25,5 @@ Konsist depends on:
 * `org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0` (minimal coroutine usage makes Konsist compatible with newer coroutines versions)
 * `org.jetbrains.kotlin:kotlin-compiler-embeddable:2.4.21`
 * `org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.4.21`
+
+JUnit and Kotest are not Konsist dependencies. `KoJUnitExtension` and `KoKotestExtension` use the test framework already present in the project.
