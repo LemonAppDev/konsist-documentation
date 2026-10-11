@@ -142,7 +142,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 
 Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact e.g.
 
-`com.lemonappdev:konsist:0.18.0-SNAPSHOT`
+`com.lemonappdev:konsist:0.18.1-SNAPSHOT`
 
 Now build scripts will be able to resolve this newly published Konsist artifact.
 
