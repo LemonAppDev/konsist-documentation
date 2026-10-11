@@ -4,66 +4,60 @@ description: Boost command line output
 
 # Enable Full Command Line Logging
 
-When running non-[dynamic-konsist-tests](dynamic-konsist-tests/ "mention") the default command line output contains only the test name:
+By default, Gradle uses the `SHORT` test exception format. It prints only the exception class name and the test line, so the Konsist assertion message (invalid declarations, file paths, `additionalMessage` and reasons added with `addReason`) is not displayed in the command line output:
 
 ```
 > Task :konsistTest:test
 
-UseCaseKonsistTest > every use case has single public operator function named 'invoke' FAILED
+UseCaseKonsistTest > every use case has single public function FAILED
     com.lemonappdev.konsist.core.exception.KoAssertionFailedException at UseCaseKonsistTest.kt:26
 
-2 tests completed, 1 failed
-
-> Task :konsistTest:testDebugUnitTest FAILED
-
-FAILURE: Build failed with an exception.
-
-
+1 test completed, 1 failed
 ```
 
-To see the full exception log containing the invalid declaration's `file path` and `line number`, enable `exceptionFormat` in Gradle `testLogging`:
+The message is available only in the HTML test report. To display it in the command line, set `exceptionFormat` to `FULL` in Gradle `testLogging`. Setting `showStackTraces` to `false` hides the stack trace, because it points to Konsist internals, not to the invalid code:
 
 {% tabs %}
 {% tab title="Gradle Kotlin" %}
 ```kotlin
-tasks.withType<Test> {
-  testLogging {
-    events(TestLogEvent.FAILED)
-    exceptionFormat = TestExceptionFormat.FULL
-  }
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
+tasks.withType<Test>().configureEach {
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
+        showStackTraces = false
+    }
 }
 ```
 {% endtab %}
 
 {% tab title="Gradle Groovy" %}
 ```groovy
-tasks.withType(Test).configureEach { 
-    testLogging { 
-        events(TestLogEvent.FAILED)
-        exceptionFormat = TestExceptionFormat.FULL 
-    } 
+tasks.withType(Test).configureEach {
+    testLogging {
+        exceptionFormat = 'full'
+        showStackTraces = false
+    }
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-Now the log output provides all information relevant to pinpoint the invalid declaration:
+Now the log output contains all information needed to find and fix the invalid declarations:
 
 ```
 > Task :konsistTest:test
 
-UseCaseKonsistTest > every use case has single public operator function named 'invoke' FAILED
-    com.lemonappdev.konsist.core.exception.KoAssertionFailedException: Assert 'every use case has single public operator function named 'invoke'' was violated (25 times). Invalid declarations:
-    /myproject/usecase/LoginUserUseCase.kt:6:1 (LoginUserUseCase ClassDeclaration)
-    /myproject/usecase/GetLocationUseCase.kt:8:1 (GetLocationUseCase ClassDeclaration)
-    
-2 tests completed, 1 failed
+UseCaseKonsistTest > every use case has single public function FAILED
+    com.lemonappdev.konsist.core.exception.KoAssertionFailedException: Assert 'every use case has single public function' was violated (2 times). Invalid declarations:
+    ├── Class GetUserUseCase file:///project/app/src/main/kotlin/com/myapp/usecase/GetUserUseCase.kt:5:1
+    │   └── Has 2 public functions: invoke, validate
+    └── Class LoginUserUseCase file:///project/app/src/main/kotlin/com/myapp/usecase/LoginUserUseCase.kt:6:1
+        └── Has 2 public functions: invoke, login
 
-> Task :konsistTest:testDebugUnitTest FAILED
-
-FAILURE: Build failed with an exception.
-
+1 test completed, 1 failed
 ```
 
-
-
+{% hint style="info" %}
+The [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) already contain this configuration.
+{% endhint %}
