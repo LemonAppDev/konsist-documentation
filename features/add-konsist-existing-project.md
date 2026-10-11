@@ -26,7 +26,7 @@ At first, the Konsist test can be applied to a single module:
 
 ```kotlin
 Konsist
-    .scopeFromModule("featureCaloryCalculator")
+    .scopeFromModule(":featureCaloryCalculator")
     .classes()
     .assertTrue { it.hasTestClasses() }
 ```
@@ -39,7 +39,7 @@ As refactoring proceeds and code gets aligned, the Konsist scope can be extended
 
 ```kotlin
 Konsist
-    .scopeFromModule("featureCaloryCalculator", "featureGroceryListGenerator")
+    .scopeFromModule(":featureCaloryCalculator", ":featureGroceryListGenerator")
     .classes()
     .assertTrue { it.hasTestClasses() }
 ```

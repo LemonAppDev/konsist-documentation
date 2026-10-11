@@ -133,7 +133,7 @@ project/
 The `scopeFromModule` method allows the creation of more granular scopes based on the module name e.g. creating a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
-Konsist.scopeFromModule("app")
+Konsist.scopeFromModule(":app")
 ```
 
 Contains:
@@ -152,11 +152,26 @@ project/
 │  │  ├─ CoreTest.kt
 ```
 
+The module name can be passed in any of these formats:
+
+* Gradle project path, e.g. `:feature:auth` or `feature:auth` (preferred)
+* Directory path with `/` or `\` separators, e.g. `feature/auth` or `feature\auth` (both accepted on all OSes)
+
+The top-level (root) module can be referenced as `:` or `root`. Module names are case-sensitive on all OSes (`:App` does not match the `app` directory).
+
+{% hint style="info" %}
+Konsist resolves the module name to a directory relative to the project root (`:feature:auth` -> `feature/auth`). Gradle modules with a custom `projectDir` (set in `settings.gradle.kts`) must be referenced by their directory path.
+{% endhint %}
+
+{% hint style="warning" %}
+`scopeFromModule` returns an empty scope when the module does not exist (e.g. misspelled module name or wrong case). Assertions on an empty list pass by default, so a misspelled module name can silently disable the test. Use the [strict](declaration-assert.md#strict) assertion parameter to make the test fail when the declaration list is empty.
+{% endhint %}
+
 This approach may be helpful when refactoring an existing project module by module.
 
 ```kotlin
-val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule1")
-val refactoredModule2Scope = Konsist.scopeFromModule("refactoredModule2")
+val refactoredModule1Scope = Konsist.scopeFromModule(":refactoredModule1")
+val refactoredModule2Scope = Konsist.scopeFromModule(":refactoredModule2")
 
 val scope = refactoredModule1Scope + refactoredModule2Scope
 
@@ -170,10 +185,6 @@ scope
 
 A nested module is a module that exists within another module.
 
-{% hint style="warning" %}
-The `nested modules` feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
-{% endhint %}
-
 Consider this `feature` module existing inside `app` module:
 
 ```
@@ -186,7 +197,7 @@ project/
 To narrow the scope to `feature` module use:
 
 ```kotlin
-Konsist.scopeFromModule("app/feature")
+Konsist.scopeFromModule(":app:feature")
 ```
 
 ### Source Set Scope
@@ -218,8 +229,10 @@ project/
 To retrieve scope by using both module and source set use the `scopeFromProject` method with `moduleName` and `sourceSetName` arguments:
 
 ```kotlin
-Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test")
+Konsist.scopeFromProject(moduleName = ":app", sourceSetName = "test")
 ```
+
+The `moduleName` argument (also available in `scopeFromProduction`, `scopeFromTest` and `scopeFromPackage`) accepts the same formats as `scopeFromModule` and returns an empty scope when the module does not exist.
 
 Contains:
 
@@ -313,7 +326,20 @@ koScope.slice { it.hasPackage("com.domain.usecase") }
 
 // scope containing all files in 'usecase' package and its sub-packages
 koScope.slice { it.hasPackage("..usecase..") }
+
+// scope containing all files in modules with name ending with '-ui' e.g. ':feature:auth-ui'
+koScope.slice { it.moduleName.endsWith("-ui") }
+
+// scope containing all files except files from the 'legacy' module
+koScope.slice { !it.resideInModule(":legacy") }
+
+// scope containing all files except files in any 'generated' directory
+koScope.slice { !it.resideInPath("..generated..") }
 ```
+
+{% hint style="info" %}
+Project files are parsed once and cached, so slicing `Konsist.scopeFromProject()` does not parse files again.
+{% endhint %}
 
 ## Scope Reuse
 
@@ -398,8 +424,8 @@ project/
 Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so scopes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2` module are combined together:
 
 ```kotlin
-val featureModule1Scope = Konsist.scopeFromModule("myFeature1")
-val featureModule2Scope = Konsist.scopeFromModule("myFeature2")
+val featureModule1Scope = Konsist.scopeFromModule(":myFeature1")
+val featureModule2Scope = Konsist.scopeFromModule(":myFeature2")
 
 val refactoredModules = featureModule1Scope + featureModule2Scope
 
@@ -414,7 +440,7 @@ refactoredModules
 Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:
 
 ```kotlin
-val moduleScope = Konsist.scopeFromModule("myFeature")
+val moduleScope = Konsist.scopeFromModule(":myFeature")
 val dataLayerScope = Konsist.scopeFromPackage("..data..")
 
 val moduleSubsetScope = moduleScope - dataLayerScope
