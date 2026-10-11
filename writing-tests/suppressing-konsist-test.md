@@ -81,6 +81,10 @@ interface Book {
 }
 ```
 
+### Suppressing JUnit 5 Dynamic Test
+
+For JUnit 5 dynamic tests without the `testName` argument, the test name is the name of the `@TestFactory` method, so `@Suppress("konsist.use case test")` suppresses every dynamic test created by the `use case test` method. To suppress a single dynamic test pass `testName` (see [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention")).
+
 ### Suppressing Kotest Test
 
 Konsist has no way of retrieving the name of the current [Kotest](https://kotest.io/) test (unlike JUnit).

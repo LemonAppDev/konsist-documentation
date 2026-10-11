@@ -1,6 +1,11 @@
 # Explicit Test Names
 
-For dynamic tests, Konsist can't obtain the current test's name. Test name may be correctly displayed in the IDE, however, the `testName` argument should be provided to enable:
+For dynamic tests, Konsist can't obtain the name of the current dynamic test:
+
+* JUnit 5 dynamic test - Konsist uses the name of the enclosing `@TestFactory` method, so every dynamic test created by this method shares the same name.
+* Kotest - the test name is not available, so it is omitted from the error message (e.g. `Assert was violated (1 time)`) and suppression by test name is not possible.
+
+Test name may be correctly displayed in the IDE, however, the `testName` argument should be provided to enable:
 
 * Correct test names are displayed in the log when the test is failing
 * Test suppression (See [suppressing-konsist-test.md](../../writing-tests/suppressing-konsist-test.md "mention"))
@@ -19,12 +24,12 @@ Konsist.scopeFromProject()
 
 Here is the summary of test frameworks:
 
-| Testing Framework | Determination | Pass testName? |
-| ----------------- | ------------- | -------------- |
-| JUnit4            | static        | Not required   |
-| JUnit5            | static        | Not required   |
-| JUnit5            | dynamic       | Recommended    |
-| Kotest            | dynamic       | Recommended    |
+| Testing Framework | Determination | Test name without `testName` | Pass testName? |
+| ----------------- | ------------- | ---------------------------- | -------------- |
+| JUnit4            | static        | test method name             | Not required   |
+| JUnit5            | static        | test method name             | Not required   |
+| JUnit5            | dynamic       | `@TestFactory` method name   | Recommended    |
+| Kotest            | dynamic       | none (omitted)               | Recommended    |
 
 Here is a concrete implementation passing the `testName` argument for each test framework:
 

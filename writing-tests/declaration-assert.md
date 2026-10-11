@@ -87,7 +87,7 @@ Konsist
 
 ### Test Name
 
-Assertions offer a set of parameters allowing you to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
+Assertions offer a set of parameters allowing you to tweak the assertion behavior. By default, the test name is derived from the JUnit test method name (for JUnit 5 dynamic tests, the name of the `@TestFactory` method). For Kotest the test name can't be determined, so it is omitted from the error message. Set the `testName` argument to display a custom test name and to enable suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
 
 ### Strict
 
@@ -110,3 +110,33 @@ Konsist
     .classes()
     .assertFalse(additionalMessage = "Do X to fix the issue") { ... }
 ```
+
+## Add Reason
+
+Use `addReason` inside the `assertTrue` / `assertFalse` block to explain why a given declaration violates the assertion. Reasons are displayed under the failing declaration. Reasons added for declarations that pass the assertion are ignored:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withNameEndingWith("UseCase")
+    .assertTrue {
+        val publicFunctions = it.functions().filter { function -> function.hasPublicOrDefaultModifier }
+
+        if (publicFunctions.size != 1) {
+            addReason("Has ${publicFunctions.size} public functions: ${publicFunctions.joinToString { function -> function.name }}")
+        }
+
+        publicFunctions.size == 1
+    }
+```
+
+```
+Assert 'use case has single public function' was violated (1 time). Invalid declarations:
+└── Class GetUserUseCase file:///project/app/src/main/kotlin/com/myapp/usecase/GetUserUseCase.kt:5:1
+    └── Has 2 public functions: invoke, validate
+```
+
+{% hint style="info" %}
+`additionalMessage` is displayed once for the whole assertion, while `addReason` is displayed for each failing declaration. `addReason` can be called multiple times for a single declaration.
+{% endhint %}

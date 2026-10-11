@@ -106,7 +106,7 @@ A layer is _declared_ when it is used in any rule (`dependsOn`, `doesNotDependOn
 
 | Rule                            | Passes when                                                                   |
 | ------------------------------- | ----------------------------------------------------------------------------- |
-| `a.dependsOn(b)`                | `a` does not import any declared layer other than `b` (imports of `a` itself are allowed) |
+| `a.dependsOn(b)`                | `a` does not import any declared layer other than `b` and other layers passed to `a.dependsOn` (imports of `a` itself are allowed) |
 | `a.dependsOn(b, strict = true)` | Same as above, and at least one file in `a` imports `b`                        |
 | `a.doesNotDependOn(b)`          | `a` does not import `b`. Imports of other declared layers are allowed          |
 | `a.dependsOnNothing()`          | `a` does not import any other declared layer                                  |
@@ -116,12 +116,31 @@ A layer is _declared_ when it is used in any rule (`dependsOn`, `doesNotDependOn
 Only `import` directives are checked. A fully qualified reference without an import (e.g. `com.myapp.data.Repository()`) is not detected.
 {% endhint %}
 
+### Failure Messages
+
+Each failing file lists only the imports that break the rule:
+
+| Rule                            | Failure message                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `a.dependsOn(b)`                | `'A' layer depends on 'C' layer, but this dependency is not declared. Files that depend on 'C' layer:` |
+| `a.dependsOn(b, strict = true)` | `'A' layer is required to depend on 'B' layer (strict), but has no dependency on it.`                  |
+| `a.doesNotDependOn(b)`          | `'A' layer should not depend on 'B' layer but has dependencies in files:`                              |
+| `a.dependsOnNothing()`          | `'A' layer should not depend on anything but has dependencies in files:`                               |
+
+```
+'presentation layer has correct dependencies' test has failed. 
+'Presentation' layer depends on 'Data' layer, but this dependency is not declared. Files that depend on 'Data' layer:
+└── File file:///project/app/src/main/kotlin/com/myapp/presentation/PresentationClass.kt
+    └── Import com.myapp.data.DataClass (file:///project/app/src/main/kotlin/com/myapp/presentation/PresentationClass.kt:3:1)
+```
+
 ## Preconditions
 
 Before verifying dependencies Konsist checks the architecture configuration and throws `KoPreconditionFailedException` when:
 
 * `Architecture doesn't contain layers or dependencies.` - the `assertArchitecture` block does not declare any layer.
 * `Layer X doesn't contain any files.` - a declared layer does not match any file in the scope. Every declared layer must contain at least one file.
+* `Layer name must be unique. Duplicated name: 'X'.` / `Layer rootPackage must be unique. Duplicated rootPackage: 'x..'.` - two different layers use the same `name` or `rootPackage`. Equal `Layer` instances (same `name` and `rootPackage`, e.g. created by a `get()` property) are treated as the same layer.
 
 Common causes of the empty layer error:
 
