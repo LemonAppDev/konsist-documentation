@@ -41,7 +41,7 @@
 ## 🔍 SAMPLES
 
 * [Starter Projects](inspiration/starter-projects.md)
-* [Snippets](inspiration/starter-tests/README.md)
+* [Starter Tests](inspiration/starter-tests/README.md)
   * [General Snippets](inspiration/starter-tests/general-snippets.md)
   * [Android Snippets](inspiration/starter-tests/android-snippets.md)
   * [Spring Snippets](inspiration/starter-tests/spring-snippets.md)

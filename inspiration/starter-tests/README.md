@@ -1,4 +1,4 @@
-# Snippets
+# Starter Tests
 
 In Konsist all checks are tailored for a given project.&#x20;
 
