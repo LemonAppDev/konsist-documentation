@@ -1,0 +1,18 @@
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+redirects:
+  inspiration/snippets: inspiration/starter-tests/README.md
+  inspiration/snippets/android-snippets: inspiration/starter-tests/android-snippets.md
+  inspiration/snippets/architecture-snippets: inspiration/starter-tests/architecture-snippets.md
+  inspiration/snippets/clean-architecture-snippets: inspiration/starter-tests/clean-architecture-snippets.md
+  inspiration/snippets/general-snippets: inspiration/starter-tests/general-snippets.md
+  inspiration/snippets/generic-types-snippets: inspiration/starter-tests/generic-types-snippets.md
+  inspiration/snippets/junit-snippets: inspiration/starter-tests/junit-snippets.md
+  inspiration/snippets/kotest-snippets: inspiration/starter-tests/kotest-snippets.md
+  inspiration/snippets/kotlin-serialization-snippets: inspiration/starter-tests/kotlin-serialization-snippets.md
+  inspiration/snippets/library-snippets: inspiration/starter-tests/library-snippets.md
+  inspiration/snippets/spring-snippets: inspiration/starter-tests/spring-snippets.md

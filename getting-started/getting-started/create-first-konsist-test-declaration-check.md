@@ -10,7 +10,7 @@ Konsist `Declaration Checks` provide a powerful mechanism for validating the str
 * ...
 
 {% hint style="info" %}
-See [snippets](../../inspiration/snippets/ "mention") section for more examples.
+See [snippets](../../inspiration/starter-tests/ "mention") section for more examples.
 {% endhint %}
 
 ## Write First Declaration Check

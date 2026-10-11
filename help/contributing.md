@@ -174,7 +174,7 @@ Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plu
 * `apiTest` - tests related to `assertArchitecture`
 * `integrationTest` - test classes using custom Kotlin snippets (`.kttest`) to test the Konsist API
 * `konsistTest` - tests Konsist codebase consistency using `konsist` library
-* `snippet` - contains Kotlin code snippets (`.ktdoc` files), written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The `misc/scripts/deploy_snippets_to_konsist_documentation_repo.py` script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/snippets) page
+* `snippet` - contains Kotlin code snippets (`.ktdoc` files), written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The `misc/scripts/deploy_snippets_to_konsist_documentation_repo.py` script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/inspiration/starter-tests) page
 
 We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-projects](https://github.com/LemonAppDev/konsist/tree/main/misc/test-projects) directory on the Konsist repository.
 
@@ -199,6 +199,6 @@ The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation
 
 #### Updating Snippets
 
-The [snippets](../inspiration/snippets/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
+The [snippets](../inspiration/starter-tests/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
 
 Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin/dummyclasses), e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/dummyclasses/javax/inject/Inject.kt).
