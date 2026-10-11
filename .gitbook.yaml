@@ -6,13 +6,23 @@ structure:
 
 redirects:
   inspiration/snippets: inspiration/starter-tests/README.md
-  inspiration/snippets/android-snippets: inspiration/starter-tests/android-snippets.md
-  inspiration/snippets/architecture-snippets: inspiration/starter-tests/architecture-snippets.md
-  inspiration/snippets/clean-architecture-snippets: inspiration/starter-tests/clean-architecture-snippets.md
-  inspiration/snippets/general-snippets: inspiration/starter-tests/general-snippets.md
-  inspiration/snippets/generic-types-snippets: inspiration/starter-tests/generic-types-snippets.md
-  inspiration/snippets/junit-snippets: inspiration/starter-tests/junit-snippets.md
-  inspiration/snippets/kotest-snippets: inspiration/starter-tests/kotest-snippets.md
-  inspiration/snippets/kotlin-serialization-snippets: inspiration/starter-tests/kotlin-serialization-snippets.md
-  inspiration/snippets/library-snippets: inspiration/starter-tests/library-snippets.md
-  inspiration/snippets/spring-snippets: inspiration/starter-tests/spring-snippets.md
+  inspiration/snippets/android-snippets: inspiration/starter-tests/android-tests.md
+  inspiration/snippets/architecture-snippets: inspiration/starter-tests/architecture-tests.md
+  inspiration/snippets/clean-architecture-snippets: inspiration/starter-tests/clean-architecture-tests.md
+  inspiration/snippets/general-snippets: inspiration/starter-tests/general-tests.md
+  inspiration/snippets/generic-types-snippets: inspiration/starter-tests/generic-types-tests.md
+  inspiration/snippets/junit-snippets: inspiration/starter-tests/junit-tests.md
+  inspiration/snippets/kotest-snippets: inspiration/starter-tests/kotest-tests.md
+  inspiration/snippets/kotlin-serialization-snippets: inspiration/starter-tests/kotlin-serialization-tests.md
+  inspiration/snippets/library-snippets: inspiration/starter-tests/library-tests.md
+  inspiration/snippets/spring-snippets: inspiration/starter-tests/spring-tests.md
+  inspiration/starter-tests/android-snippets: inspiration/starter-tests/android-tests.md
+  inspiration/starter-tests/architecture-snippets: inspiration/starter-tests/architecture-tests.md
+  inspiration/starter-tests/clean-architecture-snippets: inspiration/starter-tests/clean-architecture-tests.md
+  inspiration/starter-tests/general-snippets: inspiration/starter-tests/general-tests.md
+  inspiration/starter-tests/generic-types-snippets: inspiration/starter-tests/generic-types-tests.md
+  inspiration/starter-tests/junit-snippets: inspiration/starter-tests/junit-tests.md
+  inspiration/starter-tests/kotest-snippets: inspiration/starter-tests/kotest-tests.md
+  inspiration/starter-tests/kotlin-serialization-snippets: inspiration/starter-tests/kotlin-serialization-tests.md
+  inspiration/starter-tests/library-snippets: inspiration/starter-tests/library-tests.md
+  inspiration/starter-tests/spring-snippets: inspiration/starter-tests/spring-tests.md

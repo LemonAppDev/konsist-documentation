@@ -1,4 +1,4 @@
-# Kotest Snippets
+# Kotest Tests
 
 Sample tests written using the [Kotest](https://kotest.io/) library.
 

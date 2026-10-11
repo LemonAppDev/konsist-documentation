@@ -1,4 +1,4 @@
-# Generic Types Snippets
+# Generic Types Tests
 
 ## 1. All Generic Return Types Contain X In Their Name
 

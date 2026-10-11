@@ -1,4 +1,4 @@
-# Android Snippets
+# Android Tests
 
 Konsist can be used to guard the consistency of the [Android](https://www.android.com/) project.
 

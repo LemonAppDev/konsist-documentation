@@ -1,4 +1,4 @@
-# General Snippets
+# General Tests
 
 ## 1. Files In `ext` Package Must Have Name Ending With `Ext`
 

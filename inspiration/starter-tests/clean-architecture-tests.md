@@ -1,4 +1,4 @@
-# Clean Architecture Snippets
+# Clean Architecture Tests
 
 Snippets used to guard clean architecture dependencies.
 

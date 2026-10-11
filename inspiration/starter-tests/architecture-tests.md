@@ -1,4 +1,4 @@
-# Architecture Snippets
+# Architecture Tests
 
 Snippets used to guard application architecture.
 
