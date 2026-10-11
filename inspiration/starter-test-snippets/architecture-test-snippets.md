@@ -8,7 +8,7 @@ Snippets used to guard application architecture.
 @Test
 fun `4 layer architecture has correct dependencies`() {
     Konsist
-        .scopeFromProject()
+        .scopeFromProduction()
         .assertArchitecture {
             val presentation = Layer("Presentation", "com.myapp.presentation..")
             val business = Layer("Business", "com.myapp.business..")
@@ -23,7 +23,28 @@ fun `4 layer architecture has correct dependencies`() {
 }
 ```
 
-## 2. Every File In Module Resides In Module-specific Package
+## 2. Hexagonal Architecture Has Correct Dependencies
+
+```kotlin
+@Test
+fun `hexagonal architecture has correct dependencies`() {
+    Konsist
+        .scopeFromProduction()
+        .assertArchitecture {
+            val domain = Layer("Domain", "com.myapp.domain..")
+            val application = Layer("Application", "com.myapp.application..")
+            val inputAdapter = Layer("InputAdapter", "com.myapp.adapter.input..")
+            val outputAdapter = Layer("OutputAdapter", "com.myapp.adapter.output..")
+
+            domain.dependsOnNothing()
+            application.dependsOn(domain)
+            inputAdapter.dependsOn(application, domain)
+            outputAdapter.dependsOn(application, domain)
+        }
+}
+```
+
+## 3. Every File In Module Resides In Module-specific Package
 
 ```kotlin
 @Test
@@ -35,7 +56,7 @@ fun `every file in module resides in module-specific package`() {
 }
 ```
 
-## 3. Files Reside In Package That Is Derived From Module Name
+## 4. Files Reside In Package That Is Derived From Module Name
 
 ```kotlin
 @Test

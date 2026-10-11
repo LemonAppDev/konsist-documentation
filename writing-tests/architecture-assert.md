@@ -32,11 +32,15 @@ The `assertArchitecture` block defines architecture layer rules and verifies tha
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .assertArchitecture { 
         // Assert architecture 
     }
 ```
+
+{% hint style="info" %}
+Use `scopeFromProduction()` for architecture checks. Test sources often share packages with production code (e.g. `com.myapp.domain`), so with `scopeFromProject()` test files become part of production layers. Imports used only by tests (fakes, test adapters, other layers) are then reported as architecture violations.
+{% endhint %}
 
 ## Define Layers
 
@@ -44,7 +48,7 @@ Create a `Layer` class instance to represent project layers. Each `Layer` instan
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .assertArchitecture {
         // Define layers
         val presentation = Layer("Presentation", "com.myapp.presentation..")
@@ -68,7 +72,7 @@ The above methods follow up the layer definitions inside `assertArchitecture` bl
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .assertArchitecture {
         val presentation = Layer("Presentation", "com.myapp.presentation..")
         val data = Layer("Data", "com.myapp.data..")
@@ -96,13 +100,42 @@ featureLayer.dependsOn(domainLayer) // strict = false by default
 featureLayer.dependsOn(domainLayer, strict = true)
 ```
 
+## What Each Rule Checks
+
+A layer is _declared_ when it is used in any rule (`dependsOn`, `doesNotDependOn`, `dependsOnNothing`, `include`) inside the `assertArchitecture` block. Rules only look at imports of declared layers. Imports of packages that do not belong to any declared layer (e.g. `kotlin..`, `android..`, third-party libraries, undeclared packages) are ignored.
+
+| Rule                            | Passes when                                                                   |
+| ------------------------------- | ----------------------------------------------------------------------------- |
+| `a.dependsOn(b)`                | `a` does not import any declared layer other than `b` (imports of `a` itself are allowed) |
+| `a.dependsOn(b, strict = true)` | Same as above, and at least one file in `a` imports `b`                        |
+| `a.doesNotDependOn(b)`          | `a` does not import `b`. Imports of other declared layers are allowed          |
+| `a.dependsOnNothing()`          | `a` does not import any other declared layer                                  |
+| `a.include()`                   | Always. No rule for `a`, but `a` becomes a declared layer, so other layers' `dependsOn` and `dependsOnNothing` rules forbid importing it |
+
+{% hint style="warning" %}
+Only `import` directives are checked. A fully qualified reference without an import (e.g. `com.myapp.data.Repository()`) is not detected.
+{% endhint %}
+
+## Preconditions
+
+Before verifying dependencies Konsist checks the architecture configuration and throws `KoPreconditionFailedException` when:
+
+* `Architecture doesn't contain layers or dependencies.` - the `assertArchitecture` block does not declare any layer.
+* `Layer X doesn't contain any files.` - a declared layer does not match any file in the scope. Every declared layer must contain at least one file.
+
+Common causes of the empty layer error:
+
+* A typo in the layer package (`com.myapp.dmain..`).
+* A missing trailing `..` - `com.myapp.domain` matches only the `com.myapp.domain` package, not its sub-packages.
+* The scope does not contain the module or source set where the layer lives (e.g. `scopeFromModule("app")` while the layer is in the `core` module).
+
 ## Excluding Files
 
 Architecture verification can be performed on `KoScope` (as seen above) and a list of `KoFileDeclaration`s. For example, you can remove a few files from the scope before performing an architectural check:
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .files
     .withoutNameStartingWith("Repository")
     .assertArchitecture {
@@ -116,6 +149,10 @@ Konsist
 
 This approach provides more flexibility when working with complex projects; however, the desired approach is to create a dedicated scope. See [koscope.md](koscope.md "mention").
 
+{% hint style="info" %}
+Architecture assertions do not support suppression with `@Suppress`. To skip files, remove them from the scope (or file list) before calling `assertArchitecture`.
+{% endhint %}
+
 ## Include Layer Without Defining Dependency
 
 The `include` method allows including a layer in architecture verification without defining a dependency for this layer:
@@ -125,7 +162,7 @@ private val domain = Layer("Domain",  "com.domain..")
 private val presentation = Layer("Presentation", "com.presentation..")
 
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .assertArchitecture {
         // Include presentation for architectural check without defining a dependency
         presentation.include()
