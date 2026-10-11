@@ -126,7 +126,6 @@ Before verifying dependencies Konsist checks the architecture configuration and 
 Common causes of the empty layer error:
 
 * A typo in the layer package (`com.myapp.dmain..`).
-* A missing trailing `..` - `com.myapp.domain` matches only the `com.myapp.domain` package, not its sub-packages.
 * The scope does not contain the module or source set where the layer lives (e.g. `scopeFromModule("app")` while the layer is in the `core` module).
 
 ## Excluding Files
