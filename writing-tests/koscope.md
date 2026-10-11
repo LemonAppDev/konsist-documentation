@@ -164,7 +164,7 @@ Konsist resolves the module name to a directory relative to the project root (`:
 {% endhint %}
 
 {% hint style="warning" %}
-`scopeFromModule` throws an `IllegalArgumentException` when the module directory does not exist or the module does not contain any Kotlin files. This prevents a misspelled module name from silently creating an empty scope, where every assertion would pass without verifying anything.
+`scopeFromModule` returns an empty scope when the module does not exist (e.g. misspelled module name or wrong case). Assertions on an empty list pass by default, so a misspelled module name can silently disable the test. Use the [strict](declaration-assert.md#strict) assertion parameter to make the test fail when the declaration list is empty.
 {% endhint %}
 
 This approach may be helpful when refactoring an existing project module by module.
@@ -184,10 +184,6 @@ scope
 ### Nested Module Scope
 
 A nested module is a module that exists within another module.
-
-{% hint style="warning" %}
-The `nested modules` feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
-{% endhint %}
 
 Consider this `feature` module existing inside `app` module:
 
@@ -236,7 +232,7 @@ To retrieve scope by using both module and source set use the `scopeFromProject`
 Konsist.scopeFromProject(moduleName = ":app", sourceSetName = "test")
 ```
 
-The `moduleName` argument (also available in `scopeFromProduction`, `scopeFromTest` and `scopeFromPackage`) accepts the same formats as `scopeFromModule` and throws an `IllegalArgumentException` when the module directory does not exist.
+The `moduleName` argument (also available in `scopeFromProduction`, `scopeFromTest` and `scopeFromPackage`) accepts the same formats as `scopeFromModule` and returns an empty scope when the module does not exist.
 
 Contains:
 
@@ -330,7 +326,20 @@ koScope.slice { it.hasPackage("com.domain.usecase") }
 
 // scope containing all files in 'usecase' package and its sub-packages
 koScope.slice { it.hasPackage("..usecase..") }
+
+// scope containing all files in modules with name ending with '-ui' e.g. ':feature:auth-ui'
+koScope.slice { it.moduleName.endsWith("-ui") }
+
+// scope containing all files except files from the 'legacy' module
+koScope.slice { !it.resideInModule(":legacy") }
+
+// scope containing all files except files in any 'generated' directory
+koScope.slice { !it.resideInPath("..generated..") }
 ```
+
+{% hint style="info" %}
+Project files are parsed once and cached, so slicing `Konsist.scopeFromProject()` does not parse files again.
+{% endhint %}
 
 ## Scope Reuse
 
