@@ -39,7 +39,7 @@ Konsist
 ```
 
 {% hint style="info" %}
-Use `scopeFromProduction()` for architecture checks. Test sources often share packages with production code (e.g. `com.myapp.domain`), so with `scopeFromProject()` test files become part of production layers. Imports used only by tests (fakes, test adapters, other layers) are then reported as architecture violations.
+Use `scopeFromProduction()` for architecture checks. Test sources often share packages with production code (e.g. `com.myapp.domain`), so with `scopeFromProject()` test files become part of production layers. Imports used only by tests (fakes, test adapters) can then be reported as violations (e.g. by `dependsOnNothing` or `doesNotDependOn`).
 {% endhint %}
 
 ## Define Layers
@@ -106,11 +106,15 @@ A layer is _declared_ when it is used in any rule (`dependsOn`, `doesNotDependOn
 
 | Rule                            | Passes when                                                                   |
 | ------------------------------- | ----------------------------------------------------------------------------- |
-| `a.dependsOn(b)`                | `a` does not import any declared layer other than `b` (imports of `a` itself are allowed) |
-| `a.dependsOn(b, strict = true)` | Same as above, and at least one file in `a` imports `b`                        |
+| `a.dependsOn(b)`                | Always. Imports are not checked. `a` and `b` become declared layers and `a -> b` is used for circular dependency detection |
+| `a.dependsOn(b, strict = true)` | At least one file in `a` imports `b`. Imports of other declared layers are not checked |
 | `a.doesNotDependOn(b)`          | `a` does not import `b`. Imports of other declared layers are allowed          |
 | `a.dependsOnNothing()`          | `a` does not import any other declared layer                                  |
-| `a.include()`                   | Always. No rule for `a`, but `a` becomes a declared layer, so other layers' `dependsOn` and `dependsOnNothing` rules forbid importing it |
+| `a.include()`                   | Always. No rule for `a`, but `a` becomes a declared layer, so other layers' `dependsOnNothing` rules forbid importing it |
+
+{% hint style="warning" %}
+`dependsOn` does not forbid dependencies on other layers. To forbid a dependency use `doesNotDependOn` (or `dependsOnNothing` for an independent layer).
+{% endhint %}
 
 {% hint style="warning" %}
 Only `import` directives are checked. A fully qualified reference without an import (e.g. `com.myapp.data.Repository()`) is not detected.
@@ -122,6 +126,7 @@ Before verifying dependencies Konsist checks the architecture configuration and 
 
 * `Architecture doesn't contain layers or dependencies.` - the `assertArchitecture` block does not declare any layer.
 * `Layer X doesn't contain any files.` - a declared layer does not match any file in the scope. Every declared layer must contain at least one file.
+* `Layer name must be unique. Duplicated name: 'X'.` / `Layer rootPackage must be unique. Duplicated rootPackage: 'x..'.` - two `Layer` instances use the same `name` or `rootPackage`. This also applies to two equal instances created separately (e.g. by a `get()` property), so create each layer once and reuse it.
 
 Common causes of the empty layer error:
 

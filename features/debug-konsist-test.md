@@ -45,7 +45,7 @@ koScope
 
 Konsist provides a flexible API that allows outputting the specified data as console logs. Scopes, lists of declarations, and single declarations can all be printed.
 
-Print a list of classes from `KoScope`:
+Print a list of files from `KoScope`:
 
 ```kotlin
 koScope // KoScope

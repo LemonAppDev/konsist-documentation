@@ -305,8 +305,8 @@ val myScope = Konsist.scopeFromFiles(filePaths)
 For even more granular control you can use the `KoScope.slice` method to retrieve a scope containing a subset of files from the given scope:
 
 ```kotlin
-// scope containing all files in the 'test' folder
-koScope.slice { it.projectPath.contains("/test/") }
+// scope containing all files in any 'test' directory (works with '/' and '\' separators)
+koScope.slice { it.resideInPath("..test..") }
 
 // scope containing all files in 'com.domain.usecase' package
 koScope.slice { it.hasPackage("com.domain.usecase") }
