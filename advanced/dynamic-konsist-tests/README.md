@@ -185,7 +185,7 @@ The IDE will display the tests as follows:
 <figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Without the `testName` argument Konsist uses the `@TestFactory` method name (`use case test`) for every dynamic test created by this method. Pass `testName` (see [explicit-test-names.md](explicit-test-names.md "mention")) to display the dynamic test name in the error message and to suppress a single dynamic test.
+Without the `testName` argument Konsist uses the `@TestFactory` method name (`use case test`) for every dynamic test created by this method. Register `KoJUnitExtension` (`@ExtendWith(KoJUnitExtension::class)`) to use the dynamic test name without the `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")). The dynamic test name is then displayed in the error message and a single dynamic test can be suppressed.
 {% endhint %}
 {% endtab %}
 
@@ -214,7 +214,7 @@ The IDE will display the tests as follows:
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as Kotest, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")).
+For Kotest 6 register `KoKotestExtension` to provide the test name without the `testName` argument. For Kotest 5 pass the `testName` argument (`this.testCase.name.testName`). See [explicit-test-names.md](explicit-test-names.md "mention").
 {% endhint %}
 {% endtab %}
 

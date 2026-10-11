@@ -87,7 +87,7 @@ Konsist
 
 ### Test Name
 
-Assertions offer a set of parameters allowing you to tweak the assertion behavior. By default, the test name is derived from the JUnit test method name (for JUnit 5 dynamic tests, the name of the `@TestFactory` method). For Kotest the test name can't be determined, so it is omitted from the error message. Set the `testName` argument to display a custom test name and to enable suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
+Assertions offer a set of parameters allowing you to tweak the assertion behavior. By default, the test name is derived from the JUnit test method name (for JUnit 5 dynamic tests, the name of the `@TestFactory` method). For Kotest the test name can't be determined, so it is omitted from the error message. Register `KoJUnitExtension` (JUnit 5 dynamic tests) or `KoKotestExtension` (Kotest 6) to use the name of the running test (see [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention")), or set the `testName` argument to display a custom test name and to enable suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
 
 ### Strict
 
