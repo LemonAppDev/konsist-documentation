@@ -70,6 +70,7 @@
 * [Known Issues](help/known-issues/README.md)
   * [Multiple Kotlin compilers found on the classpath](help/known-issues/multiple-kotlin-compilers-found-on-the-classpath.md)
   * [java.lang.OutOfMemoryError: Java heap space](help/known-issues/java.lang.outofmemoryerror-java-heap-space.md)
+  * [Maven: Module was compiled with an incompatible version of Kotlin](help/known-issues/maven-module-was-compiled-with-an-incompatible-version-of-kotlin.md)
 * [Compatibility](help/compatibility.md)
 
 ## ℹ️ OTHER
