@@ -140,3 +140,7 @@ Assert 'use case has single public function' was violated (1 time). Invalid decl
 {% hint style="info" %}
 `additionalMessage` is displayed once for the whole assertion, while `addReason` is displayed for each failing declaration. `addReason` can be called multiple times for a single declaration.
 {% endhint %}
+
+{% hint style="info" %}
+Gradle does not display the assertion message (including `additionalMessage` and reasons) in the command line output by default. See [enable-full-command-line-logging.md](../advanced/enable-full-command-line-logging.md "mention").
+{% endhint %}
