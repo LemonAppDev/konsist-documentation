@@ -36,7 +36,22 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
 }
 ```
 
-## 3. `Repository` Classes Should Reside In `repository` Package
+## 3. Every `ViewModel` `StateFlow` Property Has Explicit Backing Field
+
+```kotlin
+@Test
+fun `Every 'ViewModel' 'StateFlow' property has explicit backing field`() {
+    Konsist
+        .scopeFromProject()
+        .classes()
+        .withParentClassOf(ViewModel::class)
+        .properties()
+        .withTypeOf(StateFlow::class)
+        .assertTrue { it.hasExplicitBackingField }
+}
+```
+
+## 4. `Repository` Classes Should Reside In `repository` Package
 
 ```kotlin
 @Test
@@ -49,7 +64,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
 }
 ```
 
-## 4. No Class Should Use Android Util Logging
+## 5. No Class Should Use Android Util Logging
 
 ```kotlin
 @Test
@@ -61,7 +76,7 @@ fun `no class should use Android util logging`() {
 }
 ```
 
-## 5. All Jetpack Compose Previews Contain `Preview` In Method Name
+## 6. All Jetpack Compose Previews Contain `Preview` In Method Name
 
 ```kotlin
 @Test
@@ -76,7 +91,7 @@ fun `All Jetpack Compose previews contain 'Preview' in method name`() {
 }
 ```
 
-## 6. Every Class With Serializable Must Have Its Properties Serializable
+## 7. Every Class With Serializable Must Have Its Properties Serializable
 
 ```kotlin
 @Test

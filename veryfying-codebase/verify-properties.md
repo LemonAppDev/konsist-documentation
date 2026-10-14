@@ -129,6 +129,21 @@ Check if property has `lazy` delegate with a given thread safety mode (`lazy` wi
 
 Other built-in delegates can be verified using `hasObservableDelegate` (`Delegates.observable`), `hasVetoableDelegate` (`Delegates.vetoable`), `hasNotNullDelegate` (`Delegates.notNull`) and `hasPropertyReferenceDelegate` (`by ::otherProperty`). Custom delegates can be verified using `hasDelegate("delegateName")`.
 
+## **Verify Explicit Backing Field**
+
+Property [explicit backing field](https://kotlinlang.org/docs/properties.html) (`field = ...`) can be verified:
+
+Check if property has explicit backing field:
+
+```kotlin
+...
+.assertTrue { 
+    it.hasExplicitBackingField
+}
+```
+
+The explicit backing field declaration (`explicitBackingField`) provides access to its `type` (e.g. `field: MutableStateFlow<Int> = ...`), `tacitType` and `value`.
+
 ## **Verify Visibility**&#x20;
 
 Property visibility scope can be validated:
