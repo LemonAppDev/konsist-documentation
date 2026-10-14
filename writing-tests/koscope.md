@@ -255,6 +255,30 @@ Use `..` (or `:..`) to match all modules. `root..` matches only the root module 
 
 The `moduleName` property of a nested module declaration returns the directory path with `/` separators on all OSes (e.g. `app/feature`).
 
+{% hint style="info" %}
+A project located inside a source set directory is not a nested module. Its files belong to the module containing
+the source set. A source set directory is a directory containing a `kotlin`, `java` or `resources` directory
+(e.g. `app/src/test`).
+
+```text
+app/
+└── src/
+    ├── main/kotlin/AppMain.kt
+    └── test/
+        ├── kotlin/AppTest.kt
+        ├── resources/project/src/main/kotlin/Fixture.kt
+        └── testData/project/src/main/kotlin/Fixture.kt
+```
+
+Both `Fixture.kt` files reside in the `app` module and the `test` source set:
+
+```kotlin
+Konsist.scopeFromProduction(moduleName = ":app") // AppMain.kt
+Konsist.scopeFromTest(moduleName = ":app")       // AppTest.kt and both Fixture.kt files
+Konsist.scopeFromModule(":app:src:test:testData:project") // empty scope
+```
+{% endhint %}
+
 ### Source Set Scope
 
 The `scopeFromSourceSet` method allows the creation of more granular scopes based on the source set name e.g. create a scope containing all Kotlin files present in the `test` source set:
