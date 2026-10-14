@@ -68,6 +68,10 @@ The widest scope is the scope containing all Kotlin files present inside the pro
 Konsist.scopeFromProject() // All Kotlin files present in the project
 ```
 
+{% hint style="info" %}
+Project scopes (`scopeFromProject`, `scopeFromModule`, `scopeFromPackage`, `scopeFromSourceSet`, `scopeFromProduction` and `scopeFromTest`) contain only Kotlin files located in the module `src` directory. Kotlin files located outside of it are ignored, e.g. `app/Script.kt`, `app/testData/Fixture.kt` and `app/build/Generated.kt`. Use [Directory Scope](#directory-scope) or [File Scope](#file-scope) to verify these files.
+{% endhint %}
+
 To print a list of files within `koScope` use the `koScope.print()` method:
 
 ```kotlin
@@ -191,7 +195,8 @@ Consider this `feature` module existing inside `app` module:
 project/
 ├─ app/
 │  ├─ feature/   <--- scope contains all files from the 'app/feature' module
-│  │  ├─ Feature.kt
+│  │  ├─ src/main/kotlin/
+│  │  │  ├─ Feature.kt
 ```
 
 To narrow the scope to `feature` module use:
@@ -207,9 +212,11 @@ The parent module scope contains only the parent module files - files of nested 
 ```
 project/
 ├─ app/   <--- scope contains only files from the 'app' module
-│  ├─ App.kt
+│  ├─ src/main/kotlin/
+│  │  ├─ App.kt
 │  ├─ feature/
-│  │  ├─ Feature.kt
+│  │  ├─ src/main/kotlin/
+│  │  │  ├─ Feature.kt
 ```
 
 ```kotlin
@@ -330,7 +337,7 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 
 ### Directory Scope
 
-The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
+The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory. Unlike project scopes, it also contains Kotlin files located outside the module `src` directory:
 
 ```kotlin
 val myScope = Konsist.scopeFromDirectory("app/domain")
