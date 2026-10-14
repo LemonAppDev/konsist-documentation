@@ -60,7 +60,7 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assertTrue { it.resideInPackage("..controller..") }
+        .assertTrue { it.residesInPackage("..controller..") }
 }
 ```
 
