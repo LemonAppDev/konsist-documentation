@@ -139,15 +139,29 @@ Konsist
     }
 ```
 
+Check if property with `lazy` delegate using `LazyThreadSafetyMode.NONE` or `LazyThreadSafetyMode.PUBLICATION` is private:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withLazyDelegate(LazyThreadSafetyMode.NONE, LazyThreadSafetyMode.PUBLICATION)
+    .assertTrue { 
+        it.hasPrivateModifier 
+    }
+```
+
 Available built-in delegate checks:
 
-| Member                         | Matches                                        |
-| ------------------------------ | ---------------------------------------------- |
-| `hasLazyDelegate(mode)`        | `lazy { }`, `lazy<T> { }`, `lazy(mode) { }`    |
-| `hasObservableDelegate`        | `Delegates.observable(...)`                    |
-| `hasVetoableDelegate`          | `Delegates.vetoable(...)`                      |
-| `hasNotNullDelegate`           | `Delegates.notNull()`                          |
-| `hasPropertyReferenceDelegate` | `by ::otherProperty`, `by this::otherProperty` |
+| Member                         | List filters                                                         | Matches                                        |
+| ------------------------------ | -------------------------------------------------------------------- | ---------------------------------------------- |
+| `hasLazyDelegate(mode)`        | `withLazyDelegate(modes)`, `withoutLazyDelegate(modes)`              | `lazy { }`, `lazy<T> { }`, `lazy(mode) { }`    |
+| `hasObservableDelegate`        | `withObservableDelegate()`, `withoutObservableDelegate()`            | `Delegates.observable(...)`                    |
+| `hasVetoableDelegate`          | `withVetoableDelegate()`, `withoutVetoableDelegate()`                | `Delegates.vetoable(...)`                      |
+| `hasNotNullDelegate`           | `withNotNullDelegate()`, `withoutNotNullDelegate()`                  | `Delegates.notNull()`                          |
+| `hasPropertyReferenceDelegate` | `withPropertyReferenceDelegate()`, `withoutPropertyReferenceDelegate()` | `by ::otherProperty`, `by this::otherProperty` |
+
+`withLazyDelegate()` without modes matches any `lazy` delegate. With modes, it matches a `lazy` delegate using any of the given modes.
 
 Custom delegates can be verified using `hasDelegate("delegateName")`.
 
