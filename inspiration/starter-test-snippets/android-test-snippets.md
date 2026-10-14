@@ -36,20 +36,18 @@ fun `Every 'ViewModel' public property has 'Flow' type`() {
 }
 ```
 
-## 3. Every `ViewModel` `StateFlow` Property Has `MutableStateFlow` Explicit Backing Field
+## 3. Every `ViewModel` `StateFlow` Property Has Explicit Backing Field
 
 ```kotlin
 @Test
-fun `Every 'ViewModel' 'StateFlow' property has 'MutableStateFlow' explicit backing field`() {
+fun `Every 'ViewModel' 'StateFlow' property has explicit backing field`() {
     Konsist
         .scopeFromProject()
         .classes()
         .withParentClassOf(ViewModel::class)
         .properties()
         .withTypeOf(StateFlow::class)
-        .assertTrue {
-            it.hasExplicitBackingField { field -> field.hasTacitTypeOf(MutableStateFlow::class) }
-        }
+        .assertTrue { it.hasExplicitBackingField }
 }
 ```
 

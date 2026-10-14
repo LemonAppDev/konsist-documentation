@@ -138,17 +138,7 @@ Check if property has explicit backing field:
 ```kotlin
 ...
 .assertTrue { 
-    it.hasExplicitBackingField()
-}
-```
-
-Check if `StateFlow` property has `MutableStateFlow` explicit backing field:
-
-```kotlin
-...
-.withTypeOf(StateFlow::class)
-.assertTrue { 
-    it.hasExplicitBackingField { field -> field.hasTacitTypeOf(MutableStateFlow::class) }
+    it.hasExplicitBackingField
 }
 ```
 
