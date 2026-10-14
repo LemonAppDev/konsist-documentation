@@ -222,13 +222,31 @@ To include the parent module and its nested modules pass all of them:
 Konsist.scopeFromModule(":app", ":app:feature")
 ```
 
-The `moduleName` property of a nested module declaration returns the directory path with `/` separators on all OSes (e.g. `app/feature`). To create a scope containing all modules nested inside the `app` directory use [Scope Slice](#scope-slice):
+or use the `..` wildcard, which matches any number of module directories (including none):
+
+```kotlin
+Konsist.scopeFromModule(":app..")        // 'app' module and all modules nested inside it
+Konsist.scopeFromModule("..data")        // every 'data' module, e.g. 'data', 'feature/data', 'feature/auth/data'
+Konsist.scopeFromModule(":app..data")    // 'data' modules nested at any depth inside 'app'
+Konsist.scopeFromModule("..")            // all modules
+```
+
+The wildcard works with every method accepting a module name, e.g. the `moduleName` parameter of `scopeFromProject`, `scopeFromPackage`, `scopeFromProduction` and `scopeFromTest`, as well as `residesInModule`, `withModule` and `withoutModule`:
 
 ```kotlin
 Konsist
     .scopeFromProject()
-    .slice { it.moduleName.startsWith("app/") }
+    .classes()
+    .withModule(":app..")
 ```
+
+Module names without `..` must match exactly, so `:app` does not include `:app:feature`.
+
+{% hint style="info" %}
+Use `..` (or `:..`) to match all modules. `root..` matches only the root module and modules located in a directory named `root`.
+{% endhint %}
+
+The `moduleName` property of a nested module declaration returns the directory path with `/` separators on all OSes (e.g. `app/feature`).
 
 ### Source Set Scope
 
