@@ -107,9 +107,9 @@ Property initialization can be verified:
 
 ## **Verify Delegates**
 
-Property delegates can be verified:
+Property delegates can be verified. Built-in delegate checks are available since Konsist `0.19.0`.
 
-Check if property has `lazy` delegate:
+Check if property has `lazy` delegate (matches `lazy { }`, `lazy<T> { }` and `lazy(mode) { }`):
 
 ```kotlin
 ...
@@ -127,7 +127,52 @@ Check if property has `lazy` delegate with a given thread safety mode (`lazy` wi
 }
 ```
 
-Other built-in delegates can be verified using `hasObservableDelegate` (`Delegates.observable`), `hasVetoableDelegate` (`Delegates.vetoable`), `hasNotNullDelegate` (`Delegates.notNull`) and `hasPropertyReferenceDelegate` (`by ::otherProperty`). Custom delegates can be verified using `hasDelegate("delegateName")`.
+Check if property does not use `Delegates.observable` or `Delegates.vetoable` delegate:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withDelegate()
+    .assertFalse { 
+        it.hasObservableDelegate || it.hasVetoableDelegate 
+    }
+```
+
+Check if `lazy` properties using `LazyThreadSafetyMode.NONE` or `LazyThreadSafetyMode.PUBLICATION` are `private`:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withLazyDelegate(LazyThreadSafetyMode.NONE, LazyThreadSafetyMode.PUBLICATION)
+    .assertTrue { 
+        it.hasPrivateModifier 
+    }
+```
+
+Available built-in delegate checks and list filters:
+
+| Member                         | List filters                                                            | Matches                                        |
+| ------------------------------ | ----------------------------------------------------------------------- | ---------------------------------------------- |
+| `hasLazyDelegate(mode)`        | `withLazyDelegate(vararg modes)`, `withoutLazyDelegate(vararg modes)`   | `lazy { }`, `lazy<T> { }`, `lazy(mode) { }`    |
+| `hasObservableDelegate`        | `withObservableDelegate()`, `withoutObservableDelegate()`               | `Delegates.observable(...)`                    |
+| `hasVetoableDelegate`          | `withVetoableDelegate()`, `withoutVetoableDelegate()`                   | `Delegates.vetoable(...)`                      |
+| `hasNotNullDelegate`           | `withNotNullDelegate()`, `withoutNotNullDelegate()`                     | `Delegates.notNull()`                          |
+| `hasPropertyReferenceDelegate` | `withPropertyReferenceDelegate()`, `withoutPropertyReferenceDelegate()` | `by ::otherProperty`, `by this::otherProperty` |
+
+`withLazyDelegate()` with no modes keeps properties with any `lazy` delegate. With modes, it keeps properties whose `lazy` delegate uses any of the given modes. `withoutLazyDelegate(modes)` removes only those properties, so non-`lazy` properties are kept. Both filters also accept a `Collection<LazyThreadSafetyMode>`.
+
+Custom delegates can be verified using `hasDelegate("delegateName")`.
+
+{% hint style="info" %}
+Delegate checks match the delegate text, not resolved types:
+
+* `observable(...)`, `vetoable(...)` and `notNull()` imported directly (without the `Delegates.` prefix) are not detected.
+* `by map` delegation is not supported by built-in checks - use `hasDelegate("map")`.
+* `hasLazyDelegate(mode)` returns `false` when the mode is not a literal constant, e.g. `lazy(lock) { }` or `lazy(modeVariable) { }`. `hasLazyDelegate()` (no mode) still returns `true`. For the same reason `withLazyDelegate(modes)` drops and `withoutLazyDelegate(modes)` keeps such properties.
+* Interface delegation (`class Foo : Bar by baz`) inherits these members. They are designed for property delegates and return `false` for interface delegates.
+{% endhint %}
 
 ## **Verify Explicit Backing Field**
 
