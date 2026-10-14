@@ -204,6 +204,64 @@ Refresh/Sync the Gradle Project in IDE.
 {% endtab %}
 {% endtabs %}
 
+### Kotlin Multiplatform `konsistTest` Module
+
+In [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects the `konsistTest` module should be a plain JVM module. Konsist tests run on the JVM and read the source files of all modules and source sets (`commonMain`, `androidMain`, `iosMain`, `commonTest`, etc.), so the `konsistTest` module does not need any multiplatform targets.
+
+Declare the Kotlin JVM plugin in the root `build.gradle.kts` file next to the other plugins (with `apply false`), so the Kotlin Gradle plugin is not loaded multiple times in each subproject's classloader:
+
+```kotlin
+// build.gradle.kts
+plugins {
+    alias(libs.plugins.kotlinMultiplatform) apply false
+    alias(libs.plugins.kotlinJvm) apply false
+    // ...
+}
+```
+
+Apply the Kotlin JVM plugin in the `konsistTest/build.gradle.kts` file:
+
+{% tabs %}
+{% tab title="JUnit 5" %}
+```kotlin
+// konsistTest/build.gradle.kts
+plugins {
+    alias(libs.plugins.kotlinJvm)
+}
+
+dependencies {
+    testImplementation(libs.konsist)
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+```
+{% endtab %}
+
+{% tab title="Kotest" %}
+```kotlin
+// konsistTest/build.gradle.kts
+plugins {
+    alias(libs.plugins.kotlinJvm)
+}
+
+dependencies {
+    testImplementation(libs.konsist)
+    testImplementation(libs.kotest.runner.junit5)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+```
+{% endtab %}
+{% endtabs %}
+
+See [kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-junit5) and [kmp-gradle-kotlin-kotest](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-kotest) starter projects for a complete setup.
+
 ### Running Konsist Tests Stored In A Dedicated Gradle Module
 
 Gradle's default behavior assumes that a module's code is up-to-date if the module itself hasn't been modified. This can lead to issues when Konsist tests are placed in a separate module. In such cases, Gradle may skip these tests, believing they're unnecessary.

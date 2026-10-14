@@ -31,6 +31,8 @@ Konsist provides preconfigured sample projects. Each project contains a complete
 
 ### KMP
 
+KMP projects are based on the Kotlin Multiplatform project template (Android and iOS apps with a `shared` module using Compose Multiplatform). Konsist tests are placed in a dedicated `konsistTest` JVM module (see [#kotlin-multiplatform-konsisttest-module](../advanced/isolate-konsist-tests.md#kotlin-multiplatform-konsisttest-module "mention")).
+
 * JUnit 5
   * [kmp-gradle-kotlin-junit5](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects/kmp-gradle-kotlin-junit5)
 * Kotest
