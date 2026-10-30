@@ -111,9 +111,9 @@ Konsist
     .assertFalse(additionalMessage = "Do X to fix the issue") { ... }
 ```
 
-## Add Reason
+## Add Failure Reason
 
-Use `addReason` inside the `assertTrue` / `assertFalse` block to explain why a given declaration violates the assertion. Reasons are displayed under the failing declaration. Reasons added for declarations that pass the assertion are ignored:
+Use `addFailureReason` inside the `assertTrue` / `assertFalse` block to explain why a given declaration violates the assertion. Reasons are displayed under the failing declaration. Reasons added for declarations that pass the assertion are ignored:
 
 ```kotlin
 Konsist
@@ -124,7 +124,7 @@ Konsist
         val publicFunctions = it.functions().filter { function -> function.hasPublicOrDefaultModifier }
 
         if (publicFunctions.size != 1) {
-            addReason("Has ${publicFunctions.size} public functions: ${publicFunctions.joinToString { function -> function.name }}")
+            addFailureReason("Has ${publicFunctions.size} public functions: ${publicFunctions.joinToString { function -> function.name }}")
         }
 
         publicFunctions.size == 1
@@ -138,7 +138,7 @@ Assert 'use case has single public function' was violated (1 time). Invalid decl
 ```
 
 {% hint style="info" %}
-`additionalMessage` is displayed once for the whole assertion, while `addReason` is displayed for each failing declaration. `addReason` can be called multiple times for a single declaration.
+`additionalMessage` is displayed once for the whole assertion, while `addFailureReason` is displayed for each failing declaration. `addFailureReason` can be called multiple times for a single declaration.
 {% endhint %}
 
 {% hint style="info" %}
