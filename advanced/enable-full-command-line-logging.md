@@ -4,7 +4,7 @@ description: Boost command line output
 
 # Enable Full Command Line Logging
 
-By default, Gradle uses the `SHORT` test exception format. It prints only the exception class name and the test line, so the Konsist assertion message (invalid declarations, file paths, `additionalMessage` and reasons added with `addReason`) is not displayed in the command line output:
+By default, Gradle uses the `SHORT` test exception format. It prints only the exception class name and the test line, so the Konsist assertion message (invalid declarations, file paths, `additionalMessage` and failure reasons added with `addFailureReason`) is not displayed in the command line output:
 
 ```
 > Task :konsistTest:test
