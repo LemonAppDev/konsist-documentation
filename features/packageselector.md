@@ -35,3 +35,9 @@ Package wildcard syntax can be used multiple times inside the string argument. H
 // com.logger.tree - valid
 // com - invalid
 ```
+
+Package without `..` must match exactly, e.g. `residesInPackage("com.app")` is `false` for a declaration in the `com.app.data` package. The `..` wildcard can also be used between packages, e.g. `com..data` matches `com.data` and `com.app.data`.
+
+{% hint style="info" %}
+For types (`KoTypeDeclaration`) and parents (`KoParentDeclaration`), `packagee` and `residesInPackage` refer to the package of the file where the type is referenced (the use site), not the package where it is declared. To check the package where the type is declared use its source declaration, e.g. `type.sourceDeclaration?.asClassDeclaration()?.residesInPackage("com.app..")`.
+{% endhint %}

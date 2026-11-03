@@ -160,6 +160,10 @@ mvn test
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+The `konsistTest` source set name contains `test`, so Konsist treats it as a test source set. Its files are included in `Konsist.scopeFromTest()` and excluded from `Konsist.scopeFromProduction()`.
+{% endhint %}
+
 ## Dedicated Gradle Module
 
 This section demonstrates how to add the `konsistTest` module to the project. This configuration is primarily helpful for Android projects and Kotlin Multiplatform (KMP) projects, however, this approach will also work with Spring and pure Kotlin projects.
