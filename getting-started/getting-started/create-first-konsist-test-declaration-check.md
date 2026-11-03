@@ -92,7 +92,7 @@ Konsist.scopeFromProject()
     } 
 ```
 
-To verify that classes are located in the `controller` package, use the `resideInPackage` method inside `assertTrue` block:
+To verify that classes are located in the `controller` package, use the `residesInPackage` method inside `assertTrue` block:
 
 ```kotlin
 Konsist.scopeFromProject()
@@ -100,7 +100,7 @@ Konsist.scopeFromProject()
     .withAllAnnotationsOf(RestController::class)
     .assertTrue { 
        // Check if classes are located in the controller package
-        it.resideInPackage("..controller..") 
+        it.residesInPackage("..controller..") 
     } 
 ```
 
@@ -132,7 +132,7 @@ class ControllerClassKonsistTest {
             // 3. Filter classes annotated with 'RestController'
             .withAllAnnotationsOf(RestController::class)
             // 4. Define the assertion
-            .assertTrue { it.resideInPackage("..controller..") }
+            .assertTrue { it.residesInPackage("..controller..") }
     }
 }
 ```
@@ -155,7 +155,7 @@ class ControllerClassKonsistTest : FreeSpec({
             .withAllAnnotationsOf(RestController::class)
             // 4. Define the assertion
             .assertTrue (testName = this.testCase.name.name) { 
-                it.resideInPackage("..controller..") 
+                it.residesInPackage("..controller..") 
             }
     }
 })

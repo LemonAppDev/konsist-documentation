@@ -398,7 +398,7 @@ For even more granular control you can use the `KoScope.slice` method to retriev
 
 ```kotlin
 // scope containing all files in any 'test' directory (works with '/' and '\' separators)
-koScope.slice { it.resideInPath("..test..") }
+koScope.slice { it.residesInPath("..test..") }
 
 // scope containing all files in 'com.domain.usecase' package
 koScope.slice { it.hasPackage("com.domain.usecase") }
@@ -410,10 +410,10 @@ koScope.slice { it.hasPackage("..usecase..") }
 koScope.slice { it.moduleName.endsWith("-ui") }
 
 // scope containing all files except files from the 'legacy' module
-koScope.slice { !it.resideInModule(":legacy") }
+koScope.slice { !it.residesInModule(":legacy") }
 
 // scope containing all files except files in any 'generated' directory
-koScope.slice { !it.resideInPath("..generated..") }
+koScope.slice { !it.residesInPath("..generated..") }
 ```
 
 {% hint style="info" %}

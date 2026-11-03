@@ -71,7 +71,7 @@ class UseCaseKonsistTest {
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.resideInPackage("..domain.usecase..") }
+            .assertTrue { it.residesInPackage("..domain.usecase..") }
     }
 }
 ```
@@ -90,7 +90,7 @@ class UseCaseKonsistTest : FreeSpec({
     }
 
     "use case should reside in ..domain.usecase.. package" {
-        useCases.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
+        useCases.assertTrue(testName = this.testCase.name.name) { it.residesInPackage("..domain.usecase..") }
     }
 })
 ```
@@ -172,7 +172,7 @@ class UseCaseKonsistTest {
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
                     useCase.assertTrue(testName = "${useCase.name} should reside in ..domain.usecase.. package") {
-                        it.resideInPackage("..domain.usecase..")
+                        it.residesInPackage("..domain.usecase..")
                     }
                 },
             )
@@ -203,7 +203,7 @@ class UseCaseKonsistTest : FreeSpec({
                 useCase.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.residesInPackage("..domain.usecase..") }
             }
         }
 })

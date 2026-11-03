@@ -77,7 +77,7 @@ class SampleDynamicKonsistTest {
                     useCase.assertTrue { it.hasTestClasses() }
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
-                    useCase.assertTrue { it.resideInPackage("..domain.usecase..") }
+                    useCase.assertTrue { it.residesInPackage("..domain.usecase..") }
                 },
             )
         }
@@ -120,7 +120,7 @@ class SampleDynamicKonsistTest : FreeSpec({
                 useCase.assertTrue { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue { it.resideInPackage("..domain.usecase..") }
+                useCase.assertTrue { it.residesInPackage("..domain.usecase..") }
             }
         }
 })
@@ -149,7 +149,7 @@ class SampleDynamicKonsistTest : FreeSpec({
                 useCase.assertTrue(testName = this.testCase.name.testName) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
+                useCase.assertTrue(testName = this.testCase.name.testName) { it.residesInPackage("..domain.usecase..") }
             }
         }
 })

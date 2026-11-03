@@ -37,7 +37,7 @@ Konsist
     .interfaces()
     .assertTrue {
         it.hasAllChildren(indirectChildren = true) { child -> 
-            child.resideInPackage("..somepackage..") 
+            child.residesInPackage("..somepackage..") 
         }
     }
 ```

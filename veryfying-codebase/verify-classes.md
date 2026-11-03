@@ -67,7 +67,7 @@ Check if class has `model` package or sub-packages (`..` means include sub-packa
 ```kotlin
 ...
 .assertTrue {
-   it.resideInPackage("com.lemonappdev.model..")
+   it.residesInPackage("com.lemonappdev.model..")
 }
 ```
 

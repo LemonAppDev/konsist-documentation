@@ -38,7 +38,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue { it.resideInPackage("..domain.usecase..") } // no testName
+            .assertTrue { it.residesInPackage("..domain.usecase..") } // no testName
     }
 })
 ```
@@ -101,7 +101,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
+            .assertTrue(testName = this.testCase.name.testName) { it.residesInPackage("..domain.usecase..") }
     }
 })
 ```
@@ -142,7 +142,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue(testName = koTestName) { it.resideInPackage("..domain.usecase..") } // extension used
+            .assertTrue(testName = koTestName) { it.residesInPackage("..domain.usecase..") } // extension used
     }
 })
 ```

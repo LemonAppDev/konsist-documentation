@@ -12,7 +12,7 @@ The two dots (`..`) mean zero or more packages, e.g. all classes reside in a pac
     Konsist
         .scopeFromProject()
         .classes()
-        .assertTrue { it.resideInPackage("com.app..") }
+        .assertTrue { it.residesInPackage("com.app..") }
         
 // com.app - valid
 // com.app.data - valid  
@@ -28,7 +28,7 @@ Package wildcard syntax can be used multiple times inside the string argument. H
     Konsist
         .scopeFromProject()
         .interfaces()
-        .assertTrue { it.resideInPackage("..logger..") }
+        .assertTrue { it.residesInPackage("..logger..") }
 
 // logger - valid  
 // com.logger - valid  

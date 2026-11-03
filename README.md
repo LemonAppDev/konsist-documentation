@@ -38,7 +38,7 @@ class UseCaseKonsistTest {
             .scopeFromProject() // Define the scope containing all Kotlin files present in the project
             .classes() // Get all class declarations
             .withNameEndingWith("UseCase") // Filter classes having name ending with 'UseCase'
-            .assertTrue { it.resideInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
+            .assertTrue { it.residesInPackage("..domain.usecase..") } // Assert that each class resides in 'any domain.usecase any' package
     }
 }
 
@@ -54,7 +54,7 @@ class UseCaseKonsistTest : FreeSpec({
             .classes() // Get all class declarations
             .withNameEndingWith("UseCase") // Filter classes having name ending with 'UseCase'
             .assertTrue(testName = this.testCase.name.name) {
-                it.resideInPackage("..domain.usecase..") // Assert that each class resides in 'any domain.usecase any' package
+                it.residesInPackage("..domain.usecase..") // Assert that each class resides in 'any domain.usecase any' package
             }
     }
 })
