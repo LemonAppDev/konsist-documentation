@@ -60,7 +60,7 @@ fun `classes with 'RestController' annotation should reside in 'controller' pack
         .scopeFromProject()
         .classes()
         .withAnnotationOf(RestController::class)
-        .assertTrue { it.resideInPackage("..controller..") }
+        .assertTrue { it.residesInPackage("..controller..") }
 }
 ```
 
@@ -202,6 +202,53 @@ fun `every non-public Controller should have @PreAuthorize on class or on each e
                     controller.functions()
                         .all { it.hasAnnotationOf(PreAuthorize::class) }
         }
+}
+```
+
+## 14. Classes In `domain` Package Should Be Internal
+
+```kotlin
+@Test
+fun `classes in 'domain' package should be internal`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withPackage("..domain..")
+        .assertTrue { it.hasInternalModifier }
+}
+```
+
+## 15. Classes With `Service` Or `Repository` Annotation Should Not Be Public
+
+```kotlin
+@Test
+fun `classes with 'Service' or 'Repository' annotation should not be public`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withAnnotationOf(Service::class, Repository::class)
+        .assertFalse { it.hasPublicOrDefaultModifier }
+}
+```
+
+## 16. Endpoints In Classes With `RestController` Annotation Should Return `ResponseEntity`
+
+```kotlin
+@Test
+fun `endpoints in classes with 'RestController' annotation should return 'ResponseEntity'`() {
+    Konsist
+        .scopeFromProduction()
+        .classes()
+        .withAnnotationOf(RestController::class)
+        .functions()
+        .withAnnotationOf(
+            GetMapping::class,
+            PostMapping::class,
+            PutMapping::class,
+            PatchMapping::class,
+            DeleteMapping::class,
+            RequestMapping::class,
+        ).assertTrue { it.hasReturnTypeOf(ResponseEntity::class) }
 }
 ```
 

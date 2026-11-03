@@ -60,7 +60,7 @@ fun `'Repository' classes should reside in 'repository' package`() {
         .scopeFromProject()
         .classes()
         .withNameEndingWith("Repository")
-        .assertTrue { it.resideInPackage("..repository..") }
+        .assertTrue { it.residesInPackage("..repository..") }
 }
 ```
 
