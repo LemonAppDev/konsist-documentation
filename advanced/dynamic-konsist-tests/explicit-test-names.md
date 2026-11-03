@@ -12,7 +12,7 @@ Test name may be correctly displayed in the IDE, however, Konsist needs the test
 
 The test name can be provided in two ways:
 
-* Register a test framework extension once - `KoJUnitExtension` (JUnit 5) or `KoKotestExtension` (Kotest 6). Konsist then reads the name of the running test, so the name does not have to be repeated in every assertion. Available since Konsist `0.19.0`.
+* Register a test framework extension once - `KoJUnitExtension` (JUnit 5) or `KoKotestExtension` (Kotest 6). Konsist then reads the name of the running test, so the name does not have to be repeated in every assertion. Available since Konsist `1.0.0-beta.1`.
 * Pass the `testName` argument to every assertion.
 
 {% hint style="info" %}

@@ -162,7 +162,7 @@ class ControllerClassKonsistTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-For Kotest to function correctly the Kotest test name has to be explicitly passed. See the [kotest-support.md](../../features/kotest-support.md "mention") page.
+For Kotest to function correctly Konsist needs the Kotest test name. Register `KoKotestExtension` once (Kotest 6) or pass the `testName` argument to every assertion (Kotest 6: `this.testCase.name.name`, Kotest 5: `this.testCase.name.testName`). See the [kotest-support.md](../../features/kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}

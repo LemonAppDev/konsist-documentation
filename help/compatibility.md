@@ -12,7 +12,17 @@ Konsist works with Kotest `5.x` and `6.x`. The `KoKotestExtension` (see [kotest-
 
 Konsist is compatible with popular build systems such as [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/).
 
-The `Java 11` is a minimum [Java](https://www.java.com/en) version required to run Konsist.
+The `Java 11` is a minimum [Java](https://www.java.com/en) version required to run Konsist (Konsist `0.18.x` requires `Java 17`).
+
+## Operating Systems
+
+Konsist works on macOS, Linux and Windows:
+
+* Path arguments (e.g. `scopeFromDirectory`, `scopeFromFile`, `residesInPath`, `withPath`) accept both `/` and `\` separators on all operating systems.
+* `path`, `projectPath` and `location` use operating system separators (`\` on Windows, `/` on other operating systems). `moduleName` uses `/` separators on all operating systems (e.g. `feature/data`).
+* File links in assertion failure messages use the `file:///` format with `/` separators, so they are clickable in the IntelliJ IDEA console on all operating systems.
+
+Kotlin files are parsed regardless of the line endings (`LF`, `CRLF` or `CR`) and the UTF-8 BOM.
 
 ## Kotlin Compatibility
 

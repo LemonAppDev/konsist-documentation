@@ -103,7 +103,7 @@ Windows: C:\Users\<User_Name>\.m2\repository\com\lemonappdev\konsist
 Linux: /home/<User_Name>/.m2/repository/com/lemonappdev/konsist
 ```
 
-The actual Konsist version is defined in the [gradle.properties](https://github.com/LemonAppDev/konsist/blob/main/gradle.properties) file. The `SNAPSHOT` suffix will be added automatically to the published artifact.
+The actual Konsist version is defined in the [gradle.properties](https://github.com/LemonAppDev/konsist/blob/develop/gradle.properties) file. The `SNAPSHOT` suffix will be added automatically to the published artifact.
 
 To use this artifact you have to add a local Maven repository to your project.
 
@@ -142,7 +142,7 @@ Dependency can be added to other build systems as well. Check the [snippets](htt
 
 Now build scripts will use the local repository to resolve dependencies, however, the version of Konsist has to be updated to the `SNAPSHOT` version of the newly published artifact e.g.
 
-`com.lemonappdev:konsist:0.18.1-SNAPSHOT`
+`com.lemonappdev:konsist:1.0.0-beta.1-SNAPSHOT`
 
 Now build scripts will be able to resolve this newly published Konsist artifact.
 
@@ -174,9 +174,9 @@ Konsist contains multiple custom source sets (defined by the [JVM Test Suite Plu
 * `apiTest` - tests related to `assertArchitecture`
 * `integrationTest` - test classes using custom Kotlin snippets (`.kttest`) to test the Konsist API
 * `konsistTest` - tests Konsist codebase consistency using `konsist` library
-* `snippet` - contains Kotlin code snippets (`.ktdoc` files), written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The `misc/scripts/deploy_snippets_to_konsist_documentation_repo.py` script generates PR to update the [snippets](https://docs.konsist.lemonappdev.com/samples/starter-test-snippets) page
+* `testsnippet` - contains Kotlin code snippets (`.ktdoc` files), written as methods (tests without `@Test` annotation), so the tests are not executed. These snippets are used to generate documentation. The `misc/scripts/deploy_snippets_to_konsist_documentation_repo.py` script generates PR to update the [starter-test-snippets](../inspiration/starter-test-snippets/ "mention") page
 
-We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-projects](https://github.com/LemonAppDev/konsist/tree/main/misc/test-projects) directory on the Konsist repository.
+We aim to test the majority of aspects within these source sets. However, certain kinds of checks require a dedicated test project. These projects are available in the [test-projects](https://github.com/LemonAppDev/konsist/tree/main/misc/projects/test-projects) directory on the Konsist repository.
 
 ### Layers
 
@@ -197,8 +197,8 @@ flowchart LR
 
 The [konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository contains this website. Create a fork of the repository, make changes using any text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/)), and open the Pull Request targeting the `main` branch.
 
-#### Updating Snippets
+#### Updating Test Snippets
 
-The [snippets](../inspiration/starter-test-snippets/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [snippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
+The [starter-test-snippets](../inspiration/starter-test-snippets/ "mention") section requires a different approach. To ensure the snippets remain valid and aligned with Konsist API, we store them within the [testsnippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/testsnippet/kotlin) of the [konsist](https://github.com/LemonAppDev/konsist) repository. With every release, new snippet pages are generated from the [testsnippet source set](https://github.com/LemonAppDev/konsist/tree/main/lib/src/testsnippet/kotlin) and placed in the GitBook documentation ([konsist-documentation](https://github.com/LemonAppDev/konsist-documentation) repository).
 
-Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/snippet/kotlin/dummyclasses), e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/snippet/kotlin/dummyclasses/javax/inject/Inject.kt).
+Some snippets depend on classes/interfaces/annotations from external frameworks such as Spring `Repository` annotation or Android `ViewModel` class. To avoid coupling Konsist with these frameworks and allow snippet compilation, we store placeholder classes mimicking the full names of the external framework in [this directory](https://github.com/LemonAppDev/konsist/tree/main/lib/src/testsnippet/kotlin/dummyclasses), e.g. [Inject.kt](https://github.com/LemonAppDev/konsist/blob/main/lib/src/testsnippet/kotlin/dummyclasses/javax/inject/Inject.kt).

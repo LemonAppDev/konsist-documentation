@@ -22,6 +22,5 @@
 10. [Konsist and Conquer: Embracing the World of Kotlin Dynamic Testing](https://proandroiddev.com/konsist-and-conquer-embracing-the-world-of-dynamic-testing-07bf2fefcee1)
 11. [Adding Konsist and Ktlint to a GitHub Actions Continuous Integration](https://akjaw.com/konsist-and-ktlint-in-github-actions-continous-integration/)
 12. [Kotlin “Lint” Testing With Konsist](https://blog.stackademic.com/kotlin-lint-testing-with-konsist-63756e80cf5a)
-13. [Konsist: Protect Kotlin Multiplatform projects from architecture guidelines violations](https://medium.com/@lahirujay/konsist-protect-kotlin-multiplatform-projects-from-architecture-guidelines-violations-d88db0614cbd)
-14. [Konsist: First experience with the new linter for Kotlin](https://www.droidcon.com/2023/10/17/konsist-first-experience-with-the-new-linter-for-kotlin/)
-15. [Your codebase agreements are broken. You just don’t know it yet](https://medium.com/@yassine.sayah/your-codebase-agreements-are-broken-you-just-dont-know-it-yet-b62826dee074)
+13. [Konsist: First experience with the new linter for Kotlin](https://www.droidcon.com/2023/10/17/konsist-first-experience-with-the-new-linter-for-kotlin/)
+14. [Your codebase agreements are broken. You just don’t know it yet](https://medium.com/@yassine.sayah/your-codebase-agreements-are-broken-you-just-dont-know-it-yet-b62826dee074)

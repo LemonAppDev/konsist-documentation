@@ -85,7 +85,7 @@ Here is a Konsist test that verifies if Clean Architecture dependency requiremen
 <strong>    @Test
 </strong>    fun `clean architecture layers have correct dependencies`() {
         Konsist
-            .scopeFromProject() // Define the scope containing all Kotlin files present in project
+            .scopeFromProduction() // Define the scope containing all Kotlin production files present in project
             .assertArchitecture { // Assert architecture
                 // Define layers
                 val domain = Layer("Domain", "com.myapp.domain..")
@@ -107,7 +107,7 @@ Here is a Konsist test that verifies if Clean Architecture dependency requiremen
 class ArchitectureTest : FreeSpec({
     "clean architecture layers have correct dependencies" {
         Konsist
-            .scopeFromProject() // Define the scope containing all Kotlin files present in project
+            .scopeFromProduction() // Define the scope containing all Kotlin production files present in project
             .assertArchitecture(testName = this.testCase.name.name) { // Assert architecture
                 // Define layers
                 val domain = Layer("Domain", "com.myapp.domain..")
@@ -124,6 +124,10 @@ class ArchitectureTest : FreeSpec({
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+By default, every file in the scope must reside in one of the declared layers. See [architecture-assert.md](writing-tests/architecture-assert.md "mention").
+{% endhint %}
 
 {% hint style="info" %}
 These types of checks are useful when the architecture layer is defined by the package, rather than a module where dependencies can be enforced by the build system.

@@ -27,7 +27,7 @@ See [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-nam
 ## Kotest 6: KoKotestExtension
 
 {% hint style="info" %}
-`KoKotestExtension` is available since Konsist `0.19.0` and requires Kotest `6.x`.
+`KoKotestExtension` is available since Konsist `1.0.0-beta.1` and requires Kotest `6.x`.
 {% endhint %}
 
 `KoKotestExtension` passes the name of the running Kotest test to every Konsist assertion (`assertTrue`, `assertFalse`, `assertArchitecture`, etc.). The `testName` argument is no longer needed:
