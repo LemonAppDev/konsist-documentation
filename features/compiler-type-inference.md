@@ -32,6 +32,17 @@ private val name = "Konsist"
 
 The `name` property is obviously of the `String` type. However `String` type is inferred, so Konsist has no way of knowing the actual type (in this exact case this is achievable, but with more complex expressions containing delegates, setters, getters, or methods this approach would not work).
 
+When the property is initialized with a constructor call (a call with a name starting with an uppercase letter), the `tacitType` property returns the type of this call (or the explicitly declared type if present):
+
+```kotlin
+val logger = Logger()
+
+koProperty.type // null
+koProperty.tacitType?.name // "Logger"
+```
+
+For other expressions, such as `"Konsist"` or `listOf(Logger())`, `tacitType` is `null`.
+
 {% hint style="info" %}
 The [K2 Compiler plugin](https://www.youtube.com/watch?v=Pl-89n9wDqo) may enable this feature for Konsist.
 {% endhint %}

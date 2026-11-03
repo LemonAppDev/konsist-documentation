@@ -144,3 +144,5 @@ koFunction.hasReturnTypeOf(List::class)    // true - type arguments are not chec
 ```
 
 A nullable type (`String?`) matches only a nullable type, while a non-nullable type (`String`) matches both. Nullability and variance (`out`, `in`) of type arguments must match exactly.
+
+The `KClass` overloads (e.g. `hasTypeOf(Foo::class)`, `hasReturnTypeOf(Foo::class)`, `hasParentOf(Foo::class)`) compare fully qualified names and resolve import aliases (`import com.app.Foo as Bar`) and Kotlin type aliases, e.g. `IllegalStateException` (alias of `java.lang.IllegalStateException`) matches `IllegalStateException::class`.

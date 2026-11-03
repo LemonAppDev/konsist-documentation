@@ -31,4 +31,25 @@ Konsist
 	.parents(indirectParents = true) // ClassB, ClassA
 ```
 
-Notice that only parents existing in the project code base are returned.
+Parents declared outside the project codebase (library and Kotlin standard library types) are also returned. With `indirectParents = true` parents of such parents are read from the test classpath, so the library must be on it (parents missing from the classpath are skipped):
+
+```kotlin
+// Library
+open class LibraryClass : LibraryInterface
+interface LibraryInterface
+
+// Project
+class ClassD : LibraryClass()
+```
+
+```kotlin
+Konsist
+	.scopeFromProject()
+	.classes()
+	.first { it.name == "ClassD" }
+	.parents(indirectParents = true) // LibraryClass, LibraryInterface
+```
+
+{% hint style="info" %}
+For library and Kotlin parents `sourceDeclaration` is an external declaration (`isExternal`) or Kotlin type (`isKotlinType`), so casts such as `asClassDeclaration()` return `null` - these casts return only declarations from the project codebase.
+{% endhint %}

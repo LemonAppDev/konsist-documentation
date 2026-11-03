@@ -93,6 +93,15 @@ Expression body functions (using single-expression syntax) can be verified to ma
 }
 ```
 
+Function body content can be verified using `body` property. It contains the block body without the enclosing braces (or the expression for an expression body), and is `null` when function has no body:
+
+```kotlin
+...
+.assertFalse { 
+    it.body?.contains("println(") == true
+}
+```
+
 ## **Verify Parameters**
 
 Function parameters can be validated for their types, names, modifiers, and annotations to ensure consistent parameter usage.
@@ -105,6 +114,36 @@ Check if function has parameter of type `String`:
     it.hasParameter { parameter  -> parameter.hasTypeOf(String::class) }
 }
 ```
+
+## **Verify Context Parameters**
+
+Function [context parameters](https://kotlinlang.org/docs/context-parameters.html) can be verified:
+
+```kotlin
+// Code Snippet
+context(logger: Logger)
+fun saveOrder(order: Order) { }
+```
+
+Check if function has `Logger` context parameter:
+
+```kotlin
+...
+.assertTrue { 
+    it.hasContextParameter { contextParameter -> contextParameter.hasTypeOf(Logger::class) }
+}
+```
+
+Check if function has context parameter named `logger`:
+
+```kotlin
+...
+.assertTrue { 
+    it.hasContextParameterWithName("logger")
+}
+```
+
+Context parameters can be accessed using `contextParameters` property (anonymous context parameter `context(_: Logger)` has `_` name) and filtered using `withContextParameters()`, `withContextParameterNamed(...)`, `withContextParameter { }` and their `without...` counterparts.
 
 ## **Verify Return Type**
 
@@ -144,6 +183,23 @@ Check if return type has no type arguments:
     it.returnType?.hasTypeArguments()
 }
 ```
+
+## **Verify Test Class**
+
+Function test classes can be verified using a predicate. The predicate is evaluated against classes from the test source sets (optionally limited by `moduleName` and `sourceSetName` parameters).
+
+Check if function has a test class with name containing the function name:
+
+```kotlin
+...
+.assertTrue { function ->
+    function.hasTestClass { testClass -> 
+        testClass.hasNameContaining(function.name, ignoreCase = true) 
+    }
+}
+```
+
+Matching test classes can be retrieved using `testClasses { }` and counted using `countTestClasses { }`. Function lists can be filtered using `withTestClass { }` and `withoutTestClass { }`.
 
 ## **Verify Top Level**
 
