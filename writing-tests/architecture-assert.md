@@ -60,6 +60,33 @@ Konsist
 The inclusion of two trailing dots indicates that the layer is denoted by the `com.myapp.presentation` package together with all of its sub-packages.
 {% endhint %}
 
+### Single Package Layer
+
+A `rootPackage` without trailing dots covers a single package only. Use it for a package that contains other layers, e.g. `com.myapp` with the `domain` and `data` layers in its subpackages:
+
+```kotlin
+Konsist
+    .scopeFromProduction()
+    .assertArchitecture {
+        val app = Layer("App", "com.myapp") // com.myapp only, not com.myapp.domain
+        val domain = Layer("Domain", "com.myapp.domain..")
+        val data = Layer("Data", "com.myapp.data..")
+
+        app.dependsOn(domain, data)
+        data.dependsOn(domain)
+        domain.dependsOnNothing()
+    }
+```
+
+| `rootPackage`  | Matches                                                       |
+| -------------- | ------------------------------------------------------------- |
+| `com.myapp..`  | `com.myapp` and all of its subpackages, e.g. `com.myapp.data` |
+| `com.myapp`    | `com.myapp` only                                              |
+
+{% hint style="warning" %}
+`com.myapp..` overlaps every layer defined in its subpackages, so each file would belong to more than one layer. Use `com.myapp` instead.
+{% endhint %}
+
 ## Define Architecture Assertions
 
 The final step is to define the dependencies (relations) between each layer using one of these methods:
