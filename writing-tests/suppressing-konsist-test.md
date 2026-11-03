@@ -83,6 +83,22 @@ interface Book {
 
 `@Suppress` arguments can be passed in any form supported by Kotlin, e.g. `@Suppress("konsist.a", "konsist.b")`, `@Suppress(names = ["konsist.a"])` or `@kotlin.Suppress("konsist.a")`. A test name containing a comma (e.g. `@Suppress("konsist.a, b")`) is matched as a whole.
 
+### What Is Suppressed
+
+`@Suppress` applied to a declaration also suppresses the test for elements of this declaration, e.g. its annotations, KDoc, KDoc tags and type arguments. `@file:Suppress` also suppresses the test for the package and imports of the file.
+
+When the asserted declarations are annotations, the `@Suppress` annotation that suppresses the test is skipped. Other annotations are verified, even if their arguments contain the test name (e.g. `@Deprecated("konsist.every api declaration has KDoc")`).
+
+Suppressed declarations are treated as passing:
+
+* `assertTrue` / `assertFalse` - suppressed declarations are not verified.
+* `assertEmpty` / `assertNull` - suppressed declarations are ignored, so a list containing only suppressed declarations is considered empty.
+* `assertNotEmpty` / `assertNotNull` - suppressed declarations are still counted, so suppression never causes these assertions to fail.
+
+{% hint style="info" %}
+Architecture assertions (`assertArchitecture`) do not support `@Suppress`. Remove files from the scope instead (see [architecture-assert.md](architecture-assert.md "mention")).
+{% endhint %}
+
 ### Suppressing JUnit 5 Dynamic Test
 
 For JUnit 5 dynamic tests the test name depends on the configuration:

@@ -27,7 +27,7 @@ See [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-nam
 ## Kotest 6: KoKotestExtension
 
 {% hint style="info" %}
-`KoKotestExtension` is available since Konsist `0.19.0` and requires Kotest `6.x`.
+`KoKotestExtension` is available since Konsist `1.0.0-beta.1` and requires Kotest `6.x`.
 {% endhint %}
 
 `KoKotestExtension` passes the name of the running Kotest test to every Konsist assertion (`assertTrue`, `assertFalse`, `assertArchitecture`, etc.). The `testName` argument is no longer needed:
@@ -38,7 +38,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue { it.resideInPackage("..domain.usecase..") } // no testName
+            .assertTrue { it.residesInPackage("..domain.usecase..") } // no testName
     }
 })
 ```
@@ -101,7 +101,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue(testName = this.testCase.name.testName) { it.resideInPackage("..domain.usecase..") }
+            .assertTrue(testName = this.testCase.name.testName) { it.residesInPackage("..domain.usecase..") }
     }
 })
 ```
@@ -142,7 +142,7 @@ class UseCaseTest : FreeSpec({
         Konsist
             .scopeFromProject()
             .classes()
-            .assertTrue(testName = koTestName) { it.resideInPackage("..domain.usecase..") } // extension used
+            .assertTrue(testName = koTestName) { it.residesInPackage("..domain.usecase..") } // extension used
     }
 })
 ```

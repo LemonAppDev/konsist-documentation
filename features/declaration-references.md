@@ -15,7 +15,7 @@ Konsist
     }
 ```
 
-2\. Access properties of parents (parent classes and parent interfaces). Below snippet checks if all parent interfaces have `internal` modifier:
+2\. Access properties of parents (parent classes and parent interfaces). Below snippet checks if all parent interfaces declared in the project have `internal` modifier (parents also include library and Kotlin types, see [indirect-parents.md](indirect-parents.md "mention")):
 
 ```kotlin
 fun `all parent interfaces are internal`() {
@@ -23,6 +23,7 @@ fun `all parent interfaces are internal`() {
         .scopeFromProject()
         .classes()
         .parentInterfaces()
+        .withoutSourceDeclaration { it.isExternal || it.isKotlinType }
         .assertTrue {
             it.sourceDeclaration?.asInterfaceDeclaration()?.hasInternalModifier
         }
@@ -37,7 +38,7 @@ Konsist
     .interfaces()
     .assertTrue {
         it.hasAllChildren(indirectChildren = true) { child -> 
-            child.resideInPackage("..somepackage..") 
+            child.residesInPackage("..somepackage..") 
         }
     }
 ```
@@ -63,7 +64,7 @@ The `Foo` type can be defined by:
 
 The `Foo`  type can be represented by one of `KoXDeclaration` classes:
 
-<table><thead><tr><th width="464">Source</th><th width="282">Declaration</th></tr></thead><tbody><tr><td><a data-mention href="declaration-references.md#type-represented-by-class">#type-represented-by-class</a></td><td><code>KoClassDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-interface">#type-represented-by-interface</a></td><td><code>KoInterfaceDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-object">#type-represented-by-object</a></td><td><code>KoObjectDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-type-alias">#type-represented-by-type-alias</a></td><td><code>KoTypeAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-import-alias">#type-represented-by-import-alias</a></td><td><code>KoImportAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-kotlin-type">#type-represented-by-kotlin-type</a></td><td><code>KoKotlinTypeDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-function-type">#type-represented-function-type</a></td><td><code>KoFunctionDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-external-type">#type-represented-by-external-type</a></td><td><code>KoExternalDeclaration</code></td></tr></tbody></table>
+<table><thead><tr><th width="464">Source</th><th width="282">Declaration</th></tr></thead><tbody><tr><td><a data-mention href="declaration-references.md#type-represented-by-class">#type-represented-by-class</a></td><td><code>KoClassDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-interface">#type-represented-by-interface</a></td><td><code>KoInterfaceDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-object">#type-represented-by-object</a></td><td><code>KoObjectDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-type-alias">#type-represented-by-type-alias</a></td><td><code>KoTypeAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-import-alias">#type-represented-by-import-alias</a></td><td><code>KoImportAliasDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-kotlin-type">#type-represented-by-kotlin-type</a></td><td><code>KoKotlinTypeDeclaration</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-function-type">#type-represented-function-type</a></td><td>none (<code>sourceDeclaration</code> is <code>null</code>)</td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-external-type">#type-represented-by-external-type</a></td><td><code>KoExternalDeclaration</code></td></tr></tbody></table>
 
 Each of these types possesses a largely distinct set of characteristics; for instance, classes and interfaces can include annotations, whereas import aliases cannot.
 
@@ -102,7 +103,7 @@ Konsist
 
 Here is the list of all casting extensions (available on `sourceDeclaration`):
 
-<table data-full-width="true"><thead><tr><th>Source</th><th width="273">Declaration</th><th>Cast Extension</th><th>Type Check Extension</th></tr></thead><tbody><tr><td><a data-mention href="declaration-references.md#type-represented-by-class">#type-represented-by-class</a></td><td><code>KoClassDeclaration</code></td><td><code>asClassDeclaration()</code></td><td><code>isClass</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-interface">#type-represented-by-interface</a></td><td><code>KoInterfaceDeclaration</code></td><td><code>asInterfaceDeclaration()</code></td><td><code>isInterface</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-object">#type-represented-by-object</a></td><td><code>KoObjectDeclaration</code></td><td><code>asObjectDeclaration()</code></td><td><code>isObject</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-type-alias">#type-represented-by-type-alias</a></td><td><code>KoTypeAliasDeclaration</code></td><td><code>asTypeAliasDeclaration()</code></td><td><code>isTypeAlias</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-import-alias">#type-represented-by-import-alias</a></td><td><code>KoImportAliasDeclaration</code></td><td><code>asImportAliasDeclaration()</code></td><td><code>isImportAlias</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-kotlin-type">#type-represented-by-kotlin-type</a></td><td><code>KoKotlinTypeDeclaration</code></td><td><code>asKotlinTypeDeclaration()</code></td><td><code>isKotlinType</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-external-type">#type-represented-by-external-type</a></td><td><code>KoExternalDeclaration</code></td><td><code>asExternalDeclaration()</code></td><td><code>isExternal</code></td></tr></tbody></table>
+<table data-full-width="true"><thead><tr><th>Source</th><th width="273">Declaration</th><th>Cast Extension</th><th>Type Check Extension</th></tr></thead><tbody><tr><td><a data-mention href="declaration-references.md#type-represented-by-class">#type-represented-by-class</a></td><td><code>KoClassDeclaration</code></td><td><code>asClassDeclaration()</code></td><td><code>isClass</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-interface">#type-represented-by-interface</a></td><td><code>KoInterfaceDeclaration</code></td><td><code>asInterfaceDeclaration()</code></td><td><code>isInterface</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-object">#type-represented-by-object</a></td><td><code>KoObjectDeclaration</code></td><td><code>asObjectDeclaration()</code></td><td><code>isObject</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-type-alias">#type-represented-by-type-alias</a></td><td><code>KoTypeAliasDeclaration</code></td><td><code>asTypeAliasDeclaration()</code></td><td><code>isTypeAlias</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-import-alias">#type-represented-by-import-alias</a></td><td><code>KoImportAliasDeclaration</code></td><td><code>asImportAliasDeclaration()</code></td><td><code>isImportAlias</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-kotlin-type">#type-represented-by-kotlin-type</a></td><td><code>KoKotlinTypeDeclaration</code></td><td><code>asKotlinTypeDeclaration()</code></td><td><code>isKotlinType</code></td></tr><tr><td><a data-mention href="declaration-references.md#type-represented-by-external-type">#type-represented-by-external-type</a></td><td><code>KoExternalDeclaration</code></td><td><code>asExternalDeclaration()</code></td><td><code>isExternal</code></td></tr><tr><td>Type parameter</td><td><code>KoTypeParameterDeclaration</code></td><td><code>asTypeParameterDeclaration()</code></td><td><code>isTypeParameter</code></td></tr><tr><td>Function (e.g. imported top-level function)</td><td><code>KoFunctionDeclaration</code></td><td><code>asFunctionDeclaration()</code></td><td><code>isFunction</code></td></tr><tr><td>Property (e.g. imported top-level property)</td><td><code>KoPropertyDeclaration</code></td><td><code>asPropertyDeclaration()</code></td><td><code>isProperty</code></td></tr></tbody></table>
 
 
 
@@ -291,11 +292,11 @@ Konsist test:
     .properties()
     .types
     .assertTrue {
-<strong>        it
-</strong><strong>            .parameters
-</strong>            ?.isEmpty()
-    }
+<strong>        it.parameters.isEmpty()
+</strong>    }
 </code></pre>
+
+Function type has no source declaration (`sourceDeclaration` is `null`). Its `parameters` and `returnType` are available directly on the type (`isFunctionType` checks if type is a function type).
 
 ### Type Represented By External Type
 
@@ -308,4 +309,6 @@ class MyViewModel : ViewModel()
 ```
 
 The Android `ViewModel` class is provided by `androidx.lifecycle:lifecycle-viewmodel-ktx` dependency, so Konsist has limited information.&#x20;
+
+For external declarations and Kotlin types `isClass`, `isInterface` and `isObject` are read from the class on the test classpath (`false` when the class is not on the classpath). Cast extensions such as `asClassDeclaration()` return `null` for them.
 

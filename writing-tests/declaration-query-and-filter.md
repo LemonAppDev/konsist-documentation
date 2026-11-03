@@ -26,9 +26,11 @@ Every [koscope.md](koscope.md "mention") contains a set of declarations ([declar
 | `files`          | returns all files present in the scope        |
 | `packages`       | returns all packages present in the scope     |
 | `imports`        | returns all imports present in the scope      |
+| `annotations`    | returns all file annotations (e.g. `@file:Suppress`) present in the scope |
 | `classes()`      | returns all classes present in the scope      |
 | `interfaces()`   | returns all interfaces present in the scope   |
 | `objects()`      | returns all objects present in the scope      |
+| `companionObjects()` | returns all companion objects present in the scope |
 | `functions()`    | returns all functions present in the scope    |
 | `properties()`   | returns all properties present in the scope   |
 | `typeAliases`    | returns all type aliases present in the scope |
@@ -95,6 +97,10 @@ koScope
         //...
     }
 ```
+
+{% hint style="info" %}
+Regex based filters such as `withNameMatching` and `withoutNameMatching` require the regex to match the entire name, e.g. `withNameMatching(Regex("View"))` does not match `MainViewModel`, but `withNameMatching(Regex(".*View.*"))` does.
+{% endhint %}
 
 It is also possible to filter declarations by using certain aspects e.g. visibility modifiers. Usage of `providers` allows verifying the visibility of different declaration types such as classes, functions, properties, etc:
 

@@ -107,7 +107,7 @@ Property initialization can be verified:
 
 ## **Verify Delegates**
 
-Property delegates can be verified. Built-in delegate checks are available since Konsist `0.19.0`.
+Property delegates can be verified. Built-in delegate checks are available since Konsist `1.0.0-beta.1`.
 
 Check if property has `lazy` delegate (matches `lazy { }`, `lazy<T> { }` and `lazy(mode) { }`):
 
@@ -234,5 +234,53 @@ Konsist
     .assertFalse {
         it.type?.isMutableType == true || it.type?.hasMutableTypeArgument == true
     }
+```
+
+Check if property in a data class has an immutable type (e.g. `String`, `List<String>`, `java.time.LocalDate` or a final project class without mutable properties):
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withDataModifier()
+    .properties()
+    .assertTrue {
+        it.type?.isImmutableType
+    }
+```
+
+`isMutableType` and `isImmutableType` check only the type itself (for `List<MutableList<String>>` `isImmutableType` is `true`); use `hasMutableTypeArgument` and `hasImmutableTypeArgument` to check type arguments at any nesting level. Type aliases and import aliases are resolved to the type they point to. List filters are available: `withMutableType()`, `withImmutableType()`, `withMutableTypeArgument()`, `withImmutableTypeArgument()` and their `without...` counterparts.
+
+{% hint style="info" %}
+A type can be neither mutable nor immutable. When mutability cannot be determined, `isImmutableType` returns `false` (and `isMutableType` returns `false` unless the type itself is mutable), e.g. for type parameters (`T`), function types, external types not known to be immutable (e.g. `java.util.Date`), Kotlin types commonly implemented by mutable types (`Any`, `Comparable`, `CharSequence`, `Number`), and interfaces, open, abstract or sealed classes declared in the project. To verify that a type is not mutable, use `assertFalse { it.type?.isMutableType == true }` instead of checking `isImmutableType`.
+{% endhint %}
+
+## **Verify Context Parameters**
+
+Property [context parameters](https://kotlinlang.org/docs/context-parameters.html) can be verified:
+
+```kotlin
+// Code Snippet
+context(logger: Logger)
+val Order.summary: String
+    get() = ...
+```
+
+Check if property has no context parameters:
+
+```kotlin
+...
+.assertFalse {
+    it.hasContextParameters()
+}
+```
+
+Check if property has `Logger` context parameter:
+
+```kotlin
+...
+.assertTrue {
+    it.hasContextParameter { contextParameter -> contextParameter.hasTypeOf(Logger::class) }
+}
 ```
 

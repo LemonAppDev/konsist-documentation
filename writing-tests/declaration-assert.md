@@ -111,6 +111,46 @@ Konsist
     .assertFalse(additionalMessage = "Do X to fix the issue") { ... }
 ```
 
+### Rule
+
+The `rule` param accepts a `KoRule` describing what the assertion checks, why the rule exists and how to fix a violation. The rule is displayed in the failure message, so a developer (or an AI agent) knows how to fix the issue:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withNameEndingWith("ViewModel")
+    .assertTrue(
+        rule = KoRule(
+            title = "ViewModels must extend BaseViewModel.",
+            rationale = "Lifecycle handling lives in BaseViewModel.",
+            howToFix = "Change the parent class to BaseViewModel.",
+            goodExample = "class LoginViewModel : BaseViewModel()",
+            badExample = "class LoginViewModel : ViewModel()",
+        ),
+    ) { it.hasParentClassWithName("BaseViewModel") }
+```
+
+```
+Assert 'view models extend BaseViewModel' was violated (1 time).
+RULE: ViewModels must extend BaseViewModel.
+WHY: Lifecycle handling lives in BaseViewModel.
+HOW TO FIX: Change the parent class to BaseViewModel.
+GOOD EXAMPLE:
+class LoginViewModel : BaseViewModel()
+BAD EXAMPLE:
+class LoginViewModel : ViewModel()
+Invalid declarations:
+└── Class LoginViewModel file:///project/app/src/main/kotlin/com/myapp/LoginViewModel.kt:3:1
+```
+
+* `title` and `rationale` are required and must not be blank (otherwise `IllegalArgumentException` is thrown).
+* `howToFix`, `goodExample` and `badExample` are optional. Blank values are not displayed.
+* Common indentation is removed from `goodExample` and `badExample`, so a raw string (`"""..."""`) can be used.
+* When both `rule` and `additionalMessage` are set, the rule is displayed first.
+
+The `rule` param is available for every assertion (`assertTrue`, `assertFalse`, `assertEmpty`, `assertNotEmpty`, `assertNull`, `assertNotNull`) and for `assertArchitecture` (see [architecture-assert.md](architecture-assert.md "mention")).
+
 ## Add Failure Reason
 
 Use `addFailureReason` inside the `assertTrue` / `assertFalse` block to explain why a given declaration violates the assertion. Reasons are displayed under the failing declaration. Reasons added for declarations that pass the assertion are ignored:
@@ -142,5 +182,5 @@ Assert 'use case has single public function' was violated (1 time). Invalid decl
 {% endhint %}
 
 {% hint style="info" %}
-Gradle does not display the assertion message (including `additionalMessage` and reasons) in the command line output by default. See [enable-full-command-line-logging.md](../advanced/enable-full-command-line-logging.md "mention").
+Gradle does not display the assertion message (including `additionalMessage`, `rule` and failure reasons) in the command line output by default. See [enable-full-command-line-logging.md](../advanced/enable-full-command-line-logging.md "mention").
 {% endhint %}

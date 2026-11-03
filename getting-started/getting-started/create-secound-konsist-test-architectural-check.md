@@ -58,7 +58,7 @@ The `Konsist` object is an entry point to the `Konsist` library.&#x20;
 Konsist
 ```
 
-The `scopeFromX` methods obtain the instance of the scope containing Kotlin project files. To get all Kotlin project files present in the project use the `scopeFromProject` method:
+The `scopeFromX` methods obtain the instance of the scope containing Kotlin project files. To get all Kotlin production files (without test files) present in the project use the `scopeFromProduction` method:
 
 ```kotlin
 // Define layers
@@ -66,12 +66,16 @@ private val presentationLayer = Layer("Presentation", "com.myapp.presentation.."
 private val domainLayer = Layer("Domain", "com.myapp.domain..")
 private val dataLayer = Layer("Data", "com.myapp.data..")
  
-// Define the scope containing all Kotlin files present in the project
-Konsist.scopeFromProject() //Returns KoScope
+// Define the scope containing all Kotlin production files present in the project
+Konsist.scopeFromProduction() //Returns KoScope
 ```
 
 {% hint style="info" %}
-To define more granular scopes such as scope from production code or scope from single module see the [koscope.md](../../writing-tests/koscope.md "mention") page.
+Use `scopeFromProduction()` for architecture checks. By default, every file in the scope must reside in one of the declared layers, so test files (e.g. the Konsist test itself) placed in other packages would fail the check. See [architecture-assert.md](../../writing-tests/architecture-assert.md "mention").
+{% endhint %}
+
+{% hint style="info" %}
+To define more granular scopes such as scope from a single module see the [koscope.md](../../writing-tests/koscope.md "mention") page.
 {% endhint %}
 
 ### 3. Assert Architecture
@@ -84,7 +88,7 @@ private val domainLayer = Layer("Domain", "com.myapp.domain..")
 private val dataLayer = Layer("Data", "com.myapp.data..")
 
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
      // Assert architecture
     .assertArchitecture {
 <strong>        // Define architectural rules
@@ -95,7 +99,7 @@ Utilize `dependsOn` and `dependsOnNothing` methods to validate that your project
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .assertArchitecture {
         val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
         val domainLayer = Layer("Domain", "com.myapp.domain..")
@@ -119,7 +123,7 @@ class ArchitectureKonsistTest {
     @Test
     fun `architecture layers have correct dependencies`() {
         Konsist
-            .scopeFromProject()
+            .scopeFromProduction()
             .assertArchitecture {
                 val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
                 val domainLayer = Layer("Domain", "com.myapp.domain..")
@@ -144,7 +148,7 @@ The [JUnit](https://junit.org/) testing framework project dependency should be a
 class ArchitectureKonsistTest : FreeSpec({
     "architecture layers have correct dependencies" {
         Konsist
-            .scopeFromProject()
+            .scopeFromProduction()
             .assertArchitecture(testName = this.testCase.name.name) {
                 val presentationLayer = Layer("Presentation", "com.myapp.presentation..")
                 val domainLayer = Layer("Domain", "com.myapp.domain..")
@@ -160,7 +164,7 @@ class ArchitectureKonsistTest : FreeSpec({
 ```
 
 {% hint style="info" %}
-For Kotest to function correctly the Kotest test name has to be explicitly passed. See the [kotest-support.md](../../features/kotest-support.md "mention") page.
+Konsist can't determine the Kotest test name on its own. The above sample passes it using the Kotest 6 API (`this.testCase.name.name`). Alternatively register `KoKotestExtension` (Kotest 6) or use `this.testCase.name.testName` (Kotest 5). See the [kotest-support.md](../../features/kotest-support.md "mention") page.
 {% endhint %}
 
 {% hint style="info" %}
