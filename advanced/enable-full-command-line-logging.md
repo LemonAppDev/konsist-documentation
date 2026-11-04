@@ -59,5 +59,5 @@ UseCaseKonsistTest > every use case has single public function FAILED
 ```
 
 {% hint style="info" %}
-The [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) already contain this configuration.
+The Gradle [starter projects](https://github.com/LemonAppDev/konsist/tree/main/samples/starter-projects) already contain this configuration.
 {% endhint %}

@@ -12,7 +12,7 @@ Konsist works with Kotest `5.x` and `6.x`. The `KoKotestExtension` (see [kotest-
 
 Konsist is compatible with popular build systems such as [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/).
 
-The `Java 11` is a minimum [Java](https://www.java.com/en) version required to run Konsist (Konsist `0.18.x` requires `Java 17`).
+`Java 11` is the minimum [Java](https://www.java.com/en) version required to run Konsist (Konsist `0.18.x` requires `Java 17`).
 
 ## Operating Systems
 

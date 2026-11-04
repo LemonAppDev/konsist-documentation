@@ -86,7 +86,7 @@ By default, every declared layer must contain at least one file (see [#precondit
 val data = Layer("Data", "com.myapp.data..", optional = true)
 ```
 
-Strict dependencies (`dependsOn(..., strict = true)`) of an empty optional layer are not checked. A strict dependency of another layer **on** an empty optional layer still fails, because no file can import it.
+Strict dependencies (`dependsOn(..., strict = true)`) of an empty optional layer are not checked. A strict dependency of another layer **on** an empty optional layer still fails when no file in the scope imports the optional layer package.
 
 ## Define Architecture Assertions
 
@@ -206,7 +206,7 @@ Before verifying dependencies Konsist checks the architecture configuration and 
 Common causes of the empty layer error:
 
 * A typo in the layer package (`com.myapp.dmain..`).
-* The scope does not contain the module or source set where the layer lives (e.g. `scopeFromModule("app")` while the layer is in the `core` module).
+* The scope does not contain the module or source set where the layer lives (e.g. `scopeFromModule(":app")` while the layer is in the `core` module).
 
 ## Assertion Parameters
 

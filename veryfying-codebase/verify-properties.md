@@ -171,7 +171,7 @@ Delegate checks match the delegate text, not resolved types:
 * `observable(...)`, `vetoable(...)` and `notNull()` imported directly (without the `Delegates.` prefix) are not detected.
 * `by map` delegation is not supported by built-in checks - use `hasDelegate("map")`.
 * `hasLazyDelegate(mode)` returns `false` when the mode is not a literal constant, e.g. `lazy(lock) { }` or `lazy(modeVariable) { }`. `hasLazyDelegate()` (no mode) still returns `true`. For the same reason `withLazyDelegate(modes)` drops and `withoutLazyDelegate(modes)` keeps such properties.
-* Interface delegation (`class Foo : Bar by baz`) inherits these members. They are designed for property delegates and return `false` for interface delegates.
+* Interface delegation (`class Foo : Bar by baz`) inherits these members. They are designed for property delegates. For interface delegates they check the delegate expression text the same way (usually `false`).
 {% endhint %}
 
 ## **Verify Explicit Backing Field**

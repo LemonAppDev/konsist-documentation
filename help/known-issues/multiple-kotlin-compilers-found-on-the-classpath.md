@@ -2,9 +2,10 @@
 
 Konsist parses Kotlin files with `kotlin-compiler-embeddable`. Other copies of the Kotlin compiler (e.g. `org.jetbrains.kotlin:kotlin-compiler` or Android Lint `intellij-core`) contain classes with the same names. When such a copy is loaded before `kotlin-compiler-embeddable`, parsing fails with `ClassCastException`, `NoClassDefFoundError` or `NoSuchMethodError`. The failure depends on the classpath order, so it may appear only in some environments (e.g. only in CI or only in the IDE).
 
-Konsist detects this and lists every Kotlin compiler found on the classpath:
+When parsing fails, Konsist checks the classpath and lists every Kotlin compiler found:
 
 ```
+Failed to parse Kotlin file: /.../MyFile.kt
 Multiple Kotlin compilers found on the classpath:
  - /.../kotlin-compiler-2.4.21.jar
  - /.../kotlin-compiler-embeddable-2.4.21.jar

@@ -87,7 +87,7 @@ interface Book {
 
 `@Suppress` applied to a declaration also suppresses the test for elements of this declaration, e.g. its annotations, KDoc, KDoc tags and type arguments. `@file:Suppress` also suppresses the test for the package and imports of the file.
 
-When the asserted declarations are annotations, the `@Suppress` annotation that suppresses the test is skipped. Other annotations are verified, even if their arguments contain the test name (e.g. `@Deprecated("konsist.every api declaration has KDoc")`).
+When the asserted declarations are annotations, the `@Suppress` annotation that suppresses the test is skipped. Other annotations are not treated as suppression, even if their arguments contain the test name (e.g. `@Deprecated("konsist.every api declaration has KDoc")`). They are still suppressed when the annotated declaration (or its file) is suppressed.
 
 Suppressed declarations are treated as passing:
 

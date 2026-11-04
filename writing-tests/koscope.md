@@ -176,7 +176,7 @@ Konsist resolves the module name to a directory relative to the project root (`:
 {% endhint %}
 
 {% hint style="warning" %}
-`scopeFromModule` returns an empty scope when the module does not exist (e.g. misspelled module name or wrong case). Assertions on an empty list pass by default, so a misspelled module name can silently disable the test. Use the [strict](declaration-assert.md#strict) assertion parameter to make the test fail when the declaration list is empty.
+`scopeFromModule` returns an empty scope when the module does not exist (e.g. misspelled module name or wrong case). Assertions on an empty list pass by default, so a misspelled module name can silently disable the test. Use `strict = true` in `assertTrue` / `assertFalse` (see [strict](declaration-assert.md#strict)) to make the test fail when the declaration list is empty.
 {% endhint %}
 
 This approach may be helpful when refactoring an existing project module by module.
@@ -422,7 +422,7 @@ It is also possible to create scope from one or more file paths:
 val myScope = Konsist.scopeFromFile("app/src/main/kotlin/com/domain/UseCase.kt")
 ```
 
-The path is relative to the project root. Both `/` and `\` separators are accepted on all OSes. Letter case must match the file system (`app/src` does not match `App/src`).
+The path is relative to the project root. Both `/` and `\` separators are accepted on all OSes. Letter case should match the file system. On case-sensitive file systems (e.g. Linux) a path with different letter case (e.g. `App/src` instead of `app/src`) throws `IllegalArgumentException`.
 
 It is also possible to create the scope from a list of files. This can help with certain development workflows e.g. running Konsist tests only on files modified in a given PR:
 
