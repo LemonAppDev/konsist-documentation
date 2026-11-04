@@ -122,8 +122,10 @@ Konsist
     .withNameEndingWith("ViewModel")
     .assertTrue(
         rule = KoRule(
+            id = "VM-001",
             title = "ViewModels must extend BaseViewModel.",
-            rationale = "Lifecycle handling lives in BaseViewModel.",
+            reason = "Lifecycle handling lives in BaseViewModel.",
+            description = "Applies to every class with the ViewModel suffix.",
             howToFix = "Change the parent class to BaseViewModel.",
             goodExample = "class LoginViewModel : BaseViewModel()",
             badExample = "class LoginViewModel : ViewModel()",
@@ -133,8 +135,10 @@ Konsist
 
 ```
 Assert 'view models extend BaseViewModel' was violated (1 time).
+ID: VM-001
 RULE: ViewModels must extend BaseViewModel.
-WHY: Lifecycle handling lives in BaseViewModel.
+DESCRIPTION: Applies to every class with the ViewModel suffix.
+REASON: Lifecycle handling lives in BaseViewModel.
 HOW TO FIX: Change the parent class to BaseViewModel.
 GOOD EXAMPLE:
 class LoginViewModel : BaseViewModel()
@@ -144,8 +148,18 @@ Invalid declarations:
 └── Class LoginViewModel file:///project/app/src/main/kotlin/com/myapp/LoginViewModel.kt:3:1
 ```
 
-* `title` and `rationale` are required and must not be blank (otherwise `IllegalArgumentException` is thrown).
-* `howToFix`, `goodExample` and `badExample` are optional. Blank values are not displayed.
+| Field         | Required | Label in message | Description                                                                              |
+|---------------|----------|------------------|------------------------------------------------------------------------------------------|
+| `id`          | Yes      | `ID:`            | Unique rule identifier (e.g. `VM-001`), so a developer or an AI agent can refer to the rule. |
+| `title`       | Yes      | `RULE:`          | One sentence that says what the rule checks.                                             |
+| `description` | No       | `DESCRIPTION:`   | Additional details about the rule, e.g. its scope or exceptions.                         |
+| `reason`      | Yes      | `REASON:`        | Why the rule exists.                                                                     |
+| `howToFix`    | No       | `HOW TO FIX:`    | How to fix a violation.                                                                  |
+| `goodExample` | No       | `GOOD EXAMPLE:`  | A short code sample that follows the rule.                                               |
+| `badExample`  | No       | `BAD EXAMPLE:`   | A short code sample that violates the rule.                                              |
+
+* Fields are displayed in the order listed above.
+* Required fields must not be blank (otherwise `IllegalArgumentException` is thrown). Blank optional fields are not displayed.
 * Common indentation is removed from `goodExample` and `badExample`, so a raw string (`"""..."""`) can be used.
 * When both `rule` and `additionalMessage` are set, the rule is displayed first.
 

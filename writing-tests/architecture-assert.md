@@ -222,8 +222,9 @@ Konsist
     .scopeFromProduction()
     .assertArchitecture(
         rule = KoRule(
+            id = "ARCH-001",
             title = "Data layer must not depend on other layers.",
-            rationale = "Data layer is reused by multiple features.",
+            reason = "Data layer is reused by multiple features.",
         ),
     ) {
         val presentation = Layer("Presentation", "com.myapp.presentation..")
