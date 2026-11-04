@@ -87,7 +87,7 @@ Konsist
 
 ### Test Name
 
-Assertions offer a set of parameters allowing you to tweak the assertion behavior. You can adjust several settings, such as setting `testName` that helps with suppression (see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
+Assertions offer a set of parameters allowing you to tweak the assertion behavior. By default, the test name is derived from the JUnit test method name (for JUnit 5 dynamic tests, the name of the `@TestFactory` method). For Kotest the test name can't be determined, so it is omitted from the error message. Register `KoJUnitExtension` (JUnit 5 dynamic tests) or `KoKotestExtension` (Kotest 6) to use the name of the running test (see [explicit-test-names.md](../advanced/dynamic-konsist-tests/explicit-test-names.md "mention")), or set the `testName` argument to use a custom test name (displayed in the error message and used for suppression, see [suppressing-konsist-test.md](suppressing-konsist-test.md "mention")).
 
 ### Strict
 
@@ -110,3 +110,91 @@ Konsist
     .classes()
     .assertFalse(additionalMessage = "Do X to fix the issue") { ... }
 ```
+
+### Rule
+
+The `rule` param accepts a `KoRule` describing what the assertion checks, why the rule exists and how to fix a violation. The rule is displayed in the failure message, so a developer (or an AI agent) knows how to fix the issue:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withNameEndingWith("ViewModel")
+    .assertTrue(
+        rule = KoRule(
+            id = "VM-001",
+            title = "ViewModels must extend BaseViewModel.",
+            reason = "Lifecycle handling lives in BaseViewModel.",
+            description = "Applies to every class with the ViewModel suffix.",
+            howToFix = "Change the parent class to BaseViewModel.",
+            goodExample = "class LoginViewModel : BaseViewModel()",
+            badExample = "class LoginViewModel : ViewModel()",
+        ),
+    ) { it.hasParentClassWithName("BaseViewModel") }
+```
+
+```
+Assert 'view models extend BaseViewModel' was violated (1 time).
+ID: VM-001
+RULE: ViewModels must extend BaseViewModel.
+DESCRIPTION: Applies to every class with the ViewModel suffix.
+REASON: Lifecycle handling lives in BaseViewModel.
+HOW TO FIX: Change the parent class to BaseViewModel.
+GOOD EXAMPLE:
+class LoginViewModel : BaseViewModel()
+BAD EXAMPLE:
+class LoginViewModel : ViewModel()
+Invalid declarations:
+└── Class LoginViewModel file:///project/app/src/main/kotlin/com/myapp/LoginViewModel.kt:3:1
+```
+
+| Field         | Required | Label in message | Description                                                                              |
+|---------------|----------|------------------|------------------------------------------------------------------------------------------|
+| `id`          | Yes      | `ID:`            | Unique rule identifier (e.g. `VM-001`), so a developer or an AI agent can refer to the rule. |
+| `title`       | Yes      | `RULE:`          | One sentence that says what the rule checks.                                             |
+| `description` | No       | `DESCRIPTION:`   | Additional details about the rule, e.g. its scope or exceptions.                         |
+| `reason`      | Yes      | `REASON:`        | Why the rule exists.                                                                     |
+| `howToFix`    | No       | `HOW TO FIX:`    | How to fix a violation.                                                                  |
+| `goodExample` | No       | `GOOD EXAMPLE:`  | A short code sample that follows the rule.                                               |
+| `badExample`  | No       | `BAD EXAMPLE:`   | A short code sample that violates the rule.                                              |
+
+* Fields are displayed in the order listed above.
+* Required fields must not be blank (otherwise `IllegalArgumentException` is thrown). Blank optional fields are not displayed.
+* Common indentation is removed from `goodExample` and `badExample`, so a raw string (`"""..."""`) can be used.
+* When both `rule` and `additionalMessage` are set, the rule is displayed first.
+
+The `rule` param is available for every assertion (`assertTrue`, `assertFalse`, `assertEmpty`, `assertNotEmpty`, `assertNull`, `assertNotNull`) and for `assertArchitecture` (see [architecture-assert.md](architecture-assert.md "mention")).
+
+## Add Failure Reason
+
+Use `addFailureReason` inside the `assertTrue` / `assertFalse` block to explain why a given declaration violates the assertion. Reasons are displayed under the failing declaration. Reasons added for declarations that pass the assertion are ignored:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withNameEndingWith("UseCase")
+    .assertTrue {
+        val publicFunctions = it.functions().filter { function -> function.hasPublicOrDefaultModifier }
+
+        if (publicFunctions.size != 1) {
+            addFailureReason("Has ${publicFunctions.size} public functions: ${publicFunctions.joinToString { function -> function.name }}")
+        }
+
+        publicFunctions.size == 1
+    }
+```
+
+```
+Assert 'use case has single public function' was violated (1 time). Invalid declarations:
+└── Class GetUserUseCase file:///project/app/src/main/kotlin/com/myapp/usecase/GetUserUseCase.kt:5:1
+    └── Has 2 public functions: invoke, validate
+```
+
+{% hint style="info" %}
+`additionalMessage` is displayed once for the whole assertion, while `addFailureReason` is displayed for each failing declaration. `addFailureReason` can be called multiple times for a single declaration.
+{% endhint %}
+
+{% hint style="info" %}
+Gradle does not display the assertion message (including `additionalMessage`, `rule` and failure reasons) in the command line output by default. See [enable-full-command-line-logging.md](../advanced/enable-full-command-line-logging.md "mention").
+{% endhint %}

@@ -107,16 +107,87 @@ Property initialization can be verified:
 
 ## **Verify Delegates**
 
-Property delegates can be verified:
+Property delegates can be verified. Built-in delegate checks are available since Konsist `1.0.0-beta.1`.
 
-Check if property has `lazy` delegate:
+Check if property has `lazy` delegate (matches `lazy { }`, `lazy<T> { }` and `lazy(mode) { }`):
 
 ```kotlin
 ...
 .assertTrue { 
-    it.hasDelegate("lazy") 
+    it.hasLazyDelegate() 
 }
 ```
+
+Check if property has `lazy` delegate with a given thread safety mode (`lazy` without an explicit mode uses `LazyThreadSafetyMode.SYNCHRONIZED`):
+
+```kotlin
+...
+.assertTrue { 
+    it.hasLazyDelegate(LazyThreadSafetyMode.NONE) 
+}
+```
+
+Check if property does not use `Delegates.observable` or `Delegates.vetoable` delegate:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withDelegate()
+    .assertFalse { 
+        it.hasObservableDelegate || it.hasVetoableDelegate 
+    }
+```
+
+Check if `lazy` properties using `LazyThreadSafetyMode.NONE` or `LazyThreadSafetyMode.PUBLICATION` are `private`:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withLazyDelegate(LazyThreadSafetyMode.NONE, LazyThreadSafetyMode.PUBLICATION)
+    .assertTrue { 
+        it.hasPrivateModifier 
+    }
+```
+
+Available built-in delegate checks and list filters:
+
+| Member                         | List filters                                                            | Matches                                        |
+| ------------------------------ | ----------------------------------------------------------------------- | ---------------------------------------------- |
+| `hasLazyDelegate(mode)`        | `withLazyDelegate(vararg modes)`, `withoutLazyDelegate(vararg modes)`   | `lazy { }`, `lazy<T> { }`, `lazy(mode) { }`    |
+| `hasObservableDelegate`        | `withObservableDelegate()`, `withoutObservableDelegate()`               | `Delegates.observable(...)`                    |
+| `hasVetoableDelegate`          | `withVetoableDelegate()`, `withoutVetoableDelegate()`                   | `Delegates.vetoable(...)`                      |
+| `hasNotNullDelegate`           | `withNotNullDelegate()`, `withoutNotNullDelegate()`                     | `Delegates.notNull()`                          |
+| `hasPropertyReferenceDelegate` | `withPropertyReferenceDelegate()`, `withoutPropertyReferenceDelegate()` | `by ::otherProperty`, `by this::otherProperty` |
+
+`withLazyDelegate()` with no modes keeps properties with any `lazy` delegate. With modes, it keeps properties whose `lazy` delegate uses any of the given modes. `withoutLazyDelegate(modes)` removes only those properties, so non-`lazy` properties are kept. Both filters also accept a `Collection<LazyThreadSafetyMode>`.
+
+Custom delegates can be verified using `hasDelegate("delegateName")`.
+
+{% hint style="info" %}
+Delegate checks match the delegate text, not resolved types:
+
+* `observable(...)`, `vetoable(...)` and `notNull()` imported directly (without the `Delegates.` prefix) are not detected.
+* `by map` delegation is not supported by built-in checks - use `hasDelegate("map")`.
+* `hasLazyDelegate(mode)` returns `false` when the mode is not a literal constant, e.g. `lazy(lock) { }` or `lazy(modeVariable) { }`. `hasLazyDelegate()` (no mode) still returns `true`. For the same reason `withLazyDelegate(modes)` drops and `withoutLazyDelegate(modes)` keeps such properties.
+* Interface delegation (`class Foo : Bar by baz`) inherits these members. They are designed for property delegates. For interface delegates they check the delegate expression text the same way (usually `false`).
+{% endhint %}
+
+## **Verify Explicit Backing Field**
+
+Property [explicit backing field](https://kotlinlang.org/docs/properties.html) (`field = ...`) can be verified:
+
+Check if property has explicit backing field:
+
+```kotlin
+...
+.assertTrue { 
+    it.hasExplicitBackingField
+}
+```
+
+The explicit backing field declaration (`explicitBackingField`) provides access to its `type` (e.g. `field: MutableStateFlow<Int> = ...`), `tacitType` and `value`.
 
 ## **Verify Visibility**&#x20;
 
@@ -150,6 +221,66 @@ Check if property is mutable:
 ...
 .assertTrue { 
     it.isVar
+}
+```
+
+Check if public property does not expose a mutable type (e.g. `MutableList`, `ArrayList`, `Array` or a class with a `var` property), including type arguments (e.g. `List<MutableList<String>>`):
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .properties()
+    .withPublicOrDefaultModifier()
+    .assertFalse {
+        it.type?.isMutableType == true || it.type?.hasMutableTypeArgument == true
+    }
+```
+
+Check if property in a data class has an immutable type (e.g. `String`, `List<String>`, `java.time.LocalDate` or a final project class without mutable properties):
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withDataModifier()
+    .properties()
+    .assertTrue {
+        it.type?.isImmutableType
+    }
+```
+
+`isMutableType` and `isImmutableType` check only the type itself (for `List<MutableList<String>>` `isImmutableType` is `true`); use `hasMutableTypeArgument` and `hasImmutableTypeArgument` to check type arguments at any nesting level. Type aliases and import aliases are resolved to the type they point to. List filters are available: `withMutableType()`, `withImmutableType()`, `withMutableTypeArgument()`, `withImmutableTypeArgument()` and their `without...` counterparts.
+
+{% hint style="info" %}
+A type can be neither mutable nor immutable. When mutability cannot be determined, `isImmutableType` returns `false` (and `isMutableType` returns `false` unless the type itself is mutable), e.g. for type parameters (`T`), function types, external types not known to be immutable (e.g. `java.util.Date`), Kotlin types commonly implemented by mutable types (`Any`, `Comparable`, `CharSequence`, `Number`), and interfaces, open, abstract or sealed classes declared in the project. To verify that a type is not mutable, use `assertFalse { it.type?.isMutableType == true }` instead of checking `isImmutableType`.
+{% endhint %}
+
+## **Verify Context Parameters**
+
+Property [context parameters](https://kotlinlang.org/docs/context-parameters.html) can be verified:
+
+```kotlin
+// Code Snippet
+context(logger: Logger)
+val Order.summary: String
+    get() = ...
+```
+
+Check if property has no context parameters:
+
+```kotlin
+...
+.assertFalse {
+    it.hasContextParameters()
+}
+```
+
+Check if property has `Logger` context parameter:
+
+```kotlin
+...
+.assertTrue {
+    it.hasContextParameter { contextParameter -> contextParameter.hasTypeOf(Logger::class) }
 }
 ```
 

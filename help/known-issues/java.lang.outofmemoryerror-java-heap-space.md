@@ -2,6 +2,10 @@
 
 For large projects with many classes to parse, the default JVM heap size might not suffice. If you encounter `java.lang.OutOfMemoryError: Java heap space` error, consider increasing the `maxHeapSize` for `Test` tasks:
 
+{% hint style="info" %}
+Konsist `1.0.0-beta.1` significantly reduced memory usage. Parsed files are shared between scopes (previously each `scopeFromDirectory` call parsed and retained files again), module, source set and package scopes parse only their own files, and unused parsed files are released when memory runs low. Update Konsist before increasing the heap size.
+{% endhint %}
+
 {% tabs %}
 {% tab title="Gradle (Kotlin)" %}
 Add the following argument to the `build.gradle.kts` file:

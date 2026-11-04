@@ -49,7 +49,7 @@ testing {
                 implementation(project())
                 
                 // Add Konsist dependency
-                implementation("com.lemonappdev:konsist:0.18.1") 
+                implementation("com.lemonappdev:konsist:1.0.0-beta.1") 
             }
         }
     }
@@ -87,7 +87,7 @@ testing {
                 implementation project() 
                 
                 // Add Konsist dependency
-                implementation "com.lemonappdev:konsist:0.18.1"
+                implementation "com.lemonappdev:konsist:1.0.0-beta.1"
             }
 
             targets { 
@@ -159,6 +159,10 @@ mvn test
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+The `konsistTest` source set name contains `test` (case-insensitive), so Konsist treats it as a test source set. Its files are included in `Konsist.scopeFromTest()` and excluded from `Konsist.scopeFromProduction()`.
+{% endhint %}
 
 ## Dedicated Gradle Module
 

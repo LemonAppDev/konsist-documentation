@@ -26,8 +26,8 @@ fun `property generic type does not contain star projection`() {
         .assertFalse { type ->
             type
                 .typeArguments
-                ?.flatten()
-                ?.any { it.isStarProjection }
+                .flatten()
+                .any { it.isStarProjection }
         }
 }
 ```

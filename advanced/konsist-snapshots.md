@@ -1,6 +1,6 @@
 # Konsist Snapshots
 
-Konsist occasionally releases snapshot versions to a dedicated [snapshot repository](https://central.sonatype.com/repository/maven-snapshots/com/lemonappdev/konsist/). These snapshots provide early access to new features and bug fixes.
+Konsist publishes snapshot versions to the Maven Central [snapshot repository](https://central.sonatype.com/repository/maven-snapshots/com/lemonappdev/konsist/). These snapshots provide early access to new features and bug fixes.
 
 {% hint style="warning" %}
 Snapshot versions are development builds and may contain unstable features.
@@ -8,7 +8,12 @@ Snapshot versions are development builds and may contain unstable features.
 
 ## Snapshot Release Process
 
-Currently, snapshots are released manually. At some point, this process will be automated - a new snapshot will be released each time code is merged to the `develop` branch.
+Snapshots are published automatically:
+
+* Every merge to the `develop` branch publishes the `X.Y.Z-SNAPSHOT` version, where `X.Y.Z` is the next Konsist version (e.g. `1.0.0-beta.1-SNAPSHOT`).
+* Every push to a pull request opened in the [Konsist repository](https://github.com/LemonAppDev/konsist) publishes the `X.Y.Z-prN-SNAPSHOT` version, where `N` is the pull request number (e.g. `1.0.0-beta.1-pr2092-SNAPSHOT`). Pull requests opened from forks do not publish snapshots.
+
+The list of published versions is available in the [maven-metadata.xml](https://central.sonatype.com/repository/maven-snapshots/com/lemonappdev/konsist/maven-metadata.xml) file.
 
 ## How to Use Snapshots
 

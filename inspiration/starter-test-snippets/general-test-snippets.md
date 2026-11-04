@@ -288,3 +288,17 @@ fun `return types of all functions are immutable`() {
 }
 ```
 
+## 21. Every Repository Function Has Logger Context Parameter
+
+```kotlin
+@Test
+fun `every repository function has Logger context parameter`() {
+    Konsist
+        .scopeFromProject()
+        .interfaces()
+        .withNameEndingWith("Repository")
+        .functions()
+        .assertTrue { it.hasContextParameter { parameter -> parameter.hasType { type -> type.name == "Logger" } } }
+}
+```
+

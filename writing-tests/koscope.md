@@ -68,6 +68,10 @@ The widest scope is the scope containing all Kotlin files present inside the pro
 Konsist.scopeFromProject() // All Kotlin files present in the project
 ```
 
+{% hint style="info" %}
+Project scopes (`scopeFromProject`, `scopeFromModule`, `scopeFromPackage`, `scopeFromSourceSet`, `scopeFromProduction` and `scopeFromTest`) contain only Kotlin files located in the module `src` directory. Kotlin files located outside of it are ignored, e.g. `app/Script.kt`, `app/testData/Fixture.kt` and `app/build/Generated.kt`. Use [Directory Scope](#directory-scope) or [File Scope](#file-scope) to verify these files.
+{% endhint %}
+
 To print a list of files within `koScope` use the `koScope.print()` method:
 
 ```kotlin
@@ -93,16 +97,22 @@ Contains:
 ```
 project/
 ├─ app/
-│  ├─ main/   <--- scope contains all production code files
+│  ├─ src/main/kotlin/   <--- scope contains all production code files
 │  │  ├─ App.kt
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ AppTest.kt
 ├─ core/
-│  ├─ main/   <--- scope contains all production code files
+│  ├─ src/main/kotlin/   <--- scope contains all production code files
 │  │  ├─ Core.kt
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ CoreTest.kt
 ```
+
+{% hint style="info" %}
+A test source set is a source set whose name contains `test` (case-insensitive), e.g. `test`, `androidTest`, `testFixtures` or `konsistTest`. Every other source set (e.g. `main`) is a production source set.
+
+Passing a test source set to `scopeFromProduction(sourceSetName = ...)` or a production source set to `scopeFromTest(sourceSetName = ...)` throws `IllegalArgumentException`.
+{% endhint %}
 
 ### Test Codebase
 
@@ -117,14 +127,14 @@ Contains:
 ```
 project/
 ├─ app/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all test code files
+│  ├─ src/test/kotlin/   <--- scope contains all test code files
 │  │  ├─ AppTest.kt
 ├─ core/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ Core.kt
-│  ├─ test/   <--- scope contains all test code files
+│  ├─ src/test/kotlin/   <--- scope contains all test code files
 │  │  ├─ CoreTest.kt
 ```
 
@@ -133,7 +143,7 @@ project/
 The `scopeFromModule` method allows the creation of more granular scopes based on the module name e.g. creating a scope containing all Kotlin files present in the `app` module:
 
 ```kotlin
-Konsist.scopeFromModule("app")
+Konsist.scopeFromModule(":app")
 ```
 
 Contains:
@@ -141,22 +151,39 @@ Contains:
 ```
 project/
 ├─ app/   <--- scope contains all files from the 'app' module
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ App.kt
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ AppTest.kt
 ├─ core/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ Core.kt
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ CoreTest.kt
 ```
+
+The module name can be passed in any of these formats:
+
+* Gradle project path, e.g. `:feature:auth` or `feature:auth` (preferred)
+* Directory path with `/` or `\` separators, e.g. `feature/auth` or `feature\auth` (both accepted on all OSes)
+
+Leading and trailing separators are ignored, e.g. `/feature/auth/` is treated as `feature/auth`.
+
+The top-level (root) module can be referenced as `:` or `root`. Module names are case-sensitive on all OSes (`:App` does not match the `app` directory).
+
+{% hint style="info" %}
+Konsist resolves the module name to a directory relative to the project root (`:feature:auth` -> `feature/auth`). Gradle modules with a custom `projectDir` (set in `settings.gradle.kts`) must be referenced by their directory path.
+{% endhint %}
+
+{% hint style="warning" %}
+`scopeFromModule` returns an empty scope when the module does not exist (e.g. misspelled module name or wrong case). Assertions on an empty list pass by default, so a misspelled module name can silently disable the test. Use `strict = true` in `assertTrue` / `assertFalse` (see [strict](declaration-assert.md#strict)) to make the test fail when the declaration list is empty.
+{% endhint %}
 
 This approach may be helpful when refactoring an existing project module by module.
 
 ```kotlin
-val refactoredModule1Scope = Konsist.scopeFromModule("refactoredModule1")
-val refactoredModule2Scope = Konsist.scopeFromModule("refactoredModule2")
+val refactoredModule1Scope = Konsist.scopeFromModule(":refactoredModule1")
+val refactoredModule2Scope = Konsist.scopeFromModule(":refactoredModule2")
 
 val scope = refactoredModule1Scope + refactoredModule2Scope
 
@@ -170,24 +197,101 @@ scope
 
 A nested module is a module that exists within another module.
 
-{% hint style="warning" %}
-The `nested modules` feature is not complete. The community is reporting that this feature works, however, we still have to take a closer look, review expectations, and add tests. Consider this feature as experimental for now.
-{% endhint %}
-
 Consider this `feature` module existing inside `app` module:
 
 ```
 project/
 ├─ app/
 │  ├─ feature/   <--- scope contains all files from the 'app/feature' module
-│  │  ├─ Feature.kt
+│  │  ├─ src/main/kotlin/
+│  │  │  ├─ Feature.kt
 ```
 
 To narrow the scope to `feature` module use:
 
 ```kotlin
-Konsist.scopeFromModule("app/feature")
+Konsist.scopeFromModule(":app:feature")
 ```
+
+Modules can be nested at any depth (e.g. `:app:feature:payment`). The module name is always the full path from the project root, so `scopeFromModule(":feature")` does not match the `app/feature` module.
+
+The parent module scope contains only the parent module files - files of nested modules are not included:
+
+```
+project/
+├─ app/   <--- scope contains only files from the 'app' module
+│  ├─ src/main/kotlin/
+│  │  ├─ App.kt
+│  ├─ feature/
+│  │  ├─ src/main/kotlin/
+│  │  │  ├─ Feature.kt
+```
+
+```kotlin
+Konsist.scopeFromModule(":app")
+```
+
+To include the parent module and its nested modules pass all of them:
+
+```kotlin
+Konsist.scopeFromModule(":app", ":app:feature")
+```
+
+or use the `..` wildcard, which matches any number of module directories (including none):
+
+```kotlin
+Konsist.scopeFromModule(":app..")        // 'app' module and all modules nested inside it
+Konsist.scopeFromModule("..data")        // every 'data' module, e.g. 'data', 'feature/data', 'feature/auth/data'
+Konsist.scopeFromModule(":app..data")    // 'data' modules nested at any depth inside 'app'
+Konsist.scopeFromModule("..")            // all modules
+```
+
+The wildcard works with every method accepting a module name, e.g. the `moduleName` parameter of `scopeFromProject`, `scopeFromPackage`, `scopeFromProduction` and `scopeFromTest`, as well as `residesInModule`, `withModule` and `withoutModule`:
+
+```kotlin
+Konsist
+    .scopeFromProject()
+    .classes()
+    .withModule(":app..")
+```
+
+Module names without `..` must match exactly, so `:app` does not include `:app:feature`. More than two consecutive dots (e.g. `:app...`) are not allowed and throw `IllegalArgumentException`.
+
+{% hint style="info" %}
+Use `..` (or `:..`) to match all modules. `root..` matches only the root module and modules located in a directory named `root`.
+{% endhint %}
+
+The `moduleName` property of a nested module declaration returns the directory path with `/` separators on all OSes (e.g. `app/feature`).
+
+A module can also be located in a directory named `src`, e.g. the `src/tools/src/main/kotlin/Tools.kt` file resides in the `src/tools` module:
+
+```kotlin
+Konsist.scopeFromModule(":src:tools")
+```
+
+{% hint style="info" %}
+A project located inside a source set directory is not a nested module. Its files belong to the module containing
+the source set. A source set directory is a directory containing a `kotlin`, `java` or `resources` directory
+(e.g. `app/src/test`).
+
+```text
+app/
+└── src/
+    ├── main/kotlin/AppMain.kt
+    └── test/
+        ├── kotlin/AppTest.kt
+        ├── resources/project/src/main/kotlin/Fixture.kt
+        └── testData/project/src/main/kotlin/Fixture.kt
+```
+
+Both `Fixture.kt` files reside in the `app` module and the `test` source set:
+
+```kotlin
+Konsist.scopeFromProduction(moduleName = ":app") // AppMain.kt
+Konsist.scopeFromTest(moduleName = ":app")       // AppTest.kt and both Fixture.kt files
+Konsist.scopeFromModule(":app:src:test:testData:project") // empty scope
+```
+{% endhint %}
 
 ### Source Set Scope
 
@@ -202,43 +306,44 @@ Contains:
 ```
 project/
 ├─ app/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all files from the 'test' directory
+│  ├─ src/test/kotlin/   <--- scope contains all files from the 'test' source set
 │  │  ├─ AppTest.kt
 ├─ core/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ Core.kt
-│  ├─ test/   <--- scope contains all files from the 'test' directory
+│  ├─ src/test/kotlin/   <--- scope contains all files from the 'test' source set
 │  │  ├─ CoreTest.kt
 ```
+
+The source set is the directory located directly in the module `src` directory, e.g. `test` for both `app/src/test/kotlin/AppTest.kt` and `app/src/test/resources/Fixture.kt`. Leading and trailing separators are ignored (`test/` is treated as `test`).
 
 ### Module and Source Set Scope
 
 To retrieve scope by using both module and source set use the `scopeFromProject` method with `moduleName` and `sourceSetName` arguments:
 
 ```kotlin
-Konsist.scopeFromProject(moduleName = "app", sourceSetName = "test")
+Konsist.scopeFromProject(moduleName = ":app", sourceSetName = "test")
 ```
+
+The `moduleName` argument (also available in `scopeFromProduction`, `scopeFromTest` and `scopeFromPackage`) accepts the same formats as `scopeFromModule` and returns an empty scope when the module does not exist.
 
 Contains:
 
 ```
-
 project/
 ├─ app/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ App.kt
-│  ├─ test/   <--- scope contains all files from the 'test' directory
+│  ├─ src/test/kotlin/   <--- scope contains all files from the 'test' source set of the 'app' module
 │  │  ├─ AppTest.kt
 ├─ core/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ Core.kt
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ CoreTest.kt
 ```
-
-
 
 ### Package Scope
 
@@ -253,14 +358,20 @@ Contains:
 ```
 project/
 ├─ app/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ com/
 │  │  │  ├─ usecase/
 │  │  │  │  ├─ UseCase.kt <--- scope contains files present in 'com.usecase' package
-│  ├─ test/
+│  ├─ src/test/kotlin/
 │  │  ├─ com/
 │  │  │  ├─ usecase/
 │  │  │  │  ├─ UseCaseTest.kt <--- scope contains files present in 'com.usecase' package
+```
+
+Files are selected by the package declared in the file (`package com.usecase`), not by the directory structure. The scope can be narrowed down further with the `moduleName` and `sourceSetName` arguments:
+
+```kotlin
+Konsist.scopeFromPackage("com.usecase..", moduleName = ":app", sourceSetName = "main")
 ```
 
 {% hint style="info" %}
@@ -269,10 +380,10 @@ The double dots (`..`) syntax means zero or more packages. Check the [packagesel
 
 ### Directory Scope
 
-The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory:
+The `scopeFromDirectory` method allows the creation of a scope containing code present in a given project folder e.g. `domain` directory. Unlike project scopes, it also contains Kotlin files located outside the module `src` directory:
 
 ```kotlin
-val myScope = Konsist.scopeFromDirectory("app/domain")
+val myScope = Konsist.scopeFromDirectory("app/src/main/kotlin/com/domain")
 ```
 
 Contains:
@@ -280,9 +391,27 @@ Contains:
 ```
 project/
 ├─ app/
-│  ├─ main/
+│  ├─ src/main/kotlin/
 │  │  ├─ com/
 │  │  │  ├─ domain/  <--- scope contains files present in 'domain' folder
+```
+
+The path is relative to the project root. Both `/` and `\` separators are accepted on all OSes.
+
+Build output directories (`build`, `target`) located outside the `src` directory, hidden directories (e.g. `.gradle`, `.idea`) and `node_modules` directories located inside the given directory are skipped, the same way as for project scopes. A skipped directory can still be passed explicitly, e.g. to verify generated code:
+
+```kotlin
+val generatedScope = Konsist.scopeFromDirectory("app/build/generated")
+```
+
+{% hint style="info" %}
+Letter case follows the file system: on case-sensitive file systems (Linux) `app/src` does not match the `App/src` directory, on case-insensitive ones (macOS, Windows) it does.
+{% endhint %}
+
+To create a scope from a directory located outside the project use `scopeFromExternalDirectory` with an absolute path. Some file properties, such as `projectPath` and `moduleName`, do not work for these files:
+
+```kotlin
+val externalScope = Konsist.scopeFromExternalDirectory("/Users/me/shared/src")
 ```
 
 ## File Scope
@@ -290,8 +419,10 @@ project/
 It is also possible to create scope from one or more file paths:
 
 ```kotlin
-val myScope = Konsist.scopeFromFile("app/main/domain/UseCase.kt")
+val myScope = Konsist.scopeFromFile("app/src/main/kotlin/com/domain/UseCase.kt")
 ```
+
+The path is relative to the project root. Both `/` and `\` separators are accepted on all OSes. Letter case should match the file system. On case-sensitive file systems (e.g. Linux) a path with different letter case (e.g. `App/src` instead of `app/src`) throws `IllegalArgumentException`.
 
 It is also possible to create the scope from a list of files. This can help with certain development workflows e.g. running Konsist tests only on files modified in a given PR:
 
@@ -306,14 +437,30 @@ For even more granular control you can use the `KoScope.slice` method to retriev
 
 ```kotlin
 // scope containing all files in any 'test' directory (works with '/' and '\' separators)
-koScope.slice { it.resideInPath("..test..") }
+koScope.slice { it.residesInPath("..test..") }
 
 // scope containing all files in 'com.domain.usecase' package
 koScope.slice { it.hasPackage("com.domain.usecase") }
 
 // scope containing all files in 'usecase' package and its sub-packages
 koScope.slice { it.hasPackage("..usecase..") }
+
+// scope containing all files in modules with name ending with '-ui' e.g. ':feature:auth-ui'
+koScope.slice { it.moduleName.endsWith("-ui") }
+
+// scope containing all files except files from the 'legacy' module
+koScope.slice { !it.residesInModule(":legacy") }
+
+// scope containing all files except files in any 'generated' directory
+koScope.slice { !it.residesInPath("..generated..") }
+
+// scope containing the 'UseCase.kt' file (file name with or without extension)
+koScope.slice { it.hasName("UseCase.kt") }
 ```
+
+{% hint style="info" %}
+Project files are parsed once and cached, so slicing `Konsist.scopeFromProject()` does not parse files again.
+{% endhint %}
 
 ## Scope Reuse
 
@@ -398,8 +545,8 @@ project/
 Konsist scope supports [Kotlin Operator overloading](https://kotlinlang.org/docs/operator-overloading.html), so scopes can be further combined together to create the desired scope, tailored to project needs. In this example scopes from `myFeature1` module and `myFeature2` module are combined together:
 
 ```kotlin
-val featureModule1Scope = Konsist.scopeFromModule("myFeature1")
-val featureModule2Scope = Konsist.scopeFromModule("myFeature2")
+val featureModule1Scope = Konsist.scopeFromModule(":myFeature1")
+val featureModule2Scope = Konsist.scopeFromModule(":myFeature2")
 
 val refactoredModules = featureModule1Scope + featureModule2Scope
 
@@ -409,12 +556,22 @@ refactoredModules
     .assertTrue { ... }
 ```
 
+A file present in both scopes is included in the combined scope only once.
+
+The `+=` and `-=` operators modify the scope in place:
+
+```kotlin
+val scope = Konsist.scopeFromModule(":myFeature1")
+scope += Konsist.scopeFromModule(":myFeature2")
+scope -= Konsist.scopeFromPackage("..data..")
+```
+
 ## Scope Subtraction
 
 Scope subtraction is also supported, so it is possible for example to exclude a part of a given module. Here scope is created from `myFeature` module and then the `..data..` package is excluded:
 
 ```kotlin
-val moduleScope = Konsist.scopeFromModule("myFeature")
+val moduleScope = Konsist.scopeFromModule(":myFeature")
 val dataLayerScope = Konsist.scopeFromPackage("..data..")
 
 val moduleSubsetScope = moduleScope - dataLayerScope

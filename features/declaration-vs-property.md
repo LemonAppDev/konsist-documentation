@@ -26,7 +26,7 @@ For example, such declaration can be used to check if annotations reside in a de
 koScope
     .classes()
     .withAnnotationModifier()
-    .assertTrue { it.resideInPackage("..annotation..") }
+    .assertTrue { it.residesInPackage("..annotation..") }
 ```
 
 ## Use Site

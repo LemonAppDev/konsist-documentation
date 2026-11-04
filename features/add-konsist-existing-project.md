@@ -26,10 +26,14 @@ At first, the Konsist test can be applied to a single module:
 
 ```kotlin
 Konsist
-    .scopeFromModule("featureCaloryCalculator")
+    .scopeFromProduction(moduleName = ":featureCaloryCalculator")
     .classes()
     .assertTrue { it.hasTestClasses() }
 ```
+
+{% hint style="warning" %}
+A scope created for a module that does not exist (e.g. misspelled module name) is empty and the assertion passes. Use the [strict](../writing-tests/declaration-assert.md#strict) assertion parameter to make the test fail when the declaration list is empty.
+{% endhint %}
 
 {% hint style="info" %}
 To review the content of a given scope see [debug-konsist-test.md](debug-konsist-test.md "mention").
@@ -38,8 +42,10 @@ To review the content of a given scope see [debug-konsist-test.md](debug-konsist
 As refactoring proceeds and code gets aligned, the Konsist scope can be extended to another feature module (`featureGroceryListGenerator`):
 
 ```kotlin
-Konsist
-    .scopeFromModule("featureCaloryCalculator", "featureGroceryListGenerator")
+val scope = Konsist.scopeFromProduction(moduleName = ":featureCaloryCalculator") +
+    Konsist.scopeFromProduction(moduleName = ":featureGroceryListGenerator")
+
+scope
     .classes()
     .assertTrue { it.hasTestClasses() }
 ```
@@ -48,12 +54,16 @@ When the entire code base (all modules) is aligned with the Konsist tests, the s
 
 ```kotlin
 Konsist
-    .scopeFromProject()
+    .scopeFromProduction()
     .classes()
     .assertTrue { it.hasTestClasses() }
 ```
 
-Usage of project scope (`scopeFromProject` ) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.
+{% hint style="info" %}
+`scopeFromProduction` is used here, because test classes themselves don't have test classes. Module scopes (`scopeFromModule`) and project scope (`scopeFromProject`) also contain test source set files.
+{% endhint %}
+
+Usage of a scope covering the entire project (e.g. `scopeFromProject` or `scopeFromProduction`) is a recommended approach because it helps to guard future modules without modifying the existing Konsist test.
 
 Konsist provides a flexible API to create scopes from modules, source sets, packages, files, etc., and combine these scopes together. See [koscope.md](../writing-tests/koscope.md "mention").
 

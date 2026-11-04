@@ -32,7 +32,7 @@ fun `classes with 'UseCase' suffix should reside in 'domain' and 'usecase' packa
         .scopeFromProject()
         .classes()
         .withNameEndingWith("UseCase")
-        .assertTrue { it.resideInPackage("..domain..usecase..") }
+        .assertTrue { it.residesInPackage("..domain..usecase..") }
 }
 ```
 
@@ -102,7 +102,7 @@ fun `interfaces with 'Repository' annotation should reside in 'data' package`() 
         .scopeFromProject()
         .interfaces()
         .withAnnotationOf(Repository::class)
-        .assertTrue { it.resideInPackage("..data..") }
+        .assertTrue { it.residesInPackage("..data..") }
 }
 ```
 

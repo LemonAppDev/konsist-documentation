@@ -71,7 +71,7 @@ class UseCaseKonsistTest {
             .scopeFromProject()
             .classes()
             .withNameEndingWith("UseCase")
-            .assertTrue { it.resideInPackage("..domain.usecase..") }
+            .assertTrue { it.residesInPackage("..domain.usecase..") }
     }
 }
 ```
@@ -90,7 +90,7 @@ class UseCaseKonsistTest : FreeSpec({
     }
 
     "use case should reside in ..domain.usecase.. package" {
-        useCases.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
+        useCases.assertTrue(testName = this.testCase.name.name) { it.residesInPackage("..domain.usecase..") }
     }
 })
 ```
@@ -172,7 +172,7 @@ class UseCaseKonsistTest {
                 },
                 dynamicTest("${useCase.name} should reside in ..domain.usecase.. package") {
                     useCase.assertTrue(testName = "${useCase.name} should reside in ..domain.usecase.. package") {
-                        it.resideInPackage("..domain.usecase..")
+                        it.residesInPackage("..domain.usecase..")
                     }
                 },
             )
@@ -185,7 +185,7 @@ The IDE will display the tests as follows:
 <figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as JUnit 5, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")). At the moment test names are duplicated. This aspect has to be further investigated.
+Without the `testName` argument Konsist uses the `@TestFactory` method name (`use case test`) for every dynamic test created by this method. Register `KoJUnitExtension` (`@ExtendWith(KoJUnitExtension::class)`) to use the dynamic test name without the `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")). The dynamic test name is then displayed in the error message and a single dynamic test can be suppressed.
 {% endhint %}
 {% endtab %}
 
@@ -203,7 +203,7 @@ class UseCaseKonsistTest : FreeSpec({
                 useCase.assertTrue(testName = this.testCase.name.name) { it.hasTestClasses() }
             }
             "${useCase.name} should reside in ..domain.usecase.. package" {
-                useCase.assertTrue(testName = this.testCase.name.name) { it.resideInPackage("..domain.usecase..") }
+                useCase.assertTrue(testName = this.testCase.name.name) { it.residesInPackage("..domain.usecase..") }
             }
         }
 })
@@ -214,7 +214,7 @@ The IDE will display the tests as follows:
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-For dynamic tests such as Kotest, it is recommended that the test name is explicitly provided using `testName` argument (see [explicit-test-names.md](explicit-test-names.md "mention")).
+For Kotest 6 register `KoKotestExtension` to provide the test name without the `testName` argument. For Kotest 5 pass the `testName` argument (`this.testCase.name.testName`). See [explicit-test-names.md](explicit-test-names.md "mention").
 {% endhint %}
 {% endtab %}
 
