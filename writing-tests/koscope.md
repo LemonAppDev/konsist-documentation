@@ -13,11 +13,11 @@ Scopes are an alternative to a `baseline` file. Subsets of the codebase can be r
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TB
-    Step1["1\. Create The Scope"] --> StepD2
-    Step1["1\. Create The Scope"]-->StepA2
-    StepD2["2\. Filter Declarations"] --> StepD3
-    StepD3["3\. Define Assertion"]
-    StepA2["2\. Assert Architecture"] --> StepA3
+    Step1["1. Create The Scope"] --> StepD2
+    Step1["1. Create The Scope"]-->StepA2
+    StepD2["2. Filter Declarations"] --> StepD3
+    StepD3["3. Define Assertion"]
+    StepA2["2. Assert Architecture"] --> StepA3
     StepA3["2a. Define Layers"] --> StepA4
     StepA4["2b. Define Assertion"]
     style Step1 fill:#52B523,stroke:#666,stroke-width:2px,color:#fff
