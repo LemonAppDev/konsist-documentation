@@ -148,8 +148,18 @@ Invalid declarations:
 └── Class LoginViewModel file:///project/app/src/main/kotlin/com/myapp/LoginViewModel.kt:3:1
 ```
 
-* `id`, `title` and `reason` are required and must not be blank (otherwise `IllegalArgumentException` is thrown).
-* `description`, `howToFix`, `goodExample` and `badExample` are optional. Blank values are not displayed.
+| Field         | Required | Label in message | Description                                                                              |
+|---------------|----------|------------------|------------------------------------------------------------------------------------------|
+| `id`          | Yes      | `ID:`            | Unique rule identifier (e.g. `VM-001`), so a developer or an AI agent can refer to the rule. |
+| `title`       | Yes      | `RULE:`          | One sentence that says what the rule checks.                                             |
+| `description` | No       | `DESCRIPTION:`   | Additional details about the rule, e.g. its scope or exceptions.                         |
+| `reason`      | Yes      | `REASON:`        | Why the rule exists.                                                                     |
+| `howToFix`    | No       | `HOW TO FIX:`    | How to fix a violation.                                                                  |
+| `goodExample` | No       | `GOOD EXAMPLE:`  | A short code sample that follows the rule.                                               |
+| `badExample`  | No       | `BAD EXAMPLE:`   | A short code sample that violates the rule.                                              |
+
+* Fields are displayed in the order listed above.
+* Required fields must not be blank (otherwise `IllegalArgumentException` is thrown). Blank optional fields are not displayed.
 * Common indentation is removed from `goodExample` and `badExample`, so a raw string (`"""..."""`) can be used.
 * When both `rule` and `additionalMessage` are set, the rule is displayed first.
 
